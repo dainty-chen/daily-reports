@@ -75,7 +75,7 @@
 <div class="app">
   <header class="top">
     <div class="brand">📊 每日日报<span class="dot">看板</span></div>
-    <div class="tabs" role="tablist"><button class="tab" data-tab="ai" role="tab">AI 日报<span class="cnt">12</span></button><button class="tab" data-tab="fin" role="tab">财经日报<span class="cnt">12</span></button></div>
+    <div class="tabs" role="tablist"><button class="tab" data-tab="ai" role="tab">AI 日报<span class="cnt">13</span></button><button class="tab" data-tab="fin" role="tab">财经日报<span class="cnt">13</span></button></div>
     <div class="meta" id="meta"></div>
   </header>
   <div class="body">
@@ -84,6 +84,101 @@
   </div>
 </div>
 
+<script type="text/html" class="rpt" data-tab="ai" data-date="2026-08-13"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 行业新闻日报 · 2026-08-13</title>
+<style>
+  /* 白背景 + 虎嗅式中文黑体 + 英文衬线(FT感) + 克制点缀 */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C7A4C; --link: #2266B3;
+    /* 标题: 英文优先衬线(Georgia)好看, 中文回退黑体(虎嗅式) */
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #6FC291; --link: #7FB0E6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 690px; margin: 0 auto; padding: 0 24px 72px; }
+
+  /* 报头 */
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 20px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 10px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 580px; margin: 22px auto 4px; line-height: 1.75; }
+
+  /* 栏目 */
+  .domain { margin-top: 44px; }
+  .dom-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 4px; }
+  .dom-head .emoji { font-size: 17px; }
+  .dom-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .dom-head .count { margin-left: auto; font-size: 12px; color: var(--faint);
+    font-variant-numeric: tabular-nums; }
+  .top .dom-head { border-bottom-color: var(--accent); }
+  .top .dom-head h2 { color: var(--accent); }
+
+  /* 单条 */
+  .story { padding: 19px 0; border-bottom: 1px solid var(--hair); }
+  .story:last-child { border-bottom: none; }
+  .story-title { font-family: var(--title); margin: 0 0 8px;
+    font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .story-title a { color: var(--text); text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0 1.5px; background-repeat: no-repeat;
+    background-position: 0 100%; transition: background-size .2s; }
+  .story-title a:hover { background-size: 100% 1.5px; color: var(--accent); }
+  .summary { margin: 0 0 9px; font-size: 15px; color: var(--text); }
+  .why, .inds { margin: 6px 0; font-size: 13.5px; color: var(--muted); }
+  .why { color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; vertical-align: 1px; }
+  .foot { display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-top: 11px; flex-wrap: wrap; }
+  .att { display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; color: var(--muted); }
+  .att .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 16px 0; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日 AI 行业简报</div>
+    <h1>AI 行业新闻日报</h1>
+    <div class="date">2026-08-13</div>
+    <div class="gen">生成于 2026-08-13 11:00</div>
+  </header>
+  <p class="editor-note">8/13 主线是「AI 算力/基建需求爆发」：AI 云商 CoreWeave 二季度营收翻倍、上调全年指引，股价大涨带动昨夜 AI 概念领涨；腾讯二季度增收并称三季度大幅增加算力采购；马斯克称 xAI 收入将超 SpaceX、明年底算力扩约 10 倍。模型侧 DeepSeek V4 Pro 正式版 API 上线、继续压价。</p>
+  <section class="domain top"><div class="dom-head"><span class="emoji">🔥</span><h2>今日重大新闻</h2><span class="count">3</span></div><article class="story"><h3 class="story-title"><a href="https://www.cnbc.com/2026/08/11/coreweave-crwv-q2-earnings-report-2026.html" target="_blank" rel="noopener">CoreWeave 二季度营收翻倍，AI 基建需求爆发</a></h3><p class="summary">AI 云基础设施商 CoreWeave 二季度营收同比大增约 112%、超市场预期，并上调 2026 全年指引至营收 124–132 亿美元；财报后股价大涨（盘后一度 +14%，盘中冲高约 +19%），带动昨夜美股 AI 概念领涨、超微电脑同涨约 19%。</p><p class="why"><span class="lbl">为什么重要</span>CoreWeave 是「AI 算力需求」最直接的晴雨表——营收翻倍说明大模型训练/推理的算力消耗仍在爆发式增长，利好算力、电力、光模块与半导体全链。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础设施/云 · 半导体 · 光模块/数据中心 · 电力</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cnbc.com/2026/08/11/coreweave-crwv-q2-earnings-report-2026.html" target="_blank" rel="noopener">CNBC ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://finance.eastmoney.com/a/202608123839497664.html" target="_blank" rel="noopener">DeepSeek V4 Pro 正式版 API 上线，继续压价</a></h3><p class="summary">DeepSeek V4 Pro 正式版 API 上线，输入定价 3 元/百万 Token，延续其高性价比路线。</p><p class="why"><span class="lbl">为什么重要</span>国产旗舰以低价持续冲击 API 市场，对成本敏感的中文/长文档/编程应用是又一个划算选项，也逼各家在性价比上贴身肉搏。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础模型 · AI 应用开发者 · 中小企业</p><div class="foot"><span class="att"><span class="dot" style="background:#0D7680"></span>值得个人关注</span><a class="src" href="https://finance.eastmoney.com/a/202608123839497664.html" target="_blank" rel="noopener">东方财富财经早餐 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://finance.eastmoney.com/a/202608123839497664.html" target="_blank" rel="noopener">算力军备赛加码：腾讯增采算力、马斯克称 xAI 算力明年底扩 10 倍</a></h3><p class="summary">腾讯二季度营收 2047.9 亿元、同比 +11%，并表示三季度大幅增加算力采购；马斯克称 xAI 的 AI 收入将超过 SpaceX 其他业务，计划到明年底把现有算力规模扩大约十倍。</p><p class="why"><span class="lbl">为什么重要</span>头部厂商集体加码算力采购/自建，进一步确认 AI 需求的长期性；对算力供应链是持续利好，也抬高竞争门槛。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础设施 · 半导体/算力 · 互联网大厂</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://finance.eastmoney.com/a/202608123839497664.html" target="_blank" rel="noopener">东方财富财经早餐 ↗</a></div></article></section>
+  <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://finance.eastmoney.com/a/202608123839497664.html" target="_blank" rel="noopener">DeepSeek V4 Pro 正式版 API 上线（详见今日重大新闻）</a></h3><p class="summary">DeepSeek V4 Pro 正式版 API 上线，输入 3 元/百万 Token，延续高性价比。</p><p class="why"><span class="lbl">为什么重要</span>国产旗舰低价持续冲击市场，中文/编程/长文档应用的划算选项又多一个。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础模型 · AI 应用开发者</p><div class="foot"><span class="att"><span class="dot" style="background:#0D7680"></span>值得个人关注</span><a class="src" href="https://finance.eastmoney.com/a/202608123839497664.html" target="_blank" rel="noopener">东方财富财经早餐 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">3</span></div><article class="story"><h3 class="story-title"><a href="https://www.cnbc.com/2026/08/11/coreweave-crwv-q2-earnings-report-2026.html" target="_blank" rel="noopener">CoreWeave 二季度营收翻倍、上调指引（详见今日重大新闻）</a></h3><p class="summary">CoreWeave 二季度营收同比约 +112%、超预期，上调 2026 全年营收指引至 124–132 亿美元，股价大涨。</p><p class="why"><span class="lbl">为什么重要</span>AI 算力需求的直接晴雨表，翻倍增长利好算力、电力与半导体全链。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础设施/云 · 半导体 · 数据中心</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cnbc.com/2026/08/11/coreweave-crwv-q2-earnings-report-2026.html" target="_blank" rel="noopener">CNBC ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://finance.eastmoney.com/a/202608123839497664.html" target="_blank" rel="noopener">腾讯二季度 +11%，三季度大幅增采算力</a></h3><p class="summary">腾讯二季度营收 2047.9 亿元、同比 +11%，明确表示三季度大幅增加算力采购。</p><p class="why"><span class="lbl">为什么重要</span>大厂加码算力采购，确认 AI 需求持续，对上游算力供应链是利好信号。</p><p class="inds"><span class="lbl">影响行业</span>互联网大厂 · AI 基础设施 · 半导体</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://finance.eastmoney.com/a/202608123839497664.html" target="_blank" rel="noopener">东方财富财经早餐 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://finance.eastmoney.com/a/202608123839497664.html" target="_blank" rel="noopener">马斯克：xAI 收入将超 SpaceX，算力明年底扩约 10 倍</a></h3><p class="summary">马斯克称 xAI 的 AI 收入将超过 SpaceX 其他业务，并计划到明年底将现有算力规模扩大约十倍。</p><p class="why"><span class="lbl">为什么重要</span>又一巨头押注 AI 算力大扩张，抬高军备赛门槛，也再度确认对 AI 需求的长期看多。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础设施 · 算力/半导体</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://finance.eastmoney.com/a/202608123839497664.html" target="_blank" rel="noopener">东方财富财经早餐 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🔭</span><h2>AI 探索新领域</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section>
+  <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
 <script type="text/html" class="rpt" data-tab="ai" data-date="2026-08-12"><!doctype html>
 <html lang="zh-CN">
 <head>
@@ -1224,6 +1319,123 @@
 </div>
 </body>
 </html></script>
+<script type="text/html" class="rpt" data-tab="fin" data-date="2026-08-13"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>财经日报 · 2026-08-13</title>
+<style>
+  /* 白底 + 虎嗅式中文黑体 + 英文衬线 + 红涨绿跌（中国习惯） */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C4E7A; --link: #2266B3;
+    --up: #C0392B; --down: #1A7A4D;
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #7FB0E6; --link: #7FB0E6;
+      --up: #F0685A; --down: #4FBF86;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 18px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 8px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 620px; margin: 20px auto 4px; line-height: 1.75; }
+
+  .sec { margin-top: 40px; }
+  .sec-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 14px; }
+  .sec-head .emoji { font-size: 17px; }
+  .sec-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 6px 0 2px; }
+
+  /* 行情磁贴 */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; }
+  .tile { border: 1px solid var(--hair); border-radius: 10px; padding: 11px 13px; }
+  .q-head { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+  .q-tag { font-size: 10.5px; color: var(--muted); border: 1px solid var(--hair);
+    border-radius: 5px; padding: 0 5px; }
+  .q-name { font-size: 13px; color: var(--muted); }
+  .q-val { font-family: var(--title); font-size: 20px; font-weight: 700;
+    font-variant-numeric: tabular-nums; }
+  .q-chg { font-size: 13.5px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .q-sub { font-size: 11.5px; color: var(--faint); margin-top: 2px; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .flat { color: var(--muted); }
+
+  /* 板块 */
+  .sector-row { padding: 12px 0; border-bottom: 1px solid var(--hair); }
+  .sector-row:last-child { border-bottom: none; }
+  .sector-mkt { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .sector-side { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0; }
+  .side-label { font-size: 11.5px; font-weight: 700; margin-right: 2px; }
+  .chip { font-size: 12.5px; border: 1px solid var(--hair); border-radius: 999px;
+    padding: 2px 10px; font-variant-numeric: tabular-nums; }
+  .chip b { margin-left: 6px; font-weight: 700; }
+  .chip.up { color: var(--up); }
+  .chip.down { color: var(--down); }
+
+  /* 新股表格 */
+  .table-wrap { overflow-x: auto; }
+  table.ipo { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.ipo th, table.ipo td { text-align: left; padding: 8px 10px;
+    border-bottom: 1px solid var(--hair); vertical-align: top; }
+  table.ipo th { font-size: 12px; color: var(--muted); font-weight: 700;
+    border-bottom: 1.5px solid var(--rule); white-space: nowrap; }
+  .ipo-name { font-weight: 650; }
+  .ipo-note { color: var(--muted); }
+
+  /* 事件卡 */
+  .event { padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .event:last-child { border-bottom: none; }
+  .ev-title { font-family: var(--title); margin: 0 0 7px; font-size: 17px;
+    font-weight: 700; line-height: 1.4; }
+  .ev-title a { color: var(--text); text-decoration: none; }
+  .ev-title a:hover { color: var(--link); text-decoration: underline; }
+  .ev-sum { margin: 0 0 8px; font-size: 14.5px; }
+  .ev-why { margin: 6px 0; font-size: 13.5px; color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; }
+  .ev-foot { margin-top: 9px; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日财经简报</div>
+    <h1>财经日报</h1>
+    <div class="date">2026-08-13</div>
+    <div class="gen">生成于 2026-08-13 11:00（早报）</div>
+  </header>
+  <p class="editor-note">8/13 早报（A股 9:30 刚开盘）：昨晚美国 7 月 CPI 温和——同比 +3.4%（符合预期、前值 3.5%）、核心 +2.5%，交易员下调 9 月加息押注、「无需加息」叙事巩固；隔夜美股三大指数涨跌不一，但 AI 概念领涨——CoreWeave 财报营收翻倍大涨、超微 +19%。央行二季度报告称加大逆周期调节；DeepSeek V4 Pro API 上线。A股前收（8/12）三大指数集体上涨。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">标普500</span></div><div class="q-val">涨跌不一</div><div class="q-chg flat">CPI温和·AI领涨</div><div class="q-sub">8/12收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">纳斯达克</span></div><div class="q-val">涨跌不一</div><div class="q-chg flat">AI概念领涨</div><div class="q-sub">CoreWeave/超微+19%</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3,946.68</div><div class="q-chg up">前收 +0.32%</div><div class="q-sub">8/12收盘·今日15:00后更新</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">创业板指</span></div><div class="q-val">3,602.08</div><div class="q-chg up">前收 +1.49%</div><div class="q-sub">8/12收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股</span><span class="q-name">恒生指数</span></div><div class="q-val">25,773.56</div><div class="q-chg down">前收 -0.63%</div><div class="q-sub">8/11收盘</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">美股(隔夜)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">AI 概念<b>CoreWeave/超微+19%</b></span><span class="chip up">科技股<b></b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip flat">—</span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">现货黄金 XAU</span></div><div class="q-val">约 $4,367</div><div class="q-chg flat">高位震荡</div><div class="q-sub">近日·CPI后关注降息预期</div></div><div class="tile"><div class="q-head"><span class="q-name">WTI 原油</span></div><div class="q-val">约 $75</div><div class="q-chg down">回落</div><div class="q-sub">布伦特约 $80</div></div><div class="tile"><div class="q-head"><span class="q-name">伦铜</span></div><div class="q-val">库存连降40天</div><div class="q-chg up">创2014以来最长连跌</div><div class="q-sub">供给偏紧</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">BTC</span></div><div class="q-val">约 $64,900</div><div class="q-chg flat">低位徘徊</div><div class="q-sub">近日</div></div><div class="tile"><div class="q-head"><span class="q-name">ETH</span></div><div class="q-val">连涨3天</div><div class="q-chg up">走强</div><div class="q-sub">近日</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://finance.sina.com.cn/world/2026-08-13/doc-inincaey4973319.shtml" target="_blank" rel="noopener">美国 7 月 CPI 温和，「无需加息」叙事巩固，AI 概念股领涨</a></h3><p class="ev-sum">美国 7 月 CPI 同比 +3.4%（符合预期、前值 3.5%）、环比 +0.1%，核心 CPI 同比 +2.5%；数据落地后交易员下调 9 月加息押注，美联储下月大概率维持利率。隔夜美股三大指数涨跌不一，AI 概念领涨——CoreWeave 大涨、超微电脑约 +19%。</p><p class="ev-why"><span class="lbl">影响/解读</span>通胀温和+利率维持，利多成长/AI 板块与黄金；但「无需加息」而非「降息」，宽松力度有限，指数整体分化。</p><div class="ev-foot"><a class="src" href="https://finance.sina.com.cn/world/2026-08-13/doc-inincaey4973319.shtml" target="_blank" rel="noopener">新浪财经 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cnbc.com/2026/08/11/coreweave-crwv-q2-earnings-report-2026.html" target="_blank" rel="noopener">CoreWeave 二季度营收翻倍、上调全年指引，AI 算力需求爆发</a></h3><p class="ev-sum">AI 云商 CoreWeave 二季度营收同比约 +112%、超预期，上调 2026 全年营收指引至 124–132 亿美元，股价大涨。</p><p class="ev-why"><span class="lbl">影响/解读</span>AI 算力需求的直接印证，利好算力、电力、光模块与半导体全链；A股相关概念或受提振。</p><div class="ev-foot"><a class="src" href="https://www.cnbc.com/2026/08/11/coreweave-crwv-q2-earnings-report-2026.html" target="_blank" rel="noopener">CNBC ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.eastmoney.com/a/202608123839497664.html" target="_blank" rel="noopener">央行二季度执行报告：加大逆周期调节力度，谋划新增政策</a></h3><p class="ev-sum">央行二季度货币政策执行报告强调将加大逆周期调节力度，并谋划出台新增政策。</p><p class="ev-why"><span class="lbl">影响/解读</span>释放稳增长/偏宽松信号，利好 A股风险偏好与利率敏感板块（地产、券商等）。</p><div class="ev-foot"><a class="src" href="https://finance.eastmoney.com/a/202608123839497664.html" target="_blank" rel="noopener">东方财富财经早餐 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.eastmoney.com/a/202608123839497664.html" target="_blank" rel="noopener">腾讯二季度营收 +11%，三季度大幅增采算力</a></h3><p class="ev-sum">腾讯二季度营收 2047.9 亿元、同比 +11%，并表示三季度大幅增加算力采购。</p><p class="ev-why"><span class="lbl">影响/解读</span>大厂加码算力，利好算力/半导体供应链；也反映其 AI 与广告/游戏业务的投入意愿。</p><div class="ev-foot"><a class="src" href="https://finance.eastmoney.com/a/202608123839497664.html" target="_blank" rel="noopener">东方财富财经早餐 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.eastmoney.com/a/202608123839497664.html" target="_blank" rel="noopener">马斯克：xAI 收入将超 SpaceX，算力明年底扩约 10 倍</a></h3><p class="ev-sum">马斯克称 xAI 的 AI 收入将超过 SpaceX 其他业务，计划到明年底将现有算力规模扩大约十倍。</p><p class="ev-why"><span class="lbl">影响/解读</span>又一巨头押注算力大扩张，强化 AI 基建长期需求叙事，利好上游。</p><div class="ev-foot"><a class="src" href="https://finance.eastmoney.com/a/202608123839497664.html" target="_blank" rel="noopener">东方财富财经早餐 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.eastmoney.com/a/202608123839497664.html" target="_blank" rel="noopener">国产大飞机 C919 开启国际定期商业航线</a></h3><p class="ev-sum">国产大飞机 C919 执飞 CA723 航班前往乌兰巴托，标志其正式开启国际定期商业航线运营。</p><p class="ev-why"><span class="lbl">影响/解读</span>国产大飞机商业化里程碑，利好航空制造与国产替代主题情绪。</p><div class="ev-foot"><a class="src" href="https://finance.eastmoney.com/a/202608123839497664.html" target="_blank" rel="noopener">东方财富财经早餐 ↗</a></div></article></section>
+  <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
+</div>
+</body>
+</html></script>
 <script type="text/html" class="rpt" data-tab="fin" data-date="2026-08-12"><!doctype html>
 <html lang="zh-CN">
 <head>
@@ -1333,10 +1545,10 @@
     <div class="kicker">每日财经简报</div>
     <h1>财经日报</h1>
     <div class="date">2026-08-12</div>
-    <div class="gen">生成于 2026-08-12 10:30（早报）</div>
+    <div class="gen">生成于 2026-08-12（早报） + 8/13 补 A股收盘</div>
   </header>
-  <p class="editor-note">8/12 早报（A股 9:30 刚开盘、尚未收盘，下方为隔夜与前一日数据）：隔夜美股集体收跌、科技股承压而芯片股逆势——标普 -0.32%、纳指 -0.60%、道指终结五连阳，存储股绩后重挫（西部数据 -13%）；WTI 原油涨至 $83、现货金回落至约 $4369、白银下挫。今晚美国公布 7 月 CPI，市场普遍观望。中概股大跌、人民币对美元创三年半新高。</p>
-  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">标普500</span></div><div class="q-val">7,728.20</div><div class="q-chg down">-0.32%</div><div class="q-sub">8/11收盘·隔夜</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">纳斯达克</span></div><div class="q-val">26,445</div><div class="q-chg down">-0.60%</div><div class="q-sub">科技承压·芯片逆涨</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">道琼斯</span></div><div class="q-val">—</div><div class="q-chg down">-0.34%</div><div class="q-sub">终结五连阳·存储股重挫</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">—</div><div class="q-chg down">前收 -0.82%</div><div class="q-sub">8/12 刚开盘·今日15:00收盘后更新</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股</span><span class="q-name">恒生指数</span></div><div class="q-val">25,773.56</div><div class="q-chg down">前收 -0.63%</div><div class="q-sub">8/11收盘</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">美股(隔夜)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">芯片股<b></b></span><span class="chip up">石油/页岩油<b></b></span><span class="chip up">白银<b></b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">存储<b>西数-13%·闪迪-6.8%</b></span><span class="chip down">科技股<b></b></span><span class="chip down">航空<b></b></span></div></div><div class="sector-row"><div class="sector-mkt">中概股(隔夜)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip flat">—</span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">金龙指数<b>-2.94%</b></span><span class="chip down">腾讯音乐<b>-12%</b></span><span class="chip down">B站<b>-5%+</b></span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">WTI 原油</span></div><div class="q-val">$83.20</div><div class="q-chg up">+1.30%</div><div class="q-sub">隔夜·美伊协议渺茫</div></div><div class="tile"><div class="q-head"><span class="q-name">现货黄金 XAU</span></div><div class="q-val">$4,368.81</div><div class="q-chg down">-0.50%</div><div class="q-sub">隔夜</div></div><div class="tile"><div class="q-head"><span class="q-name">白银</span></div><div class="q-val">回落</div><div class="q-chg down">-1.63%</div><div class="q-sub">隔夜</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">美元/人民币</span></div><div class="q-val">创三年半新高</div><div class="q-chg down">人民币走强</div><div class="q-sub">在岸/离岸人民币升值</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://www.163.com/dy/article/L446296C05198NMR.html" target="_blank" rel="noopener">隔夜美股集体收跌、道指终结五连阳，存储股绩后重挫</a></h3><p class="ev-sum">标普 -0.32% 报 7728.20、纳指 -0.60% 报 26445、道指跌 0.34% 终结五连阳；存储股财报后大跌，西部数据暴跌 13%、闪迪跌 6.8%，芯片股整体逆市走高。</p><p class="ev-why"><span class="lbl">影响/解读</span>科技内部剧烈分化（存储杀、芯片涨）；市场在等今晚 7 月 CPI，方向未定前观望情绪浓。</p><div class="ev-foot"><a class="src" href="https://www.163.com/dy/article/L446296C05198NMR.html" target="_blank" rel="noopener">华尔街见闻早餐 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/detail/1429814" target="_blank" rel="noopener">今晚美国公布 7 月 CPI，市场普遍观望</a></h3><p class="ev-sum">美国将于今晚公布 7 月 CPI 数据，是本周最关键的宏观变量，直接影响美联储利率路径预期。</p><p class="ev-why"><span class="lbl">影响/解读</span>CPI 高于预期→打压降息预期、利空成长股与黄金；低于预期则相反。数据落地前市场倾向观望。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/detail/1429814" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.163.com/dy/article/L446296C05198NMR.html" target="_blank" rel="noopener">中概股大跌：金龙指数 -2.94%，腾讯音乐重挫近 12%</a></h3><p class="ev-sum">隔夜纳斯达克中国金龙指数跌 2.94%，腾讯音乐跌近 12%、哔哩哔哩跌超 5%，阿里、百度跌超 3%，网易、京东跌超 4%。</p><p class="ev-why"><span class="lbl">影响/解读</span>中概情绪转弱，或压制港股与相关 ADR；需留意财报季与监管/宏观扰动。</p><div class="ev-foot"><a class="src" href="https://www.163.com/dy/article/L446296C05198NMR.html" target="_blank" rel="noopener">华尔街见闻早餐 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.163.com/dy/article/L446296C05198NMR.html" target="_blank" rel="noopener">黄仁勋为 5000 亿美元 AI 基建融资「降温」，英伟达做万亿参数开源模型</a></h3><p class="ev-sum">黄仁勋称英伟达对该 5000 亿融资计划中单个项目的支持不超 25%，消除过度集中担忧；英伟达同步开发万亿参数开源模型 Nemotron 4。</p><p class="ev-why"><span class="lbl">影响/解读</span>既安抚市场对 AI 基建泡沫的担忧，又确认长期需求；利好算力、电力与半导体链情绪。</p><div class="ev-foot"><a class="src" href="https://www.163.com/dy/article/L446296C05198NMR.html" target="_blank" rel="noopener">华尔街见闻早餐 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.163.com/dy/article/L446296C05198NMR.html" target="_blank" rel="noopener">恒生科技指数将扩容至 50 只并设独立 AI 主题</a></h3><p class="ev-sum">恒生科技指数计划扩容至 50 只成分股，并增设独立的 AI 主题。</p><p class="ev-why"><span class="lbl">影响/解读</span>利好港股科技与 AI 标的的资金关注度与被动配置需求，结构性利好相关成分。</p><div class="ev-foot"><a class="src" href="https://www.163.com/dy/article/L446296C05198NMR.html" target="_blank" rel="noopener">华尔街见闻早餐 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/detail/1429814" target="_blank" rel="noopener">高盛：美联储今年不加息，2026 晚些油价或跌破 70 美元</a></h3><p class="ev-sum">高盛全球银行与市场联席主管预计美联储今年不会加息，并判断 2026 年晚些时候油价将跌破每桶 70 美元。</p><p class="ev-why"><span class="lbl">影响/解读</span>利率与油价的中期判断偏鸽/偏空油价，若兑现利多成长股、利空能源。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/detail/1429814" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/detail/1429814" target="_blank" rel="noopener">台积电「积压 10 亿美元苹果订单」传言被郭明錤辟谣</a></h3><p class="ev-sum">关于台积电积压约 10 亿美元苹果处理器订单的传言，郭明錤辟谣称库存上升属正常爬坡、并非被动积压。</p><p class="ev-why"><span class="lbl">影响/解读</span>缓解对苹果/台积电需求转弱的担忧，利于半导体与苹果链情绪修复。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/detail/1429814" target="_blank" rel="noopener">财联社 ↗</a></div></article></section>
+  <p class="editor-note">8/12（已补 A股 收盘）：A股三大指数集体收涨、市场普涨——沪指 +0.32% 报 3946.68、深成指 +1.09%、创业板 +1.49%，超 4100 只个股上涨（本月新高），地产链/算力/医药/机器人领涨。隔夜美股（8/11）集体收跌、科技承压芯片逆涨、存储股绩后重挫（西数 -13%）；WTI 原油涨至 $83、现货金回落约 $4369。当晚美国公布 7 月 CPI（+3.4% 符合预期，反应见 8/13）。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3,946.68</div><div class="q-chg up">+0.32%</div><div class="q-sub">8/12收盘·超4100股涨</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">深证成指</span></div><div class="q-val">14,414.43</div><div class="q-chg up">+1.09%</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">创业板指</span></div><div class="q-val">3,602.08</div><div class="q-chg up">+1.49%</div><div class="q-sub">领涨</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股</span><span class="q-name">恒生指数</span></div><div class="q-val">25,773.56</div><div class="q-chg down">-0.63%</div><div class="q-sub">8/11收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">标普500</span></div><div class="q-val">7,728.20</div><div class="q-chg down">-0.32%</div><div class="q-sub">8/11收盘·隔夜</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">纳斯达克</span></div><div class="q-val">26,445</div><div class="q-chg down">-0.60%</div><div class="q-sub">科技承压·芯片逆涨</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">道琼斯</span></div><div class="q-val">—</div><div class="q-chg down">-0.34%</div><div class="q-sub">终结五连阳·存储股重挫</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">A股</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">地产链<b>涨停10</b></span><span class="chip up">算力<b>涨停9</b></span><span class="chip up">医药<b>涨停8</b></span><span class="chip up">机器人/通信<b>涨停7</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip flat">—</span></div></div><div class="sector-row"><div class="sector-mkt">美股(隔夜)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">芯片股<b></b></span><span class="chip up">石油/页岩油<b></b></span><span class="chip up">白银<b></b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">存储<b>西数-13%·闪迪-6.8%</b></span><span class="chip down">科技股<b></b></span><span class="chip down">航空<b></b></span></div></div><div class="sector-row"><div class="sector-mkt">中概股(隔夜)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip flat">—</span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">金龙指数<b>-2.94%</b></span><span class="chip down">腾讯音乐<b>-12%</b></span><span class="chip down">B站<b>-5%+</b></span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">WTI 原油</span></div><div class="q-val">$83.20</div><div class="q-chg up">+1.30%</div><div class="q-sub">隔夜·美伊协议渺茫</div></div><div class="tile"><div class="q-head"><span class="q-name">现货黄金 XAU</span></div><div class="q-val">$4,368.81</div><div class="q-chg down">-0.50%</div><div class="q-sub">隔夜</div></div><div class="tile"><div class="q-head"><span class="q-name">白银</span></div><div class="q-val">回落</div><div class="q-chg down">-1.63%</div><div class="q-sub">隔夜</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">美元/人民币</span></div><div class="q-val">创三年半新高</div><div class="q-chg down">人民币走强</div><div class="q-sub">在岸/离岸人民币升值</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://www.163.com/dy/article/L446296C05198NMR.html" target="_blank" rel="noopener">隔夜美股集体收跌、道指终结五连阳，存储股绩后重挫</a></h3><p class="ev-sum">标普 -0.32% 报 7728.20、纳指 -0.60% 报 26445、道指跌 0.34% 终结五连阳；存储股财报后大跌，西部数据暴跌 13%、闪迪跌 6.8%，芯片股整体逆市走高。</p><p class="ev-why"><span class="lbl">影响/解读</span>科技内部剧烈分化（存储杀、芯片涨）；市场在等今晚 7 月 CPI，方向未定前观望情绪浓。</p><div class="ev-foot"><a class="src" href="https://www.163.com/dy/article/L446296C05198NMR.html" target="_blank" rel="noopener">华尔街见闻早餐 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/detail/1429814" target="_blank" rel="noopener">今晚美国公布 7 月 CPI，市场普遍观望</a></h3><p class="ev-sum">美国将于今晚公布 7 月 CPI 数据，是本周最关键的宏观变量，直接影响美联储利率路径预期。</p><p class="ev-why"><span class="lbl">影响/解读</span>CPI 高于预期→打压降息预期、利空成长股与黄金；低于预期则相反。数据落地前市场倾向观望。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/detail/1429814" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.163.com/dy/article/L446296C05198NMR.html" target="_blank" rel="noopener">中概股大跌：金龙指数 -2.94%，腾讯音乐重挫近 12%</a></h3><p class="ev-sum">隔夜纳斯达克中国金龙指数跌 2.94%，腾讯音乐跌近 12%、哔哩哔哩跌超 5%，阿里、百度跌超 3%，网易、京东跌超 4%。</p><p class="ev-why"><span class="lbl">影响/解读</span>中概情绪转弱，或压制港股与相关 ADR；需留意财报季与监管/宏观扰动。</p><div class="ev-foot"><a class="src" href="https://www.163.com/dy/article/L446296C05198NMR.html" target="_blank" rel="noopener">华尔街见闻早餐 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.163.com/dy/article/L446296C05198NMR.html" target="_blank" rel="noopener">黄仁勋为 5000 亿美元 AI 基建融资「降温」，英伟达做万亿参数开源模型</a></h3><p class="ev-sum">黄仁勋称英伟达对该 5000 亿融资计划中单个项目的支持不超 25%，消除过度集中担忧；英伟达同步开发万亿参数开源模型 Nemotron 4。</p><p class="ev-why"><span class="lbl">影响/解读</span>既安抚市场对 AI 基建泡沫的担忧，又确认长期需求；利好算力、电力与半导体链情绪。</p><div class="ev-foot"><a class="src" href="https://www.163.com/dy/article/L446296C05198NMR.html" target="_blank" rel="noopener">华尔街见闻早餐 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.163.com/dy/article/L446296C05198NMR.html" target="_blank" rel="noopener">恒生科技指数将扩容至 50 只并设独立 AI 主题</a></h3><p class="ev-sum">恒生科技指数计划扩容至 50 只成分股，并增设独立的 AI 主题。</p><p class="ev-why"><span class="lbl">影响/解读</span>利好港股科技与 AI 标的的资金关注度与被动配置需求，结构性利好相关成分。</p><div class="ev-foot"><a class="src" href="https://www.163.com/dy/article/L446296C05198NMR.html" target="_blank" rel="noopener">华尔街见闻早餐 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/detail/1429814" target="_blank" rel="noopener">高盛：美联储今年不加息，2026 晚些油价或跌破 70 美元</a></h3><p class="ev-sum">高盛全球银行与市场联席主管预计美联储今年不会加息，并判断 2026 年晚些时候油价将跌破每桶 70 美元。</p><p class="ev-why"><span class="lbl">影响/解读</span>利率与油价的中期判断偏鸽/偏空油价，若兑现利多成长股、利空能源。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/detail/1429814" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/detail/1429814" target="_blank" rel="noopener">台积电「积压 10 亿美元苹果订单」传言被郭明錤辟谣</a></h3><p class="ev-sum">关于台积电积压约 10 亿美元苹果处理器订单的传言，郭明錤辟谣称库存上升属正常爬坡、并非被动积压。</p><p class="ev-why"><span class="lbl">影响/解读</span>缓解对苹果/台积电需求转弱的担忧，利于半导体与苹果链情绪修复。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/detail/1429814" target="_blank" rel="noopener">财联社 ↗</a></div></article></section>
   <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
 </div>
 </body>
