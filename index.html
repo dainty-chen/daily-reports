@@ -75,7 +75,7 @@
 <div class="app">
   <header class="top">
     <div class="brand">📊 每日日报<span class="dot">看板</span></div>
-    <div class="tabs" role="tablist"><button class="tab" data-tab="ai" role="tab">AI 日报<span class="cnt">14</span></button><button class="tab" data-tab="fin" role="tab">财经日报<span class="cnt">14</span></button></div>
+    <div class="tabs" role="tablist"><button class="tab" data-tab="ai" role="tab">AI 日报<span class="cnt">17</span></button><button class="tab" data-tab="fin" role="tab">财经日报<span class="cnt">17</span></button></div>
     <div class="meta" id="meta"></div>
   </header>
   <div class="body">
@@ -84,6 +84,291 @@
   </div>
 </div>
 
+<script type="text/html" class="rpt" data-tab="ai" data-date="2026-08-17"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 行业新闻日报 · 2026-08-17</title>
+<style>
+  /* 白背景 + 虎嗅式中文黑体 + 英文衬线(FT感) + 克制点缀 */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C7A4C; --link: #2266B3;
+    /* 标题: 英文优先衬线(Georgia)好看, 中文回退黑体(虎嗅式) */
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #6FC291; --link: #7FB0E6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 690px; margin: 0 auto; padding: 0 24px 72px; }
+
+  /* 报头 */
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 20px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 10px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 580px; margin: 22px auto 4px; line-height: 1.75; }
+
+  /* 栏目 */
+  .domain { margin-top: 44px; }
+  .dom-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 4px; }
+  .dom-head .emoji { font-size: 17px; }
+  .dom-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .dom-head .count { margin-left: auto; font-size: 12px; color: var(--faint);
+    font-variant-numeric: tabular-nums; }
+  .top .dom-head { border-bottom-color: var(--accent); }
+  .top .dom-head h2 { color: var(--accent); }
+
+  /* 单条 */
+  .story { padding: 19px 0; border-bottom: 1px solid var(--hair); }
+  .story:last-child { border-bottom: none; }
+  .story-title { font-family: var(--title); margin: 0 0 8px;
+    font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .story-title a { color: var(--text); text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0 1.5px; background-repeat: no-repeat;
+    background-position: 0 100%; transition: background-size .2s; }
+  .story-title a:hover { background-size: 100% 1.5px; color: var(--accent); }
+  .summary { margin: 0 0 9px; font-size: 15px; color: var(--text); }
+  .why, .inds { margin: 6px 0; font-size: 13.5px; color: var(--muted); }
+  .why { color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; vertical-align: 1px; }
+  .foot { display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-top: 11px; flex-wrap: wrap; }
+  .att { display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; color: var(--muted); }
+  .att .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 16px 0; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日 AI 行业简报</div>
+    <h1>AI 行业新闻日报</h1>
+    <div class="date">2026-08-17</div>
+    <div class="gen">生成于 2026-08-17 11:00</div>
+  </header>
+  <p class="editor-note">8/17 主线是「AI 阵营化」升温：美国计划要求 30 多国在中美 AI 竞赛中「选边站」、否则不纳入其 AI 联盟，AI 竞争从技术外溢到地缘。产业侧英伟达新型以太网交换机进入量产（AI 数据中心网络提速）；模型侧阿里 Qwen 3.8-27B 开源（含视觉、262K 上下文）。</p>
+  <section class="domain top"><div class="dom-head"><span class="emoji">🔥</span><h2>今日重大新闻</h2><span class="count">3</span></div><article class="story"><h3 class="story-title"><a href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">美国拟要求 30 多国在中美 AI 竞赛中「选边站」</a></h3><p class="summary">据报道，美国计划要求 30 多个国家在中美 AI 竞赛中作出选择，威胁不参与美国主导的 AI 联盟；AI 竞争从技术、算力外溢到地缘政治与阵营化。</p><p class="why"><span class="lbl">为什么重要</span>AI 正成为大国博弈的核心筹码——若阵营化加剧，会影响芯片/模型的跨境流动、出海合规与全球供应链，企业需评估「选边」带来的市场与合规风险。</p><p class="inds"><span class="lbl">影响行业</span>半导体/AI 芯片 · AI 出海 · 跨境合规 · 云/基础设施</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">新浪财经（周一早盘必读） ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">英伟达新型以太网交换机进入量产，AI 数据中心网络提速</a></h3><p class="summary">英伟达推出的新型以太网交换机进入量产，面向 AI 数据中心的高速互联。</p><p class="why"><span class="lbl">为什么重要</span>大模型训练/推理的瓶颈正从算力扩散到「网络互联」——交换机、光模块等数据中心网络环节受益，是 AI 基建链的又一确定性方向。</p><p class="inds"><span class="lbl">影响行业</span>AI 数据中心 · 网络/交换机 · 光模块 · 半导体</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">新浪财经（周一早盘必读） ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.digitalapplied.com/blog/ai-model-releases-august-2026-tracker" target="_blank" rel="noopener">阿里开源 Qwen 3.8-27B：含视觉、262K 上下文</a></h3><p class="summary">阿里 Qwen 团队 8/14 以 Apache 2.0 开源 Qwen 3.8-27B——270 亿参数、集成视觉、原生 262K 上下文（可扩展至 1M）。</p><p class="why"><span class="lbl">为什么重要</span>又一款高性价比、宽许可的国产多模态开源模型，对想私有化、控成本、做多模态/长文档的团队很实用。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础模型 · 多模态应用 · AI 应用开发者</p><div class="foot"><span class="att"><span class="dot" style="background:#0D7680"></span>值得个人关注</span><a class="src" href="https://www.digitalapplied.com/blog/ai-model-releases-august-2026-tracker" target="_blank" rel="noopener">Digital Applied 模型发布追踪 ↗</a></div></article></section>
+  <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://www.digitalapplied.com/blog/ai-model-releases-august-2026-tracker" target="_blank" rel="noopener">阿里开源 Qwen 3.8-27B（详见今日重大新闻）</a></h3><p class="summary">Apache 2.0、270 亿参数、集成视觉、原生 262K 上下文（可扩展 1M）。</p><p class="why"><span class="lbl">为什么重要</span>高性价比+宽许可的国产多模态开源，利好私有化与多模态/长文档场景。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础模型 · 多模态</p><div class="foot"><span class="att"><span class="dot" style="background:#0D7680"></span>值得个人关注</span><a class="src" href="https://www.digitalapplied.com/blog/ai-model-releases-august-2026-tracker" target="_blank" rel="noopener">Digital Applied 模型发布追踪 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://llmgateway.io/timeline" target="_blank" rel="noopener">Google 关停 Imagen 4 标准端点，转向 Gemini 图像模型</a></h3><p class="summary">8/17 起 Google 关停上一代 Imagen 4 标准端点，将调用方引导至 Gemini 图像模型。</p><p class="why"><span class="lbl">为什么重要</span>端点更替提醒接了 Google 图像 API 的团队及时迁移，避免断供；也反映大厂把生成能力向统一 Gemini 收拢。</p><p class="inds"><span class="lbl">影响行业</span>AI 应用开发者 · 内容/图像生成</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://llmgateway.io/timeline" target="_blank" rel="noopener">LLM Gateway ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">英伟达以太网交换机量产（详见今日重大新闻）</a></h3><p class="summary">英伟达新型以太网交换机进入量产，面向 AI 数据中心高速互联。</p><p class="why"><span class="lbl">为什么重要</span>AI 基建瓶颈从算力扩散到网络，交换机/光模块受益。</p><p class="inds"><span class="lbl">影响行业</span>AI 数据中心 · 网络 · 光模块</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">新浪财经（周一早盘必读） ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">美国拟要求 30 多国在中美 AI 竞赛中「选边站」（详见今日重大新闻）</a></h3><p class="summary">美国计划要求 30 多国在中美 AI 竞赛中选择立场，威胁不参与其 AI 联盟。</p><p class="why"><span class="lbl">为什么重要</span>AI 阵营化会重塑芯片/模型跨境流动、出海合规与供应链格局，是政策层面对全球 AI 产业最大的变量之一。</p><p class="inds"><span class="lbl">影响行业</span>半导体 · AI 出海 · 跨境合规</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">新浪财经（周一早盘必读） ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🔭</span><h2>AI 探索新领域</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section>
+  <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="ai" data-date="2026-08-16"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 行业新闻日报 · 2026-08-16</title>
+<style>
+  /* 白背景 + 虎嗅式中文黑体 + 英文衬线(FT感) + 克制点缀 */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C7A4C; --link: #2266B3;
+    /* 标题: 英文优先衬线(Georgia)好看, 中文回退黑体(虎嗅式) */
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #6FC291; --link: #7FB0E6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 690px; margin: 0 auto; padding: 0 24px 72px; }
+
+  /* 报头 */
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 20px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 10px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 580px; margin: 22px auto 4px; line-height: 1.75; }
+
+  /* 栏目 */
+  .domain { margin-top: 44px; }
+  .dom-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 4px; }
+  .dom-head .emoji { font-size: 17px; }
+  .dom-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .dom-head .count { margin-left: auto; font-size: 12px; color: var(--faint);
+    font-variant-numeric: tabular-nums; }
+  .top .dom-head { border-bottom-color: var(--accent); }
+  .top .dom-head h2 { color: var(--accent); }
+
+  /* 单条 */
+  .story { padding: 19px 0; border-bottom: 1px solid var(--hair); }
+  .story:last-child { border-bottom: none; }
+  .story-title { font-family: var(--title); margin: 0 0 8px;
+    font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .story-title a { color: var(--text); text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0 1.5px; background-repeat: no-repeat;
+    background-position: 0 100%; transition: background-size .2s; }
+  .story-title a:hover { background-size: 100% 1.5px; color: var(--accent); }
+  .summary { margin: 0 0 9px; font-size: 15px; color: var(--text); }
+  .why, .inds { margin: 6px 0; font-size: 13.5px; color: var(--muted); }
+  .why { color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; vertical-align: 1px; }
+  .foot { display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-top: 11px; flex-wrap: wrap; }
+  .att { display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; color: var(--muted); }
+  .att .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 16px 0; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日 AI 行业简报</div>
+    <h1>AI 行业新闻日报</h1>
+    <div class="date">2026-08-16</div>
+    <div class="gen">生成于 2026-08-17 补做</div>
+  </header>
+  <p class="editor-note">8/16（周日）：AI 圈偏静，最受关注的是政策/地缘——美国计划要求 30 多国在中美 AI 竞赛中「选边站」，AI 竞争进入阵营化阶段。</p>
+  
+  <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">美国拟要求 30 多国在中美 AI 竞赛中「选边站」</a></h3><p class="summary">据报道，美国计划要求 30 多国在中美 AI 竞赛中作出选择，威胁不参与其主导的 AI 联盟。</p><p class="why"><span class="lbl">为什么重要</span>AI 从技术竞争外溢到地缘与阵营化，将影响芯片/模型跨境流动、AI 出海与全球供应链，是产业最大的政策变量之一。</p><p class="inds"><span class="lbl">影响行业</span>半导体/AI 芯片 · AI 出海 · 跨境合规</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">新浪财经（周一早盘必读） ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🔭</span><h2>AI 探索新领域</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section>
+  <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="ai" data-date="2026-08-15"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 行业新闻日报 · 2026-08-15</title>
+<style>
+  /* 白背景 + 虎嗅式中文黑体 + 英文衬线(FT感) + 克制点缀 */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C7A4C; --link: #2266B3;
+    /* 标题: 英文优先衬线(Georgia)好看, 中文回退黑体(虎嗅式) */
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #6FC291; --link: #7FB0E6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 690px; margin: 0 auto; padding: 0 24px 72px; }
+
+  /* 报头 */
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 20px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 10px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 580px; margin: 22px auto 4px; line-height: 1.75; }
+
+  /* 栏目 */
+  .domain { margin-top: 44px; }
+  .dom-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 4px; }
+  .dom-head .emoji { font-size: 17px; }
+  .dom-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .dom-head .count { margin-left: auto; font-size: 12px; color: var(--faint);
+    font-variant-numeric: tabular-nums; }
+  .top .dom-head { border-bottom-color: var(--accent); }
+  .top .dom-head h2 { color: var(--accent); }
+
+  /* 单条 */
+  .story { padding: 19px 0; border-bottom: 1px solid var(--hair); }
+  .story:last-child { border-bottom: none; }
+  .story-title { font-family: var(--title); margin: 0 0 8px;
+    font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .story-title a { color: var(--text); text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0 1.5px; background-repeat: no-repeat;
+    background-position: 0 100%; transition: background-size .2s; }
+  .story-title a:hover { background-size: 100% 1.5px; color: var(--accent); }
+  .summary { margin: 0 0 9px; font-size: 15px; color: var(--text); }
+  .why, .inds { margin: 6px 0; font-size: 13.5px; color: var(--muted); }
+  .why { color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; vertical-align: 1px; }
+  .foot { display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-top: 11px; flex-wrap: wrap; }
+  .att { display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; color: var(--muted); }
+  .att .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 16px 0; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日 AI 行业简报</div>
+    <h1>AI 行业新闻日报</h1>
+    <div class="date">2026-08-15</div>
+    <div class="gen">生成于 2026-08-17 补做</div>
+  </header>
+  <p class="editor-note">8/15（周六）：AI 圈较静，无重大突发。近期开源亮点值得补看——阿里 8/14 以 Apache 2.0 开源 Qwen 3.8-27B（含视觉、262K 上下文）。</p>
+  
+  <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.digitalapplied.com/blog/ai-model-releases-august-2026-tracker" target="_blank" rel="noopener">近期开源：阿里 Qwen 3.8-27B（含视觉、262K）</a></h3><p class="summary">阿里 8/14 以 Apache 2.0 开源 Qwen 3.8-27B——270 亿参数、集成视觉、原生 262K 上下文（可扩展 1M）。</p><p class="why"><span class="lbl">为什么重要</span>高性价比+宽许可的国产多模态开源，利好想私有化、控成本、做多模态/长文档的团队。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础模型 · 多模态 · AI 应用开发者</p><div class="foot"><span class="att"><span class="dot" style="background:#0D7680"></span>值得个人关注</span><a class="src" href="https://www.digitalapplied.com/blog/ai-model-releases-august-2026-tracker" target="_blank" rel="noopener">Digital Applied 模型发布追踪 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🔭</span><h2>AI 探索新领域</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section>
+  <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
 <script type="text/html" class="rpt" data-tab="ai" data-date="2026-08-14"><!doctype html>
 <html lang="zh-CN">
 <head>
@@ -1411,6 +1696,357 @@
   <section class="domain top"><div class="dom-head"><span class="emoji">🔥</span><h2>今日重大新闻</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.buildfastwithai.com/blogs/ai-news-today-august-2-2026" target="_blank" rel="noopener">OpenAI Astra 解出十个数学公开难题，公布形式化证明</a></h3><p class="summary">OpenAI 称其未发布的 Astra 内部版解决了十个数学与理论计算机领域的公开难题，并在 GitHub 发布 Lean 形式化证明，成本约 2000 美元；成果含非 sofic 群存在性构造、新的球堆积界等。菲尔兹奖得主 Timothy Gowers 表示愿毫不犹豫推荐其中一份证明投顶级期刊。Astra 本身尚未发布。</p><p class="why"><span class="lbl">为什么重要</span>AI 在困扰人类专家数十年的前沿数学上做出可被形式化验证的真结果，是「AI 做科研」从辅助走向原创的重要一步；但也需注意这挑的是 AI 天然擅长的领域。</p><p class="inds"><span class="lbl">影响行业</span>AI 研究 · 学术/科研 · 理论计算机</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://www.buildfastwithai.com/blogs/ai-news-today-august-2-2026" target="_blank" rel="noopener">Build Fast with AI ↗</a></div></article></section>
   <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.buildfastwithai.com/blogs/ai-news-today-august-2-2026" target="_blank" rel="noopener">Astra 的数学突破：AI 原创科研的一步（详见今日重大新闻）</a></h3><p class="summary">Astra 内部版解出十个公开难题并公布 Lean 证明，正被独立核验；分析指出这些题目多处于 AI 天然占优的形式化领域。</p><p class="why"><span class="lbl">为什么重要</span>它把「模型能不能做真科研」的讨论往前推了一大截，也提示前沿模型的价值正从对话转向可验证的知识生产。</p><p class="inds"><span class="lbl">影响行业</span>AI 研究 · 科研</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://www.buildfastwithai.com/blogs/ai-news-today-august-2-2026" target="_blank" rel="noopener">Build Fast with AI ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">💻</span><h2>AI 软件开发</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section>
   <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="fin" data-date="2026-08-17"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>财经日报 · 2026-08-17</title>
+<style>
+  /* 白底 + 虎嗅式中文黑体 + 英文衬线 + 红涨绿跌（中国习惯） */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C4E7A; --link: #2266B3;
+    --up: #C0392B; --down: #1A7A4D;
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #7FB0E6; --link: #7FB0E6;
+      --up: #F0685A; --down: #4FBF86;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 18px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 8px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 620px; margin: 20px auto 4px; line-height: 1.75; }
+
+  .sec { margin-top: 40px; }
+  .sec-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 14px; }
+  .sec-head .emoji { font-size: 17px; }
+  .sec-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 6px 0 2px; }
+
+  /* 行情磁贴 */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; }
+  .tile { border: 1px solid var(--hair); border-radius: 10px; padding: 11px 13px; }
+  .q-head { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+  .q-tag { font-size: 10.5px; color: var(--muted); border: 1px solid var(--hair);
+    border-radius: 5px; padding: 0 5px; }
+  .q-name { font-size: 13px; color: var(--muted); }
+  .q-val { font-family: var(--title); font-size: 20px; font-weight: 700;
+    font-variant-numeric: tabular-nums; }
+  .q-chg { font-size: 13.5px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .q-sub { font-size: 11.5px; color: var(--faint); margin-top: 2px; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .flat { color: var(--muted); }
+
+  /* 板块 */
+  .sector-row { padding: 12px 0; border-bottom: 1px solid var(--hair); }
+  .sector-row:last-child { border-bottom: none; }
+  .sector-mkt { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .sector-side { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0; }
+  .side-label { font-size: 11.5px; font-weight: 700; margin-right: 2px; }
+  .chip { font-size: 12.5px; border: 1px solid var(--hair); border-radius: 999px;
+    padding: 2px 10px; font-variant-numeric: tabular-nums; }
+  .chip b { margin-left: 6px; font-weight: 700; }
+  .chip.up { color: var(--up); }
+  .chip.down { color: var(--down); }
+
+  /* 新股表格 */
+  .table-wrap { overflow-x: auto; }
+  table.ipo { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.ipo th, table.ipo td { text-align: left; padding: 8px 10px;
+    border-bottom: 1px solid var(--hair); vertical-align: top; }
+  table.ipo th { font-size: 12px; color: var(--muted); font-weight: 700;
+    border-bottom: 1.5px solid var(--rule); white-space: nowrap; }
+  .ipo-name { font-weight: 650; }
+  .ipo-note { color: var(--muted); }
+
+  /* 事件卡 */
+  .event { padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .event:last-child { border-bottom: none; }
+  .ev-title { font-family: var(--title); margin: 0 0 7px; font-size: 17px;
+    font-weight: 700; line-height: 1.4; }
+  .ev-title a { color: var(--text); text-decoration: none; }
+  .ev-title a:hover { color: var(--link); text-decoration: underline; }
+  .ev-sum { margin: 0 0 8px; font-size: 14.5px; }
+  .ev-why { margin: 6px 0; font-size: 13.5px; color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; }
+  .ev-foot { margin-top: 9px; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日财经简报</div>
+    <h1>财经日报</h1>
+    <div class="date">2026-08-17</div>
+    <div class="gen">生成于 2026-08-17 11:00（周一早报）</div>
+  </header>
+  <p class="editor-note">8/17 周一早报（A股 9:30 刚开盘）：上周五美股小幅收跌（道指 -0.2%、纳指 -0.28%、标普 -0.17%）、贵金属小涨。周末焦点——美国拟要求 30 多国在中美 AI 竞赛「选边站」、特朗普缩减美韩军演、美伊僵局延续。今日国家统计局公布 7 月经济数据（工业增加值/固投/社零），机构预期 A股本周震荡为主、建议低位低吸。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">标普500</span></div><div class="q-val">—</div><div class="q-chg down">-0.17%</div><div class="q-sub">上周五(8/14)收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">道琼斯</span></div><div class="q-val">—</div><div class="q-chg down">-0.20%</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">纳斯达克</span></div><div class="q-val">—</div><div class="q-chg down">-0.28%</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">—</div><div class="q-chg flat">上周五探底回升</div><div class="q-sub">8/14收盘·今日15:00后更新</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股</span><span class="q-name">恒生指数</span></div><div class="q-val">25,773.56</div><div class="q-chg flat">近日</div><div class="q-sub">参考·8/11</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">A股(展望)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">AI 网络/交换机<b></b></span><span class="chip up">煤炭<b>炼焦煤竞价大涨</b></span><span class="chip up">固态电池<b>大会催化</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip flat">—</span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">现货黄金 XAU</span></div><div class="q-val">小幅上涨</div><div class="q-chg up">贵金属走强</div><div class="q-sub">上周五</div></div><div class="tile"><div class="q-head"><span class="q-name">山西炼焦煤</span></div><div class="q-val">竞价大涨</div><div class="q-chg up">+105~171 元/吨</div><div class="q-sub">月中涨幅显著</div></div><div class="tile"><div class="q-head"><span class="q-name">WTI 原油</span></div><div class="q-val">窄幅波动</div><div class="q-chg flat">震荡</div><div class="q-sub">美伊僵局</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">今日国家统计局公布 7 月经济数据（工业增加值/固投/社零）</a></h3><p class="ev-sum">8/17 国家统计局将公布 7 月规上工业增加值、固定资产投资、社会消费品零售总额等关键经济数据。</p><p class="ev-why"><span class="lbl">影响/解读</span>本周最重要的国内宏观变量，直接影响对经济复苏力度与政策预期的判断，牵动 A股风险偏好。</p><div class="ev-foot"><a class="src" href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">新浪财经（周一早盘必读） ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">美国拟要求 30 多国在中美 AI 竞赛「选边站」</a></h3><p class="ev-sum">美国计划要求 30 多国在中美 AI 竞赛中作出选择，否则不纳入其 AI 联盟。</p><p class="ev-why"><span class="lbl">影响/解读</span>AI 阵营化升温，影响芯片/AI 出海与供应链，扰动半导体与科技板块的地缘风险定价。</p><div class="ev-foot"><a class="src" href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">新浪财经（周一早盘必读） ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">上周五美股小幅收跌，贵金属小涨</a></h3><p class="ev-sum">8/14 美股道指 -0.2%、纳指 -0.28%、标普 -0.17% 小幅收跌，贵金属小幅上涨、能源窄幅波动。</p><p class="ev-why"><span class="lbl">影响/解读</span>在 CPI/PPI 双双降温后，美股高位小幅整理，市场等待更多方向指引。</p><div class="ev-foot"><a class="src" href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">新浪财经（周一早盘必读） ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">山西炼焦煤竞价大涨 105–171 元/吨</a></h3><p class="ev-sum">山西炼焦煤竞价大幅上涨，涨幅达 105–171 元/吨，月中涨幅显著抬升。</p><p class="ev-why"><span class="lbl">影响/解读</span>煤焦价格反弹利好煤炭板块，也反映部分周期品供需边际改善。</p><div class="ev-foot"><a class="src" href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">新浪财经（周一早盘必读） ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">英伟达以太网交换机量产、中国发射卫星互联网低轨 24 组卫星</a></h3><p class="ev-sum">英伟达新型以太网交换机进入量产（AI 数据中心网络）；中国成功发射一箭 24 组卫星互联网低轨卫星；2026 中国固态电池技术大会 8/17–19 召开。</p><p class="ev-why"><span class="lbl">影响/解读</span>AI 网络、卫星互联网、固态电池三条产业主题受催化，相关 A股概念或获资金关注。</p><div class="ev-foot"><a class="src" href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">新浪财经（周一早盘必读） ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">证监会发现上市公司会计处理错误</a></h3><p class="ev-sum">证监会在检查中发现部分上市公司存在会计处理错误问题。</p><p class="ev-why"><span class="lbl">影响/解读</span>监管趋严提示财务质量风险，利空相关个股、利于市场长期规范。</p><div class="ev-foot"><a class="src" href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">新浪财经（周一早盘必读） ↗</a></div></article></section>
+  <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="fin" data-date="2026-08-16"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>财经日报 · 2026-08-16</title>
+<style>
+  /* 白底 + 虎嗅式中文黑体 + 英文衬线 + 红涨绿跌（中国习惯） */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C4E7A; --link: #2266B3;
+    --up: #C0392B; --down: #1A7A4D;
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #7FB0E6; --link: #7FB0E6;
+      --up: #F0685A; --down: #4FBF86;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 18px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 8px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 620px; margin: 20px auto 4px; line-height: 1.75; }
+
+  .sec { margin-top: 40px; }
+  .sec-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 14px; }
+  .sec-head .emoji { font-size: 17px; }
+  .sec-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 6px 0 2px; }
+
+  /* 行情磁贴 */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; }
+  .tile { border: 1px solid var(--hair); border-radius: 10px; padding: 11px 13px; }
+  .q-head { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+  .q-tag { font-size: 10.5px; color: var(--muted); border: 1px solid var(--hair);
+    border-radius: 5px; padding: 0 5px; }
+  .q-name { font-size: 13px; color: var(--muted); }
+  .q-val { font-family: var(--title); font-size: 20px; font-weight: 700;
+    font-variant-numeric: tabular-nums; }
+  .q-chg { font-size: 13.5px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .q-sub { font-size: 11.5px; color: var(--faint); margin-top: 2px; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .flat { color: var(--muted); }
+
+  /* 板块 */
+  .sector-row { padding: 12px 0; border-bottom: 1px solid var(--hair); }
+  .sector-row:last-child { border-bottom: none; }
+  .sector-mkt { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .sector-side { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0; }
+  .side-label { font-size: 11.5px; font-weight: 700; margin-right: 2px; }
+  .chip { font-size: 12.5px; border: 1px solid var(--hair); border-radius: 999px;
+    padding: 2px 10px; font-variant-numeric: tabular-nums; }
+  .chip b { margin-left: 6px; font-weight: 700; }
+  .chip.up { color: var(--up); }
+  .chip.down { color: var(--down); }
+
+  /* 新股表格 */
+  .table-wrap { overflow-x: auto; }
+  table.ipo { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.ipo th, table.ipo td { text-align: left; padding: 8px 10px;
+    border-bottom: 1px solid var(--hair); vertical-align: top; }
+  table.ipo th { font-size: 12px; color: var(--muted); font-weight: 700;
+    border-bottom: 1.5px solid var(--rule); white-space: nowrap; }
+  .ipo-name { font-weight: 650; }
+  .ipo-note { color: var(--muted); }
+
+  /* 事件卡 */
+  .event { padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .event:last-child { border-bottom: none; }
+  .ev-title { font-family: var(--title); margin: 0 0 7px; font-size: 17px;
+    font-weight: 700; line-height: 1.4; }
+  .ev-title a { color: var(--text); text-decoration: none; }
+  .ev-title a:hover { color: var(--link); text-decoration: underline; }
+  .ev-sum { margin: 0 0 8px; font-size: 14.5px; }
+  .ev-why { margin: 6px 0; font-size: 13.5px; color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; }
+  .ev-foot { margin-top: 9px; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日财经简报</div>
+    <h1>财经日报</h1>
+    <div class="date">2026-08-16</div>
+    <div class="gen">生成于 2026-08-17 补做</div>
+  </header>
+  <p class="editor-note">8/16（周日）：全球股市休市。周末最受关注的是「AI 阵营化」——美国计划要求 30 多国在中美 AI 竞赛中选边站，直接关系科技与半导体的地缘风险定价。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">美国拟要求 30 多国在中美 AI 竞赛中「选边站」</a></h3><p class="ev-sum">据报道，美国计划要求 30 多个国家在中美 AI 竞赛中作出选择，否则不纳入其主导的 AI 联盟。</p><p class="ev-why"><span class="lbl">影响/解读</span>AI 竞争外溢到地缘与阵营化，若加剧将影响芯片/模型跨境流动、AI 出海与供应链，是下周科技板块的重要变量。</p><div class="ev-foot"><a class="src" href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">新浪财经（周一早盘必读） ↗</a></div></article></section>
+  <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="fin" data-date="2026-08-15"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>财经日报 · 2026-08-15</title>
+<style>
+  /* 白底 + 虎嗅式中文黑体 + 英文衬线 + 红涨绿跌（中国习惯） */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C4E7A; --link: #2266B3;
+    --up: #C0392B; --down: #1A7A4D;
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #7FB0E6; --link: #7FB0E6;
+      --up: #F0685A; --down: #4FBF86;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 18px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 8px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 620px; margin: 20px auto 4px; line-height: 1.75; }
+
+  .sec { margin-top: 40px; }
+  .sec-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 14px; }
+  .sec-head .emoji { font-size: 17px; }
+  .sec-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 6px 0 2px; }
+
+  /* 行情磁贴 */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; }
+  .tile { border: 1px solid var(--hair); border-radius: 10px; padding: 11px 13px; }
+  .q-head { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+  .q-tag { font-size: 10.5px; color: var(--muted); border: 1px solid var(--hair);
+    border-radius: 5px; padding: 0 5px; }
+  .q-name { font-size: 13px; color: var(--muted); }
+  .q-val { font-family: var(--title); font-size: 20px; font-weight: 700;
+    font-variant-numeric: tabular-nums; }
+  .q-chg { font-size: 13.5px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .q-sub { font-size: 11.5px; color: var(--faint); margin-top: 2px; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .flat { color: var(--muted); }
+
+  /* 板块 */
+  .sector-row { padding: 12px 0; border-bottom: 1px solid var(--hair); }
+  .sector-row:last-child { border-bottom: none; }
+  .sector-mkt { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .sector-side { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0; }
+  .side-label { font-size: 11.5px; font-weight: 700; margin-right: 2px; }
+  .chip { font-size: 12.5px; border: 1px solid var(--hair); border-radius: 999px;
+    padding: 2px 10px; font-variant-numeric: tabular-nums; }
+  .chip b { margin-left: 6px; font-weight: 700; }
+  .chip.up { color: var(--up); }
+  .chip.down { color: var(--down); }
+
+  /* 新股表格 */
+  .table-wrap { overflow-x: auto; }
+  table.ipo { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.ipo th, table.ipo td { text-align: left; padding: 8px 10px;
+    border-bottom: 1px solid var(--hair); vertical-align: top; }
+  table.ipo th { font-size: 12px; color: var(--muted); font-weight: 700;
+    border-bottom: 1.5px solid var(--rule); white-space: nowrap; }
+  .ipo-name { font-weight: 650; }
+  .ipo-note { color: var(--muted); }
+
+  /* 事件卡 */
+  .event { padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .event:last-child { border-bottom: none; }
+  .ev-title { font-family: var(--title); margin: 0 0 7px; font-size: 17px;
+    font-weight: 700; line-height: 1.4; }
+  .ev-title a { color: var(--text); text-decoration: none; }
+  .ev-title a:hover { color: var(--link); text-decoration: underline; }
+  .ev-sum { margin: 0 0 8px; font-size: 14.5px; }
+  .ev-why { margin: 6px 0; font-size: 13.5px; color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; }
+  .ev-foot { margin-top: 9px; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日财经简报</div>
+    <h1>财经日报</h1>
+    <div class="date">2026-08-15</div>
+    <div class="gen">生成于 2026-08-17 补做</div>
+  </header>
+  <p class="editor-note">8/15（周六）：全球股市休市，无交易数据。周末焦点在地缘——特朗普宣布缩减美韩联合军演规模；美伊僵局延续，伊朗要求美国不得进入波斯湾等水域。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">地缘扰动：特朗普缩减美韩军演，美伊僵局延续</a></h3><p class="ev-sum">特朗普宣布缩减美韩联合军演规模；同时美伊僵局继续，伊朗要求美方不得进入波斯湾等水域。</p><p class="ev-why"><span class="lbl">影响/解读</span>地缘不确定性影响原油与避险资产（黄金）定价，也为下周风险偏好埋下变数。</p><div class="ev-foot"><a class="src" href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpev7173020.shtml" target="_blank" rel="noopener">新浪财经 ↗</a></div></article></section>
+  <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
 </div>
 </body>
 </html></script>
