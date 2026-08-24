@@ -75,7 +75,7 @@
 <div class="app">
   <header class="top">
     <div class="brand">📊 每日日报<span class="dot">看板</span></div>
-    <div class="tabs" role="tablist"><button class="tab" data-tab="ai" role="tab">AI 日报<span class="cnt">21</span></button><button class="tab" data-tab="fin" role="tab">财经日报<span class="cnt">21</span></button></div>
+    <div class="tabs" role="tablist"><button class="tab" data-tab="ai" role="tab">AI 日报<span class="cnt">24</span></button><button class="tab" data-tab="fin" role="tab">财经日报<span class="cnt">24</span></button></div>
     <div class="meta" id="meta"></div>
   </header>
   <div class="body">
@@ -84,6 +84,291 @@
   </div>
 </div>
 
+<script type="text/html" class="rpt" data-tab="ai" data-date="2026-08-24"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 行业新闻日报 · 2026-08-24</title>
+<style>
+  /* 白背景 + 虎嗅式中文黑体 + 英文衬线(FT感) + 克制点缀 */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C7A4C; --link: #2266B3;
+    /* 标题: 英文优先衬线(Georgia)好看, 中文回退黑体(虎嗅式) */
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #6FC291; --link: #7FB0E6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 690px; margin: 0 auto; padding: 0 24px 72px; }
+
+  /* 报头 */
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 20px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 10px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 580px; margin: 22px auto 4px; line-height: 1.75; }
+
+  /* 栏目 */
+  .domain { margin-top: 44px; }
+  .dom-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 4px; }
+  .dom-head .emoji { font-size: 17px; }
+  .dom-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .dom-head .count { margin-left: auto; font-size: 12px; color: var(--faint);
+    font-variant-numeric: tabular-nums; }
+  .top .dom-head { border-bottom-color: var(--accent); }
+  .top .dom-head h2 { color: var(--accent); }
+
+  /* 单条 */
+  .story { padding: 19px 0; border-bottom: 1px solid var(--hair); }
+  .story:last-child { border-bottom: none; }
+  .story-title { font-family: var(--title); margin: 0 0 8px;
+    font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .story-title a { color: var(--text); text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0 1.5px; background-repeat: no-repeat;
+    background-position: 0 100%; transition: background-size .2s; }
+  .story-title a:hover { background-size: 100% 1.5px; color: var(--accent); }
+  .summary { margin: 0 0 9px; font-size: 15px; color: var(--text); }
+  .why, .inds { margin: 6px 0; font-size: 13.5px; color: var(--muted); }
+  .why { color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; vertical-align: 1px; }
+  .foot { display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-top: 11px; flex-wrap: wrap; }
+  .att { display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; color: var(--muted); }
+  .att .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 16px 0; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日 AI 行业简报</div>
+    <h1>AI 行业新闻日报</h1>
+    <div class="date">2026-08-24</div>
+    <div class="gen">生成于 2026-08-24 11:30</div>
+  </header>
+  <p class="editor-note">8/24 主线是「AI 挤泡沫 + 成本传导」：预期端降温——Altman 认错 AI 时间表、Hugging Face 传出寻求出售（估值超 130 亿美元）、调查称 Anthropic 最贵模型 Fable 5 发布两月仅占企业支出 11%；成本端，存储涨价开始向下游传导，英伟达高端服务器明年将涨价 15%。资本端，阿里七年来首次配股募 800 亿港元、全部投入 AI 建设（但股价大跌 10%）。来源：华尔街见闻。</p>
+  <section class="domain top"><div class="dom-head"><span class="emoji">🔥</span><h2>今日重大新闻</h2><span class="count">3</span></div><article class="story"><h3 class="story-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">AI 预期降温三连击：Altman 认错、Hugging Face 求售、Fable 5 仅占企业支出 11%</a></h3><p class="summary">OpenAI 的 Altman 认错「AI 时间表没那么快」；AI 开发者平台 Hugging Face 传出寻求出售、估值或超 130 亿美元；调查显示 Anthropic 最贵模型 Fable 5 发布两月后仅占企业 AI 总支出约 11%。</p><p class="why"><span class="lbl">为什么重要</span>从旗手表态、核心平台易主到企业「不为最贵模型买单」，AI 的过热预期正在系统性降温——利空短期叙事，但也促使行业回到「性价比+真实收入」的理性轨道。</p><p class="inds"><span class="lbl">影响行业</span>AI 应用 · 开源平台 · 科技股/估值</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">阿里七年首次配股募 800 亿港元、全部投 AI，股价却大跌 10%</a></h3><p class="summary">阿里巴巴七年来首次配售新股、募资 800 亿港元并获超额认购，资金将全部投入 AI 建设；但配股稀释叠加市场情绪，阿里股价当日大跌约 10%。</p><p class="why"><span class="lbl">为什么重要</span>巨头下重注 AI（资本开支）是长期利好，但短期配股稀释+AI 降温情绪让股价承压——「投 AI」与「市场买不买单」出现背离。</p><p class="inds"><span class="lbl">影响行业</span>互联网大厂 · AI 基础设施 · 港股</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">存储涨价传导：英伟达高端服务器明年将涨价 15%</a></h3><p class="summary">因存储芯片成本飙升，英伟达高端服务器被曝明年将涨价约 15%。</p><p class="why"><span class="lbl">为什么重要</span>AI 内存超级周期的涨价开始向下游（服务器/终端）传导——利好存储、利空采购算力的下游，也是理解 AI 基建成本的关键。</p><p class="inds"><span class="lbl">影响行业</span>AI 数据中心 · 半导体/存储 · 服务器</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article></section>
+  <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">调查：企业不为「最贵模型」买单，Fable 5 仅占支出 11%</a></h3><p class="summary">Anthropic 最贵模型 Fable 5 发布两个月后仅占企业 AI 总支出约 11%，「AI 商业模式」受质疑。</p><p class="why"><span class="lbl">为什么重要</span>印证「按任务选性价比模型」才是企业主流，对高端模型定价与竞争策略有直接启示。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础模型 · 企业采购</p><div class="foot"><span class="att"><span class="dot" style="background:#0D7680"></span>值得个人关注</span><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">3</span></div><article class="story"><h3 class="story-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">阿里 800 亿港元配股全投 AI（详见今日重大新闻）</a></h3><p class="summary">阿里七年来首次配股募 800 亿港元、全部投 AI，获超额认购；但股价当日大跌约 10%。</p><p class="why"><span class="lbl">为什么重要</span>重注 AI 资本开支长期利好，短期配股稀释+AI 降温令股价承压。</p><p class="inds"><span class="lbl">影响行业</span>互联网大厂 · AI 基础设施</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">Hugging Face 传寻求出售、估值或超 130 亿美元</a></h3><p class="summary">AI 开发者平台 Hugging Face 传出寻求出售，估值可能超过 130 亿美元。</p><p class="why"><span class="lbl">为什么重要</span>开源 AI 生态核心枢纽若易主，将影响模型分发、工具链与开发者生态格局。</p><p class="inds"><span class="lbl">影响行业</span>开源 AI/平台 · 并购</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">对冲基金以「关税战以来最快速度」卖出美股</a></h3><p class="summary">对冲基金正以自关税战以来最快速度卖出美股，此前已从「All in AI」转向医疗/金融/能源。</p><p class="why"><span class="lbl">为什么重要</span>机构减仓+风格再平衡，AI/科技短期拥挤度过高，风险偏好转弱。</p><p class="inds"><span class="lbl">影响行业</span>对冲基金/资管 · 美股/AI</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🔭</span><h2>AI 探索新领域</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section>
+  <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="ai" data-date="2026-08-23"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 行业新闻日报 · 2026-08-23</title>
+<style>
+  /* 白背景 + 虎嗅式中文黑体 + 英文衬线(FT感) + 克制点缀 */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C7A4C; --link: #2266B3;
+    /* 标题: 英文优先衬线(Georgia)好看, 中文回退黑体(虎嗅式) */
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #6FC291; --link: #7FB0E6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 690px; margin: 0 auto; padding: 0 24px 72px; }
+
+  /* 报头 */
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 20px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 10px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 580px; margin: 22px auto 4px; line-height: 1.75; }
+
+  /* 栏目 */
+  .domain { margin-top: 44px; }
+  .dom-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 4px; }
+  .dom-head .emoji { font-size: 17px; }
+  .dom-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .dom-head .count { margin-left: auto; font-size: 12px; color: var(--faint);
+    font-variant-numeric: tabular-nums; }
+  .top .dom-head { border-bottom-color: var(--accent); }
+  .top .dom-head h2 { color: var(--accent); }
+
+  /* 单条 */
+  .story { padding: 19px 0; border-bottom: 1px solid var(--hair); }
+  .story:last-child { border-bottom: none; }
+  .story-title { font-family: var(--title); margin: 0 0 8px;
+    font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .story-title a { color: var(--text); text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0 1.5px; background-repeat: no-repeat;
+    background-position: 0 100%; transition: background-size .2s; }
+  .story-title a:hover { background-size: 100% 1.5px; color: var(--accent); }
+  .summary { margin: 0 0 9px; font-size: 15px; color: var(--text); }
+  .why, .inds { margin: 6px 0; font-size: 13.5px; color: var(--muted); }
+  .why { color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; vertical-align: 1px; }
+  .foot { display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-top: 11px; flex-wrap: wrap; }
+  .att { display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; color: var(--muted); }
+  .att .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 16px 0; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日 AI 行业简报</div>
+    <h1>AI 行业新闻日报</h1>
+    <div class="date">2026-08-23</div>
+    <div class="gen">生成于 2026-08-24 补做</div>
+  </header>
+  <p class="editor-note">8/23（周日）：AI 圈周末大新闻——AI 开发者平台 Hugging Face 传出寻求出售、估值或超 130 亿美元；同时一项调查显示 Anthropic 最贵模型 Fable 5 发布两个月后仅占企业总支出的 11%，引发对「AI 商业模式」的讨论。</p>
+  
+  <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">Hugging Face 寻求出售，估值或超 130 亿美元</a></h3><p class="summary">AI 开发者平台 Hugging Face（开源模型/数据集社区枢纽）传出正在寻求出售，估值可能超过 130 亿美元。</p><p class="why"><span class="lbl">为什么重要</span>开源 AI 生态的核心枢纽若易主，将影响开源模型分发、工具链与开发者生态格局，值得高度关注买家是谁。</p><p class="inds"><span class="lbl">影响行业</span>开源 AI/平台 · AI 应用开发者 · 并购</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">调查：Anthropic 最贵模型 Fable 5 发布两月仅占企业支出 11%</a></h3><p class="summary">一项调查显示，Anthropic 最贵的模型 Fable 5 发布两个月后，仅占企业 AI 总支出的约 11%，引发对高端模型商业模式的讨论。</p><p class="why"><span class="lbl">为什么重要</span>企业为「最强最贵」模型买单的意愿有限，说明「按任务选性价比模型」才是主流——对定价策略与模型竞争有直接启示。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础模型 · 企业 AI 采购 · 科技股</p><div class="foot"><span class="att"><span class="dot" style="background:#0D7680"></span>值得个人关注</span><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🔭</span><h2>AI 探索新领域</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section>
+  <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="ai" data-date="2026-08-22"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 行业新闻日报 · 2026-08-22</title>
+<style>
+  /* 白背景 + 虎嗅式中文黑体 + 英文衬线(FT感) + 克制点缀 */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C7A4C; --link: #2266B3;
+    /* 标题: 英文优先衬线(Georgia)好看, 中文回退黑体(虎嗅式) */
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #6FC291; --link: #7FB0E6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 690px; margin: 0 auto; padding: 0 24px 72px; }
+
+  /* 报头 */
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 20px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 10px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 580px; margin: 22px auto 4px; line-height: 1.75; }
+
+  /* 栏目 */
+  .domain { margin-top: 44px; }
+  .dom-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 4px; }
+  .dom-head .emoji { font-size: 17px; }
+  .dom-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .dom-head .count { margin-left: auto; font-size: 12px; color: var(--faint);
+    font-variant-numeric: tabular-nums; }
+  .top .dom-head { border-bottom-color: var(--accent); }
+  .top .dom-head h2 { color: var(--accent); }
+
+  /* 单条 */
+  .story { padding: 19px 0; border-bottom: 1px solid var(--hair); }
+  .story:last-child { border-bottom: none; }
+  .story-title { font-family: var(--title); margin: 0 0 8px;
+    font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .story-title a { color: var(--text); text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0 1.5px; background-repeat: no-repeat;
+    background-position: 0 100%; transition: background-size .2s; }
+  .story-title a:hover { background-size: 100% 1.5px; color: var(--accent); }
+  .summary { margin: 0 0 9px; font-size: 15px; color: var(--text); }
+  .why, .inds { margin: 6px 0; font-size: 13.5px; color: var(--muted); }
+  .why { color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; vertical-align: 1px; }
+  .foot { display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-top: 11px; flex-wrap: wrap; }
+  .att { display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; color: var(--muted); }
+  .att .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 16px 0; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日 AI 行业简报</div>
+    <h1>AI 行业新闻日报</h1>
+    <div class="date">2026-08-22</div>
+    <div class="gen">生成于 2026-08-24 补做</div>
+  </header>
+  <p class="editor-note">8/22（周六）：AI 圈最受关注的是「预期降温」——OpenAI 的 Altman 罕见「认错」，称 AI 发展时间表没有那么快、经济惯性太大，为过热的 AGI 叙事踩了一脚刹车。</p>
+  
+  <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">Altman「认错」：AI 发展时间表没那么快，经济惯性太大</a></h3><p class="summary">OpenAI 的 Sam Altman 罕见表态，承认 AI 发展的时间表没有那么快、经济惯性太大，为此前激进的 AGI/落地预期降温。</p><p class="why"><span class="lbl">为什么重要</span>头部旗手主动下调预期，是给「AI 泡沫」的一次官方降温——短期利空过热叙事，长期反而有助于回到理性节奏。</p><p class="inds"><span class="lbl">影响行业</span>AI 应用 · 科技股/估值 · 投资</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🔭</span><h2>AI 探索新领域</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section>
+  <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
 <script type="text/html" class="rpt" data-tab="ai" data-date="2026-08-21"><!doctype html>
 <html lang="zh-CN">
 <head>
@@ -2079,6 +2364,357 @@
 </div>
 </body>
 </html></script>
+<script type="text/html" class="rpt" data-tab="fin" data-date="2026-08-24"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>财经日报 · 2026-08-24</title>
+<style>
+  /* 白底 + 虎嗅式中文黑体 + 英文衬线 + 红涨绿跌（中国习惯） */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C4E7A; --link: #2266B3;
+    --up: #C0392B; --down: #1A7A4D;
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #7FB0E6; --link: #7FB0E6;
+      --up: #F0685A; --down: #4FBF86;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 18px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 8px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 620px; margin: 20px auto 4px; line-height: 1.75; }
+
+  .sec { margin-top: 40px; }
+  .sec-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 14px; }
+  .sec-head .emoji { font-size: 17px; }
+  .sec-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 6px 0 2px; }
+
+  /* 行情磁贴 */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; }
+  .tile { border: 1px solid var(--hair); border-radius: 10px; padding: 11px 13px; }
+  .q-head { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+  .q-tag { font-size: 10.5px; color: var(--muted); border: 1px solid var(--hair);
+    border-radius: 5px; padding: 0 5px; }
+  .q-name { font-size: 13px; color: var(--muted); }
+  .q-val { font-family: var(--title); font-size: 20px; font-weight: 700;
+    font-variant-numeric: tabular-nums; }
+  .q-chg { font-size: 13.5px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .q-sub { font-size: 11.5px; color: var(--faint); margin-top: 2px; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .flat { color: var(--muted); }
+
+  /* 板块 */
+  .sector-row { padding: 12px 0; border-bottom: 1px solid var(--hair); }
+  .sector-row:last-child { border-bottom: none; }
+  .sector-mkt { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .sector-side { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0; }
+  .side-label { font-size: 11.5px; font-weight: 700; margin-right: 2px; }
+  .chip { font-size: 12.5px; border: 1px solid var(--hair); border-radius: 999px;
+    padding: 2px 10px; font-variant-numeric: tabular-nums; }
+  .chip b { margin-left: 6px; font-weight: 700; }
+  .chip.up { color: var(--up); }
+  .chip.down { color: var(--down); }
+
+  /* 新股表格 */
+  .table-wrap { overflow-x: auto; }
+  table.ipo { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.ipo th, table.ipo td { text-align: left; padding: 8px 10px;
+    border-bottom: 1px solid var(--hair); vertical-align: top; }
+  table.ipo th { font-size: 12px; color: var(--muted); font-weight: 700;
+    border-bottom: 1.5px solid var(--rule); white-space: nowrap; }
+  .ipo-name { font-weight: 650; }
+  .ipo-note { color: var(--muted); }
+
+  /* 事件卡 */
+  .event { padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .event:last-child { border-bottom: none; }
+  .ev-title { font-family: var(--title); margin: 0 0 7px; font-size: 17px;
+    font-weight: 700; line-height: 1.4; }
+  .ev-title a { color: var(--text); text-decoration: none; }
+  .ev-title a:hover { color: var(--link); text-decoration: underline; }
+  .ev-sum { margin: 0 0 8px; font-size: 14.5px; }
+  .ev-why { margin: 6px 0; font-size: 13.5px; color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; }
+  .ev-foot { margin-top: 9px; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日财经简报</div>
+    <h1>财经日报</h1>
+    <div class="date">2026-08-24</div>
+    <div class="gen">生成于 2026-08-24 11:30（周一早报·多源）</div>
+  </header>
+  <p class="editor-note">8/24 早报（A股已开盘）：AH 股齐跌、AI/科技回落——创业板跌 2%、恒生科技指数跌逾 3%、阿里因 800 亿港元配股大跌 10%、算力硬件下挫，但新能源电池板块爆发。周末两大焦点：一是「美债危机」悬而未决（贝森特救美债失效、本周看沃什，美银 Hartnett 警告长端利率失控则美元暴跌、资产抛售）；二是「AI 挤泡沫」（Altman 认错、Hugging Face 求售、对冲基金以关税战以来最快速度卖美股）。Shein 敲定 9/1 港股 IPO。来源：华尔街见闻。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">创业板指</span></div><div class="q-val">—</div><div class="q-chg down">-2%</div><div class="q-sub">8/24盘中·算力硬件下挫</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3,905.20</div><div class="q-chg up">前收 +0.04%</div><div class="q-sub">8/21收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股</span><span class="q-name">恒生科技</span></div><div class="q-val">—</div><div class="q-chg down">跌逾3%</div><div class="q-sub">阿里大跌10%(配股)</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">对冲基金</span></div><div class="q-val">关税战以来最快卖出</div><div class="q-chg down">减仓</div><div class="q-sub">上周五/周末</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">A股/港股(今日)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">新能源电池<b>爆发</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">算力硬件<b></b></span><span class="chip down">科技/互联网<b>阿里-10%</b></span><span class="chip down">恒科<b>-3%</b></span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><div class="table-wrap"><table class="ipo"><thead><tr><th>名称</th><th>市场</th><th>关键日期</th><th>发行价</th><th>备注</th></tr></thead><tbody><tr><td class="ipo-name">Shein</td><td>港股</td><td>9/1 上市</td><td>募资≤139亿港元</td><td class="ipo-note">快时尚巨头·敲定价格区间</td></tr></tbody></table></div></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">美债（长端）</span></div><div class="q-val">危机悬而未决</div><div class="q-chg up">干预失效</div><div class="q-sub">贝森特救美债失效·本周看沃什</div></div><div class="tile"><div class="q-head"><span class="q-name">美元指数</span></div><div class="q-val">花旗看空</div><div class="q-chg down">承压</div><div class="q-sub">Hartnett警告若失控则暴跌</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">AH 股齐跌：创业板 -2%、恒科 -3%、阿里大跌 10%（配股稀释）</a></h3><p class="ev-sum">今日 A股与港股齐跌，创业板跌 2%、恒生科技指数跌逾 3%、算力硬件下挫；阿里因七年来首次配股（募 800 亿港元投 AI）稀释、股价大跌约 10%；但新能源电池板块逆势爆发。</p><p class="ev-why"><span class="lbl">影响/解读</span>AI/科技高位回调+阿里配股压制指数，风格转向新能源电池等低位方向；关注量能与超跌反弹。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">美债危机悬而未决：贝森特救市失效，本周看沃什，Hartnett 警告抛售风险</a></h3><p class="ev-sum">贝森特「救美债」干预效果消退（有观点称影响力仅 24 小时），市场把希望寄托到下一棒（沃什/工具箱）；美银 Hartnett 警告，若压不住长端利率，美元暴跌与资产抛售将接踵而至。中金也在探讨「美债问题出在哪」。</p><p class="ev-why"><span class="lbl">影响/解读</span>长端利率是压制全球风险资产的核心变量，本周走向决定风险偏好，需高度紧盯。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">对冲基金以「关税战以来最快速度」卖出美股</a></h3><p class="ev-sum">对冲基金正以自关税战以来最快速度卖出美股，此前已从「All in AI」转向医疗/金融/能源。</p><p class="ev-why"><span class="lbl">影响/解读</span>机构大幅减仓+风格再平衡，美股（尤其 AI/科技）短期承压，风险偏好转弱。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">AI 挤泡沫：Altman 认错时间表、Hugging Face 求售</a></h3><p class="ev-sum">OpenAI 的 Altman 认错「AI 时间表没那么快」；AI 开发者平台 Hugging Face 传出寻求出售、估值或超 130 亿美元；调查称 Anthropic 最贵模型 Fable 5 发布两月仅占企业支出 11%。</p><p class="ev-why"><span class="lbl">影响/解读</span>AI 过热预期系统性降温，短期压制 AI/科技板块估值，但利于回归理性。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">存储涨价传导：英伟达高端服务器明年将涨价 15%</a></h3><p class="ev-sum">因存储芯片成本飙升，英伟达高端服务器被曝明年将涨价约 15%。</p><p class="ev-why"><span class="lbl">影响/解读</span>AI 内存超级周期向下游传导，利好存储/HBM，利空采购算力的下游厂商。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">阿里七年首次配股募 800 亿港元、全部投 AI 建设</a></h3><p class="ev-sum">阿里巴巴七年来首次配售新股、募资 800 亿港元并获超额认购，资金将全部投入 AI 建设。</p><p class="ev-why"><span class="lbl">影响/解读</span>巨头下重注 AI 资本开支，长期利好国产算力链，但短期配股稀释拖累股价。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">Shein 敲定港股 IPO：募资最高 139 亿港元、9/1 上市</a></h3><p class="ev-sum">快时尚巨头 Shein 敲定 IPO 价格区间，募资最高 139 亿港元，将于 9 月 1 日在香港上市。</p><p class="ev-why"><span class="lbl">影响/解读</span>大型跨境电商 IPO 落地，是港股重要增量与情绪催化。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article></section>
+  <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="fin" data-date="2026-08-23"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>财经日报 · 2026-08-23</title>
+<style>
+  /* 白底 + 虎嗅式中文黑体 + 英文衬线 + 红涨绿跌（中国习惯） */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C4E7A; --link: #2266B3;
+    --up: #C0392B; --down: #1A7A4D;
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #7FB0E6; --link: #7FB0E6;
+      --up: #F0685A; --down: #4FBF86;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 18px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 8px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 620px; margin: 20px auto 4px; line-height: 1.75; }
+
+  .sec { margin-top: 40px; }
+  .sec-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 14px; }
+  .sec-head .emoji { font-size: 17px; }
+  .sec-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 6px 0 2px; }
+
+  /* 行情磁贴 */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; }
+  .tile { border: 1px solid var(--hair); border-radius: 10px; padding: 11px 13px; }
+  .q-head { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+  .q-tag { font-size: 10.5px; color: var(--muted); border: 1px solid var(--hair);
+    border-radius: 5px; padding: 0 5px; }
+  .q-name { font-size: 13px; color: var(--muted); }
+  .q-val { font-family: var(--title); font-size: 20px; font-weight: 700;
+    font-variant-numeric: tabular-nums; }
+  .q-chg { font-size: 13.5px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .q-sub { font-size: 11.5px; color: var(--faint); margin-top: 2px; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .flat { color: var(--muted); }
+
+  /* 板块 */
+  .sector-row { padding: 12px 0; border-bottom: 1px solid var(--hair); }
+  .sector-row:last-child { border-bottom: none; }
+  .sector-mkt { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .sector-side { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0; }
+  .side-label { font-size: 11.5px; font-weight: 700; margin-right: 2px; }
+  .chip { font-size: 12.5px; border: 1px solid var(--hair); border-radius: 999px;
+    padding: 2px 10px; font-variant-numeric: tabular-nums; }
+  .chip b { margin-left: 6px; font-weight: 700; }
+  .chip.up { color: var(--up); }
+  .chip.down { color: var(--down); }
+
+  /* 新股表格 */
+  .table-wrap { overflow-x: auto; }
+  table.ipo { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.ipo th, table.ipo td { text-align: left; padding: 8px 10px;
+    border-bottom: 1px solid var(--hair); vertical-align: top; }
+  table.ipo th { font-size: 12px; color: var(--muted); font-weight: 700;
+    border-bottom: 1.5px solid var(--rule); white-space: nowrap; }
+  .ipo-name { font-weight: 650; }
+  .ipo-note { color: var(--muted); }
+
+  /* 事件卡 */
+  .event { padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .event:last-child { border-bottom: none; }
+  .ev-title { font-family: var(--title); margin: 0 0 7px; font-size: 17px;
+    font-weight: 700; line-height: 1.4; }
+  .ev-title a { color: var(--text); text-decoration: none; }
+  .ev-title a:hover { color: var(--link); text-decoration: underline; }
+  .ev-sum { margin: 0 0 8px; font-size: 14.5px; }
+  .ev-why { margin: 6px 0; font-size: 13.5px; color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; }
+  .ev-foot { margin-top: 9px; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日财经简报</div>
+    <h1>财经日报</h1>
+    <div class="date">2026-08-23</div>
+    <div class="gen">生成于 2026-08-24 补做</div>
+  </header>
+  <p class="editor-note">8/23（周日）：全球股市休市。周末焦点：Shein 敲定港股 IPO 价格区间、募资最高 139 亿港元、将于 9/1 在港上市；同时对冲基金以「关税战以来最快速度」卖出美股，风险偏好转弱。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">Shein 敲定港股 IPO：募资最高 139 亿港元、9/1 上市</a></h3><p class="ev-sum">快时尚巨头 Shein 敲定 IPO 价格区间，募资最高 139 亿港元，将于 9 月 1 日在香港上市。</p><p class="ev-why"><span class="lbl">影响/解读</span>大型消费/跨境电商 IPO 落地，是港股重要增量与情绪催化，也关乎跨境电商板块估值锚。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">对冲基金以「关税战以来最快速度」卖出美股</a></h3><p class="ev-sum">对冲基金正以自「关税战」以来最快的速度卖出美股。</p><p class="ev-why"><span class="lbl">影响/解读</span>机构减仓+风格再平衡，提示美股（尤其 AI/科技）短期拥挤度过高，下周开盘或延续谨慎。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article></section>
+  <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="fin" data-date="2026-08-22"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>财经日报 · 2026-08-22</title>
+<style>
+  /* 白底 + 虎嗅式中文黑体 + 英文衬线 + 红涨绿跌（中国习惯） */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C4E7A; --link: #2266B3;
+    --up: #C0392B; --down: #1A7A4D;
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #7FB0E6; --link: #7FB0E6;
+      --up: #F0685A; --down: #4FBF86;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 18px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 8px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 620px; margin: 20px auto 4px; line-height: 1.75; }
+
+  .sec { margin-top: 40px; }
+  .sec-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 14px; }
+  .sec-head .emoji { font-size: 17px; }
+  .sec-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 6px 0 2px; }
+
+  /* 行情磁贴 */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; }
+  .tile { border: 1px solid var(--hair); border-radius: 10px; padding: 11px 13px; }
+  .q-head { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+  .q-tag { font-size: 10.5px; color: var(--muted); border: 1px solid var(--hair);
+    border-radius: 5px; padding: 0 5px; }
+  .q-name { font-size: 13px; color: var(--muted); }
+  .q-val { font-family: var(--title); font-size: 20px; font-weight: 700;
+    font-variant-numeric: tabular-nums; }
+  .q-chg { font-size: 13.5px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .q-sub { font-size: 11.5px; color: var(--faint); margin-top: 2px; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .flat { color: var(--muted); }
+
+  /* 板块 */
+  .sector-row { padding: 12px 0; border-bottom: 1px solid var(--hair); }
+  .sector-row:last-child { border-bottom: none; }
+  .sector-mkt { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .sector-side { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0; }
+  .side-label { font-size: 11.5px; font-weight: 700; margin-right: 2px; }
+  .chip { font-size: 12.5px; border: 1px solid var(--hair); border-radius: 999px;
+    padding: 2px 10px; font-variant-numeric: tabular-nums; }
+  .chip b { margin-left: 6px; font-weight: 700; }
+  .chip.up { color: var(--up); }
+  .chip.down { color: var(--down); }
+
+  /* 新股表格 */
+  .table-wrap { overflow-x: auto; }
+  table.ipo { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.ipo th, table.ipo td { text-align: left; padding: 8px 10px;
+    border-bottom: 1px solid var(--hair); vertical-align: top; }
+  table.ipo th { font-size: 12px; color: var(--muted); font-weight: 700;
+    border-bottom: 1.5px solid var(--rule); white-space: nowrap; }
+  .ipo-name { font-weight: 650; }
+  .ipo-note { color: var(--muted); }
+
+  /* 事件卡 */
+  .event { padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .event:last-child { border-bottom: none; }
+  .ev-title { font-family: var(--title); margin: 0 0 7px; font-size: 17px;
+    font-weight: 700; line-height: 1.4; }
+  .ev-title a { color: var(--text); text-decoration: none; }
+  .ev-title a:hover { color: var(--link); text-decoration: underline; }
+  .ev-sum { margin: 0 0 8px; font-size: 14.5px; }
+  .ev-why { margin: 6px 0; font-size: 13.5px; color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; }
+  .ev-foot { margin-top: 9px; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日财经简报</div>
+    <h1>财经日报</h1>
+    <div class="date">2026-08-22</div>
+    <div class="gen">生成于 2026-08-24 补做</div>
+  </header>
+  <p class="editor-note">8/22（周六）：全球股市休市。周末最大的悬念仍是「美债危机」——美财长贝森特上周「救美债」的干预效果快速消退，市场把希望寄托到下一棒（沃什/工具箱）；美银 Hartnett 警告：若压不住长端利率，美元暴跌与资产抛售可能接踵而至。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">美债危机悬而未决：贝森特干预失效，Hartnett 警告资产抛售风险</a></h3><p class="ev-sum">贝森特上周「救美债」干预效果消退，市场关注下一步政策（沃什/更多工具）；美银 Hartnett 警告，若长端利率压不住，美元暴跌与资产抛售或接踵而至。</p><p class="ev-why"><span class="lbl">影响/解读</span>长端利率是当前压制全球风险资产（尤其高估值科技/AI）的核心变量，下周走向决定风险偏好。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article></section>
+  <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
+</div>
+</body>
+</html></script>
 <script type="text/html" class="rpt" data-tab="fin" data-date="2026-08-21"><!doctype html>
 <html lang="zh-CN">
 <head>
@@ -2191,7 +2827,7 @@
     <div class="gen">生成于 2026-08-21 11:30（早报·多源）</div>
   </header>
   <p class="editor-note">8/21 早报（A股已开盘）：A股续涨——创业板涨超 1%、算力硬件拉升，医药「三重共振」（资金转向+业绩反转+AI 重构）延续；黄金突破 200 日均线、大宗商品轮动上涨。但隔夜美股走弱——贝森特干预效应消退、美债美股齐跌，沃尔玛暴跌 9%；对冲基金不再「All in AI」、资金转向医疗/金融/能源。今日国务院举行「十五五」主题新闻发布会，财政部预告下半年推新政策。来源：华尔街见闻 + 新浪。</p>
-  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">三大指数</span></div><div class="q-val">—</div><div class="q-chg down">齐跌</div><div class="q-sub">8/20收盘·贝森特干预消退·沃尔玛-9%</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">创业板指</span></div><div class="q-val">—</div><div class="q-chg up">涨超1%</div><div class="q-sub">8/21盘中·算力硬件拉升</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3,903</div><div class="q-chg up">前收 +0.24%</div><div class="q-sub">8/20收盘·医药爆发</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股</span><span class="q-name">恒生指数</span></div><div class="q-val">—</div><div class="q-chg flat">近日</div><div class="q-sub">参考</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">A股(今日)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">算力硬件<b>拉升</b></span><span class="chip up">医药<b>三重共振</b></span><span class="chip up">创业板<b>涨超1%</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip flat">—</span></div></div><div class="sector-row"><div class="sector-mkt">美股(隔夜)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip flat">—</span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">零售<b>沃尔玛暴跌9%</b></span><span class="chip down">大盘<b>美债美股齐跌</b></span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">现货黄金 XAU</span></div><div class="q-val">突破200日均线</div><div class="q-chg up">偏强</div><div class="q-sub">大宗轮动上涨</div></div><div class="tile"><div class="q-head"><span class="q-name">大宗商品</span></div><div class="q-val">轮动式上涨</div><div class="q-chg up">结构性</div><div class="q-sub">化肥/有色/农资接力</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">美债</span></div><div class="q-val">美债美股齐跌</div><div class="q-chg down">干预效应消退</div><div class="q-sub">贝森特回购影响仅24小时?</div></div><div class="tile"><div class="q-head"><span class="q-name">美元指数</span></div><div class="q-val">花旗转空</div><div class="q-chg down">加息预期退潮</div><div class="q-sub">财政部扩大回购</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">隔夜美股走弱：贝森特干预消退、美债美股齐跌，沃尔玛暴跌 9%</a></h3><p class="ev-sum">贝森特「救美债」的干预效应快速消退（有观点称回购美债影响力仅 24 小时），美债美股齐跌；零售龙头沃尔玛暴跌 9%。</p><p class="ev-why"><span class="lbl">影响/解读</span>财政部工具短期难压长端利率，风险资产承压；沃尔玛重挫反映消费/零售景气与成本压力。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">对冲基金不再「All in AI」，资金转向医疗/金融/能源</a></h3><p class="ev-sum">对冲基金从 AI 撤出、转向医疗、金融和能源；继 7 月 AI 巨亏后，对冲基金周三再遭重创。</p><p class="ev-why"><span class="lbl">影响/解读</span>机构再平衡+风格切换，AI 短期拥挤度过高；医药/金融/能源或迎资金回补——与 A股医药爆发相互印证。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">A股续涨：创业板涨超 1%、算力硬件拉升，医药三重共振</a></h3><p class="ev-sum">今日 A股创业板涨超 1%、算力硬件拉升；医药行业「三重共振」（资金转向、业绩反转、AI 重构）延续，是当前最强主线之一。</p><p class="ev-why"><span class="lbl">影响/解读</span>医药与算力双主线共振，赚钱效应回升；关注量能与主线持续性。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">阿里 AI 产品 ARR 破 495 亿、平头哥芯片放量</a></h3><p class="ev-sum">阿里 AI 相关产品 ARR 突破 495 亿元、自研平头哥芯片持续放量，国产 AI 规模化变现。</p><p class="ev-why"><span class="lbl">影响/解读</span>国产 AI 商业化跑通利好阿里及国产算力链，提振科技板块信心。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">美光：存储成 AI 战略基础设施、需求超供给 50%；三星拟返还 790 亿美元</a></h3><p class="ev-sum">美光 CEO 称存储是 AI 战略基础设施、客户需求超供给约 50%；三星计划向股东返还至多 790 亿美元；全球存储长协定下限。「AI 重写存储芯片周期逻辑」。</p><p class="ev-why"><span class="lbl">影响/解读</span>AI 内存超级周期被反复确认，利好存储/HBM/先进封装；对下游终端（如手机）则是成本压力。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">黄金突破 200 日均线，大宗商品轮动式上涨</a></h3><p class="ev-sum">现货黄金突破 200 日均线；大宗商品呈现轮动式上涨格局（化肥、有色、农资等接力）。</p><p class="ev-why"><span class="lbl">影响/解读</span>在利率与地缘不确定下，黄金与顺周期大宗轮动，利好资源与农资板块。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">今日国务院举行「十五五」主题新闻发布会，财政部预告下半年新政策</a></h3><p class="ev-sum">国务院新闻办公室今日（8/21）举行关于「十五五」的主题新闻发布会；财政部表示今年下半年将推出新政策、新举措。</p><p class="ev-why"><span class="lbl">影响/解读</span>政策预期升温，关注发布会对财政/产业方向的定调，或催化相关主题板块。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 / 新浪 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">7 月全社会用电量同比 +1.7%</a></h3><p class="ev-sum">7 月全社会用电量同比增长 1.7%。</p><p class="ev-why"><span class="lbl">影响/解读</span>用电量温和增长反映经济平稳，对电力与工业需求判断中性。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">花旗转空美元：财政部扩大回购、加息预期退潮</a></h3><p class="ev-sum">花旗转为看空美元，理由是美国财政部扩大回购、市场加息预期退潮；另有观点称财政部「救美债」可能逼迫美联储重启大规模 QE。</p><p class="ev-why"><span class="lbl">影响/解读</span>美元走弱利多非美货币、黄金与新兴市场；QE 预期若升温将重塑全球流动性。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article></section>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">三大指数</span></div><div class="q-val">—</div><div class="q-chg down">齐跌</div><div class="q-sub">8/20收盘·贝森特干预消退·沃尔玛-9%</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3,905.20</div><div class="q-chg up">+0.04%</div><div class="q-sub">8/21收盘·守3900·缩量1.88万亿</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">深证成指</span></div><div class="q-val">14,094.17</div><div class="q-chg up">+0.87%</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">创业板指</span></div><div class="q-val">3,545.58</div><div class="q-chg up">+1.43%</div><div class="q-sub">领涨·但医药冲高回落</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股</span><span class="q-name">恒生指数</span></div><div class="q-val">—</div><div class="q-chg flat">近日</div><div class="q-sub">参考</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">A股(8/21收盘)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">贵金属<b>领涨</b></span><span class="chip up">算力硬件<b></b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">种植业<b>-4.81%</b></span><span class="chip down">化学制药<b>-4.33%</b></span><span class="chip down">医疗服务<b>医药冲高回落</b></span></div></div><div class="sector-row"><div class="sector-mkt">美股(隔夜)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip flat">—</span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">零售<b>沃尔玛暴跌9%</b></span><span class="chip down">大盘<b>美债美股齐跌</b></span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">现货黄金 XAU</span></div><div class="q-val">突破200日均线</div><div class="q-chg up">偏强</div><div class="q-sub">大宗轮动上涨</div></div><div class="tile"><div class="q-head"><span class="q-name">大宗商品</span></div><div class="q-val">轮动式上涨</div><div class="q-chg up">结构性</div><div class="q-sub">化肥/有色/农资接力</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">美债</span></div><div class="q-val">美债美股齐跌</div><div class="q-chg down">干预效应消退</div><div class="q-sub">贝森特回购影响仅24小时?</div></div><div class="tile"><div class="q-head"><span class="q-name">美元指数</span></div><div class="q-val">花旗转空</div><div class="q-chg down">加息预期退潮</div><div class="q-sub">财政部扩大回购</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">隔夜美股走弱：贝森特干预消退、美债美股齐跌，沃尔玛暴跌 9%</a></h3><p class="ev-sum">贝森特「救美债」的干预效应快速消退（有观点称回购美债影响力仅 24 小时），美债美股齐跌；零售龙头沃尔玛暴跌 9%。</p><p class="ev-why"><span class="lbl">影响/解读</span>财政部工具短期难压长端利率，风险资产承压；沃尔玛重挫反映消费/零售景气与成本压力。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">对冲基金不再「All in AI」，资金转向医疗/金融/能源</a></h3><p class="ev-sum">对冲基金从 AI 撤出、转向医疗、金融和能源；继 7 月 AI 巨亏后，对冲基金周三再遭重创。</p><p class="ev-why"><span class="lbl">影响/解读</span>机构再平衡+风格切换，AI 短期拥挤度过高；医药/金融/能源或迎资金回补——与 A股医药爆发相互印证。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">A股续涨：创业板涨超 1%、算力硬件拉升，医药三重共振</a></h3><p class="ev-sum">今日 A股创业板涨超 1%、算力硬件拉升；医药行业「三重共振」（资金转向、业绩反转、AI 重构）延续，是当前最强主线之一。</p><p class="ev-why"><span class="lbl">影响/解读</span>医药与算力双主线共振，赚钱效应回升；关注量能与主线持续性。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">阿里 AI 产品 ARR 破 495 亿、平头哥芯片放量</a></h3><p class="ev-sum">阿里 AI 相关产品 ARR 突破 495 亿元、自研平头哥芯片持续放量，国产 AI 规模化变现。</p><p class="ev-why"><span class="lbl">影响/解读</span>国产 AI 商业化跑通利好阿里及国产算力链，提振科技板块信心。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">美光：存储成 AI 战略基础设施、需求超供给 50%；三星拟返还 790 亿美元</a></h3><p class="ev-sum">美光 CEO 称存储是 AI 战略基础设施、客户需求超供给约 50%；三星计划向股东返还至多 790 亿美元；全球存储长协定下限。「AI 重写存储芯片周期逻辑」。</p><p class="ev-why"><span class="lbl">影响/解读</span>AI 内存超级周期被反复确认，利好存储/HBM/先进封装；对下游终端（如手机）则是成本压力。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">黄金突破 200 日均线，大宗商品轮动式上涨</a></h3><p class="ev-sum">现货黄金突破 200 日均线；大宗商品呈现轮动式上涨格局（化肥、有色、农资等接力）。</p><p class="ev-why"><span class="lbl">影响/解读</span>在利率与地缘不确定下，黄金与顺周期大宗轮动，利好资源与农资板块。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">今日国务院举行「十五五」主题新闻发布会，财政部预告下半年新政策</a></h3><p class="ev-sum">国务院新闻办公室今日（8/21）举行关于「十五五」的主题新闻发布会；财政部表示今年下半年将推出新政策、新举措。</p><p class="ev-why"><span class="lbl">影响/解读</span>政策预期升温，关注发布会对财政/产业方向的定调，或催化相关主题板块。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 / 新浪 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">7 月全社会用电量同比 +1.7%</a></h3><p class="ev-sum">7 月全社会用电量同比增长 1.7%。</p><p class="ev-why"><span class="lbl">影响/解读</span>用电量温和增长反映经济平稳，对电力与工业需求判断中性。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wallstreetcn.com/" target="_blank" rel="noopener">花旗转空美元：财政部扩大回购、加息预期退潮</a></h3><p class="ev-sum">花旗转为看空美元，理由是美国财政部扩大回购、市场加息预期退潮；另有观点称财政部「救美债」可能逼迫美联储重启大规模 QE。</p><p class="ev-why"><span class="lbl">影响/解读</span>美元走弱利多非美货币、黄金与新兴市场；QE 预期若升温将重塑全球流动性。</p><div class="ev-foot"><a class="src" href="https://wallstreetcn.com/" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article></section>
   <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
 </div>
 </body>
