@@ -58,6 +58,15 @@
   .di[aria-current="true"].ai{ background:color-mix(in srgb,var(--ai) 14%,transparent); color:var(--ai); }
   .di[aria-current="true"].fin{ background:color-mix(in srgb,var(--fin) 14%,transparent); color:var(--fin); }
   .di:focus-visible{ outline:2px solid var(--fin); outline-offset:1px; }
+  .mgroup{ font:inherit; width:100%; text-align:left; cursor:pointer; background:transparent;
+    border:0; padding:10px 10px 5px; color:var(--muted); font-size:12px; font-weight:700;
+    display:flex; align-items:center; gap:7px; }
+  .mgroup:hover{ color:var(--text); }
+  .mcaret{ font-size:9px; color:var(--faint); transition:transform .15s; display:inline-block; }
+  .mgroup[aria-expanded="true"] .mcaret{ transform:rotate(90deg); }
+  .mlabel{ letter-spacing:.01em; }
+  .mcnt{ margin-left:auto; font-size:11px; color:var(--faint); font-variant-numeric:tabular-nums; font-weight:600; }
+  .mdates{ display:flex; flex-direction:column; gap:2px; }
 
   .view{ flex:1; min-width:0; background:var(--ground); }
   .view iframe{ width:100%; height:100%; border:0; display:block; background:#fff; }
@@ -66,7 +75,8 @@
   @media (max-width:680px){
     .body{ flex-direction:column; }
     .side{ width:auto; border-right:0; border-bottom:1px solid var(--hair); max-height:40vh; }
-    .dnav{ flex-direction:row; flex-wrap:wrap; }
+    .dnav{ flex-direction:column; }
+    .mdates{ flex-direction:row; flex-wrap:wrap; }
     .di{ border:1px solid var(--hair); }
   }
   @media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
@@ -5839,17 +5849,40 @@
       b.setAttribute("aria-current", b.getAttribute("data-date")===date ? "true":"false");
     });
   }
+  function monthLabel(ym){ var p=ym.split("-"); return p[0]+"年"+parseInt(p[1],10)+"月"; }
   function buildDateNav(tab){
     var list=reports[tab]||[];
     dnav.innerHTML="";
     document.getElementById("sideTitle").textContent = list.length? "日期（"+list.length+"）":"日期";
     if(!list.length){ iframe.hidden=true; empty.hidden=false; meta.textContent=""; return; }
+    // 按月份分组（list 已按新→旧排序）
+    var groups=[], curYm=null, cur=null;
     list.forEach(function(it){
-      var b=document.createElement("button");
-      b.className="di "+tab; b.setAttribute("data-date",it.date);
-      b.innerHTML='<span>'+it.date.slice(5)+'</span><span class="wd">'+weekday(it.date)+'</span>';
-      b.addEventListener("click",function(){ showReport(tab,it.date); });
-      dnav.appendChild(b);
+      var ym=it.date.slice(0,7);
+      if(ym!==curYm){ curYm=ym; cur={ym:ym, items:[]}; groups.push(cur); }
+      cur.items.push(it);
+    });
+    groups.forEach(function(g, gi){
+      var collapsed = gi>0;  // 最新月展开，其余月份默认折叠收纳
+      var head=document.createElement("button");
+      head.className="mgroup"; head.setAttribute("data-ym", g.ym);
+      head.setAttribute("aria-expanded", collapsed?"false":"true");
+      head.innerHTML='<span class="mcaret">▸</span><span class="mlabel">'+monthLabel(g.ym)+'</span><span class="mcnt">'+g.items.length+'</span>';
+      var box=document.createElement("div");
+      box.className="mdates"; if(collapsed) box.hidden=true;
+      g.items.forEach(function(it){
+        var b=document.createElement("button");
+        b.className="di "+tab; b.setAttribute("data-date",it.date);
+        b.innerHTML='<span>'+it.date.slice(5)+'</span><span class="wd">'+weekday(it.date)+'</span>';
+        b.addEventListener("click",function(){ showReport(tab,it.date); });
+        box.appendChild(b);
+      });
+      head.addEventListener("click",function(){
+        var open=head.getAttribute("aria-expanded")==="true";
+        head.setAttribute("aria-expanded", open?"false":"true");
+        box.hidden=open;
+      });
+      dnav.appendChild(head); dnav.appendChild(box);
     });
     showReport(tab, list[0].date);
   }
