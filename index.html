@@ -85,7 +85,7 @@
 <div class="app">
   <header class="top">
     <div class="brand">📊 每日日报<span class="dot">看板</span></div>
-    <div class="tabs" role="tablist"><button class="tab" data-tab="ai" role="tab">AI 日报<span class="cnt">36</span></button><button class="tab" data-tab="fin" role="tab">财经日报<span class="cnt">36</span></button></div>
+    <div class="tabs" role="tablist"><button class="tab" data-tab="ai" role="tab">AI 日报<span class="cnt">37</span></button><button class="tab" data-tab="fin" role="tab">财经日报<span class="cnt">37</span></button></div>
     <div class="meta" id="meta"></div>
   </header>
   <div class="body">
@@ -94,6 +94,101 @@
   </div>
 </div>
 
+<script type="text/html" class="rpt" data-tab="ai" data-date="2026-09-08"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 行业新闻日报 · 2026-09-08</title>
+<style>
+  /* 白背景 + 虎嗅式中文黑体 + 英文衬线(FT感) + 克制点缀 */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C7A4C; --link: #2266B3;
+    /* 标题: 英文优先衬线(Georgia)好看, 中文回退黑体(虎嗅式) */
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #6FC291; --link: #7FB0E6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 690px; margin: 0 auto; padding: 0 24px 72px; }
+
+  /* 报头 */
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 20px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 10px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 580px; margin: 22px auto 4px; line-height: 1.75; }
+
+  /* 栏目 */
+  .domain { margin-top: 44px; }
+  .dom-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 4px; }
+  .dom-head .emoji { font-size: 17px; }
+  .dom-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .dom-head .count { margin-left: auto; font-size: 12px; color: var(--faint);
+    font-variant-numeric: tabular-nums; }
+  .top .dom-head { border-bottom-color: var(--accent); }
+  .top .dom-head h2 { color: var(--accent); }
+
+  /* 单条 */
+  .story { padding: 19px 0; border-bottom: 1px solid var(--hair); }
+  .story:last-child { border-bottom: none; }
+  .story-title { font-family: var(--title); margin: 0 0 8px;
+    font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .story-title a { color: var(--text); text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0 1.5px; background-repeat: no-repeat;
+    background-position: 0 100%; transition: background-size .2s; }
+  .story-title a:hover { background-size: 100% 1.5px; color: var(--accent); }
+  .summary { margin: 0 0 9px; font-size: 15px; color: var(--text); }
+  .why, .inds { margin: 6px 0; font-size: 13.5px; color: var(--muted); }
+  .why { color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; vertical-align: 1px; }
+  .foot { display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-top: 11px; flex-wrap: wrap; }
+  .att { display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; color: var(--muted); }
+  .att .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 16px 0; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日 AI 行业简报</div>
+    <h1>AI 行业新闻日报</h1>
+    <div class="date">2026-09-08</div>
+    <div class="gen">生成于 2026-09-08 早间版（多源）</div>
+  </header>
+  <p class="editor-note">9/8 早间：上周（9/1—9/3）四款前沿模型密集落地——Anthropic Claude Fable 5.1/Mythos 5.1、OpenAI GPT-6 Astra、Google Gemini 3.8 Flash 及 Cyber 版、Meta Muse Spark 1.3，均已在此前日报覆盖；截至今晨未发现 9/7—9/8 新的可由官方或可靠媒体坐实的前沿模型发布，不用旧消息填充。今日 AI 看点落在产业与供应链：AI 短剧成内容新风口，三星 HBM4 满产、8 月国产集成电路出口翻倍印证 AI 硬件景气。来源：财联社、海关总署。</p>
+  <section class="domain top"><div class="dom-head"><span class="emoji">🔥</span><h2>今日重大新闻</h2><span class="count">3</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">AI 短剧热潮：人人都能『造剧』，降本容易掘金难</a></h3><p class="summary">财联社报道，AI 正把短剧制作门槛大幅拉低——从脚本、分镜到生成画面，个人也能快速『造剧』，制作成本显著下降；但真正变现（流量、投流 ROI、爆款率）依然困难，行业进入『降本容易、掘金难』阶段。</p><p class="why"><span class="lbl">为什么重要</span>对内容/娱乐运营者是双刃剑：AI 让产能与试错成本骤降，但也意味着供给爆炸、同质化加剧，竞争胜负更取决于选题、投流与用户运营，而非单纯的制作能力。</p><p class="inds"><span class="lbl">影响行业</span>AI 内容生成 · 短剧/影视 · 营销投流 · 游戏娱乐</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">三星 4nm 满负荷、过半产能已分配给 HBM4</a></h3><p class="summary">财联社早间报道，三星 4nm 制程满负荷运转，超过一半产能已分配给下一代高带宽内存 HBM4。</p><p class="why"><span class="lbl">为什么重要</span>HBM 是 AI 算力的关键瓶颈，龙头把先进产能大幅倾斜给 HBM4，坐实存储进入超级周期，对 AI 训练/推理的供给能力与成本有直接影响。</p><p class="inds"><span class="lbl">影响行业</span>AI 存储/HBM · 先进制程 · 算力供应链</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">中国 8 月集成电路出口翻倍（1—8 月累计 +103.9%）</a></h3><p class="summary">海关总署数据显示，1—8 月我国集成电路累计出口同比增长 103.9%（翻倍），8 月出口整体同比增长 18.6%。</p><p class="why"><span class="lbl">为什么重要</span>国产芯片出口高增，从需求侧印证全球 AI 硬件与算力的旺盛景气，也反映国产半导体在全球供应链中的份额提升。</p><p class="inds"><span class="lbl">影响行业</span>半导体 · AI 芯片 · 电子出口</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">海关总署/财联社 ↗</a></div></article></section>
+  <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">AI 短剧热潮：人人都能『造剧』，降本容易掘金难（详见今日重大新闻）</a></h3><p class="summary">AI 大幅拉低短剧制作门槛、成本骤降，但流量变现与爆款率仍难，行业进入『降本容易、掘金难』。</p><p class="why"><span class="lbl">为什么重要</span>供给爆炸下，胜负更取决于选题、投流与用户运营，而非制作能力本身。</p><p class="inds"><span class="lbl">影响行业</span>AI 内容生成 · 营销投流 · 短剧</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">AI 造剧/生成内容降本，外溢至娱乐与轻游戏内容</a></h3><p class="summary">AI 短剧同款的『低成本批量生成 + 投流验证』打法，正被内容与轻娱乐团队借鉴，用于快速试题材、试素材。</p><p class="why"><span class="lbl">为什么重要</span>对娱乐/游戏内容运营，AI 让创意与素材的试错成本骤降，但也要求更强的选题与投放判断，避免陷入同质化红海。</p><p class="inds"><span class="lbl">影响行业</span>AI 游戏/娱乐 · 内容生成 · 用户增长</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">三星 HBM4 满产 + 国产集成电路出口翻倍（详见今日重大新闻）</a></h3><p class="summary">三星 4nm 过半产能给 HBM4；中国 1—8 月集成电路出口累计 +103.9%。</p><p class="why"><span class="lbl">为什么重要</span>供给端与出口端同时印证 AI 硬件超级景气，利好存储、先进封装与国产半导体链。</p><p class="inds"><span class="lbl">影响行业</span>AI 存储/HBM · 半导体 · 算力供应链</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社/海关总署 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🔭</span><h2>AI 探索新领域</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section>
+  <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
 <script type="text/html" class="rpt" data-tab="ai" data-date="2026-09-07"><!doctype html>
 <html lang="zh-CN">
 <head>
@@ -3514,6 +3609,123 @@
 </div>
 </body>
 </html></script>
+<script type="text/html" class="rpt" data-tab="fin" data-date="2026-09-08"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>财经日报 · 2026-09-08</title>
+<style>
+  /* 白底 + 虎嗅式中文黑体 + 英文衬线 + 红涨绿跌（中国习惯） */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C4E7A; --link: #2266B3;
+    --up: #C0392B; --down: #1A7A4D;
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #7FB0E6; --link: #7FB0E6;
+      --up: #F0685A; --down: #4FBF86;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 18px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 8px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 620px; margin: 20px auto 4px; line-height: 1.75; }
+
+  .sec { margin-top: 40px; }
+  .sec-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 14px; }
+  .sec-head .emoji { font-size: 17px; }
+  .sec-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 6px 0 2px; }
+
+  /* 行情磁贴 */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; }
+  .tile { border: 1px solid var(--hair); border-radius: 10px; padding: 11px 13px; }
+  .q-head { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+  .q-tag { font-size: 10.5px; color: var(--muted); border: 1px solid var(--hair);
+    border-radius: 5px; padding: 0 5px; }
+  .q-name { font-size: 13px; color: var(--muted); }
+  .q-val { font-family: var(--title); font-size: 20px; font-weight: 700;
+    font-variant-numeric: tabular-nums; }
+  .q-chg { font-size: 13.5px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .q-sub { font-size: 11.5px; color: var(--faint); margin-top: 2px; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .flat { color: var(--muted); }
+
+  /* 板块 */
+  .sector-row { padding: 12px 0; border-bottom: 1px solid var(--hair); }
+  .sector-row:last-child { border-bottom: none; }
+  .sector-mkt { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .sector-side { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0; }
+  .side-label { font-size: 11.5px; font-weight: 700; margin-right: 2px; }
+  .chip { font-size: 12.5px; border: 1px solid var(--hair); border-radius: 999px;
+    padding: 2px 10px; font-variant-numeric: tabular-nums; }
+  .chip b { margin-left: 6px; font-weight: 700; }
+  .chip.up { color: var(--up); }
+  .chip.down { color: var(--down); }
+
+  /* 新股表格 */
+  .table-wrap { overflow-x: auto; }
+  table.ipo { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.ipo th, table.ipo td { text-align: left; padding: 8px 10px;
+    border-bottom: 1px solid var(--hair); vertical-align: top; }
+  table.ipo th { font-size: 12px; color: var(--muted); font-weight: 700;
+    border-bottom: 1.5px solid var(--rule); white-space: nowrap; }
+  .ipo-name { font-weight: 650; }
+  .ipo-note { color: var(--muted); }
+
+  /* 事件卡 */
+  .event { padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .event:last-child { border-bottom: none; }
+  .ev-title { font-family: var(--title); margin: 0 0 7px; font-size: 17px;
+    font-weight: 700; line-height: 1.4; }
+  .ev-title a { color: var(--text); text-decoration: none; }
+  .ev-title a:hover { color: var(--link); text-decoration: underline; }
+  .ev-sum { margin: 0 0 8px; font-size: 14.5px; }
+  .ev-why { margin: 6px 0; font-size: 13.5px; color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; }
+  .ev-foot { margin-top: 9px; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日财经简报</div>
+    <h1>财经日报</h1>
+    <div class="date">2026-09-08</div>
+    <div class="gen">生成于 2026-09-08 早间版（多源）</div>
+  </header>
+  <p class="editor-note">9/8 周二早间：美股结束劳工节休市、今晚（北京 21:30）恢复交易，最近一次收盘仍是 9/4（强非农后回落）；亚洲最新收盘为 9/7（A股创业板领涨、港股回落、日经大涨）。今日国内数据面亮眼——海关总署 8 月出口 +18.6%、进口 +21.7%，1—8 月集成电路累计出口同比翻倍（+103.9%），稀土、成品油环比猛增；产业端三星 4nm 满负荷、过半产能已分配给 HBM4，商务部初裁日本二氯二氢硅倾销利好国产电子特气；资金面五险企获 700 亿元注资、险资权益配置创历史新高。A股今日早盘两市成交突破 1.5 万亿、较上日同期缩量超 200 亿。来源：财联社、海关总署、东方财富。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3932.70</div><div class="q-chg up">+0.07%</div><div class="q-sub">9/7收盘·今日盘中进行中</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">创业板指</span></div><div class="q-val">3398.68</div><div class="q-chg up">+3.41%</div><div class="q-sub">9/7收盘·领涨</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股</span><span class="q-name">恒生指数</span></div><div class="q-val">25413.12</div><div class="q-chg down">-0.93%</div><div class="q-sub">9/7收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">日本</span><span class="q-name">日经225</span></div><div class="q-val">66399.84</div><div class="q-chg up">+2.12%</div><div class="q-sub">9/7收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">标普500</span></div><div class="q-val">7718.60</div><div class="q-chg down">-0.38%</div><div class="q-sub">9/4收盘·今日恢复交易</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">A股(9/8早盘)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">集成电路/电子特气<b>出口翻倍+反倾销催化</b></span><span class="chip up">HBM/存储链<b>三星HBM4满产</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip flat">—</span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><div class="table-wrap"><table class="ipo"><thead><tr><th>名称</th><th>市场</th><th>关键日期</th><th>发行价</th><th>备注</th></tr></thead><tbody><tr><td class="ipo-name">沈鼓集团</td><td>A股</td><td>本周待申购</td><td>4.39元</td><td class="ipo-note">具体申购日以交易所公告为准</td></tr></tbody></table></div></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">COMEX黄金</span></div><div class="q-val">约4476.60美元</div><div class="q-chg flat">参考9/4结算</div><div class="q-sub">劳工节CME提前休市</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">美国2年期国债</span></div><div class="q-val">约4.37%</div><div class="q-chg up">强非农后高位</div><div class="q-sub">9/4·关注今晚复市</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://finance.sina.com.cn/stock/usstock/c/2026-09-07/doc-iniqyriy6350720.shtml" target="_blank" rel="noopener">美股劳工节休市结束，今日恢复交易</a></h3><p class="ev-sum">美国股债市场 9/7 因劳动节全天休市，9/8 美东时间 9:30（北京 21:30）恢复交易；最近一次收盘为 9/4，受 8 月强非农（新增 16.2 万、远超预期）影响三大指数回落、2 年期美债收益率升至约 4.37%。</p><p class="ev-why"><span class="lbl">影响/解读</span>复市后需消化『强就业→高利率维持更久』的定价，成长股与黄金短期承压；关注今晚开盘的补跌/补涨与利率走向。</p><div class="ev-foot"><a class="src" href="https://finance.sina.com.cn/stock/usstock/c/2026-09-07/doc-iniqyriy6350720.shtml" target="_blank" rel="noopener">新浪财经/交易所日历 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">海关总署：8 月出口 +18.6%、进口 +21.7%，集成电路出口累计翻倍</a></h3><p class="ev-sum">海关总署数据显示，8 月我国出口、进口分别同比增长 18.6%、21.7%；1—8 月集成电路累计出口同比增长 103.9%（翻倍），稀土、成品油出口环比猛增。</p><p class="ev-why"><span class="lbl">影响/解读</span>外贸尤其半导体出口高增，印证国产芯片/电子的高景气与全球 AI 硬件需求，利好半导体、电子及出口链；进口高增也反映内需与补库回暖。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社/海关总署 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">三星 4nm 制程满负荷，过半产能已分配给 HBM4</a></h3><p class="ev-sum">财联社早间报道，三星 4nm 制程满负荷运转，超过一半产能已分配给 HBM4（新一代高带宽内存）。</p><p class="ev-why"><span class="lbl">影响/解读</span>HBM 是 AI 算力的关键瓶颈，龙头产能向 HBM4 大幅倾斜，坐实存储超级周期，利好存储、先进封装与国产替代链。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">商务部初步认定日本二氯二氢硅存在倾销，国产电子特气受益</a></h3><p class="ev-sum">商务部初步认定原产于日本的二氯二氢硅存在倾销，国产电子特气企业迎来增长机遇。</p><p class="ev-why"><span class="lbl">影响/解读</span>反倾销初裁直接利好国产电子特气/半导体材料的进口替代，是国产化主题的政策催化。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社/商务部 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">五家险企获 700 亿元注资，险资权益配置创历史新高</a></h3><p class="ev-sum">5 家险企合计获得约 700 亿元注资，同时险资权益类资产配置比例升至历史新高。</p><p class="ev-why"><span class="lbl">影响/解读</span>险资加大权益配置为 A股提供中长期增量资金，利好高股息、大盘蓝筹等险资偏好方向。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 C50 风向指数：8 月新增信贷、社融或同比少增，M2 增速回落</a></h3><p class="ev-sum">财联社 C50 风向指数调查显示，8 月新增信贷、社会融资规模可能同比少增，M2 增速持续回落。</p><p class="ev-why"><span class="lbl">影响/解读</span>信用扩张偏弱、货币增速回落，指向实体融资需求仍待修复，强化后续降准/宽信用政策预期。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">券商集中度创新高：前十券商贡献六成营收与净利润</a></h3><p class="ev-sum">财联社报道，券商行业『集中度』达历史新高，前十券商合计贡献约六成营业收入与净利润。</p><p class="ev-why"><span class="lbl">影响/解读</span>行业头部化加剧，利好龙头券商的估值与并购主题，中小券商生存空间收窄。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section>
+  <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
+</div>
+</body>
+</html></script>
 <script type="text/html" class="rpt" data-tab="fin" data-date="2026-09-07"><!doctype html>
 <html lang="zh-CN">
 <head>
@@ -3623,10 +3835,10 @@
     <div class="kicker">每日财经简报</div>
     <h1>财经日报</h1>
     <div class="date">2026-09-07</div>
-    <div class="gen">生成于 2026-09-07 09:35（北京时间早间版）</div>
+    <div class="gen">生成于 2026-09-07（盘后收盘补全版）</div>
   </header>
-  <p class="editor-note">今日亚洲市场尚未形成完整收盘，美国市场因劳动节休市；行情卡统一使用最近交易日 9 月 4 日收盘。今天新增重点为金融机构增资、央行流动性投放、私募规则、黄金与比特币早盘变化。</p>
-  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3930.12</div><div class="q-chg down">-0.30%</div><div class="q-sub">9/4收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">深证成指</span></div><div class="q-val">13516.97</div><div class="q-chg down">-0.79%</div><div class="q-sub">9/4收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">创业板指</span></div><div class="q-val">3286.55</div><div class="q-chg down">-0.78%</div><div class="q-sub">9/4收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股</span><span class="q-name">恒生指数</span></div><div class="q-val">25650.87</div><div class="q-chg up">+1.74%</div><div class="q-sub">9/4收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股</span><span class="q-name">恒生国企</span></div><div class="q-val">8555.03</div><div class="q-chg up">+2.02%</div><div class="q-sub">9/4收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股</span><span class="q-name">恒生科技</span></div><div class="q-val">4569.80</div><div class="q-chg up">+2.27%</div><div class="q-sub">9/4收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">标普500</span></div><div class="q-val">7718.60</div><div class="q-chg down">-0.38%</div><div class="q-sub">9/4收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">道琼斯</span></div><div class="q-val">53414.25</div><div class="q-chg down">-0.51%</div><div class="q-sub">9/4收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">纳斯达克</span></div><div class="q-val">26506.99</div><div class="q-chg down">-0.29%</div><div class="q-sub">9/4收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">日本</span><span class="q-name">日经225</span></div><div class="q-val">65020.94</div><div class="q-chg up">+1.26%</div><div class="q-sub">9/4收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">韩国</span><span class="q-name">KOSPI</span></div><div class="q-val">6687.21</div><div class="q-chg up">+1.64%</div><div class="q-sub">9/4收盘</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">A股（9/4）</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">生猪养殖<b>领涨</b></span><span class="chip up">农业/消费<b>走强</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">半导体<b>回调</b></span><span class="chip down">高位科技<b>承压</b></span></div></div><div class="sector-row"><div class="sector-mkt">港股（9/4）</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">恒生科技<b>+2.27%</b></span><span class="chip up">小米<b>+3.6%</b></span><span class="chip up">阿里巴巴<b>+2.4%</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip flat">—</span></div></div><div class="sector-row"><div class="sector-mkt">美股（9/4）</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">小盘股<b>约+0.2%</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">Lululemon<b>约-17.4%</b></span><span class="chip down">特斯拉<b>约-6.5%</b></span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><div class="table-wrap"><table class="ipo"><thead><tr><th>名称</th><th>市场</th><th>关键日期</th><th>发行价</th><th>备注</th></tr></thead><tbody><tr><td class="ipo-name">沈鼓集团</td><td>A股</td><td>本周待申购</td><td>4.39元</td><td class="ipo-note">具体申购日以交易所公告为准</td></tr><tr><td class="ipo-name">SIYATA PTT</td><td>美股</td><td>预计9/8</td><td>待定</td><td class="ipo-note">日程可能调整，以 SEC/交易所公告为准</td></tr></tbody></table></div></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">现货黄金</span></div><div class="q-val">约4430.60美元</div><div class="q-chg down">早间偏弱</div><div class="q-sub">9/7早间</div></div><div class="tile"><div class="q-head"><span class="q-name">WTI原油</span></div><div class="q-val">约92美元</div><div class="q-chg flat">高位震荡</div><div class="q-sub">9/7早间</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">美国2年期国债</span></div><div class="q-val">约4.37%</div><div class="q-chg up">收益率上行</div><div class="q-sub">强非农后·9/4</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">比特币</span></div><div class="q-val">约79922美元</div><div class="q-chg down">早间约-0.5%</div><div class="q-sub">9/7 07:06快照</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://www.kiplinger.com/investing/stocks/is-the-stock-market-open-on-labor-day" target="_blank" rel="noopener">今天亚洲股市尚未收盘，美股因劳动节休市</a></h3><p class="ev-sum">截至北京时间 9:35，A股、港股、日股和韩股均无 9 月 7 日完整收盘；美国股票和债券市场因 Labor Day 休市。</p><p class="ev-why"><span class="lbl">影响/解读</span>今日版保留 9 月 4 日收盘作为基准，不能把早盘波动当全天趋势。</p><div class="ev-foot"><a class="src" href="https://www.kiplinger.com/investing/stocks/is-the-stock-market-open-on-labor-day" target="_blank" rel="noopener">Kiplinger / 交易所日历 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://fund.eastmoney.com/a/202609063866133945.html" target="_blank" rel="noopener">8 家中央金融机构披露合计约 3600 亿元增资安排</a></h3><p class="ev-sum">包括工行不超过 1000 亿元、农行不超过 1600 亿元等增资计划。</p><p class="ev-why"><span class="lbl">影响/解读</span>补充核心资本有利于银行扩大信贷与风险吸收能力，也可能影响股权稀释和分红预期。</p><div class="ev-foot"><a class="src" href="https://fund.eastmoney.com/a/202609063866133945.html" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://fund.eastmoney.com/a/202609063866133945.html" target="_blank" rel="noopener">央行 9 月 7 日将开展 5000 亿元买断式逆回购</a></h3><p class="ev-sum">期限 3 个月，用于维护银行体系流动性充裕。</p><p class="ev-why"><span class="lbl">影响/解读</span>有助于稳定跨季资金面，对债市和高股息资产偏正面。</p><div class="ev-foot"><a class="src" href="https://fund.eastmoney.com/a/202609063866133945.html" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://fund.eastmoney.com/a/202609063866133945.html" target="_blank" rel="noopener">私募基金募集规则公开征求意见</a></h3><p class="ev-sum">个人合格投资者门槛拟包括家庭金融资产不低于 500 万元，或近三年年均收入等条件。</p><p class="ev-why"><span class="lbl">影响/解读</span>规则将影响私募获客、产品销售和投资者适当性管理。</p><div class="ev-foot"><a class="src" href="https://fund.eastmoney.com/a/202609063866133945.html" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://apnews.com/article/1af16359af43eb8abc66445465f633c8" target="_blank" rel="noopener">强非农继续影响全球利率定价</a></h3><p class="ev-sum">美国 8 月新增就业 16.2 万，市场重新评估美联储进一步加息或更久维持高利率的可能。</p><p class="ev-why"><span class="lbl">影响/解读</span>短债收益率和美元仍是今天黄金、港股科技与成长股的关键外部变量。</p><div class="ev-foot"><a class="src" href="https://apnews.com/article/1af16359af43eb8abc66445465f633c8" target="_blank" rel="noopener">AP ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.sina.com.cn/money/forex/hbfx/2026-09-07/doc-iniqxyne9654001.shtml" target="_blank" rel="noopener">黄金早间约 4430.60 美元，较周五结算继续偏弱</a></h3><p class="ev-sum">强就业和较高利率预期压制无息资产，金价从高位回落。</p><p class="ev-why"><span class="lbl">影响/解读</span>长期避险逻辑未消失，但短线需要防范利率与美元共同走强。</p><div class="ev-foot"><a class="src" href="https://finance.sina.com.cn/money/forex/hbfx/2026-09-07/doc-iniqxyne9654001.shtml" target="_blank" rel="noopener">新浪财经 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.sina.com.cn/wm/2026-09-07/doc-iniqxynk5848119.shtml" target="_blank" rel="noopener">比特币早间约 7.99 万美元，周末反弹后回吐</a></h3><p class="ev-sum">截至早间快照约 79,922 美元，较 9 月 6 日日线高点略回落。</p><p class="ev-why"><span class="lbl">影响/解读</span>高利率预期仍压制风险资产，周末成交较薄时不宜放大短期方向。</p><div class="ev-foot"><a class="src" href="https://finance.sina.com.cn/wm/2026-09-07/doc-iniqxynk5848119.shtml" target="_blank" rel="noopener">新浪财经 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/index" target="_blank" rel="noopener">800V 高压直流成为 AIDC 电力架构热点</a></h3><p class="ev-sum">财联社早间聚焦 AI 数据中心更高功率密度带来的供电升级。</p><p class="ev-why"><span class="lbl">影响/解读</span>电源、配电、液冷和数据中心基础设施可能受益，但投资需要跟踪实际订单。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/index" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/index" target="_blank" rel="noopener">国内首个 AI 辅助设计创新药获批</a></h3><p class="ev-sum">艾普司韦获得附条件批准，AI 制药进入监管批准阶段。</p><p class="ev-why"><span class="lbl">影响/解读</span>创新药和 AI 医疗估值会受到提振，后续仍看临床使用、医保和销售。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/index" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://fund.eastmoney.com/a/202609063866133945.html" target="_blank" rel="noopener">本周关注 CPI/PPI、央行操作及新股申购</a></h3><p class="ev-sum">国内宏观数据、5000 亿元流动性投放和包括沈鼓集团在内的新股日程将陆续落地。</p><p class="ev-why"><span class="lbl">影响/解读</span>流动性利好与强美元压力并存，市场可能继续表现为板块轮动。</p><div class="ev-foot"><a class="src" href="https://fund.eastmoney.com/a/202609063866133945.html" target="_blank" rel="noopener">东方财富 ↗</a></div></article></section>
+  <p class="editor-note">9/7 周一：A股走出结构性大分化——创业板指大涨 3.41%、科创50 涨 2.42%，但上证仅微涨 0.07%，成长（液冷服务器/IDC 电源）强、贵金属/保险/银行/煤炭走弱；港股回落（恒指 -0.93%），日经大涨 2.12%。美股因劳动节全天休市（9/8 恢复），行情卡里美股沿用 9/4 收盘。当天新增重点为金融机构增资、央行流动性投放、私募规则等。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3932.70</div><div class="q-chg up">+0.07%</div><div class="q-sub">9/7收盘·冲高分化</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">深证成指</span></div><div class="q-val">—</div><div class="q-chg up">+1.91%</div><div class="q-sub">9/7收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">创业板指</span></div><div class="q-val">3398.68</div><div class="q-chg up">+3.41%</div><div class="q-sub">9/7收盘·领涨</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">科创50</span></div><div class="q-val">—</div><div class="q-chg up">+2.42%</div><div class="q-sub">9/7收盘·科技成长强</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股</span><span class="q-name">恒生指数</span></div><div class="q-val">25413.12</div><div class="q-chg down">-0.93%</div><div class="q-sub">9/7收盘·回落</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股</span><span class="q-name">恒生科技</span></div><div class="q-val">4527.71</div><div class="q-chg down">-0.92%</div><div class="q-sub">9/7收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">日本</span><span class="q-name">日经225</span></div><div class="q-val">66399.84</div><div class="q-chg up">+2.12%</div><div class="q-sub">9/7收盘·涨1378点</div></div><div class="tile"><div class="q-head"><span class="q-tag">韩国</span><span class="q-name">KOSPI</span></div><div class="q-val">6687.21</div><div class="q-chg up">+1.64%</div><div class="q-sub">9/4收盘·9/7数据缺</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">标普500</span></div><div class="q-val">7718.60</div><div class="q-chg down">-0.38%</div><div class="q-sub">9/4收盘·9/7劳工节休市</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">道琼斯</span></div><div class="q-val">53414.25</div><div class="q-chg down">-0.51%</div><div class="q-sub">9/4收盘·9/7劳工节休市</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">纳斯达克</span></div><div class="q-val">26506.99</div><div class="q-chg down">-0.29%</div><div class="q-sub">9/4收盘·9/7劳工节休市</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">A股（9/7）</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">液冷服务器/IDC电源<b>中石科技·中远通20cm涨停</b></span><span class="chip up">创业板/科技成长<b>创业板+3.41%</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">贵金属/保险<b>跌幅居前</b></span><span class="chip down">银行/煤炭<b>回调</b></span></div></div><div class="sector-row"><div class="sector-mkt">港股（9/7）</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip flat">—</span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">恒生科技<b>-0.92%</b></span><span class="chip down">恒生指数<b>-0.93%</b></span></div></div><div class="sector-row"><div class="sector-mkt">美股（9/4·9/7休市）</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">小盘股<b>约+0.2%</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">Lululemon<b>约-17.4%</b></span><span class="chip down">特斯拉<b>约-6.5%</b></span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><div class="table-wrap"><table class="ipo"><thead><tr><th>名称</th><th>市场</th><th>关键日期</th><th>发行价</th><th>备注</th></tr></thead><tbody><tr><td class="ipo-name">沈鼓集团</td><td>A股</td><td>本周待申购</td><td>4.39元</td><td class="ipo-note">具体申购日以交易所公告为准</td></tr><tr><td class="ipo-name">SIYATA PTT</td><td>美股</td><td>预计9/8</td><td>待定</td><td class="ipo-note">日程可能调整，以 SEC/交易所公告为准</td></tr></tbody></table></div></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">现货黄金</span></div><div class="q-val">约4430.60美元</div><div class="q-chg down">早间偏弱</div><div class="q-sub">9/7早间</div></div><div class="tile"><div class="q-head"><span class="q-name">WTI原油</span></div><div class="q-val">约92美元</div><div class="q-chg flat">高位震荡</div><div class="q-sub">9/7早间</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">美国2年期国债</span></div><div class="q-val">约4.37%</div><div class="q-chg up">收益率上行</div><div class="q-sub">强非农后·9/4</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">比特币</span></div><div class="q-val">约79922美元</div><div class="q-chg down">早间约-0.5%</div><div class="q-sub">9/7 07:06快照</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://finance.jrj.com.cn/2026/09/07151658372114.shtml" target="_blank" rel="noopener">A股结构性大分化：创业板涨 3.41%，上证仅微涨 0.07%；港股回落、日经大涨 2.12%</a></h3><p class="ev-sum">9/7 A股宽基全线上涨但高度分化：创业板指涨 3.41% 报 3398.68，科创50 涨 2.42%，深证成指涨 1.91%，上证指数仅涨 0.07% 报 3932.70；两市成交约 1.96 万亿、较上日缩量。液冷服务器、IDC 电源等成长题材领涨（中石科技、中远通 20cm 涨停），贵金属、保险、银行、煤炭走弱。港股回落，恒指跌 0.93% 报 25413.12、恒生科技跌 0.92%；日经 225 涨 2.12% 报 66399.84。美股因劳动节全天休市，9/8 恢复交易。</p><p class="ev-why"><span class="lbl">影响/解读</span>资金明显从高股息/防御切向科技成长与算力硬件，创业板与主板剪刀差拉大；但成交缩量说明是存量博弈下的题材轮动，追高需谨慎。</p><div class="ev-foot"><a class="src" href="https://finance.jrj.com.cn/2026/09/07151658372114.shtml" target="_blank" rel="noopener">金融界/东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://fund.eastmoney.com/a/202609063866133945.html" target="_blank" rel="noopener">8 家中央金融机构披露合计约 3600 亿元增资安排</a></h3><p class="ev-sum">包括工行不超过 1000 亿元、农行不超过 1600 亿元等增资计划。</p><p class="ev-why"><span class="lbl">影响/解读</span>补充核心资本有利于银行扩大信贷与风险吸收能力，也可能影响股权稀释和分红预期。</p><div class="ev-foot"><a class="src" href="https://fund.eastmoney.com/a/202609063866133945.html" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://fund.eastmoney.com/a/202609063866133945.html" target="_blank" rel="noopener">央行 9 月 7 日将开展 5000 亿元买断式逆回购</a></h3><p class="ev-sum">期限 3 个月，用于维护银行体系流动性充裕。</p><p class="ev-why"><span class="lbl">影响/解读</span>有助于稳定跨季资金面，对债市和高股息资产偏正面。</p><div class="ev-foot"><a class="src" href="https://fund.eastmoney.com/a/202609063866133945.html" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://fund.eastmoney.com/a/202609063866133945.html" target="_blank" rel="noopener">私募基金募集规则公开征求意见</a></h3><p class="ev-sum">个人合格投资者门槛拟包括家庭金融资产不低于 500 万元，或近三年年均收入等条件。</p><p class="ev-why"><span class="lbl">影响/解读</span>规则将影响私募获客、产品销售和投资者适当性管理。</p><div class="ev-foot"><a class="src" href="https://fund.eastmoney.com/a/202609063866133945.html" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://apnews.com/article/1af16359af43eb8abc66445465f633c8" target="_blank" rel="noopener">强非农继续影响全球利率定价</a></h3><p class="ev-sum">美国 8 月新增就业 16.2 万，市场重新评估美联储进一步加息或更久维持高利率的可能。</p><p class="ev-why"><span class="lbl">影响/解读</span>短债收益率和美元仍是今天黄金、港股科技与成长股的关键外部变量。</p><div class="ev-foot"><a class="src" href="https://apnews.com/article/1af16359af43eb8abc66445465f633c8" target="_blank" rel="noopener">AP ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.sina.com.cn/money/forex/hbfx/2026-09-07/doc-iniqxyne9654001.shtml" target="_blank" rel="noopener">黄金早间约 4430.60 美元，较周五结算继续偏弱</a></h3><p class="ev-sum">强就业和较高利率预期压制无息资产，金价从高位回落。</p><p class="ev-why"><span class="lbl">影响/解读</span>长期避险逻辑未消失，但短线需要防范利率与美元共同走强。</p><div class="ev-foot"><a class="src" href="https://finance.sina.com.cn/money/forex/hbfx/2026-09-07/doc-iniqxyne9654001.shtml" target="_blank" rel="noopener">新浪财经 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.sina.com.cn/wm/2026-09-07/doc-iniqxynk5848119.shtml" target="_blank" rel="noopener">比特币早间约 7.99 万美元，周末反弹后回吐</a></h3><p class="ev-sum">截至早间快照约 79,922 美元，较 9 月 6 日日线高点略回落。</p><p class="ev-why"><span class="lbl">影响/解读</span>高利率预期仍压制风险资产，周末成交较薄时不宜放大短期方向。</p><div class="ev-foot"><a class="src" href="https://finance.sina.com.cn/wm/2026-09-07/doc-iniqxynk5848119.shtml" target="_blank" rel="noopener">新浪财经 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/index" target="_blank" rel="noopener">800V 高压直流成为 AIDC 电力架构热点</a></h3><p class="ev-sum">财联社早间聚焦 AI 数据中心更高功率密度带来的供电升级。</p><p class="ev-why"><span class="lbl">影响/解读</span>电源、配电、液冷和数据中心基础设施可能受益，但投资需要跟踪实际订单。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/index" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/index" target="_blank" rel="noopener">国内首个 AI 辅助设计创新药获批</a></h3><p class="ev-sum">艾普司韦获得附条件批准，AI 制药进入监管批准阶段。</p><p class="ev-why"><span class="lbl">影响/解读</span>创新药和 AI 医疗估值会受到提振，后续仍看临床使用、医保和销售。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/index" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://fund.eastmoney.com/a/202609063866133945.html" target="_blank" rel="noopener">本周关注 CPI/PPI、央行操作及新股申购</a></h3><p class="ev-sum">国内宏观数据、5000 亿元流动性投放和包括沈鼓集团在内的新股日程将陆续落地。</p><p class="ev-why"><span class="lbl">影响/解读</span>流动性利好与强美元压力并存，市场可能继续表现为板块轮动。</p><div class="ev-foot"><a class="src" href="https://fund.eastmoney.com/a/202609063866133945.html" target="_blank" rel="noopener">东方财富 ↗</a></div></article></section>
   <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
 </div>
 </body>
