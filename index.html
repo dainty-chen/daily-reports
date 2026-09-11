@@ -86,7 +86,7 @@
 <div class="app">
   <header class="top">
     <div class="brand">📊 每日日报<span class="dot">看板</span></div>
-    <div class="tabs" role="tablist"><button class="tab" data-tab="ai" role="tab">AI 日报<span class="cnt">39</span></button><button class="tab" data-tab="fin" role="tab">财经日报<span class="cnt">39</span></button></div>
+    <div class="tabs" role="tablist"><button class="tab" data-tab="ai" role="tab">AI 日报<span class="cnt">40</span></button><button class="tab" data-tab="fin" role="tab">财经日报<span class="cnt">40</span></button></div>
     <div class="meta" id="meta"></div>
   </header>
   <div class="body">
@@ -95,6 +95,101 @@
   </div>
 </div>
 
+<script type="text/html" class="rpt" data-tab="ai" data-date="2026-09-11"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 行业新闻日报 · 2026-09-11</title>
+<style>
+  /* 白背景 + 虎嗅式中文黑体 + 英文衬线(FT感) + 克制点缀 */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C7A4C; --link: #2266B3;
+    /* 标题: 英文优先衬线(Georgia)好看, 中文回退黑体(虎嗅式) */
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #6FC291; --link: #7FB0E6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 690px; margin: 0 auto; padding: 0 24px 72px; }
+
+  /* 报头 */
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 20px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 10px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 580px; margin: 22px auto 4px; line-height: 1.75; }
+
+  /* 栏目 */
+  .domain { margin-top: 44px; }
+  .dom-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 4px; }
+  .dom-head .emoji { font-size: 17px; }
+  .dom-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .dom-head .count { margin-left: auto; font-size: 12px; color: var(--faint);
+    font-variant-numeric: tabular-nums; }
+  .top .dom-head { border-bottom-color: var(--accent); }
+  .top .dom-head h2 { color: var(--accent); }
+
+  /* 单条 */
+  .story { padding: 19px 0; border-bottom: 1px solid var(--hair); }
+  .story:last-child { border-bottom: none; }
+  .story-title { font-family: var(--title); margin: 0 0 8px;
+    font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .story-title a { color: var(--text); text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0 1.5px; background-repeat: no-repeat;
+    background-position: 0 100%; transition: background-size .2s; }
+  .story-title a:hover { background-size: 100% 1.5px; color: var(--accent); }
+  .summary { margin: 0 0 9px; font-size: 15px; color: var(--text); }
+  .why, .inds { margin: 6px 0; font-size: 13.5px; color: var(--muted); }
+  .why { color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; vertical-align: 1px; }
+  .foot { display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-top: 11px; flex-wrap: wrap; }
+  .att { display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; color: var(--muted); }
+  .att .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 16px 0; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日 AI 行业简报</div>
+    <h1>AI 行业新闻日报</h1>
+    <div class="date">2026-09-11</div>
+    <div class="gen">生成于 2026-09-11（多源）</div>
+  </header>
+  <p class="editor-note">9/11 三条主线：需求侧，OpenAI 首席产品官称 Astra 需求『前所未见』，火爆到暂停 Pro 新订阅来保供给——印证前沿模型的算力/产能仍是硬约束；政策侧，工信部印发《『人工智能+软件』专项行动实施方案》，自上而下推动 AI 与软件融合；产业侧，上海 AI 芯片企业燧原科技登陆科创板（中一签浮盈约 13 万），国产算力再添资本市场生力军。此外 AI 制药进入临床验证阶段、甲骨文 AI 云财报强劲。来源：财联社、AI Weekly。</p>
+  <section class="domain top"><div class="dom-head"><span class="emoji">🔥</span><h2>今日重大新闻</h2><span class="count">3</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">OpenAI：Astra 需求『前所未见』，火爆到暂停 Pro 新订阅</a></h3><p class="summary">OpenAI 首席产品官表示，GPT-6 Astra 的需求『前所未见』，火爆程度高到不得不暂停 Pro 订阅的新增，以保障现有用户的服务质量与算力供给。</p><p class="why"><span class="lbl">为什么重要</span>顶级模型一上线就『供不应求到停售』，说明算力/产能仍是前沿 AI 的硬约束，也解释了各家为何疯狂签算力大单、押注定制芯片——需求端并不缺，缺的是供给。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础模型 · 算力 · 云计算</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">工信部印发《『人工智能+软件』专项行动实施方案》</a></h3><p class="summary">工信部印发《『人工智能+软件』专项行动实施方案》，推动人工智能与软件产业深度融合、加快 AI 在软件研发与应用中的落地。</p><p class="why"><span class="lbl">为什么重要</span>国家层面为『AI+软件』定调并给出行动路径，利好国产软件、AI 应用、信创与开发工具链的中长期需求；对软件企业是明确的政策与订单预期。</p><p class="inds"><span class="lbl">影响行业</span>AI 应用 · 国产软件 · 信创</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社/工信部 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">上海 AI 芯片企业燧原科技登陆科创板</a></h3><p class="summary">国产 AI 芯片企业燧原科技 9/11 登陆科创板，上市首日大涨、中一签浮盈约 13 万元，被称为上海 AI 产业的『芯军』登陆资本市场。</p><p class="why"><span class="lbl">为什么重要</span>在英伟达受反垄断调查、国产替代加速的背景下，国产 AI 芯片龙头上市为产业链提供融资与估值锚，提振国产算力信心。</p><p class="inds"><span class="lbl">影响行业</span>AI 芯片 · 国产算力 · 科创板/IPO</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section>
+  <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">Astra 需求爆棚、OpenAI 暂停 Pro 新订阅（详见今日重大新闻）</a></h3><p class="summary">OpenAI 首席产品官称 Astra 需求前所未见，火爆到暂停 Pro 新订阅以保供给。</p><p class="why"><span class="lbl">为什么重要</span>算力/产能是前沿模型的硬约束，需求端并不缺。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础模型 · 算力</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">AI 制药正式进入临床验证阶段，产业链迎发展期</a></h3><p class="summary">财联社报道，AI 制药正式进入临床验证阶段，从早期靶点发现/分子设计走向临床验证，相关产业链迎来发展期。</p><p class="why"><span class="lbl">为什么重要</span>AI 制药从『算法故事』走向临床是价值兑现的关键一步，若临床数据可靠将显著提升 AI 医疗与创新药的确定性；但仍需以临床结果、监管审批为准。</p><p class="inds"><span class="lbl">影响行业</span>AI 医疗 · 创新药 · 临床/CRO</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">燧原科技登陆科创板（详见今日重大新闻）</a></h3><p class="summary">上海 AI 芯片企业燧原科技上市首日大涨，中一签浮盈约 13 万元。</p><p class="why"><span class="lbl">为什么重要</span>国产 AI 芯片龙头上市，提振国产算力与科创板硬科技情绪。</p><p class="inds"><span class="lbl">影响行业</span>AI 芯片 · 国产算力</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://cn.investing.com/news/stock-market-news/article-3561801" target="_blank" rel="noopener">甲骨文 AI 云财报强劲、盘后大涨约 4%</a></h3><p class="summary">甲骨文公布好于预期的季度业绩并上调全年指引、盘后大涨约 4%，缓解了市场对其 AI 投入过高、回报存疑的担忧。</p><p class="why"><span class="lbl">为什么重要</span>云厂 AI 营收真实兑现，为『AI 需求可赚钱』提供业绩背书，利好云计算与算力主线。</p><p class="inds"><span class="lbl">影响行业</span>云计算 · AI 算力 · 企业软件</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://cn.investing.com/news/stock-market-news/article-3561801" target="_blank" rel="noopener">Investing/财联社 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">工信部《『人工智能+软件』专项行动实施方案》（详见今日重大新闻）</a></h3><p class="summary">工信部印发方案，推动 AI 与软件产业深度融合。</p><p class="why"><span class="lbl">为什么重要</span>政策自上而下推动 AI+软件落地，利好国产软件与 AI 应用。</p><p class="inds"><span class="lbl">影响行业</span>AI 政策 · 国产软件 · 信创</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社/工信部 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🔭</span><h2>AI 探索新领域</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">折叠屏『三国杀』：苹果、华为、小米同周亮剑</a></h3><p class="summary">苹果发布首款折叠屏 iPhone 后，华为、小米在同周推出折叠屏新品，折叠屏竞争进入白热化。</p><p class="why"><span class="lbl">为什么重要</span>折叠屏是端侧 AI 的新形态载体，三强同台加速渗透与降价，牵动铰链、UTG 玻璃、柔性面板供应链。</p><p class="inds"><span class="lbl">影响行业</span>消费电子 · 端侧 AI · 折叠屏供应链</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">自动驾驶汽车有望到 2030 年实现规模应用</a></h3><p class="summary">财联社报道，业界预计自动驾驶汽车有望到 2030 年实现规模化应用。</p><p class="why"><span class="lbl">为什么重要</span>规模化时间表指引产业投资节奏，利好激光雷达、算力、线控底盘等感知与执行链，但需以实际订单与法规落地验证。</p><p class="inds"><span class="lbl">影响行业</span>自动驾驶 · 智能汽车 · AI 感知</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section>
+  <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
 <script type="text/html" class="rpt" data-tab="ai" data-date="2026-09-10"><!doctype html>
 <html lang="zh-CN">
 <head>
@@ -185,7 +280,7 @@
   </header>
   <p class="editor-note">9/10 三条主线：一是监管——美国司法部调查英伟达与 AI 芯片初创 Groq 的交易是否以『技术授权 + 挖角核心团队』规避并购审查（变相『隐性收购』），并已传票调查其是否强迫云厂捆绑采购，美国 AI 行业交易将迎更严审查；二是国产——DeepSeek 据报备战科创板 IPO，财跃星辰联合上海交大开源 8B 金融推理大模型 Alpha-R1；三是终端——苹果发布 iPhone 18 Pro 与首款折叠屏、A20 Pro 用台积电 2nm，端侧 AI 进入新机型周期。来源：新浪科技、财联社、IT之家。</p>
   <section class="domain top"><div class="dom-head"><span class="emoji">🔥</span><h2>今日重大新闻</h2><span class="count">3</span></div><article class="story"><h3 class="story-title"><a href="https://finance.sina.com.cn/tech/roll/2026-09-10/doc-iniritaq8538455.shtml" target="_blank" rel="noopener">美司法部调查英伟达与 Groq 交易是否『隐性收购』规避反垄断审查</a></h3><p class="summary">美国司法部正调查英伟达去年 12 月与 AI 芯片初创公司 Groq 的交易：英伟达取得 Groq 芯片技术的非独家授权，同时 Groq 创始人等核心高管加入英伟达，而 Groq 仍作为独立公司存续。司法部怀疑这种『技术授权 + 挖走核心人才』的组合实为规避并购审查的『隐性收购』；此外还传票调查英伟达是否强迫云计算供应商捆绑采购多款产品、以收购排挤对手。</p><p class="why"><span class="lbl">为什么重要</span>这是全球对英伟达反垄断围剿的又一步，若认定成立将影响 AI 芯片行业的并购/合作范式（以授权+挖角代替收购的玩法受限），也给整个 AI 行业交易套上更严监管。</p><p class="inds"><span class="lbl">影响行业</span>AI 芯片 · 反垄断监管 · 科技并购</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://finance.sina.com.cn/tech/roll/2026-09-10/doc-iniritaq8538455.shtml" target="_blank" rel="noopener">新浪科技 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">DeepSeek 据报备战科创板 IPO</a></h3><p class="summary">据报道，国产大模型明星公司 DeepSeek 正备战科创板 IPO，相关参股公司有望受益。</p><p class="why"><span class="lbl">为什么重要</span>若成行，将是国产大模型第一梯队登陆资本市场的标志性事件，为国产 AI 提供融资与估值锚，也会带动产业链与参股概念的关注。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础模型 · 国产 AI · IPO/资本市场</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.ithome.com/0/994/787.htm" target="_blank" rel="noopener">苹果发布 iPhone 18 Pro 与首款折叠屏，A20 Pro 用台积电 2nm</a></h3><p class="summary">苹果秋季发布会（北京时间 9/10 凌晨）推出 iPhone 18 Pro/Pro Max、首款折叠屏 iPhone（iPhone Duo）、AirPods 5、Apple Watch Series 12/Ultra 4；iPhone 18 Pro 搭载台积电 2nm 工艺的 A20 Pro 芯片、灵动岛面积缩小约 35%、可变光圈主摄，新任 CEO John Ternus 首秀。</p><p class="why"><span class="lbl">为什么重要</span>2nm 芯片与折叠屏拉动端侧算力与形态升级，是端侧 AI（本地大模型/相机/助手）落地的重要载体，也牵动面板、铰链、光学与先进制程代工全链。</p><p class="inds"><span class="lbl">影响行业</span>端侧 AI · 消费电子 · 半导体/先进制程</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.ithome.com/0/994/787.htm" target="_blank" rel="noopener">IT之家 ↗</a></div></article></section>
-  <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">财跃星辰联合上海交大开源 Alpha-R1：8B 金融推理大模型</a></h3><p class="summary">财跃星辰与上海交通大学联合开源 Alpha-R1，一款 80 亿参数（8B）的金融推理大模型，主打金融领域的推理能力。</p><p class="why"><span class="lbl">为什么重要</span>小参数、专业域（金融）推理模型开源，降低金融机构本地化部署门槛，是『垂类小模型 + 可控推理』路线的代表，利好金融 AI 落地。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础模型 · 金融 AI · 开源</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">DeepSeek 备战科创板 IPO（详见今日重大新闻）</a></h3><p class="summary">DeepSeek 据报备战科创板 IPO，相关参股公司有望受益。</p><p class="why"><span class="lbl">为什么重要</span>国产大模型第一梯队登陆资本市场的标志性事件。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础模型 · 国产 AI</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://finance.sina.com.cn/tech/roll/2026-09-10/doc-iniritaq8538455.shtml" target="_blank" rel="noopener">英伟达遭美司法部反垄断调查（详见今日重大新闻）</a></h3><p class="summary">美司法部调查英伟达与 Groq 交易是否为规避审查的『隐性收购』，并查其是否强迫云商捆绑采购。</p><p class="why"><span class="lbl">为什么重要</span>AI 芯片行业的并购/合作范式或受限，AI 行业交易迎更严监管。</p><p class="inds"><span class="lbl">影响行业</span>AI 芯片 · 反垄断监管</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://finance.sina.com.cn/tech/roll/2026-09-10/doc-iniritaq8538455.shtml" target="_blank" rel="noopener">新浪科技 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">铠侠 CEO 称存储『价格已涨得够高』，引 AI 投资意愿担忧</a></h3><p class="summary">铠侠 CEO 表示存储价格已涨得够高，市场担忧存储涨价潮降温可能影响 AI 投资意愿；但美国存储股当日逆势大涨、高盛看多。</p><p class="why"><span class="lbl">为什么重要</span>存储是 AI 算力的关键成本项，价格见顶与否直接影响 AI 基建的投入产出与相关股票，多空分歧加大。</p><p class="inds"><span class="lbl">影响行业</span>AI 存储/HBM · 半导体 · 算力成本</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://finance.sina.com.cn/tech/roll/2026-09-10/doc-iniritaq8538455.shtml" target="_blank" rel="noopener">美国 AI 行业交易将迎更严审查，英伟达被点名</a></h3><p class="summary">在调查英伟达与 Groq 交易的同时，美国监管释放信号：AI 行业的授权、投资与人才交易将面临更严格的反垄断审查。</p><p class="why"><span class="lbl">为什么重要</span>监管从『大并购』延伸到『授权+投资+挖角』等灵活交易，可能改变头部 AI 公司扩张与卡位的操作空间。</p><p class="inds"><span class="lbl">影响行业</span>AI 政策监管 · 反垄断 · 科技并购</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://finance.sina.com.cn/tech/roll/2026-09-10/doc-iniritaq8538455.shtml" target="_blank" rel="noopener">财联社/新浪科技 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🔭</span><h2>AI 探索新领域</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.ithome.com/0/994/787.htm" target="_blank" rel="noopener">苹果首款折叠屏 iPhone + 2nm A20 Pro，端侧 AI 进入新机型周期（详见今日重大新闻）</a></h3><p class="summary">苹果发布 iPhone 18 Pro 系列与首款折叠屏 iPhone，A20 Pro 采用台积电 2nm。</p><p class="why"><span class="lbl">为什么重要</span>更强端侧算力与新形态为本地 AI 应用打开空间，牵动先进制程与消费电子创新链。</p><p class="inds"><span class="lbl">影响行业</span>端侧 AI · 消费电子 · 先进制程</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.ithome.com/0/994/787.htm" target="_blank" rel="noopener">IT之家 ↗</a></div></article></section>
+  <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">财跃星辰联合上海交大开源 Alpha-R1：8B 金融推理大模型</a></h3><p class="summary">财跃星辰与上海交通大学联合开源 Alpha-R1，一款 80 亿参数（8B）的金融推理大模型，主打金融领域的推理能力。</p><p class="why"><span class="lbl">为什么重要</span>小参数、专业域（金融）推理模型开源，降低金融机构本地化部署门槛，是『垂类小模型 + 可控推理』路线的代表，利好金融 AI 落地。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础模型 · 金融 AI · 开源</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">DeepSeek 备战科创板 IPO（详见今日重大新闻）</a></h3><p class="summary">DeepSeek 据报备战科创板 IPO，相关参股公司有望受益。</p><p class="why"><span class="lbl">为什么重要</span>国产大模型第一梯队登陆资本市场的标志性事件。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础模型 · 国产 AI</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">OpenAI 开放 Agents API 公测，暴露托管 Codex harness</a></h3><p class="summary">OpenAI 于 9/10 开放 Agents API 公测，把托管的 Codex『harness』对外暴露——由平台负责会话、编排、上下文压缩与故障恢复，开发者只需提供工具并选择执行环境。</p><p class="why"><span class="lbl">为什么重要</span>把『搭 Agent 的脏活』（会话管理、上下文压缩、重试恢复）平台化，大幅降低企业构建可靠 Agent 的门槛，是 agentic 应用规模化的重要基础设施。</p><p class="inds"><span class="lbl">影响行业</span>AI Agent · 开发者平台 · 企业软件</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">AI Weekly ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://finance.sina.com.cn/tech/roll/2026-09-10/doc-iniritaq8538455.shtml" target="_blank" rel="noopener">英伟达遭美司法部反垄断调查（详见今日重大新闻）</a></h3><p class="summary">美司法部调查英伟达与 Groq 交易是否为规避审查的『隐性收购』，并查其是否强迫云商捆绑采购。</p><p class="why"><span class="lbl">为什么重要</span>AI 芯片行业的并购/合作范式或受限，AI 行业交易迎更严监管。</p><p class="inds"><span class="lbl">影响行业</span>AI 芯片 · 反垄断监管</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://finance.sina.com.cn/tech/roll/2026-09-10/doc-iniritaq8538455.shtml" target="_blank" rel="noopener">新浪科技 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">铠侠 CEO 称存储『价格已涨得够高』，引 AI 投资意愿担忧</a></h3><p class="summary">铠侠 CEO 表示存储价格已涨得够高，市场担忧存储涨价潮降温可能影响 AI 投资意愿；但美国存储股当日逆势大涨、高盛看多。</p><p class="why"><span class="lbl">为什么重要</span>存储是 AI 算力的关键成本项，价格见顶与否直接影响 AI 基建的投入产出与相关股票，多空分歧加大。</p><p class="inds"><span class="lbl">影响行业</span>AI 存储/HBM · 半导体 · 算力成本</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://finance.sina.com.cn/tech/roll/2026-09-10/doc-iniritaq8538455.shtml" target="_blank" rel="noopener">美国 AI 行业交易将迎更严审查，英伟达被点名</a></h3><p class="summary">在调查英伟达与 Groq 交易的同时，美国监管释放信号：AI 行业的授权、投资与人才交易将面临更严格的反垄断审查。</p><p class="why"><span class="lbl">为什么重要</span>监管从『大并购』延伸到『授权+投资+挖角』等灵活交易，可能改变头部 AI 公司扩张与卡位的操作空间。</p><p class="inds"><span class="lbl">影响行业</span>AI 政策监管 · 反垄断 · 科技并购</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://finance.sina.com.cn/tech/roll/2026-09-10/doc-iniritaq8538455.shtml" target="_blank" rel="noopener">财联社/新浪科技 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">Anthropic 9 月威胁情报报告：挫败生物武器图谋、点名 AI 辅助间谍活动</a></h3><p class="summary">Anthropic 发布 9 月威胁情报报告，披露已挫败利用 AI 的生物武器研究图谋；一个代号 GTG-20006 的俄罗斯国家级组织借 AI 对乌克兰与欧洲目标开展间谍活动；报告还提到包括 Moonshot、DeepSeek 在内的中国公司存在用户查询路由等情况。另有 Wiz 研究披露：其扫描的 3074 个对公网开放的 LiteLLM 网关中，294 个仍接受文档示例密钥 sk-1234，存在远程代码执行风险。</p><p class="why"><span class="lbl">为什么重要</span>前沿实验室主动披露 AI 被用于生化、间谍等高危场景，说明 AI 滥用已从理论走向实操；叠加大量 AI 网关的弱口令风险，企业部署 AI 必须把安全与访问控制放在首位。</p><p class="inds"><span class="lbl">影响行业</span>AI 安全 · 网络安全 · AI 政策监管</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">AI Weekly / Anthropic ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🔭</span><h2>AI 探索新领域</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.ithome.com/0/994/787.htm" target="_blank" rel="noopener">苹果首款折叠屏 iPhone + 2nm A20 Pro，端侧 AI 进入新机型周期（详见今日重大新闻）</a></h3><p class="summary">苹果发布 iPhone 18 Pro 系列与首款折叠屏 iPhone，A20 Pro 采用台积电 2nm。</p><p class="why"><span class="lbl">为什么重要</span>更强端侧算力与新形态为本地 AI 应用打开空间，牵动先进制程与消费电子创新链。</p><p class="inds"><span class="lbl">影响行业</span>端侧 AI · 消费电子 · 先进制程</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.ithome.com/0/994/787.htm" target="_blank" rel="noopener">IT之家 ↗</a></div></article></section>
   <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
 </div>
 </body>
@@ -3797,6 +3892,123 @@
   <section class="domain top"><div class="dom-head"><span class="emoji">🔥</span><h2>今日重大新闻</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.buildfastwithai.com/blogs/ai-news-today-august-2-2026" target="_blank" rel="noopener">OpenAI Astra 解出十个数学公开难题，公布形式化证明</a></h3><p class="summary">OpenAI 称其未发布的 Astra 内部版解决了十个数学与理论计算机领域的公开难题，并在 GitHub 发布 Lean 形式化证明，成本约 2000 美元；成果含非 sofic 群存在性构造、新的球堆积界等。菲尔兹奖得主 Timothy Gowers 表示愿毫不犹豫推荐其中一份证明投顶级期刊。Astra 本身尚未发布。</p><p class="why"><span class="lbl">为什么重要</span>AI 在困扰人类专家数十年的前沿数学上做出可被形式化验证的真结果，是「AI 做科研」从辅助走向原创的重要一步；但也需注意这挑的是 AI 天然擅长的领域。</p><p class="inds"><span class="lbl">影响行业</span>AI 研究 · 学术/科研 · 理论计算机</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://www.buildfastwithai.com/blogs/ai-news-today-august-2-2026" target="_blank" rel="noopener">Build Fast with AI ↗</a></div></article></section>
   <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.buildfastwithai.com/blogs/ai-news-today-august-2-2026" target="_blank" rel="noopener">Astra 的数学突破：AI 原创科研的一步（详见今日重大新闻）</a></h3><p class="summary">Astra 内部版解出十个公开难题并公布 Lean 证明，正被独立核验；分析指出这些题目多处于 AI 天然占优的形式化领域。</p><p class="why"><span class="lbl">为什么重要</span>它把「模型能不能做真科研」的讨论往前推了一大截，也提示前沿模型的价值正从对话转向可验证的知识生产。</p><p class="inds"><span class="lbl">影响行业</span>AI 研究 · 科研</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://www.buildfastwithai.com/blogs/ai-news-today-august-2-2026" target="_blank" rel="noopener">Build Fast with AI ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">💻</span><h2>AI 软件开发</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section>
   <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="fin" data-date="2026-09-11"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>财经日报 · 2026-09-11</title>
+<style>
+  /* 白底 + 虎嗅式中文黑体 + 英文衬线 + 红涨绿跌（中国习惯） */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C4E7A; --link: #2266B3;
+    --up: #C0392B; --down: #1A7A4D;
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #7FB0E6; --link: #7FB0E6;
+      --up: #F0685A; --down: #4FBF86;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 18px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 8px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 620px; margin: 20px auto 4px; line-height: 1.75; }
+
+  .sec { margin-top: 40px; }
+  .sec-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 14px; }
+  .sec-head .emoji { font-size: 17px; }
+  .sec-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 6px 0 2px; }
+
+  /* 行情磁贴 */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; }
+  .tile { border: 1px solid var(--hair); border-radius: 10px; padding: 11px 13px; }
+  .q-head { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+  .q-tag { font-size: 10.5px; color: var(--muted); border: 1px solid var(--hair);
+    border-radius: 5px; padding: 0 5px; }
+  .q-name { font-size: 13px; color: var(--muted); }
+  .q-val { font-family: var(--title); font-size: 20px; font-weight: 700;
+    font-variant-numeric: tabular-nums; }
+  .q-chg { font-size: 13.5px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .q-sub { font-size: 11.5px; color: var(--faint); margin-top: 2px; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .flat { color: var(--muted); }
+
+  /* 板块 */
+  .sector-row { padding: 12px 0; border-bottom: 1px solid var(--hair); }
+  .sector-row:last-child { border-bottom: none; }
+  .sector-mkt { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .sector-side { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0; }
+  .side-label { font-size: 11.5px; font-weight: 700; margin-right: 2px; }
+  .chip { font-size: 12.5px; border: 1px solid var(--hair); border-radius: 999px;
+    padding: 2px 10px; font-variant-numeric: tabular-nums; }
+  .chip b { margin-left: 6px; font-weight: 700; }
+  .chip.up { color: var(--up); }
+  .chip.down { color: var(--down); }
+
+  /* 新股表格 */
+  .table-wrap { overflow-x: auto; }
+  table.ipo { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.ipo th, table.ipo td { text-align: left; padding: 8px 10px;
+    border-bottom: 1px solid var(--hair); vertical-align: top; }
+  table.ipo th { font-size: 12px; color: var(--muted); font-weight: 700;
+    border-bottom: 1.5px solid var(--rule); white-space: nowrap; }
+  .ipo-name { font-weight: 650; }
+  .ipo-note { color: var(--muted); }
+
+  /* 事件卡 */
+  .event { padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .event:last-child { border-bottom: none; }
+  .ev-title { font-family: var(--title); margin: 0 0 7px; font-size: 17px;
+    font-weight: 700; line-height: 1.4; }
+  .ev-title a { color: var(--text); text-decoration: none; }
+  .ev-title a:hover { color: var(--link); text-decoration: underline; }
+  .ev-sum { margin: 0 0 8px; font-size: 14.5px; }
+  .ev-why { margin: 6px 0; font-size: 13.5px; color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; }
+  .ev-foot { margin-top: 9px; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日财经简报</div>
+    <h1>财经日报</h1>
+    <div class="date">2026-09-11</div>
+    <div class="gen">生成于 2026-09-11 盘中/早间版（多源）</div>
+  </header>
+  <p class="editor-note">9/11 A股大跌：盘中三大指数同步跌超 1%、下跌个股超 5000 只，风险偏好骤降、成交仍偏弱。昨夜美股 9/10 半导体板块全线下跌，但甲骨文盘后交出强劲财报、股价大涨约 4%（上调全年指引，缓解了市场对其 AI 投入过高、回报存疑的担忧）。宏观压力上升——财联社称美联储下周加息概率升破 70%（『三重压力』来袭），CPI 等关键数据在即。新股方面，上海 AI 芯片企业燧原科技登陆科创板、中一签浮盈约 13 万元；工信部印发《『人工智能+软件』专项行动实施方案》。折叠屏『三国杀』苹果、华为、小米同周亮剑。来源：财联社、Investing、东方财富。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">—</div><div class="q-chg down">盘中跌超1%</div><div class="q-sub">9/11盘中·超5000股下跌</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">深证成指</span></div><div class="q-val">—</div><div class="q-chg down">盘中跌超1%</div><div class="q-sub">9/11盘中</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">创业板指</span></div><div class="q-val">—</div><div class="q-chg down">盘中跌超1%</div><div class="q-sub">9/11盘中·单边走低</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">费城半导体</span></div><div class="q-val">—</div><div class="q-chg down">全线下跌</div><div class="q-sub">9/10收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">甲骨文</span></div><div class="q-val">—</div><div class="q-chg up">盘后+4%</div><div class="q-sub">财报强劲·上调全年指引</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">A股(9/11盘中)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip flat">—</span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">两市普跌<b>超5000股下跌</b></span><span class="chip down">三大指数<b>同步跌超1%</b></span></div></div><div class="sector-row"><div class="sector-mkt">美股(9/10)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">甲骨文<b>盘后+4%·AI云高增</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">半导体<b>全线下跌</b></span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><div class="table-wrap"><table class="ipo"><thead><tr><th>名称</th><th>市场</th><th>关键日期</th><th>发行价</th><th>备注</th></tr></thead><tbody><tr><td class="ipo-name">燧原科技</td><td>A股(科创板)</td><td>9/11上市</td><td>中一签约赚13万</td><td class="ipo-note">上海AI芯片企业·上市首日</td></tr></tbody></table></div></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">国际原油</span></div><div class="q-val">高位</div><div class="q-chg flat">中东扰动</div><div class="q-sub">地缘风险</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">美联储政策预期</span></div><div class="q-val">下周FOMC</div><div class="q-chg up">加息概率升破70%</div><div class="q-sub">财联社·再通胀+强就业</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">A股盘中大跌，三大指数同步跌超 1%、超 5000 股下跌</a></h3><p class="ev-sum">9/11 A股指数单边走低，三大指数盘中同步跌超 1%，全市场下跌个股超 5000 只，市场呈普跌状态；成交仍偏弱、缺乏增量资金。（盘中数据，以收盘为准）</p><p class="ev-why"><span class="lbl">影响/解读</span>在成交连降、外围加息预期升温背景下，A股风险偏好骤降、普跌调整；短线宜降低仓位、规避高位题材，等待量能与政策信号。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://cn.investing.com/news/stock-market-news/article-3561801" target="_blank" rel="noopener">昨夜美股半导体全线下跌，但甲骨文盘后财报强劲大涨约 4%</a></h3><p class="ev-sum">9/10 美股半导体板块全线下跌；甲骨文盘后公布好于预期的季度业绩并上调全年指引、股价大涨约 4%，有效缓解了投资者对其 AI 投入过高、回报存疑的顾虑。</p><p class="ev-why"><span class="lbl">影响/解读</span>甲骨文强劲财报为『AI 云需求真实、可兑现营收』提供背书，利好云计算/算力主线；但半导体整体回调显示资金在高位分化、精挑业绩兑现标的。</p><div class="ev-foot"><a class="src" href="https://cn.investing.com/news/stock-market-news/article-3561801" target="_blank" rel="noopener">Investing/财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">财联社：美联储下周加息概率升破 70%，『三重压力』来袭</a></h3><p class="ev-sum">财联社报道，在再通胀（PPI 转正）、强非农与地缘扰动等『三重压力』下，市场对美联储下周 FOMC 加息的押注概率升破 70%。</p><p class="ev-why"><span class="lbl">影响/解读</span>加息预期升温压制全球风险资产估值、抬升美元与美债收益率，是近期 A/港/美股承压的重要外部变量；需紧盯下周 CPI 与 FOMC。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">上海 AI 芯片企业燧原科技登陆科创板，中一签浮盈约 13 万元</a></h3><p class="ev-sum">燧原科技（上海 AI 芯片企业）9/11 登陆科创板，上市首日大涨、中一签浮盈约 13 万元。</p><p class="ev-why"><span class="lbl">影响/解读</span>国产 AI 芯片龙头上市，提振『国产算力+科创板硬科技』情绪，利好半导体设计与国产替代链；但打新高收益也反映题材热度，需防上市后波动。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">工信部印发《『人工智能+软件』专项行动实施方案》</a></h3><p class="ev-sum">工信部印发《『人工智能+软件』专项行动实施方案》，推动 AI 与软件产业深度融合。</p><p class="ev-why"><span class="lbl">影响/解读</span>政策自上而下推动『AI+软件』落地，利好国产软件、AI 应用与信创方向的中长期需求与估值。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社/工信部 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">折叠屏『三国杀』：苹果、华为、小米同周亮剑</a></h3><p class="ev-sum">苹果发布首款折叠屏 iPhone 后，华为、小米也在同周推出折叠屏新品，折叠屏竞争进入白热化。</p><p class="ev-why"><span class="lbl">影响/解读</span>折叠屏放量利好铰链、UTG 玻璃、柔性面板等供应链；三强同台也将加速降价与渗透率提升。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section>
+  <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
 </div>
 </body>
 </html></script>
