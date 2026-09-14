@@ -86,7 +86,7 @@
 <div class="app">
   <header class="top">
     <div class="brand">📊 每日日报<span class="dot">看板</span></div>
-    <div class="tabs" role="tablist"><button class="tab" data-tab="ai" role="tab">AI 日报<span class="cnt">40</span></button><button class="tab" data-tab="fin" role="tab">财经日报<span class="cnt">40</span></button></div>
+    <div class="tabs" role="tablist"><button class="tab" data-tab="ai" role="tab">AI 日报<span class="cnt">43</span></button><button class="tab" data-tab="fin" role="tab">财经日报<span class="cnt">43</span></button></div>
     <div class="meta" id="meta"></div>
   </header>
   <div class="body">
@@ -95,6 +95,291 @@
   </div>
 </div>
 
+<script type="text/html" class="rpt" data-tab="ai" data-date="2026-09-14"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 行业新闻日报 · 2026-09-14</title>
+<style>
+  /* 白背景 + 虎嗅式中文黑体 + 英文衬线(FT感) + 克制点缀 */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C7A4C; --link: #2266B3;
+    /* 标题: 英文优先衬线(Georgia)好看, 中文回退黑体(虎嗅式) */
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #6FC291; --link: #7FB0E6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 690px; margin: 0 auto; padding: 0 24px 72px; }
+
+  /* 报头 */
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 20px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 10px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 580px; margin: 22px auto 4px; line-height: 1.75; }
+
+  /* 栏目 */
+  .domain { margin-top: 44px; }
+  .dom-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 4px; }
+  .dom-head .emoji { font-size: 17px; }
+  .dom-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .dom-head .count { margin-left: auto; font-size: 12px; color: var(--faint);
+    font-variant-numeric: tabular-nums; }
+  .top .dom-head { border-bottom-color: var(--accent); }
+  .top .dom-head h2 { color: var(--accent); }
+
+  /* 单条 */
+  .story { padding: 19px 0; border-bottom: 1px solid var(--hair); }
+  .story:last-child { border-bottom: none; }
+  .story-title { font-family: var(--title); margin: 0 0 8px;
+    font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .story-title a { color: var(--text); text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0 1.5px; background-repeat: no-repeat;
+    background-position: 0 100%; transition: background-size .2s; }
+  .story-title a:hover { background-size: 100% 1.5px; color: var(--accent); }
+  .summary { margin: 0 0 9px; font-size: 15px; color: var(--text); }
+  .why, .inds { margin: 6px 0; font-size: 13.5px; color: var(--muted); }
+  .why { color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; vertical-align: 1px; }
+  .foot { display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-top: 11px; flex-wrap: wrap; }
+  .att { display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; color: var(--muted); }
+  .att .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 16px 0; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日 AI 行业简报</div>
+    <h1>AI 行业新闻日报</h1>
+    <div class="date">2026-09-14</div>
+    <div class="gen">生成于 2026-09-14（多源）</div>
+  </header>
+  <p class="editor-note">9/14 承接周末的『AI 放缓』大讨论：在 Amodei 等掌门齐呼放慢脚步后，市场开始算账——分析师认为『AI 领头羊放慢节奏』对芯片股是短期情绪承压、长期影响不大，特朗普也出面淡化担忧。产业侧，AI 光互连主线延续：CPO（共封装光学）概念震荡回升、天通股份涨停，呼应周末『1.6T 光模块 C 位、6.4T NPO 在路上』。此外 Anthropic 冲刺纳斯达克上市继续发酵。来源：财联社、AI Weekly。</p>
+  <section class="domain top"><div class="dom-head"><span class="emoji">🔥</span><h2>今日重大新闻</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">『AI 放缓』影响几何？分析师：芯片股短期承压、长期影响不大</a></h3><p class="summary">在 Anthropic 的 Dario Amodei 等 AI 大佬齐声呼吁放缓能力迭代后，市场评估其影响：分析师普遍认为对 AI 芯片股是短期情绪层面的承压，长期需求与资本开支趋势不变；特朗普也出面淡化了相关担忧。</p><p class="why"><span class="lbl">为什么重要</span>『放缓』更多是安全治理层面的表态，而非需求见顶；对以算力/芯片为核心的 AI 硬件链，短期波动不改中期逻辑，回调反而可能是布局窗口——但要以业绩与订单验证。</p><p class="inds"><span class="lbl">影响行业</span>AI 芯片 · 算力 · AI 安全</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">CPO 概念回升、天通股份涨停，AI 光互连主线延续</a></h3><p class="summary">9/14 A股 CPO（共封装光学）概念震荡回升、天通股份涨停，呼应周末『1.6T 光模块站上 C 位、6.4T NPO 也要来了』的产业信号。</p><p class="why"><span class="lbl">为什么重要</span>AI 大集群的光互连是确定性瓶颈与受益方向，CPO/光模块从 1.6T 向 6.4T 演进，持续利好光芯片、光模块与近封装光学产业链。</p><p class="inds"><span class="lbl">影响行业</span>光模块/CPO · AI 数据中心 · 算力硬件</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section>
+  <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">Anthropic 冲刺纳斯达克上市继续发酵</a></h3><p class="summary">在 Q2 营收暴涨近 15 倍后，Anthropic 敲定纳斯达克上市的消息继续发酵，成为 AI 一级/二级市场关注焦点。</p><p class="why"><span class="lbl">为什么重要</span>若成功上市，将为 AI 原生公司提供估值锚与融资范式，并带动 AI 算力/应用产业链的情绪与资金关注。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础模型 · IPO · 商业投资</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">AI 芯片股短期承压，但资本开支长期趋势未变（详见今日重大新闻）</a></h3><p class="summary">分析师认为『AI 放缓』对芯片股是短期情绪承压、长期影响不大。</p><p class="why"><span class="lbl">为什么重要</span>需求与资本开支的中期逻辑未变，回调或是结构性布局窗口。</p><p class="inds"><span class="lbl">影响行业</span>AI 芯片 · 算力</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🔭</span><h2>AI 探索新领域</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">CPO/光互连升级延续：1.6T 光模块 → 6.4T NPO（详见今日重大新闻）</a></h3><p class="summary">CPO 概念回升、天通股份涨停，光互连从 1.6T 光模块向 6.4T 近封装光学演进。</p><p class="why"><span class="lbl">为什么重要</span>光互连是 AI 大集群关键瓶颈，升级利好光模块/光芯片/CPO-NPO 链。</p><p class="inds"><span class="lbl">影响行业</span>光模块/CPO · AI 数据中心</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section>
+  <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="ai" data-date="2026-09-13"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 行业新闻日报 · 2026-09-13</title>
+<style>
+  /* 白背景 + 虎嗅式中文黑体 + 英文衬线(FT感) + 克制点缀 */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C7A4C; --link: #2266B3;
+    /* 标题: 英文优先衬线(Georgia)好看, 中文回退黑体(虎嗅式) */
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #6FC291; --link: #7FB0E6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 690px; margin: 0 auto; padding: 0 24px 72px; }
+
+  /* 报头 */
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 20px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 10px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 580px; margin: 22px auto 4px; line-height: 1.75; }
+
+  /* 栏目 */
+  .domain { margin-top: 44px; }
+  .dom-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 4px; }
+  .dom-head .emoji { font-size: 17px; }
+  .dom-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .dom-head .count { margin-left: auto; font-size: 12px; color: var(--faint);
+    font-variant-numeric: tabular-nums; }
+  .top .dom-head { border-bottom-color: var(--accent); }
+  .top .dom-head h2 { color: var(--accent); }
+
+  /* 单条 */
+  .story { padding: 19px 0; border-bottom: 1px solid var(--hair); }
+  .story:last-child { border-bottom: none; }
+  .story-title { font-family: var(--title); margin: 0 0 8px;
+    font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .story-title a { color: var(--text); text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0 1.5px; background-repeat: no-repeat;
+    background-position: 0 100%; transition: background-size .2s; }
+  .story-title a:hover { background-size: 100% 1.5px; color: var(--accent); }
+  .summary { margin: 0 0 9px; font-size: 15px; color: var(--text); }
+  .why, .inds { margin: 6px 0; font-size: 13.5px; color: var(--muted); }
+  .why { color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; vertical-align: 1px; }
+  .foot { display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-top: 11px; flex-wrap: wrap; }
+  .att { display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; color: var(--muted); }
+  .att .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 16px 0; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日 AI 行业简报</div>
+    <h1>AI 行业新闻日报</h1>
+    <div class="date">2026-09-13</div>
+    <div class="gen">生成于 2026-09-13（周日汇总·多源）</div>
+  </header>
+  <p class="editor-note">周日 AI 看点偏『行业秩序与算力互连』：一是治理——Anthropic、OpenAI 与 Google DeepMind 自 7 月起低调召开工作组会议，试图建立一个由行业主导的 AI 标准机构，由 Dario Amodei 推动、Sam Altman 支持，作为『不等政府出手』的替代方案；二是硬件——1.6T 光模块站上 C 位、6.4T NPO（近封装光学）也在路上，AI 数据中心的光互连持续升级。来源：AI Weekly、财联社。</p>
+  <section class="domain top"><div class="dom-head"><span class="emoji">🔥</span><h2>今日重大新闻</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">Anthropic、OpenAI、Google 密谋『行业主导的 AI 标准机构』</a></h3><p class="summary">据报道，Anthropic、OpenAI 与 Google DeepMind 自 7 月起已多次召开工作组会议，意在成立一个由行业主导的 AI 标准机构；Dario Amodei 是主要推动者，Sam Altman 表示支持，将其作为『不等政府监管』的替代路径。</p><p class="why"><span class="lbl">为什么重要</span>头部实验室试图掌握 AI 标准的话语权，可能影响未来安全基准、评测与合规的定义方式；但『既当运动员又当裁判』也会引发监管与公众对独立性的质疑。</p><p class="inds"><span class="lbl">影响行业</span>AI 政策监管 · 行业标准 · 基础模型</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">AI Weekly ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">1.6T 光模块站上 C 位，6.4T NPO 也要来了</a></h3><p class="summary">AI 数据中心光互连持续升级：1.6T 光模块成为当前主角，更高速的 6.4T NPO（近封装光学 Near-Package Optics）也在路上。</p><p class="why"><span class="lbl">为什么重要</span>AI 集群规模越大，节点间的光互连带宽越是瓶颈；1.6T→6.4T 的升级路线直接利好光模块、光芯片与 CPO/NPO 产业链，是 AI 算力的确定性受益方向。</p><p class="inds"><span class="lbl">影响行业</span>光模块/光互连 · AI 数据中心 · 算力硬件</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section>
+  <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">全球机床行业迎新一轮上行周期，海外巨头订单创历史新高</a></h3><p class="summary">多家海外机床巨头订单创历史新高，全球机床行业进入新一轮上行周期。</p><p class="why"><span class="lbl">为什么重要</span>机床是高端制造与半导体/新能源设备的『工业母机』，订单创新高反映全球制造业资本开支回暖，利好数控机床、核心零部件与国产替代。</p><p class="inds"><span class="lbl">影响行业</span>高端制造 · 工业母机 · 半导体设备</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">行业主导 AI 标准机构酝酿中（详见今日重大新闻）</a></h3><p class="summary">Anthropic、OpenAI、Google DeepMind 自 7 月起密谋建立行业主导的 AI 标准机构。</p><p class="why"><span class="lbl">为什么重要</span>头部实验室争夺 AI 标准话语权，或引发独立性质疑。</p><p class="inds"><span class="lbl">影响行业</span>AI 政策监管 · 行业标准</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">AI Weekly ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🔭</span><h2>AI 探索新领域</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">光互连升级：1.6T 光模块 + 6.4T NPO（详见今日重大新闻）</a></h3><p class="summary">1.6T 光模块成主角、6.4T 近封装光学（NPO）在路上，AI 数据中心光互连持续升级。</p><p class="why"><span class="lbl">为什么重要</span>光互连是 AI 大集群的关键瓶颈，升级路线利好光模块/光芯片/CPO-NPO 链。</p><p class="inds"><span class="lbl">影响行业</span>光模块 · AI 数据中心 · 算力硬件</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section>
+  <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="ai" data-date="2026-09-12"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 行业新闻日报 · 2026-09-12</title>
+<style>
+  /* 白背景 + 虎嗅式中文黑体 + 英文衬线(FT感) + 克制点缀 */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C7A4C; --link: #2266B3;
+    /* 标题: 英文优先衬线(Georgia)好看, 中文回退黑体(虎嗅式) */
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #6FC291; --link: #7FB0E6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 690px; margin: 0 auto; padding: 0 24px 72px; }
+
+  /* 报头 */
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 20px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 10px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 580px; margin: 22px auto 4px; line-height: 1.75; }
+
+  /* 栏目 */
+  .domain { margin-top: 44px; }
+  .dom-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 4px; }
+  .dom-head .emoji { font-size: 17px; }
+  .dom-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .dom-head .count { margin-left: auto; font-size: 12px; color: var(--faint);
+    font-variant-numeric: tabular-nums; }
+  .top .dom-head { border-bottom-color: var(--accent); }
+  .top .dom-head h2 { color: var(--accent); }
+
+  /* 单条 */
+  .story { padding: 19px 0; border-bottom: 1px solid var(--hair); }
+  .story:last-child { border-bottom: none; }
+  .story-title { font-family: var(--title); margin: 0 0 8px;
+    font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .story-title a { color: var(--text); text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0 1.5px; background-repeat: no-repeat;
+    background-position: 0 100%; transition: background-size .2s; }
+  .story-title a:hover { background-size: 100% 1.5px; color: var(--accent); }
+  .summary { margin: 0 0 9px; font-size: 15px; color: var(--text); }
+  .why, .inds { margin: 6px 0; font-size: 13.5px; color: var(--muted); }
+  .why { color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; vertical-align: 1px; }
+  .foot { display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-top: 11px; flex-wrap: wrap; }
+  .att { display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; color: var(--muted); }
+  .att .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 16px 0; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日 AI 行业简报</div>
+    <h1>AI 行业新闻日报</h1>
+    <div class="date">2026-09-12</div>
+    <div class="gen">生成于 2026-09-12（周末汇总·多源）</div>
+  </header>
+  <p class="editor-note">周六 AI 圈两件大事：一是商业化——Anthropic 二季度营收暴涨近 15 倍、并敲定纳斯达克上市，把『模型公司能不能赚钱』的疑问用数字回答了；二是安全刹车——Anthropic CEO Dario Amodei 罕见呼吁 AI 公司放缓能力迭代，警告未来 6—12 个月自主软件 Agent 群可能『接管整个互联网』、造成数十亿美元损失，马斯克、奥尔特曼纷纷响应；OpenAI 则表态年内不会 IPO、优先 AI 安全。基准侧，Anthropic 的 Fable 5.1 登顶 Real-SWE 编程榜。来源：财联社、AI Weekly。</p>
+  <section class="domain top"><div class="dom-head"><span class="emoji">🔥</span><h2>今日重大新闻</h2><span class="count">3</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">Anthropic Q2 营收暴涨近 15 倍，敲定纳斯达克上市</a></h3><p class="summary">Anthropic 二季度营收同比暴涨近 15 倍，并已敲定登陆纳斯达克上市。</p><p class="why"><span class="lbl">为什么重要</span>头部模型公司用『营收 15 倍』证明了 AI 商业化的爆发力，也为一级市场的高估值提供业绩支撑；若成功 IPO，将是 AI 原生公司登陆资本市场的标志性事件。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础模型 · 商业投资 · IPO</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">Amodei 呼吁放缓 AI 迭代：警告自主 Agent 群 6—12 月内或『接管互联网』</a></h3><p class="summary">Anthropic CEO Dario Amodei 罕见呼吁 AI 公司放缓能力进展，警告成群的自主软件 Agent 可能在未来 6—12 个月内接管整个互联网、造成数十亿美元损失；马斯克、OpenAI 的奥尔特曼等纷纷响应这一『放缓』呼吁。</p><p class="why"><span class="lbl">为什么重要</span>在各家疯狂发新模型（Astra、Fable 5.1、Gemini 3.8）之际，头部掌门人集体喊『慢一点』，说明 AI 安全/失控风险已成为行业共识级担忧，可能影响发布节奏与监管走向。</p><p class="inds"><span class="lbl">影响行业</span>AI 安全 · 基础模型 · AI 政策监管</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">OpenAI 表态年内不会 IPO，优先关注 AI 安全</a></h3><p class="summary">OpenAI 表示年内不会 IPO，将优先关注 AI 安全等事项。</p><p class="why"><span class="lbl">为什么重要</span>与 Anthropic 冲刺上市形成对照，OpenAI 选择不急于资本化、把安全放在前面，折射两家在扩张节奏与治理理念上的路线差异。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础模型 · AI 安全 · 资本市场</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section>
+  <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">Anthropic Fable 5.1 登顶 Real-SWE 编程榜（38.8%）</a></h3><p class="summary">在 Real-SWE 基准上，Anthropic 的 Fable 5.1 以 38.8% 的解决率登顶，领先 OpenAI GPT-6 Astra（33.8%）与 Google Gemini 3.8 Flash（31.2%）；不过 Gemini 3.8 Flash 以每次约 $2.50 的成本取得有竞争力的结果，低于 Fable 的约 $6.96。</p><p class="why"><span class="lbl">为什么重要</span>编程是当前大模型商业化最硬的场景之一，Fable 5.1 登顶巩固 Anthropic 在 coding/agent 的优势；但 Gemini 的『性价比』路线提示竞争已从能力延伸到单位成本。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础模型 · AI 编程 · 模型评测</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">AI Weekly ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">Anthropic 营收 15 倍 + 敲定纳斯达克上市（详见今日重大新闻）</a></h3><p class="summary">Anthropic Q2 营收暴涨近 15 倍并敲定纳斯达克上市。</p><p class="why"><span class="lbl">为什么重要</span>用业绩证明 AI 商业化爆发力，为高估值提供支撑。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础模型 · IPO · 商业投资</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">头部实验室掌门齐呼『放缓』，AI 安全成行业共识级担忧（详见今日重大新闻）</a></h3><p class="summary">Amodei 呼吁放缓 AI 迭代、警告自主 Agent 群或接管互联网，马斯克、奥尔特曼响应。</p><p class="why"><span class="lbl">为什么重要</span>可能影响新模型的发布节奏与监管走向。</p><p class="inds"><span class="lbl">影响行业</span>AI 安全 · AI 政策监管</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🔭</span><h2>AI 探索新领域</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section>
+  <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
 <script type="text/html" class="rpt" data-tab="ai" data-date="2026-09-11"><!doctype html>
 <html lang="zh-CN">
 <head>
@@ -3895,6 +4180,357 @@
 </div>
 </body>
 </html></script>
+<script type="text/html" class="rpt" data-tab="fin" data-date="2026-09-14"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>财经日报 · 2026-09-14</title>
+<style>
+  /* 白底 + 虎嗅式中文黑体 + 英文衬线 + 红涨绿跌（中国习惯） */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C4E7A; --link: #2266B3;
+    --up: #C0392B; --down: #1A7A4D;
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #7FB0E6; --link: #7FB0E6;
+      --up: #F0685A; --down: #4FBF86;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 18px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 8px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 620px; margin: 20px auto 4px; line-height: 1.75; }
+
+  .sec { margin-top: 40px; }
+  .sec-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 14px; }
+  .sec-head .emoji { font-size: 17px; }
+  .sec-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 6px 0 2px; }
+
+  /* 行情磁贴 */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; }
+  .tile { border: 1px solid var(--hair); border-radius: 10px; padding: 11px 13px; }
+  .q-head { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+  .q-tag { font-size: 10.5px; color: var(--muted); border: 1px solid var(--hair);
+    border-radius: 5px; padding: 0 5px; }
+  .q-name { font-size: 13px; color: var(--muted); }
+  .q-val { font-family: var(--title); font-size: 20px; font-weight: 700;
+    font-variant-numeric: tabular-nums; }
+  .q-chg { font-size: 13.5px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .q-sub { font-size: 11.5px; color: var(--faint); margin-top: 2px; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .flat { color: var(--muted); }
+
+  /* 板块 */
+  .sector-row { padding: 12px 0; border-bottom: 1px solid var(--hair); }
+  .sector-row:last-child { border-bottom: none; }
+  .sector-mkt { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .sector-side { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0; }
+  .side-label { font-size: 11.5px; font-weight: 700; margin-right: 2px; }
+  .chip { font-size: 12.5px; border: 1px solid var(--hair); border-radius: 999px;
+    padding: 2px 10px; font-variant-numeric: tabular-nums; }
+  .chip b { margin-left: 6px; font-weight: 700; }
+  .chip.up { color: var(--up); }
+  .chip.down { color: var(--down); }
+
+  /* 新股表格 */
+  .table-wrap { overflow-x: auto; }
+  table.ipo { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.ipo th, table.ipo td { text-align: left; padding: 8px 10px;
+    border-bottom: 1px solid var(--hair); vertical-align: top; }
+  table.ipo th { font-size: 12px; color: var(--muted); font-weight: 700;
+    border-bottom: 1.5px solid var(--rule); white-space: nowrap; }
+  .ipo-name { font-weight: 650; }
+  .ipo-note { color: var(--muted); }
+
+  /* 事件卡 */
+  .event { padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .event:last-child { border-bottom: none; }
+  .ev-title { font-family: var(--title); margin: 0 0 7px; font-size: 17px;
+    font-weight: 700; line-height: 1.4; }
+  .ev-title a { color: var(--text); text-decoration: none; }
+  .ev-title a:hover { color: var(--link); text-decoration: underline; }
+  .ev-sum { margin: 0 0 8px; font-size: 14.5px; }
+  .ev-why { margin: 6px 0; font-size: 13.5px; color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; }
+  .ev-foot { margin-top: 9px; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日财经简报</div>
+    <h1>财经日报</h1>
+    <div class="date">2026-09-14</div>
+    <div class="gen">生成于 2026-09-14 早间/盘中版（多源）</div>
+  </header>
+  <p class="editor-note">9/14 周一核心是美联储：华尔街『彻底信了』——本周 FOMC 加息概率逼近 90%，特朗普则施压称美国利率应『全球最低』。地缘方面，伊朗与海湾国家的重磅会议推迟、霍尔木兹海峡新通道事项受影响，国际油价大涨约 3%。A股早盘 CPO（共封装光学）概念震荡回升、天通股份涨停，港股科技 100 指数季度调整今日生效。最新收盘参考 9/11：A股上证 3888.11（-1.18%）、美股标普 7656.98（+0.86%）。来源：财联社。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3888.11</div><div class="q-chg down">-1.18%</div><div class="q-sub">9/11收盘·今日盘中进行中</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">CPO/光模块</span></div><div class="q-val">—</div><div class="q-chg up">震荡回升</div><div class="q-sub">9/14早盘·天通股份涨停</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">标普500</span></div><div class="q-val">7656.98</div><div class="q-chg up">+0.86%</div><div class="q-sub">9/11收盘·昨为周末</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">A股(9/14早盘)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">CPO/光模块<b>天通股份涨停</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">AI芯片股<b>受&#x27;AI放缓&#x27;情绪短期承压</b></span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">国际原油</span></div><div class="q-val">大涨约3%</div><div class="q-chg up">+3%</div><div class="q-sub">霍尔木兹海峡新通道受影响</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">美联储FOMC(本周)</span></div><div class="q-val">加息概率逼近90%</div><div class="q-chg up">华尔街&#x27;彻底信了&#x27;</div><div class="q-sub">特朗普施压：利率应全球最低</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">华尔街『彻底信了』：美联储本周加息概率逼近 90%</a></h3><p class="ev-sum">市场对美联储本周 FOMC 加息的押注概率逼近 90%，华尔街几乎完全定价加息；与此同时特朗普施压，称美国利率应当是『全球最低』。</p><p class="ev-why"><span class="lbl">影响/解读</span>加息几成共识，若兑现将抬升美元/美债收益率、压制全球风险资产与成长股；但政治施压与经济数据的拉扯也加大了政策路径的不确定性。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">霍尔木兹海峡新通道受影响，国际油价大涨约 3%</a></h3><p class="ev-sum">伊朗与海湾国家的重磅会议推迟，霍尔木兹海峡新通道相关事项受影响，国际油价大涨约 3%。</p><p class="ev-why"><span class="lbl">影响/解读</span>地缘扰动推升能源价格，利好油气/资源板块，但会向下游传导通胀压力、与加息预期共振压制估值。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">A股 CPO 概念震荡回升，天通股份涨停</a></h3><p class="ev-sum">9/14 早盘 A股 CPO（共封装光学）概念震荡回升，天通股份涨停，光模块/光互连方向受周末『1.6T 光模块 C 位、6.4T NPO』消息提振。</p><p class="ev-why"><span class="lbl">影响/解读</span>AI 光互连升级是算力确定性受益方向，CPO/光模块题材延续；但需区分业绩兑现与概念炒作，防高位波动。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">AI 领头羊放慢节奏影响几何？分析师：芯片股短期承压、长期影响不大</a></h3><p class="ev-sum">针对 Anthropic 的 Amodei 等 AI 大佬齐呼『放缓』，分析师认为对芯片股是短期情绪承压、长期影响不大，特朗普也淡化了相关担忧。</p><p class="ev-why"><span class="lbl">影响/解读</span>『放缓』叙事短期压制 AI 芯片/算力股情绪，但需求与资本开支的长期趋势未变；回调或提供结构性布局窗口，仍看业绩与订单。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">港股科技 100 指数季度调整今日生效</a></h3><p class="ev-sum">港股科技 100 指数季度成分调整于 9 月 14 日生效。</p><p class="ev-why"><span class="lbl">影响/解读</span>被动资金再平衡，纳入/剔除标的短期或有交易性波动。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section>
+  <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="fin" data-date="2026-09-13"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>财经日报 · 2026-09-13</title>
+<style>
+  /* 白底 + 虎嗅式中文黑体 + 英文衬线 + 红涨绿跌（中国习惯） */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C4E7A; --link: #2266B3;
+    --up: #C0392B; --down: #1A7A4D;
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #7FB0E6; --link: #7FB0E6;
+      --up: #F0685A; --down: #4FBF86;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 18px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 8px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 620px; margin: 20px auto 4px; line-height: 1.75; }
+
+  .sec { margin-top: 40px; }
+  .sec-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 14px; }
+  .sec-head .emoji { font-size: 17px; }
+  .sec-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 6px 0 2px; }
+
+  /* 行情磁贴 */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; }
+  .tile { border: 1px solid var(--hair); border-radius: 10px; padding: 11px 13px; }
+  .q-head { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+  .q-tag { font-size: 10.5px; color: var(--muted); border: 1px solid var(--hair);
+    border-radius: 5px; padding: 0 5px; }
+  .q-name { font-size: 13px; color: var(--muted); }
+  .q-val { font-family: var(--title); font-size: 20px; font-weight: 700;
+    font-variant-numeric: tabular-nums; }
+  .q-chg { font-size: 13.5px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .q-sub { font-size: 11.5px; color: var(--faint); margin-top: 2px; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .flat { color: var(--muted); }
+
+  /* 板块 */
+  .sector-row { padding: 12px 0; border-bottom: 1px solid var(--hair); }
+  .sector-row:last-child { border-bottom: none; }
+  .sector-mkt { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .sector-side { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0; }
+  .side-label { font-size: 11.5px; font-weight: 700; margin-right: 2px; }
+  .chip { font-size: 12.5px; border: 1px solid var(--hair); border-radius: 999px;
+    padding: 2px 10px; font-variant-numeric: tabular-nums; }
+  .chip b { margin-left: 6px; font-weight: 700; }
+  .chip.up { color: var(--up); }
+  .chip.down { color: var(--down); }
+
+  /* 新股表格 */
+  .table-wrap { overflow-x: auto; }
+  table.ipo { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.ipo th, table.ipo td { text-align: left; padding: 8px 10px;
+    border-bottom: 1px solid var(--hair); vertical-align: top; }
+  table.ipo th { font-size: 12px; color: var(--muted); font-weight: 700;
+    border-bottom: 1.5px solid var(--rule); white-space: nowrap; }
+  .ipo-name { font-weight: 650; }
+  .ipo-note { color: var(--muted); }
+
+  /* 事件卡 */
+  .event { padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .event:last-child { border-bottom: none; }
+  .ev-title { font-family: var(--title); margin: 0 0 7px; font-size: 17px;
+    font-weight: 700; line-height: 1.4; }
+  .ev-title a { color: var(--text); text-decoration: none; }
+  .ev-title a:hover { color: var(--link); text-decoration: underline; }
+  .ev-sum { margin: 0 0 8px; font-size: 14.5px; }
+  .ev-why { margin: 6px 0; font-size: 13.5px; color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; }
+  .ev-foot { margin-top: 9px; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日财经简报</div>
+    <h1>财经日报</h1>
+    <div class="date">2026-09-13</div>
+    <div class="gen">生成于 2026-09-13（周日·多源）</div>
+  </header>
+  <p class="editor-note">周日市场休市，行情沿用 9/11 收盘（A股上证 3888.11、美股标普 7656.98）。周末消息面偏产业与政策：全球机床行业迎新一轮上行周期、海外巨头订单创历史新高；AI 光互连升级（1.6T 光模块站上 C 位、6.4T NPO 在路上）；港股科技 100 指数季度调整将于 9/14 生效。展望本周：市场高度聚焦美联储 FOMC——加息预期已逼近 90%，是 A/港/美股的核心变量。来源：财联社。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3888.11</div><div class="q-chg down">-1.18%</div><div class="q-sub">9/11收盘（周末休市）</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">标普500</span></div><div class="q-val">7656.98</div><div class="q-chg up">+0.86%</div><div class="q-sub">9/11收盘（周末休市）</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">纳斯达克</span></div><div class="q-val">26333.04</div><div class="q-chg up">+0.96%</div><div class="q-sub">9/11收盘</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">主题(周末)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">光模块/光互连<b>1.6T C位·6.4T NPO</b></span><span class="chip up">高端机床<b>订单创新高</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip flat">—</span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">美联储FOMC(本周)</span></div><div class="q-val">加息预期</div><div class="q-chg up">概率逼近90%</div><div class="q-sub">核心变量</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">全球机床行业迎新一轮上行周期，海外订单创历史新高</a></h3><p class="ev-sum">多家海外机床巨头订单创历史新高，全球机床行业进入新一轮上行周期。</p><p class="ev-why"><span class="lbl">影响/解读</span>反映全球制造业资本开支回暖，利好数控机床、核心零部件与国产替代链；是顺周期+高端制造的中期线索。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">AI 光互连升级：1.6T 光模块站上 C 位、6.4T NPO 在路上</a></h3><p class="ev-sum">AI 数据中心光互连持续升级，1.6T 光模块成为当前主角，6.4T 近封装光学（NPO）也在路上。</p><p class="ev-why"><span class="lbl">影响/解读</span>光互连是 AI 大集群的关键瓶颈，升级直接利好光模块、光芯片与 CPO/NPO 产业链。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">本周聚焦美联储 FOMC，加息预期逼近 90%</a></h3><p class="ev-sum">市场高度聚焦本周美联储 FOMC 会议，加息预期已逼近 90%，将主导全球风险资产走向。</p><p class="ev-why"><span class="lbl">影响/解读</span>若如期加息，将进一步抬升美元与利率、压制成长股与新兴市场；不加息或鸽派表态则可能带来反弹。仓位与久期需围绕会议结果调整。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section>
+  <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="fin" data-date="2026-09-12"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>财经日报 · 2026-09-12</title>
+<style>
+  /* 白底 + 虎嗅式中文黑体 + 英文衬线 + 红涨绿跌（中国习惯） */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C4E7A; --link: #2266B3;
+    --up: #C0392B; --down: #1A7A4D;
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #7FB0E6; --link: #7FB0E6;
+      --up: #F0685A; --down: #4FBF86;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 18px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 8px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 620px; margin: 20px auto 4px; line-height: 1.75; }
+
+  .sec { margin-top: 40px; }
+  .sec-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 14px; }
+  .sec-head .emoji { font-size: 17px; }
+  .sec-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 6px 0 2px; }
+
+  /* 行情磁贴 */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; }
+  .tile { border: 1px solid var(--hair); border-radius: 10px; padding: 11px 13px; }
+  .q-head { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+  .q-tag { font-size: 10.5px; color: var(--muted); border: 1px solid var(--hair);
+    border-radius: 5px; padding: 0 5px; }
+  .q-name { font-size: 13px; color: var(--muted); }
+  .q-val { font-family: var(--title); font-size: 20px; font-weight: 700;
+    font-variant-numeric: tabular-nums; }
+  .q-chg { font-size: 13.5px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .q-sub { font-size: 11.5px; color: var(--faint); margin-top: 2px; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .flat { color: var(--muted); }
+
+  /* 板块 */
+  .sector-row { padding: 12px 0; border-bottom: 1px solid var(--hair); }
+  .sector-row:last-child { border-bottom: none; }
+  .sector-mkt { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .sector-side { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0; }
+  .side-label { font-size: 11.5px; font-weight: 700; margin-right: 2px; }
+  .chip { font-size: 12.5px; border: 1px solid var(--hair); border-radius: 999px;
+    padding: 2px 10px; font-variant-numeric: tabular-nums; }
+  .chip b { margin-left: 6px; font-weight: 700; }
+  .chip.up { color: var(--up); }
+  .chip.down { color: var(--down); }
+
+  /* 新股表格 */
+  .table-wrap { overflow-x: auto; }
+  table.ipo { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.ipo th, table.ipo td { text-align: left; padding: 8px 10px;
+    border-bottom: 1px solid var(--hair); vertical-align: top; }
+  table.ipo th { font-size: 12px; color: var(--muted); font-weight: 700;
+    border-bottom: 1.5px solid var(--rule); white-space: nowrap; }
+  .ipo-name { font-weight: 650; }
+  .ipo-note { color: var(--muted); }
+
+  /* 事件卡 */
+  .event { padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .event:last-child { border-bottom: none; }
+  .ev-title { font-family: var(--title); margin: 0 0 7px; font-size: 17px;
+    font-weight: 700; line-height: 1.4; }
+  .ev-title a { color: var(--text); text-decoration: none; }
+  .ev-title a:hover { color: var(--link); text-decoration: underline; }
+  .ev-sum { margin: 0 0 8px; font-size: 14.5px; }
+  .ev-why { margin: 6px 0; font-size: 13.5px; color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; }
+  .ev-foot { margin-top: 9px; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日财经简报</div>
+    <h1>财经日报</h1>
+    <div class="date">2026-09-12</div>
+    <div class="gen">生成于 2026-09-12（周六·多源）</div>
+  </header>
+  <p class="editor-note">周六市场休市，行情沿用 9/11 收盘。昨夜（9/11）美股在 8 月 CPI 前情绪回暖、三大指数集体收高：标普涨 0.86% 报 7656.98、道指涨 0.98% 报 52573.29、纳指涨 0.96% 报 26333.04；而 A股 9/11 走弱（上证 -1.18% 报 3888.11、失守 3900）。周末消息面：美债收益率逼近 5% 关口、监管通报六起隐性债务案例；港股科技 100 指数季度调整将于 9/14 生效；Anthropic 二季度营收暴涨近 15 倍、敲定纳斯达克上市。来源：Investing、财联社。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">标普500</span></div><div class="q-val">7656.98</div><div class="q-chg up">+0.86%</div><div class="q-sub">9/11收盘·CPI前回暖</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">道琼斯</span></div><div class="q-val">52573.29</div><div class="q-chg up">+0.98%</div><div class="q-sub">9/11收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">纳斯达克</span></div><div class="q-val">26333.04</div><div class="q-chg up">+0.96%</div><div class="q-sub">9/11收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3888.11</div><div class="q-chg down">-1.18%</div><div class="q-sub">9/11收盘·失守3900</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">美股(9/11)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">三大指数<b>集体收高约+0.9%</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip flat">—</span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">美国10年期国债</span></div><div class="q-val">逼近5%</div><div class="q-chg up">收益率走高</div><div class="q-sub">加息预期升温</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://cn.investing.com/indices/us-spx-500-historical-data" target="_blank" rel="noopener">昨夜美股三大指数集体收高，CPI 前情绪回暖</a></h3><p class="ev-sum">9/11 美股在 8 月 CPI 数据公布前情绪回暖，三大指数集体收高：标普 500 涨 0.86% 报 7656.98，道指涨 0.98% 报 52573.29，纳指涨 0.96% 报 26333.04。</p><p class="ev-why"><span class="lbl">影响/解读</span>数据公布前的技术性反弹，但下周 FOMC 与加息预期仍是主线；若 CPI/就业继续偏强，反弹的持续性存疑。</p><div class="ev-foot"><a class="src" href="https://cn.investing.com/indices/us-spx-500-historical-data" target="_blank" rel="noopener">Investing/财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">美债收益率逼近 5%，监管通报六起隐性债务案例</a></h3><p class="ev-sum">债市早参显示，美债收益率逼近 5% 关口；国内方面监管通报六起隐性债务（隐债）案例。</p><p class="ev-why"><span class="lbl">影响/解读</span>美债破 5% 抬升全球利率中枢、压制风险资产估值；隐债问责趋严则约束地方加杠杆，利好财政纪律但短期压制相关融资平台。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">港股科技 100 指数季度调整将于 9/14 生效</a></h3><p class="ev-sum">港股科技 100 指数的季度成分调整将于 9 月 14 日（周一）生效。</p><p class="ev-why"><span class="lbl">影响/解读</span>指数调整带来成分股的被动资金再平衡，相关纳入/剔除标的短期或有交易性波动。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">Anthropic Q2 营收暴涨近 15 倍、敲定纳斯达克上市</a></h3><p class="ev-sum">Anthropic 二季度营收同比暴涨近 15 倍，并已敲定登陆纳斯达克上市。</p><p class="ev-why"><span class="lbl">影响/解读</span>AI 龙头业绩爆发+冲刺 IPO，利好 AI 算力/应用产业链的估值情绪，也为后续 AI 公司上市定价提供参照。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section>
+  <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
+</div>
+</body>
+</html></script>
 <script type="text/html" class="rpt" data-tab="fin" data-date="2026-09-11"><!doctype html>
 <html lang="zh-CN">
 <head>
@@ -4004,10 +4640,10 @@
     <div class="kicker">每日财经简报</div>
     <h1>财经日报</h1>
     <div class="date">2026-09-11</div>
-    <div class="gen">生成于 2026-09-11 盘中/早间版（多源）</div>
+    <div class="gen">生成于 2026-09-11（盘后收盘补全版）</div>
   </header>
-  <p class="editor-note">9/11 A股大跌：盘中三大指数同步跌超 1%、下跌个股超 5000 只，风险偏好骤降、成交仍偏弱。昨夜美股 9/10 半导体板块全线下跌，但甲骨文盘后交出强劲财报、股价大涨约 4%（上调全年指引，缓解了市场对其 AI 投入过高、回报存疑的担忧）。宏观压力上升——财联社称美联储下周加息概率升破 70%（『三重压力』来袭），CPI 等关键数据在即。新股方面，上海 AI 芯片企业燧原科技登陆科创板、中一签浮盈约 13 万元；工信部印发《『人工智能+软件』专项行动实施方案》。折叠屏『三国杀』苹果、华为、小米同周亮剑。来源：财联社、Investing、东方财富。</p>
-  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">—</div><div class="q-chg down">盘中跌超1%</div><div class="q-sub">9/11盘中·超5000股下跌</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">深证成指</span></div><div class="q-val">—</div><div class="q-chg down">盘中跌超1%</div><div class="q-sub">9/11盘中</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">创业板指</span></div><div class="q-val">—</div><div class="q-chg down">盘中跌超1%</div><div class="q-sub">9/11盘中·单边走低</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">费城半导体</span></div><div class="q-val">—</div><div class="q-chg down">全线下跌</div><div class="q-sub">9/10收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">甲骨文</span></div><div class="q-val">—</div><div class="q-chg up">盘后+4%</div><div class="q-sub">财报强劲·上调全年指引</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">A股(9/11盘中)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip flat">—</span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">两市普跌<b>超5000股下跌</b></span><span class="chip down">三大指数<b>同步跌超1%</b></span></div></div><div class="sector-row"><div class="sector-mkt">美股(9/10)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">甲骨文<b>盘后+4%·AI云高增</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">半导体<b>全线下跌</b></span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><div class="table-wrap"><table class="ipo"><thead><tr><th>名称</th><th>市场</th><th>关键日期</th><th>发行价</th><th>备注</th></tr></thead><tbody><tr><td class="ipo-name">燧原科技</td><td>A股(科创板)</td><td>9/11上市</td><td>中一签约赚13万</td><td class="ipo-note">上海AI芯片企业·上市首日</td></tr></tbody></table></div></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">国际原油</span></div><div class="q-val">高位</div><div class="q-chg flat">中东扰动</div><div class="q-sub">地缘风险</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">美联储政策预期</span></div><div class="q-val">下周FOMC</div><div class="q-chg up">加息概率升破70%</div><div class="q-sub">财联社·再通胀+强就业</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">A股盘中大跌，三大指数同步跌超 1%、超 5000 股下跌</a></h3><p class="ev-sum">9/11 A股指数单边走低，三大指数盘中同步跌超 1%，全市场下跌个股超 5000 只，市场呈普跌状态；成交仍偏弱、缺乏增量资金。（盘中数据，以收盘为准）</p><p class="ev-why"><span class="lbl">影响/解读</span>在成交连降、外围加息预期升温背景下，A股风险偏好骤降、普跌调整；短线宜降低仓位、规避高位题材，等待量能与政策信号。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://cn.investing.com/news/stock-market-news/article-3561801" target="_blank" rel="noopener">昨夜美股半导体全线下跌，但甲骨文盘后财报强劲大涨约 4%</a></h3><p class="ev-sum">9/10 美股半导体板块全线下跌；甲骨文盘后公布好于预期的季度业绩并上调全年指引、股价大涨约 4%，有效缓解了投资者对其 AI 投入过高、回报存疑的顾虑。</p><p class="ev-why"><span class="lbl">影响/解读</span>甲骨文强劲财报为『AI 云需求真实、可兑现营收』提供背书，利好云计算/算力主线；但半导体整体回调显示资金在高位分化、精挑业绩兑现标的。</p><div class="ev-foot"><a class="src" href="https://cn.investing.com/news/stock-market-news/article-3561801" target="_blank" rel="noopener">Investing/财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">财联社：美联储下周加息概率升破 70%，『三重压力』来袭</a></h3><p class="ev-sum">财联社报道，在再通胀（PPI 转正）、强非农与地缘扰动等『三重压力』下，市场对美联储下周 FOMC 加息的押注概率升破 70%。</p><p class="ev-why"><span class="lbl">影响/解读</span>加息预期升温压制全球风险资产估值、抬升美元与美债收益率，是近期 A/港/美股承压的重要外部变量；需紧盯下周 CPI 与 FOMC。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">上海 AI 芯片企业燧原科技登陆科创板，中一签浮盈约 13 万元</a></h3><p class="ev-sum">燧原科技（上海 AI 芯片企业）9/11 登陆科创板，上市首日大涨、中一签浮盈约 13 万元。</p><p class="ev-why"><span class="lbl">影响/解读</span>国产 AI 芯片龙头上市，提振『国产算力+科创板硬科技』情绪，利好半导体设计与国产替代链；但打新高收益也反映题材热度，需防上市后波动。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">工信部印发《『人工智能+软件』专项行动实施方案》</a></h3><p class="ev-sum">工信部印发《『人工智能+软件』专项行动实施方案》，推动 AI 与软件产业深度融合。</p><p class="ev-why"><span class="lbl">影响/解读</span>政策自上而下推动『AI+软件』落地，利好国产软件、AI 应用与信创方向的中长期需求与估值。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社/工信部 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">折叠屏『三国杀』：苹果、华为、小米同周亮剑</a></h3><p class="ev-sum">苹果发布首款折叠屏 iPhone 后，华为、小米也在同周推出折叠屏新品，折叠屏竞争进入白热化。</p><p class="ev-why"><span class="lbl">影响/解读</span>折叠屏放量利好铰链、UTG 玻璃、柔性面板等供应链；三强同台也将加速降价与渗透率提升。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section>
+  <p class="editor-note">9/11 A股大跌收官：上证跌 1.18% 报 3888.11（失守 3900），深成跌 1.08% 报 13471.26，创业板跌 0.49% 报 3322.04；早盘一度 5000+ 股下跌、有色金属重挫，全天放量下跌。昨夜美股 9/10 半导体全线跌、但甲骨文盘后财报强劲 +4%。宏观压力上升——美联储下周加息概率升破 70%、CPI 关键数据在即。新股上海 AI 芯片企业燧原科技登陆科创板、中一签浮盈约 13 万元；工信部印发《『人工智能+软件』专项行动实施方案》；折叠屏『三国杀』苹果、华为、小米同周亮剑。来源：东方财富、财联社、Investing。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3888.11</div><div class="q-chg down">-1.18%</div><div class="q-sub">9/11收盘·失守3900</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">深证成指</span></div><div class="q-val">13471.26</div><div class="q-chg down">-1.08%</div><div class="q-sub">9/11收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">创业板指</span></div><div class="q-val">3322.04</div><div class="q-chg down">-0.49%</div><div class="q-sub">9/11收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">费城半导体</span></div><div class="q-val">—</div><div class="q-chg down">全线下跌</div><div class="q-sub">9/10收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">甲骨文</span></div><div class="q-val">—</div><div class="q-chg up">盘后+4%</div><div class="q-sub">财报强劲·上调全年指引</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">A股(9/11)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">通信<b>小幅逆势</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">有色金属<b>重挫</b></span><span class="chip down">两市普跌<b>早盘5000+股下跌</b></span></div></div><div class="sector-row"><div class="sector-mkt">美股(9/10)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">甲骨文<b>盘后+4%·AI云高增</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">半导体<b>全线下跌</b></span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><div class="table-wrap"><table class="ipo"><thead><tr><th>名称</th><th>市场</th><th>关键日期</th><th>发行价</th><th>备注</th></tr></thead><tbody><tr><td class="ipo-name">燧原科技</td><td>A股(科创板)</td><td>9/11上市</td><td>中一签约赚13万</td><td class="ipo-note">上海AI芯片企业·上市首日</td></tr></tbody></table></div></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">国际原油</span></div><div class="q-val">高位</div><div class="q-chg flat">中东扰动</div><div class="q-sub">地缘风险</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">美联储政策预期</span></div><div class="q-val">下周FOMC</div><div class="q-chg up">加息概率升破70%</div><div class="q-sub">财联社·再通胀+强就业</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">A股放量下跌收官，上证失守 3900、有色重挫</a></h3><p class="ev-sum">9/11 A股全天下跌：上证跌 1.18% 报 3888.11、失守 3900 点，深成指跌 1.08% 报 13471.26，创业板指跌 0.49% 报 3322.04；早盘一度逾 5000 股下跌，有色金属板块重挫（盘中一度跌约 6%），仅通信等少数逆势，全天放量调整。</p><p class="ev-why"><span class="lbl">影响/解读</span>在美联储加息预期升温、CPI 数据在即的外围压力下，A股风险偏好骤降、普跌回调；资金从有色等前期强势方向撤离，短线宜控仓、等 CPI 与 FOMC 落地。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">东方财富/财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://cn.investing.com/news/stock-market-news/article-3561801" target="_blank" rel="noopener">昨夜美股半导体全线下跌，但甲骨文盘后财报强劲大涨约 4%</a></h3><p class="ev-sum">9/10 美股半导体板块全线下跌；甲骨文盘后公布好于预期的季度业绩并上调全年指引、股价大涨约 4%，有效缓解了投资者对其 AI 投入过高、回报存疑的顾虑。</p><p class="ev-why"><span class="lbl">影响/解读</span>甲骨文强劲财报为『AI 云需求真实、可兑现营收』提供背书，利好云计算/算力主线；但半导体整体回调显示资金在高位分化、精挑业绩兑现标的。</p><div class="ev-foot"><a class="src" href="https://cn.investing.com/news/stock-market-news/article-3561801" target="_blank" rel="noopener">Investing/财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">财联社：美联储下周加息概率升破 70%，『三重压力』来袭</a></h3><p class="ev-sum">财联社报道，在再通胀（PPI 转正）、强非农与地缘扰动等『三重压力』下，市场对美联储下周 FOMC 加息的押注概率升破 70%。</p><p class="ev-why"><span class="lbl">影响/解读</span>加息预期升温压制全球风险资产估值、抬升美元与美债收益率，是近期 A/港/美股承压的重要外部变量；需紧盯下周 CPI 与 FOMC。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">上海 AI 芯片企业燧原科技登陆科创板，中一签浮盈约 13 万元</a></h3><p class="ev-sum">燧原科技（上海 AI 芯片企业）9/11 登陆科创板，上市首日大涨、中一签浮盈约 13 万元。</p><p class="ev-why"><span class="lbl">影响/解读</span>国产 AI 芯片龙头上市，提振『国产算力+科创板硬科技』情绪，利好半导体设计与国产替代链；但打新高收益也反映题材热度，需防上市后波动。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">工信部印发《『人工智能+软件』专项行动实施方案》</a></h3><p class="ev-sum">工信部印发《『人工智能+软件』专项行动实施方案》，推动 AI 与软件产业深度融合。</p><p class="ev-why"><span class="lbl">影响/解读</span>政策自上而下推动『AI+软件』落地，利好国产软件、AI 应用与信创方向的中长期需求与估值。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社/工信部 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">折叠屏『三国杀』：苹果、华为、小米同周亮剑</a></h3><p class="ev-sum">苹果发布首款折叠屏 iPhone 后，华为、小米也在同周推出折叠屏新品，折叠屏竞争进入白热化。</p><p class="ev-why"><span class="lbl">影响/解读</span>折叠屏放量利好铰链、UTG 玻璃、柔性面板等供应链；三强同台也将加速降价与渗透率提升。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section>
   <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
 </div>
 </body>
