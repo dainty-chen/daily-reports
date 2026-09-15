@@ -86,7 +86,7 @@
 <div class="app">
   <header class="top">
     <div class="brand">📊 每日日报<span class="dot">看板</span></div>
-    <div class="tabs" role="tablist"><button class="tab" data-tab="ai" role="tab">AI 日报<span class="cnt">43</span></button><button class="tab" data-tab="fin" role="tab">财经日报<span class="cnt">43</span></button></div>
+    <div class="tabs" role="tablist"><button class="tab" data-tab="ai" role="tab">AI 日报<span class="cnt">44</span></button><button class="tab" data-tab="fin" role="tab">财经日报<span class="cnt">44</span></button></div>
     <div class="meta" id="meta"></div>
   </header>
   <div class="body">
@@ -95,6 +95,101 @@
   </div>
 </div>
 
+<script type="text/html" class="rpt" data-tab="ai" data-date="2026-09-15"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 行业新闻日报 · 2026-09-15</title>
+<style>
+  /* 白背景 + 虎嗅式中文黑体 + 英文衬线(FT感) + 克制点缀 */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C7A4C; --link: #2266B3;
+    /* 标题: 英文优先衬线(Georgia)好看, 中文回退黑体(虎嗅式) */
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #6FC291; --link: #7FB0E6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 690px; margin: 0 auto; padding: 0 24px 72px; }
+
+  /* 报头 */
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 20px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 10px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 580px; margin: 22px auto 4px; line-height: 1.75; }
+
+  /* 栏目 */
+  .domain { margin-top: 44px; }
+  .dom-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 4px; }
+  .dom-head .emoji { font-size: 17px; }
+  .dom-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .dom-head .count { margin-left: auto; font-size: 12px; color: var(--faint);
+    font-variant-numeric: tabular-nums; }
+  .top .dom-head { border-bottom-color: var(--accent); }
+  .top .dom-head h2 { color: var(--accent); }
+
+  /* 单条 */
+  .story { padding: 19px 0; border-bottom: 1px solid var(--hair); }
+  .story:last-child { border-bottom: none; }
+  .story-title { font-family: var(--title); margin: 0 0 8px;
+    font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .story-title a { color: var(--text); text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0 1.5px; background-repeat: no-repeat;
+    background-position: 0 100%; transition: background-size .2s; }
+  .story-title a:hover { background-size: 100% 1.5px; color: var(--accent); }
+  .summary { margin: 0 0 9px; font-size: 15px; color: var(--text); }
+  .why, .inds { margin: 6px 0; font-size: 13.5px; color: var(--muted); }
+  .why { color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; vertical-align: 1px; }
+  .foot { display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-top: 11px; flex-wrap: wrap; }
+  .att { display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; color: var(--muted); }
+  .att .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 16px 0; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日 AI 行业简报</div>
+    <h1>AI 行业新闻日报</h1>
+    <div class="date">2026-09-15</div>
+    <div class="gen">生成于 2026-09-15（多源）</div>
+  </header>
+  <p class="editor-note">9/15 主线：一是『放缓』余波——OpenAI CEO 详细阐述放慢 AI 发展脚步的原因，接续周末 Amodei 的呼吁，AI 降速叙事持续发酵、昨夜重挫美股芯片股；二是商业化落地——Anthropic 进军金融顾问市场，推出新款 Claude 工具对接贝莱德等机构，把大模型直接嵌入财富管理工作流；三是政策——两部门加快发展先进存力、研发高带宽闪存和内存，并加强端侧大模型与计算/存储芯片、操作系统的兼容适配。此外『英伟达限制 OpenAI、Anthropic 使用其最先进模型』被列入财联社投资避雷针（以官方为准）。来源：财联社。</p>
+  <section class="domain top"><div class="dom-head"><span class="emoji">🔥</span><h2>今日重大新闻</h2><span class="count">3</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">OpenAI CEO 详谈『放慢 AI 发展脚步』的原因</a></h3><p class="summary">OpenAI CEO 详细阐述了为何主张放慢 AI 发展脚步，接续 Anthropic 的 Dario Amodei 等人此前的『放缓』呼吁；这一表态延续了行业对能力狂飙与安全失控风险的反思。</p><p class="why"><span class="lbl">为什么重要</span>头部掌门连续公开谈『放缓』，说明 AI 安全/治理已成为影响发布节奏与市场情绪的实质变量——昨夜美股芯片股正是因『AI 降速』叙事而大跌。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础模型 · AI 安全 · AI 政策监管</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">Anthropic 进军金融顾问市场，推新 Claude 工具对接贝莱德等机构</a></h3><p class="summary">Anthropic 推出面向金融顾问/财富管理的新款 Claude 工具，宣布对接贝莱德（BlackRock）等机构，把大模型直接嵌入投研与理财顾问的工作流。</p><p class="why"><span class="lbl">为什么重要</span>金融是高价值、强合规的垂直场景，Anthropic 携安全/可控卖点切入财富管理，是大模型 B 端商业化向核心行业深水区推进的信号，利好金融 AI 落地。</p><p class="inds"><span class="lbl">影响行业</span>金融 AI · 财富管理 · 企业 AI</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">两部门：加快发展先进存力、研发高带宽闪存和内存</a></h3><p class="summary">两部门发文提出加快发展先进存力、研发高带宽闪存和内存等新产品，并加强端侧大模型、计算芯片、存储芯片与操作系统的兼容适配。</p><p class="why"><span class="lbl">为什么重要</span>存储是 AI 算力的关键瓶颈，政策直指先进存力与端侧生态，利好 HBM/闪存、国产芯片与端侧 AI 软硬件适配，是国产算力自主的又一政策抓手。</p><p class="inds"><span class="lbl">影响行业</span>AI 存储/HBM · 国产芯片 · 端侧 AI</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section>
+  <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">OpenAI CEO 详谈放慢 AI 脚步（详见今日重大新闻）</a></h3><p class="summary">OpenAI CEO 阐述放慢 AI 发展脚步的原因，接续行业『放缓』讨论。</p><p class="why"><span class="lbl">为什么重要</span>AI 降速叙事持续发酵，实质影响发布节奏与市场情绪。</p><p class="inds"><span class="lbl">影响行业</span>AI 基础模型 · AI 安全</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">Anthropic 进军金融顾问市场、对接贝莱德（详见今日重大新闻）</a></h3><p class="summary">Anthropic 推新 Claude 工具切入财富管理，对接贝莱德等机构。</p><p class="why"><span class="lbl">为什么重要</span>大模型向金融核心工作流渗透，B 端商业化进入深水区。</p><p class="inds"><span class="lbl">影响行业</span>金融 AI · 财富管理 · 企业 AI</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">『英伟达限制 OpenAI、Anthropic 使用其最先进模型』被列投资避雷针</a></h3><p class="summary">财联社『投资避雷针』提及『英伟达限制使用 OpenAI 和 Anthropic 最先进模型』，具体安排与影响以官方信息为准。</p><p class="why"><span class="lbl">为什么重要</span>若属实，反映算力/生态巨头与头部模型公司之间的竞合张力升温；但目前信息有限，需以官方口径确认，勿据传闻交易。</p><p class="inds"><span class="lbl">影响行业</span>AI 芯片 · AI 生态 · 竞合博弈</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">两部门推动先进存力与端侧适配（详见今日重大新闻）</a></h3><p class="summary">两部门加快发展先进存力、研发高带宽闪存内存，加强端侧大模型与计算/存储芯片、操作系统适配。</p><p class="why"><span class="lbl">为什么重要</span>政策直指 AI 存储瓶颈与端侧生态，利好国产算力自主。</p><p class="inds"><span class="lbl">影响行业</span>AI 存储 · 国产芯片 · 端侧 AI</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🔭</span><h2>AI 探索新领域</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section>
+  <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
 <script type="text/html" class="rpt" data-tab="ai" data-date="2026-09-14"><!doctype html>
 <html lang="zh-CN">
 <head>
@@ -4180,6 +4275,123 @@
 </div>
 </body>
 </html></script>
+<script type="text/html" class="rpt" data-tab="fin" data-date="2026-09-15"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>财经日报 · 2026-09-15</title>
+<style>
+  /* 白底 + 虎嗅式中文黑体 + 英文衬线 + 红涨绿跌（中国习惯） */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C4E7A; --link: #2266B3;
+    --up: #C0392B; --down: #1A7A4D;
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #7FB0E6; --link: #7FB0E6;
+      --up: #F0685A; --down: #4FBF86;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 18px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 8px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 620px; margin: 20px auto 4px; line-height: 1.75; }
+
+  .sec { margin-top: 40px; }
+  .sec-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 14px; }
+  .sec-head .emoji { font-size: 17px; }
+  .sec-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 6px 0 2px; }
+
+  /* 行情磁贴 */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; }
+  .tile { border: 1px solid var(--hair); border-radius: 10px; padding: 11px 13px; }
+  .q-head { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+  .q-tag { font-size: 10.5px; color: var(--muted); border: 1px solid var(--hair);
+    border-radius: 5px; padding: 0 5px; }
+  .q-name { font-size: 13px; color: var(--muted); }
+  .q-val { font-family: var(--title); font-size: 20px; font-weight: 700;
+    font-variant-numeric: tabular-nums; }
+  .q-chg { font-size: 13.5px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .q-sub { font-size: 11.5px; color: var(--faint); margin-top: 2px; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .flat { color: var(--muted); }
+
+  /* 板块 */
+  .sector-row { padding: 12px 0; border-bottom: 1px solid var(--hair); }
+  .sector-row:last-child { border-bottom: none; }
+  .sector-mkt { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .sector-side { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0; }
+  .side-label { font-size: 11.5px; font-weight: 700; margin-right: 2px; }
+  .chip { font-size: 12.5px; border: 1px solid var(--hair); border-radius: 999px;
+    padding: 2px 10px; font-variant-numeric: tabular-nums; }
+  .chip b { margin-left: 6px; font-weight: 700; }
+  .chip.up { color: var(--up); }
+  .chip.down { color: var(--down); }
+
+  /* 新股表格 */
+  .table-wrap { overflow-x: auto; }
+  table.ipo { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.ipo th, table.ipo td { text-align: left; padding: 8px 10px;
+    border-bottom: 1px solid var(--hair); vertical-align: top; }
+  table.ipo th { font-size: 12px; color: var(--muted); font-weight: 700;
+    border-bottom: 1.5px solid var(--rule); white-space: nowrap; }
+  .ipo-name { font-weight: 650; }
+  .ipo-note { color: var(--muted); }
+
+  /* 事件卡 */
+  .event { padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .event:last-child { border-bottom: none; }
+  .ev-title { font-family: var(--title); margin: 0 0 7px; font-size: 17px;
+    font-weight: 700; line-height: 1.4; }
+  .ev-title a { color: var(--text); text-decoration: none; }
+  .ev-title a:hover { color: var(--link); text-decoration: underline; }
+  .ev-sum { margin: 0 0 8px; font-size: 14.5px; }
+  .ev-why { margin: 6px 0; font-size: 13.5px; color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; }
+  .ev-foot { margin-top: 9px; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日财经简报</div>
+    <h1>财经日报</h1>
+    <div class="date">2026-09-15</div>
+    <div class="gen">生成于 2026-09-15 早间/盘中版（多源）</div>
+  </header>
+  <p class="editor-note">9/15 重磅是 8 月经济数据的『分化』：规模以上工业增加值同比实际增长 5.2%（有韧性），但 1—8 月固定资产投资（不含农户）同比下降 7.2%、房地产开发投资同比下降 19.9%，一线城市新房价格环比上涨、二三线降幅总体收窄——制造/工业稳、投资与地产仍拖累。央行今日续作 5000 亿元 MLF 呵护流动性。产业政策发力：两部门提出加快发展先进存力、研发高带宽闪存和内存，并加强端侧大模型、计算/存储芯片与操作系统的兼容适配，光纤（通鼎互联涨停）与存储链受益。昨夜美股 9/14 三大指数集体收跌——『AI 降速』呼声重挫芯片股（道指 -0.29%、标普 -0.48%、纳指 -0.55%；康宁 -13.69%、泰瑞达 -13.30%、Coherent -12.73%）。本周 FOMC 加息预期仍高。来源：国家统计局、财联社。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3885.33</div><div class="q-chg down">-0.07%</div><div class="q-sub">9/14收盘·今日盘中进行中</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">光纤/存储链</span></div><div class="q-val">—</div><div class="q-chg up">异动拉升</div><div class="q-sub">9/15早盘·通鼎互联涨停</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">道琼斯</span></div><div class="q-val">—</div><div class="q-chg down">-0.29%</div><div class="q-sub">9/14收盘·芯片重挫</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">标普500</span></div><div class="q-val">—</div><div class="q-chg down">-0.48%</div><div class="q-sub">9/14收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">纳斯达克</span></div><div class="q-val">—</div><div class="q-chg down">-0.55%</div><div class="q-sub">9/14收盘·AI降速拖累</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">A股(9/15早盘)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">光纤/光通信<b>通鼎互联涨停</b></span><span class="chip up">存储链<b>先进存力政策催化</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip flat">—</span></div></div><div class="sector-row"><div class="sector-mkt">美股(9/14)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip flat">—</span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">康宁<b>-13.69%</b></span><span class="chip down">泰瑞达<b>-13.30%</b></span><span class="chip down">Coherent<b>-12.73%</b></span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">央行MLF</span></div><div class="q-val">续作5000亿元</div><div class="q-chg flat">呵护流动性</div><div class="q-sub">9/15</div></div><div class="tile"><div class="q-head"><span class="q-name">美联储FOMC(本周)</span></div><div class="q-val">加息预期高</div><div class="q-chg up">关注结果</div><div class="q-sub">全球定价核心</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">8 月经济数据分化：工业增加值 +5.2%，但固投 -7.2%、地产投资 -19.9%</a></h3><p class="ev-sum">国家统计局：8 月规模以上工业增加值同比实际增长 5.2%；1—8 月全国固定资产投资（不含农户）293092 亿元、同比下降 7.2%，其中房地产开发投资 47979 亿元、同比下降 19.9%；一线城市新建商品住宅销售价格环比上涨，二三线城市环比降幅总体收窄。</p><p class="ev-why"><span class="lbl">影响/解读</span>工业生产有韧性，但投资与地产仍是主要拖累，经济呈『生产强于需求』的结构；数据偏弱强化稳增长与宽松政策预期，利好高股息与政策受益方向。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">国家统计局 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">央行今日续作 5000 亿元 MLF，呵护流动性</a></h3><p class="ev-sum">债市早参显示，央行 9 月 15 日续作 5000 亿元 MLF（中期借贷便利），维护银行体系流动性。</p><p class="ev-why"><span class="lbl">影响/解读</span>跨节+数据走弱背景下的流动性呵护，对债市与高股息资产偏正面，也为后续降准/宽信用预留空间。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">两部门：加快发展先进存力，研发高带宽闪存和内存</a></h3><p class="ev-sum">两部门发文提出加快发展先进存力、研发高带宽闪存和内存等新产品，并加强端侧大模型、计算芯片、存储芯片与操作系统的兼容适配。</p><p class="ev-why"><span class="lbl">影响/解读</span>政策直指 AI 算力的存储瓶颈与端侧生态，利好存储（HBM/闪存）、国产芯片与端侧 AI 软硬件适配链；A股光纤、存储概念受提振。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">昨夜美股三大指数集体收跌，『AI 降速』呼声重挫芯片股</a></h3><p class="ev-sum">9/14 美股三大指数集体收跌：道指跌 0.29%、标普跌 0.48%、纳指跌 0.55%；受『AI 降速』呼声影响芯片股重挫，康宁跌 13.69%、泰瑞达跌 13.30%、Coherent 跌 12.73%。</p><p class="ev-why"><span class="lbl">影响/解读</span>『放缓』叙事叠加高位获利了结，光通信/半导体设备等 AI 硬件权重股大幅回调，短期压制风险偏好；但需求趋势未变，超跌或酝酿分歧。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社/24TopNews ↗</a></div></article></section>
+  <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
+</div>
+</body>
+</html></script>
 <script type="text/html" class="rpt" data-tab="fin" data-date="2026-09-14"><!doctype html>
 <html lang="zh-CN">
 <head>
@@ -4289,10 +4501,10 @@
     <div class="kicker">每日财经简报</div>
     <h1>财经日报</h1>
     <div class="date">2026-09-14</div>
-    <div class="gen">生成于 2026-09-14 早间/盘中版（多源）</div>
+    <div class="gen">生成于 2026-09-14（盘后收盘补全版）</div>
   </header>
-  <p class="editor-note">9/14 周一核心是美联储：华尔街『彻底信了』——本周 FOMC 加息概率逼近 90%，特朗普则施压称美国利率应『全球最低』。地缘方面，伊朗与海湾国家的重磅会议推迟、霍尔木兹海峡新通道事项受影响，国际油价大涨约 3%。A股早盘 CPO（共封装光学）概念震荡回升、天通股份涨停，港股科技 100 指数季度调整今日生效。最新收盘参考 9/11：A股上证 3888.11（-1.18%）、美股标普 7656.98（+0.86%）。来源：财联社。</p>
-  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3888.11</div><div class="q-chg down">-1.18%</div><div class="q-sub">9/11收盘·今日盘中进行中</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">CPO/光模块</span></div><div class="q-val">—</div><div class="q-chg up">震荡回升</div><div class="q-sub">9/14早盘·天通股份涨停</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">标普500</span></div><div class="q-val">7656.98</div><div class="q-chg up">+0.86%</div><div class="q-sub">9/11收盘·昨为周末</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">A股(9/14早盘)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">CPO/光模块<b>天通股份涨停</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">AI芯片股<b>受&#x27;AI放缓&#x27;情绪短期承压</b></span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">国际原油</span></div><div class="q-val">大涨约3%</div><div class="q-chg up">+3%</div><div class="q-sub">霍尔木兹海峡新通道受影响</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">美联储FOMC(本周)</span></div><div class="q-val">加息概率逼近90%</div><div class="q-chg up">华尔街&#x27;彻底信了&#x27;</div><div class="q-sub">特朗普施压：利率应全球最低</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">华尔街『彻底信了』：美联储本周加息概率逼近 90%</a></h3><p class="ev-sum">市场对美联储本周 FOMC 加息的押注概率逼近 90%，华尔街几乎完全定价加息；与此同时特朗普施压，称美国利率应当是『全球最低』。</p><p class="ev-why"><span class="lbl">影响/解读</span>加息几成共识，若兑现将抬升美元/美债收益率、压制全球风险资产与成长股；但政治施压与经济数据的拉扯也加大了政策路径的不确定性。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">霍尔木兹海峡新通道受影响，国际油价大涨约 3%</a></h3><p class="ev-sum">伊朗与海湾国家的重磅会议推迟，霍尔木兹海峡新通道相关事项受影响，国际油价大涨约 3%。</p><p class="ev-why"><span class="lbl">影响/解读</span>地缘扰动推升能源价格，利好油气/资源板块，但会向下游传导通胀压力、与加息预期共振压制估值。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">A股 CPO 概念震荡回升，天通股份涨停</a></h3><p class="ev-sum">9/14 早盘 A股 CPO（共封装光学）概念震荡回升，天通股份涨停，光模块/光互连方向受周末『1.6T 光模块 C 位、6.4T NPO』消息提振。</p><p class="ev-why"><span class="lbl">影响/解读</span>AI 光互连升级是算力确定性受益方向，CPO/光模块题材延续；但需区分业绩兑现与概念炒作，防高位波动。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">AI 领头羊放慢节奏影响几何？分析师：芯片股短期承压、长期影响不大</a></h3><p class="ev-sum">针对 Anthropic 的 Amodei 等 AI 大佬齐呼『放缓』，分析师认为对芯片股是短期情绪承压、长期影响不大，特朗普也淡化了相关担忧。</p><p class="ev-why"><span class="lbl">影响/解读</span>『放缓』叙事短期压制 AI 芯片/算力股情绪，但需求与资本开支的长期趋势未变；回调或提供结构性布局窗口，仍看业绩与订单。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">港股科技 100 指数季度调整今日生效</a></h3><p class="ev-sum">港股科技 100 指数季度成分调整于 9 月 14 日生效。</p><p class="ev-why"><span class="lbl">影响/解读</span>被动资金再平衡，纳入/剔除标的短期或有交易性波动。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section>
+  <p class="editor-note">9/14 周一 A股缩量分化收跌：上证微跌 0.07% 报 3885.33，深成指跌 0.64%、创业板指跌 1.10% 报 3285.58，两市成交缩至 1.64 万亿（缩量约 17%）；医药（医疗研发外包/医疗服务）领涨，CPO/光通信早盘冲高后回落、粮食种植与地面兵装走弱。外围上，美联储本周 FOMC 加息概率逼近 90%（特朗普施压称美国利率应『全球最低』）；伊朗与海湾国家会议推迟、霍尔木兹海峡新通道受影响，国际油价大涨约 3%。港股科技 100 指数季度调整今日生效。来源：东方财富、财联社。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3885.33</div><div class="q-chg down">-0.07%</div><div class="q-sub">9/14收盘·缩量</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">深证成指</span></div><div class="q-val">13384.57</div><div class="q-chg down">-0.64%</div><div class="q-sub">9/14收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">创业板指</span></div><div class="q-val">3285.58</div><div class="q-chg down">-1.10%</div><div class="q-sub">9/14收盘·双创领跌</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">标普500</span></div><div class="q-val">7656.98</div><div class="q-chg up">+0.86%</div><div class="q-sub">9/11收盘·昨为周末</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">A股(9/14)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">医疗研发外包/医疗服务<b>领涨·万邦医药盘中大涨</b></span><span class="chip up">商用载客车<b>走强</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">CPO/通信<b>冲高回落</b></span><span class="chip down">粮食种植/地面兵装<b>跌幅居前</b></span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">国际原油</span></div><div class="q-val">大涨约3%</div><div class="q-chg up">+3%</div><div class="q-sub">霍尔木兹海峡新通道受影响</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">美联储FOMC(本周)</span></div><div class="q-val">加息概率逼近90%</div><div class="q-chg up">华尔街&#x27;彻底信了&#x27;</div><div class="q-sub">特朗普施压：利率应全球最低</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">华尔街『彻底信了』：美联储本周加息概率逼近 90%</a></h3><p class="ev-sum">市场对美联储本周 FOMC 加息的押注概率逼近 90%，华尔街几乎完全定价加息；与此同时特朗普施压，称美国利率应当是『全球最低』。</p><p class="ev-why"><span class="lbl">影响/解读</span>加息几成共识，若兑现将抬升美元/美债收益率、压制全球风险资产与成长股；但政治施压与经济数据的拉扯也加大了政策路径的不确定性。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">霍尔木兹海峡新通道受影响，国际油价大涨约 3%</a></h3><p class="ev-sum">伊朗与海湾国家的重磅会议推迟，霍尔木兹海峡新通道相关事项受影响，国际油价大涨约 3%。</p><p class="ev-why"><span class="lbl">影响/解读</span>地缘扰动推升能源价格，利好油气/资源板块，但会向下游传导通胀压力、与加息预期共振压制估值。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://yuanchuang.10jqka.com.cn/20260914/c679874652.shtml" target="_blank" rel="noopener">A股缩量分化收跌，医药领涨、CPO 冲高回落</a></h3><p class="ev-sum">9/14 A股缩量分化：上证微跌 0.07% 报 3885.33，深成指跌 0.64%，创业板指跌 1.10% 报 3285.58，两市成交缩至 1.64 万亿。医疗研发外包、医疗服务领涨（万邦医药盘中大涨），商用载客车走强；CPO/光通信概念早盘冲高后回落收跌，粮食种植、地面兵装跌幅居前。</p><p class="ev-why"><span class="lbl">影响/解读</span>缩量下资金转向医药等低位防御，前期光模块/CPO 高位股回吐；FOMC 前观望情绪浓，短线以结构性轮动为主。</p><div class="ev-foot"><a class="src" href="https://yuanchuang.10jqka.com.cn/20260914/c679874652.shtml" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">AI 领头羊放慢节奏影响几何？分析师：芯片股短期承压、长期影响不大</a></h3><p class="ev-sum">针对 Anthropic 的 Amodei 等 AI 大佬齐呼『放缓』，分析师认为对芯片股是短期情绪承压、长期影响不大，特朗普也淡化了相关担忧。</p><p class="ev-why"><span class="lbl">影响/解读</span>『放缓』叙事短期压制 AI 芯片/算力股情绪，但需求与资本开支的长期趋势未变；回调或提供结构性布局窗口，仍看业绩与订单。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">港股科技 100 指数季度调整今日生效</a></h3><p class="ev-sum">港股科技 100 指数季度成分调整于 9 月 14 日生效。</p><p class="ev-why"><span class="lbl">影响/解读</span>被动资金再平衡，纳入/剔除标的短期或有交易性波动。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section>
   <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
 </div>
 </body>
