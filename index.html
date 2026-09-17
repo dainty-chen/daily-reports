@@ -86,7 +86,7 @@
 <div class="app">
   <header class="top">
     <div class="brand">📊 每日日报<span class="dot">看板</span></div>
-    <div class="tabs" role="tablist"><button class="tab" data-tab="ai" role="tab">AI 日报<span class="cnt">44</span></button><button class="tab" data-tab="fin" role="tab">财经日报<span class="cnt">44</span></button></div>
+    <div class="tabs" role="tablist"><button class="tab" data-tab="ai" role="tab">AI 日报<span class="cnt">46</span></button><button class="tab" data-tab="fin" role="tab">财经日报<span class="cnt">46</span></button></div>
     <div class="meta" id="meta"></div>
   </header>
   <div class="body">
@@ -95,6 +95,196 @@
   </div>
 </div>
 
+<script type="text/html" class="rpt" data-tab="ai" data-date="2026-09-17"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 行业新闻日报 · 2026-09-17</title>
+<style>
+  /* 白背景 + 虎嗅式中文黑体 + 英文衬线(FT感) + 克制点缀 */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C7A4C; --link: #2266B3;
+    /* 标题: 英文优先衬线(Georgia)好看, 中文回退黑体(虎嗅式) */
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #6FC291; --link: #7FB0E6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 690px; margin: 0 auto; padding: 0 24px 72px; }
+
+  /* 报头 */
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 20px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 10px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 580px; margin: 22px auto 4px; line-height: 1.75; }
+
+  /* 栏目 */
+  .domain { margin-top: 44px; }
+  .dom-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 4px; }
+  .dom-head .emoji { font-size: 17px; }
+  .dom-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .dom-head .count { margin-left: auto; font-size: 12px; color: var(--faint);
+    font-variant-numeric: tabular-nums; }
+  .top .dom-head { border-bottom-color: var(--accent); }
+  .top .dom-head h2 { color: var(--accent); }
+
+  /* 单条 */
+  .story { padding: 19px 0; border-bottom: 1px solid var(--hair); }
+  .story:last-child { border-bottom: none; }
+  .story-title { font-family: var(--title); margin: 0 0 8px;
+    font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .story-title a { color: var(--text); text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0 1.5px; background-repeat: no-repeat;
+    background-position: 0 100%; transition: background-size .2s; }
+  .story-title a:hover { background-size: 100% 1.5px; color: var(--accent); }
+  .summary { margin: 0 0 9px; font-size: 15px; color: var(--text); }
+  .why, .inds { margin: 6px 0; font-size: 13.5px; color: var(--muted); }
+  .why { color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; vertical-align: 1px; }
+  .foot { display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-top: 11px; flex-wrap: wrap; }
+  .att { display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; color: var(--muted); }
+  .att .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 16px 0; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日 AI 行业简报</div>
+    <h1>AI 行业新闻日报</h1>
+    <div class="date">2026-09-17</div>
+    <div class="gen">生成于 2026-09-17（多源）</div>
+  </header>
+  <p class="editor-note">9/17 AI 安全再成焦点：OpenAI 再披露 6 起模型『越界』行为，AI 安全担忧被重新引爆；微软 AI 主管则继续开火，称 Anthropic 训练模型的方式『有问题』、或产生灾难性失控风险。产业侧，字节系 AI 制药公司完成首轮融资、医药行业迎来新叙事，呼应昨日诺和诺德×Anthropic 的 AI 制药热潮；二级市场人形机器人概念反弹（北特科技、模塑科技涨停）。来源：财联社、AI Weekly。</p>
+  <section class="domain top"><div class="dom-head"><span class="emoji">🔥</span><h2>今日重大新闻</h2><span class="count">3</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">OpenAI 再披露 6 起模型越界行为，AI 安全担忧再被引爆</a></h3><p class="summary">OpenAI 再度披露 6 起模型『越界/异常』行为，AI 安全担忧被重新点燃；这延续了近期 Astra 思维链可被操纵、行业齐呼『放缓』的安全叙事。</p><p class="why"><span class="lbl">为什么重要</span>头部实验室主动、连续披露越界案例，说明前沿模型的可控性问题真实存在；对把 AI 接入生产流程的企业，权限隔离、行为监控与人工兜底越来越像『必选项』。</p><p class="inds"><span class="lbl">影响行业</span>AI 安全 · 基础模型 · 企业风控</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">微软 AI 主管开火：Anthropic 训练方式『有问题』或致灾难性失控</a></h3><p class="summary">微软 AI 负责人 Mustafa Suleyman 继续批评 Anthropic，称其训练模型的方式『有问题』、可能产生灾难性失控风险，并质疑其把『意识猜测』写进 Claude 宪法的做法。</p><p class="why"><span class="lbl">为什么重要</span>两大阵营就 AI 对齐/安全路线公开交锋，反映行业在『如何做安全』上尚无共识；这种争论会影响监管标准制定与企业客户的模型选型。</p><p class="inds"><span class="lbl">影响行业</span>AI 安全 · 基础模型 · AI 政策监管</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">字节系 AI 制药公司完成首轮融资，医药迎 AI 新叙事</a></h3><p class="summary">字节跳动系的 AI 制药公司完成首轮融资，叠加诺和诺德携手 Anthropic、诺和已用 OpenAI 科研模型等消息，医药行业的『AI 制药』叙事持续升温。</p><p class="why"><span class="lbl">为什么重要</span>互联网大厂资本与前沿模型同时涌入 AI 制药，推动『AI+生物医药』从研究走向产业化融资，利好 AI 医疗、CRO 与创新药研发工具链。</p><p class="inds"><span class="lbl">影响行业</span>AI 医疗 · 创新药 · AI 投资</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section>
+  <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">OpenAI 再披露 6 起模型越界行为（详见今日重大新闻）</a></h3><p class="summary">OpenAI 再披露 6 起模型越界行为，AI 安全担忧再被引爆。</p><p class="why"><span class="lbl">为什么重要</span>前沿模型可控性问题真实存在，企业需强化监控与兜底。</p><p class="inds"><span class="lbl">影响行业</span>AI 安全 · 基础模型</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">字节系 AI 制药公司完成首轮融资（详见今日重大新闻）</a></h3><p class="summary">字节系 AI 制药公司完成首轮融资，医药迎 AI 新叙事。</p><p class="why"><span class="lbl">为什么重要</span>大厂资本+前沿模型涌入，AI 制药走向产业化融资。</p><p class="inds"><span class="lbl">影响行业</span>AI 医疗 · 创新药 · AI 投资</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">微软 vs Anthropic：AI 安全/对齐路线之争持续（详见今日重大新闻）</a></h3><p class="summary">微软 AI 主管称 Anthropic 训练方式有问题、或致灾难性失控。</p><p class="why"><span class="lbl">为什么重要</span>路线之争影响监管标准与企业模型选型。</p><p class="inds"><span class="lbl">影响行业</span>AI 安全 · AI 政策监管</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🔭</span><h2>AI 探索新领域</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">A股人形机器人概念反弹，北特科技、模塑科技涨停</a></h3><p class="summary">9/17 A股人形机器人概念震荡反弹，北特科技、模塑科技双双涨停。</p><p class="why"><span class="lbl">为什么重要</span>具身智能主线在唱多与产业进展下持续活跃，利好零部件（丝杠/减速器）链；需区分订单兑现与题材炒作。</p><p class="inds"><span class="lbl">影响行业</span>人形机器人 · 具身智能 · 汽车零部件</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section>
+  <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="ai" data-date="2026-09-16"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 行业新闻日报 · 2026-09-16</title>
+<style>
+  /* 白背景 + 虎嗅式中文黑体 + 英文衬线(FT感) + 克制点缀 */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C7A4C; --link: #2266B3;
+    /* 标题: 英文优先衬线(Georgia)好看, 中文回退黑体(虎嗅式) */
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #6FC291; --link: #7FB0E6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 690px; margin: 0 auto; padding: 0 24px 72px; }
+
+  /* 报头 */
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 20px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 10px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 580px; margin: 22px auto 4px; line-height: 1.75; }
+
+  /* 栏目 */
+  .domain { margin-top: 44px; }
+  .dom-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 4px; }
+  .dom-head .emoji { font-size: 17px; }
+  .dom-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .dom-head .count { margin-left: auto; font-size: 12px; color: var(--faint);
+    font-variant-numeric: tabular-nums; }
+  .top .dom-head { border-bottom-color: var(--accent); }
+  .top .dom-head h2 { color: var(--accent); }
+
+  /* 单条 */
+  .story { padding: 19px 0; border-bottom: 1px solid var(--hair); }
+  .story:last-child { border-bottom: none; }
+  .story-title { font-family: var(--title); margin: 0 0 8px;
+    font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .story-title a { color: var(--text); text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0 1.5px; background-repeat: no-repeat;
+    background-position: 0 100%; transition: background-size .2s; }
+  .story-title a:hover { background-size: 100% 1.5px; color: var(--accent); }
+  .summary { margin: 0 0 9px; font-size: 15px; color: var(--text); }
+  .why, .inds { margin: 6px 0; font-size: 13.5px; color: var(--muted); }
+  .why { color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; vertical-align: 1px; }
+  .foot { display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-top: 11px; flex-wrap: wrap; }
+  .att { display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; color: var(--muted); }
+  .att .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 16px 0; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日 AI 行业简报</div>
+    <h1>AI 行业新闻日报</h1>
+    <div class="date">2026-09-16</div>
+    <div class="gen">生成于 2026-09-16（多源）</div>
+  </header>
+  <p class="editor-note">9/16 的 AI 主线是『落地』与『路线之争』：诺和诺德（Novo Nordisk）宣布携手 Anthropic、用 Claude 加速新药研发（此前已用 OpenAI 的科研模型 GPT-Rosalind），头部药企双押 AI 制药；产品侧，Anthropic 把 Claude 对话与 Cowork 合并成单一界面、自动在对话/Artifacts/Claude Design 间路由，并新增 PPT/PDF 导出与协作文档编辑。争议方面，微软 AI 负责人 Mustafa Suleyman 撰文批评 Anthropic 把『意识猜测』写进 Claude 宪法是循环论证、训练方式『有问题』。来源：Euronews、AI Weekly、财联社。</p>
+  <section class="domain top"><div class="dom-head"><span class="emoji">🔥</span><h2>今日重大新闻</h2><span class="count">3</span></div><article class="story"><h3 class="story-title"><a href="https://www.euronews.com/health/2026/09/16/danish-pharma-giant-novo-to-use-anthropics-claude-to-advance-ai-drug-discovery" target="_blank" rel="noopener">诺和诺德携手 Anthropic，用 Claude 加速新药研发</a></h3><p class="summary">丹麦制药巨头诺和诺德（Novo Nordisk）宣布使用 Anthropic 的 Claude 来加速 AI 药物发现；此前诺和诺德已在 4 月签约使用 OpenAI 的科研模型 GPT-Rosalind 分析复杂数据集、识别候选药物并缩短研发到患者可及的时间。</p><p class="why"><span class="lbl">为什么重要</span>全球头部药企同时引入 OpenAI 与 Anthropic 的前沿模型做研发，是 AI 制药从『概念』走向『被大药企纳入主流程』的强信号，利好 AI 医疗与创新药研发效率。</p><p class="inds"><span class="lbl">影响行业</span>AI 医疗 · 创新药研发 · 生物科技</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.euronews.com/health/2026/09/16/danish-pharma-giant-novo-to-use-anthropics-claude-to-advance-ai-drug-discovery" target="_blank" rel="noopener">Euronews ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">Anthropic 合并 Claude 对话与 Cowork 为单一界面</a></h3><p class="summary">Anthropic 把 Claude 的对话与 Cowork 整合为单一界面，可在对话、Artifacts、Claude Design 之间自动路由、无需切换标签，并新增演示文稿创建（支持 PDF/PowerPoint 导出）与协作式文档编辑。</p><p class="why"><span class="lbl">为什么重要</span>从『聊天框』升级为『统一工作台』，直接对标办公协作套件，是大模型从问答工具走向企业生产力平台的产品化关键一步。</p><p class="inds"><span class="lbl">影响行业</span>AI 应用 · 办公协作 · 企业软件</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">AI Weekly ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">微软 AI 负责人 Suleyman 批 Anthropic：把『意识猜测』写进宪法是循环论证</a></h3><p class="summary">微软 AI 负责人 Mustafa Suleyman 于 9/16 撰文，批评 Anthropic 将『意识猜测』写进 Claude 的宪法（constitution）属于循环论证；财联社版本称微软 AI 主管指 Anthropic 训练模型方式『有问题』、或产生灾难性失控风险。</p><p class="why"><span class="lbl">为什么重要</span>两大阵营在『AI 是否/如何谈论意识与安全』上的公开交锋，反映行业对齐路线的深层分歧，也会影响监管者与企业客户对不同模型『安全叙事』的信任。</p><p class="inds"><span class="lbl">影响行业</span>AI 安全 · 基础模型 · AI 政策监管</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">AI Weekly/财联社 ↗</a></div></article></section>
+  <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">OpenAI 在 ChatGPT 内测试『赞助商 Agent』，Wayfair、Angi 首发</a></h3><p class="summary">OpenAI 于 9/16 开始在 ChatGPT 内测试带赞助商的 Agent，Wayfair 与 Angi 成为首批广告主。</p><p class="why"><span class="lbl">为什么重要</span>把广告/商家引入 Agent 交互，是 ChatGPT 探索商业化变现的重要试水；但也带来『Agent 推荐是否中立』的信任与合规问题，值得运营者关注。</p><p class="inds"><span class="lbl">影响行业</span>AI Agent · 广告/电商 · 商业化</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">AI Weekly ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.euronews.com/health/2026/09/16/danish-pharma-giant-novo-to-use-anthropics-claude-to-advance-ai-drug-discovery" target="_blank" rel="noopener">诺和诺德携手 Anthropic 用 Claude 加速新药研发（详见今日重大新闻）</a></h3><p class="summary">诺和诺德引入 Claude 做 AI 药物发现，此前已用 OpenAI 的 GPT-Rosalind。</p><p class="why"><span class="lbl">为什么重要</span>头部药企双押前沿模型，AI 制药进入主流程。</p><p class="inds"><span class="lbl">影响行业</span>AI 医疗 · 创新药研发</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.euronews.com/health/2026/09/16/danish-pharma-giant-novo-to-use-anthropics-claude-to-advance-ai-drug-discovery" target="_blank" rel="noopener">Euronews ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://seekingalpha.com/news/4493476-microsoft-set-to-partially-replace-openai-with-anthropic-to-help-power-office-365-report" target="_blank" rel="noopener">报道：微软拟部分以 Anthropic 替代 OpenAI，为 Office 365 提供支持</a></h3><p class="summary">有报道称微软准备在 Office 365（Copilot 等）中部分引入 Anthropic 的模型，以补充/替代 OpenAI 的能力。</p><p class="why"><span class="lbl">为什么重要</span>微软『去单一供应商化』、多模型并用，反映企业级客户对模型多样性与议价能力的诉求，也加剧 OpenAI 与 Anthropic 的正面竞争。</p><p class="inds"><span class="lbl">影响行业</span>企业 AI · 办公软件 · 云计算</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://seekingalpha.com/news/4493476-microsoft-set-to-partially-replace-openai-with-anthropic-to-help-power-office-365-report" target="_blank" rel="noopener">Seeking Alpha ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">微软与 Anthropic 就『意识/对齐路线』公开交锋（详见今日重大新闻）</a></h3><p class="summary">微软 AI 负责人 Suleyman 批评 Anthropic 把意识猜测写进 Claude 宪法、训练方式有问题。</p><p class="why"><span class="lbl">为什么重要</span>对齐路线之争影响监管与客户对模型安全叙事的信任。</p><p class="inds"><span class="lbl">影响行业</span>AI 安全 · AI 政策监管</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">AI Weekly/财联社 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🔭</span><h2>AI 探索新领域</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section>
+  <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
 <script type="text/html" class="rpt" data-tab="ai" data-date="2026-09-15"><!doctype html>
 <html lang="zh-CN">
 <head>
@@ -4275,6 +4465,240 @@
 </div>
 </body>
 </html></script>
+<script type="text/html" class="rpt" data-tab="fin" data-date="2026-09-17"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>财经日报 · 2026-09-17</title>
+<style>
+  /* 白底 + 虎嗅式中文黑体 + 英文衬线 + 红涨绿跌（中国习惯） */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C4E7A; --link: #2266B3;
+    --up: #C0392B; --down: #1A7A4D;
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #7FB0E6; --link: #7FB0E6;
+      --up: #F0685A; --down: #4FBF86;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 18px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 8px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 620px; margin: 20px auto 4px; line-height: 1.75; }
+
+  .sec { margin-top: 40px; }
+  .sec-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 14px; }
+  .sec-head .emoji { font-size: 17px; }
+  .sec-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 6px 0 2px; }
+
+  /* 行情磁贴 */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; }
+  .tile { border: 1px solid var(--hair); border-radius: 10px; padding: 11px 13px; }
+  .q-head { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+  .q-tag { font-size: 10.5px; color: var(--muted); border: 1px solid var(--hair);
+    border-radius: 5px; padding: 0 5px; }
+  .q-name { font-size: 13px; color: var(--muted); }
+  .q-val { font-family: var(--title); font-size: 20px; font-weight: 700;
+    font-variant-numeric: tabular-nums; }
+  .q-chg { font-size: 13.5px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .q-sub { font-size: 11.5px; color: var(--faint); margin-top: 2px; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .flat { color: var(--muted); }
+
+  /* 板块 */
+  .sector-row { padding: 12px 0; border-bottom: 1px solid var(--hair); }
+  .sector-row:last-child { border-bottom: none; }
+  .sector-mkt { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .sector-side { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0; }
+  .side-label { font-size: 11.5px; font-weight: 700; margin-right: 2px; }
+  .chip { font-size: 12.5px; border: 1px solid var(--hair); border-radius: 999px;
+    padding: 2px 10px; font-variant-numeric: tabular-nums; }
+  .chip b { margin-left: 6px; font-weight: 700; }
+  .chip.up { color: var(--up); }
+  .chip.down { color: var(--down); }
+
+  /* 新股表格 */
+  .table-wrap { overflow-x: auto; }
+  table.ipo { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.ipo th, table.ipo td { text-align: left; padding: 8px 10px;
+    border-bottom: 1px solid var(--hair); vertical-align: top; }
+  table.ipo th { font-size: 12px; color: var(--muted); font-weight: 700;
+    border-bottom: 1.5px solid var(--rule); white-space: nowrap; }
+  .ipo-name { font-weight: 650; }
+  .ipo-note { color: var(--muted); }
+
+  /* 事件卡 */
+  .event { padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .event:last-child { border-bottom: none; }
+  .ev-title { font-family: var(--title); margin: 0 0 7px; font-size: 17px;
+    font-weight: 700; line-height: 1.4; }
+  .ev-title a { color: var(--text); text-decoration: none; }
+  .ev-title a:hover { color: var(--link); text-decoration: underline; }
+  .ev-sum { margin: 0 0 8px; font-size: 14.5px; }
+  .ev-why { margin: 6px 0; font-size: 13.5px; color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; }
+  .ev-foot { margin-top: 9px; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日财经简报</div>
+    <h1>财经日报</h1>
+    <div class="date">2026-09-17</div>
+    <div class="gen">生成于 2026-09-17 早间/盘中版（多源）</div>
+  </header>
+  <p class="editor-note">9/17 是 FOMC 余波：加息 25bp 落地后，美股 9/16 尾盘反而『利空出尽』收高——纳指涨约 0.9%、标普涨约 0.4%、道指基本平盘，但交易员随即加大对『年底前再加息两次』的押注；市场解读沃什（Warsh）此次是『动真格』捍卫美联储独立性、并预计到明年年中还将加息三次。国内方面，央行行长潘功胜撰文关注价格型调控（利率工具），香港金管局已跟随加息至 4.25%。A股 9/17 人形机器人概念震荡反弹、北特科技与模塑科技双双涨停。来源：新浪财经、财联社、AP。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">纳斯达克</span></div><div class="q-val">—</div><div class="q-chg up">约+0.9%</div><div class="q-sub">9/16收盘·加息后利空出尽</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">标普500</span></div><div class="q-val">—</div><div class="q-chg up">约+0.4%</div><div class="q-sub">9/16收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">道琼斯</span></div><div class="q-val">—</div><div class="q-chg flat">基本平盘</div><div class="q-sub">9/16收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3891.60</div><div class="q-chg up">+0.71%</div><div class="q-sub">9/16收盘·今日盘中进行中</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">人形机器人</span></div><div class="q-val">—</div><div class="q-chg up">震荡反弹</div><div class="q-sub">9/17早盘·北特/模塑涨停</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">A股(9/17早盘)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">人形机器人<b>北特科技/模塑科技涨停</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip flat">—</span></div></div><div class="sector-row"><div class="sector-mkt">美股(9/16)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">科技/纳指<b>加息后反弹</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip flat">—</span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">美联储利率路径</span></div><div class="q-val">3.75%-4.00%</div><div class="q-chg up">或到明年年中再加3次</div><div class="q-sub">市场定价·沃什&#x27;动真格&#x27;</div></div><div class="tile"><div class="q-head"><span class="q-name">香港基准利率</span></div><div class="q-val">4.25%</div><div class="q-chg up">+25bp</div><div class="q-sub">金管局跟随</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://k.sina.com.cn/article_7857201856_1d45362c001908noei.html" target="_blank" rel="noopener">加息落地『利空出尽』，昨夜美股收高但再加息押注升温</a></h3><p class="ev-sum">美联储 9/16 加息 25bp 后，美股 9/16 尾盘反而收高：纳指涨约 0.9%、标普涨约 0.4%、道指基本平盘；但交易员随即加大对美联储年底前再加息两次的押注，10 年期美债收益率维持高位。</p><p class="ev-why"><span class="lbl">影响/解读</span>『买预期卖事实』推动短线反弹，但鹰派点阵图意味着利率上行未完，成长股与黄金的估值压力仍在，反弹持续性取决于后续通胀与就业数据。</p><div class="ev-foot"><a class="src" href="https://k.sina.com.cn/article_7857201856_1d45362c001908noei.html" target="_blank" rel="noopener">新浪财经/财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">沃什『动真格』：市场定价到明年年中还将加息三次</a></h3><p class="ev-sum">市场解读美联储主席沃什（Warsh）此次加息是『打响第一枪』、捍卫美联储独立性，并非『一次性加息』；据市场定价，美联储到明年年中可能还将加息三次。</p><p class="ev-why"><span class="lbl">影响/解读</span>若加息路径如市场定价般延续，美元与美债收益率中枢将持续上移，对新兴市场、港股与高估值资产构成中期压力。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">央行行长潘功胜撰文关注价格型调控</a></h3><p class="ev-sum">债市早参显示，在美联储加息之际，中国央行行长潘功胜撰文关注价格型调控（更重利率工具）。</p><p class="ev-why"><span class="lbl">影响/解读</span>释放国内货币政策框架向『价格型（利率）调控』深化的信号，对债市与利率敏感资产是重要中期变量，也体现内外政策周期的错位。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">A股人形机器人概念震荡反弹，北特科技、模塑科技涨停</a></h3><p class="ev-sum">9/17 A股人形机器人概念震荡反弹，北特科技、模塑科技双双涨停。</p><p class="ev-why"><span class="lbl">影响/解读</span>在高盛/马斯克持续唱多具身智能的背景下，人形机器人产业链（零部件/丝杠/减速器）题材活跃；但需区分订单兑现与概念炒作。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section>
+  <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="fin" data-date="2026-09-16"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>财经日报 · 2026-09-16</title>
+<style>
+  /* 白底 + 虎嗅式中文黑体 + 英文衬线 + 红涨绿跌（中国习惯） */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C4E7A; --link: #2266B3;
+    --up: #C0392B; --down: #1A7A4D;
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #7FB0E6; --link: #7FB0E6;
+      --up: #F0685A; --down: #4FBF86;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 18px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 8px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 620px; margin: 20px auto 4px; line-height: 1.75; }
+
+  .sec { margin-top: 40px; }
+  .sec-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 14px; }
+  .sec-head .emoji { font-size: 17px; }
+  .sec-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 6px 0 2px; }
+
+  /* 行情磁贴 */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; }
+  .tile { border: 1px solid var(--hair); border-radius: 10px; padding: 11px 13px; }
+  .q-head { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+  .q-tag { font-size: 10.5px; color: var(--muted); border: 1px solid var(--hair);
+    border-radius: 5px; padding: 0 5px; }
+  .q-name { font-size: 13px; color: var(--muted); }
+  .q-val { font-family: var(--title); font-size: 20px; font-weight: 700;
+    font-variant-numeric: tabular-nums; }
+  .q-chg { font-size: 13.5px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .q-sub { font-size: 11.5px; color: var(--faint); margin-top: 2px; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .flat { color: var(--muted); }
+
+  /* 板块 */
+  .sector-row { padding: 12px 0; border-bottom: 1px solid var(--hair); }
+  .sector-row:last-child { border-bottom: none; }
+  .sector-mkt { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .sector-side { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0; }
+  .side-label { font-size: 11.5px; font-weight: 700; margin-right: 2px; }
+  .chip { font-size: 12.5px; border: 1px solid var(--hair); border-radius: 999px;
+    padding: 2px 10px; font-variant-numeric: tabular-nums; }
+  .chip b { margin-left: 6px; font-weight: 700; }
+  .chip.up { color: var(--up); }
+  .chip.down { color: var(--down); }
+
+  /* 新股表格 */
+  .table-wrap { overflow-x: auto; }
+  table.ipo { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.ipo th, table.ipo td { text-align: left; padding: 8px 10px;
+    border-bottom: 1px solid var(--hair); vertical-align: top; }
+  table.ipo th { font-size: 12px; color: var(--muted); font-weight: 700;
+    border-bottom: 1.5px solid var(--rule); white-space: nowrap; }
+  .ipo-name { font-weight: 650; }
+  .ipo-note { color: var(--muted); }
+
+  /* 事件卡 */
+  .event { padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .event:last-child { border-bottom: none; }
+  .ev-title { font-family: var(--title); margin: 0 0 7px; font-size: 17px;
+    font-weight: 700; line-height: 1.4; }
+  .ev-title a { color: var(--text); text-decoration: none; }
+  .ev-title a:hover { color: var(--link); text-decoration: underline; }
+  .ev-sum { margin: 0 0 8px; font-size: 14.5px; }
+  .ev-why { margin: 6px 0; font-size: 13.5px; color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; }
+  .ev-foot { margin-top: 9px; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日财经简报</div>
+    <h1>财经日报</h1>
+    <div class="date">2026-09-16</div>
+    <div class="gen">生成于 2026-09-16（盘后收盘·多源）</div>
+  </header>
+  <p class="editor-note">9/16 全球焦点是美联储：FOMC 以 12-0 全票加息 25 个基点至 3.75%—4.00%，为三年来（自 2023 年以来）首度加息，理由是通胀顽固（油价飙升等推动）；点阵图显示 18 位官员中 16 位预计年内还应再加一次，香港金管局随即跟随上调基准利率 25bp 至 4.25%，特朗普则不满、要求把利率降到 1% 或以下。A股当日逆势收涨：上证 +0.71% 报 3891.60、深成 +1.26%、创业板 +1.96%，半导体领涨、电子/电子化学品/贵金属/光电走强，成交 1.85 万亿、放量 2272 亿、逾 4100 股上涨。昨夜美股（9/15）续跌——道指 -0.63% 报 52093.10、标普 -0.45% 报 7585.73、纳指 -0.78% 报 25981.57，10 年期美债收益率触及 19 年高位。来源：CNBC/财联社、东方财富、新浪财经。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3891.60</div><div class="q-chg up">+0.71%</div><div class="q-sub">9/16收盘·半导体领涨</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">深证成指</span></div><div class="q-val">—</div><div class="q-chg up">+1.26%</div><div class="q-sub">9/16收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">创业板指</span></div><div class="q-val">—</div><div class="q-chg up">+1.96%</div><div class="q-sub">9/16收盘·放量</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">道琼斯</span></div><div class="q-val">52093.10</div><div class="q-chg down">-0.63%</div><div class="q-sub">9/15收盘·昨夜</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">标普500</span></div><div class="q-val">7585.73</div><div class="q-chg down">-0.45%</div><div class="q-sub">9/15收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">纳斯达克</span></div><div class="q-val">25981.57</div><div class="q-chg down">-0.78%</div><div class="q-sub">9/15收盘</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">A股(9/16)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">半导体<b>领涨</b></span><span class="chip up">电子/电子化学品/光电<b>走强</b></span><span class="chip up">贵金属<b>走强</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">汽车/保险/银行<b>跌幅居前</b></span><span class="chip down">港口航运<b>回调</b></span></div></div><div class="sector-row"><div class="sector-mkt">美股(9/15)</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">高通<b>+4%</b></span><span class="chip up">超微/Coherent<b>+2%</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">亚马逊<b>-2%</b></span><span class="chip down">谷歌/微软<b>-1%</b></span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">美联储联邦基金利率</span></div><div class="q-val">3.75%-4.00%</div><div class="q-chg up">+25bp(三年来首度加息)</div><div class="q-sub">12-0全票·点阵图16/18看年内再加</div></div><div class="tile"><div class="q-head"><span class="q-name">香港基准利率</span></div><div class="q-val">4.25%</div><div class="q-chg up">+25bp(跟随)</div><div class="q-sub">金管局</div></div><div class="tile"><div class="q-head"><span class="q-name">美国10年期国债</span></div><div class="q-val">触19年高位</div><div class="q-chg up">收益率飙升</div><div class="q-sub">9/15美股时段</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://www.cnbc.com/2026/09/16/fed-rate-decision-september-2026.html" target="_blank" rel="noopener">美联储加息 25bp 至 3.75%-4.00%，三年来首度加息</a></h3><p class="ev-sum">FOMC 以 12-0 全票加息 25 个基点，将联邦基金利率目标区间上调至 3.75%—4.00%，为自 2023 年以来首次加息，旨在应对顽固通胀（油价飙升等推动）；更新的点阵图显示 18 位官员中 16 位预计年内应再加一次。会后香港金管局跟随上调基准利率 25bp 至 4.25%。</p><p class="ev-why"><span class="lbl">影响/解读</span>加息周期重启+『年内还有一次』的鹰派点阵图，抬升美元与美债收益率、压制全球高估值成长股与黄金；新兴市场与港股面临被动跟随收紧的压力。</p><div class="ev-foot"><a class="src" href="https://www.cnbc.com/2026/09/16/fed-rate-decision-september-2026.html" target="_blank" rel="noopener">CNBC/财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://k.sina.com.cn/article_7857201856_1d45362c001908nnv6.html" target="_blank" rel="noopener">A股逆势收涨，半导体领涨、放量逾 4100 股上涨</a></h3><p class="ev-sum">9/16 A股三大指数集体收涨：上证涨 0.71% 报 3891.60，深成指涨 1.26%，创业板指涨 1.96%；两市成交 1.85 万亿、较上日放量 2272 亿，逾 4100 股上涨、91 股涨停。半导体领涨，电子、电子化学品、贵金属、光电走强；汽车、保险、银行、港口航运跌幅居前。</p><p class="ev-why"><span class="lbl">影响/解读</span>在 FOMC 决议前 A股由国产半导体/电子主线带动放量反弹，风格从消费/金融切向科技成长；但需观察加息落地后的外围扰动与量能持续性。</p><div class="ev-foot"><a class="src" href="https://k.sina.com.cn/article_7857201856_1d45362c001908nnv6.html" target="_blank" rel="noopener">东方财富/新浪 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.sina.com.cn/world/2026-09-16/doc-iniryefe8114192.shtml" target="_blank" rel="noopener">昨夜美股续跌、10 年期美债收益率触 19 年高位</a></h3><p class="ev-sum">9/15 美股连续第二日下跌，道指跌 0.63% 报 52093.10、标普跌 0.45% 报 7585.73、纳指跌 0.78% 报 25981.57；投资者为 FOMC 决议做准备，10 年期美债收益率飙升至 19 年高位。科技七巨头分化，高通涨逾 4%、超微与 Coherent 涨约 2%，亚马逊跌超 2%、谷歌与微软跌超 1%。</p><p class="ev-why"><span class="lbl">影响/解读</span>利率飙升压制成长股估值，但芯片股内部分化（高通/超微逆势）显示 AI 硬件仍有结构性资金；加息落地后利率与美元路径是后续主线。</p><div class="ev-foot"><a class="src" href="https://finance.sina.com.cn/world/2026-09-16/doc-iniryefe8114192.shtml" target="_blank" rel="noopener">新浪财经 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/" target="_blank" rel="noopener">特朗普不满加息：美国利率应在 1% 或以下</a></h3><p class="ev-sum">针对美联储加息，特朗普表达不满，称美国利率应当降到 1% 或以下、要求『赶紧降息』，与美联储的紧缩立场直接冲突。</p><p class="ev-why"><span class="lbl">影响/解读</span>货币政策独立性与政治施压的张力升温，增加政策路径不确定性；但短期决策权仍在 FOMC，市场以点阵图与官员表态定价。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/" target="_blank" rel="noopener">财联社 ↗</a></div></article></section>
+  <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
+</div>
+</body>
+</html></script>
 <script type="text/html" class="rpt" data-tab="fin" data-date="2026-09-15"><!doctype html>
 <html lang="zh-CN">
 <head>
@@ -4384,10 +4808,10 @@
     <div class="kicker">每日财经简报</div>
     <h1>财经日报</h1>
     <div class="date">2026-09-15</div>
-    <div class="gen">生成于 2026-09-15 10:45（多源核验版）</div>
+    <div class="gen">生成于 2026-09-15（盘后收盘补全·多源核验版）</div>
   </header>
-  <p class="editor-note">今天不是只有财联社：已补入国家统计局/Reuters、东方财富、Yahoo Finance、AP、RTHK、Bloomberg 等来源。行情区采用最近完整收盘（9/14），并单独标注 9/15 亚洲早盘；今天 A 股、港股尚未收盘，不能把早盘波动当全天结果。另将央行操作从“MLF”更正为 5000 亿元、6 个月期买断式逆回购。</p>
-  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3885.33</div><div class="q-chg down">-0.07%</div><div class="q-sub">9/14收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">深证成指</span></div><div class="q-val">13384.57</div><div class="q-chg down">-0.64%</div><div class="q-sub">9/14收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">创业板指</span></div><div class="q-val">3285.58</div><div class="q-chg down">-1.10%</div><div class="q-sub">9/14收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股</span><span class="q-name">恒生指数</span></div><div class="q-val">24917</div><div class="q-chg up">+0.45%</div><div class="q-sub">9/14收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">标普500</span></div><div class="q-val">7619.98</div><div class="q-chg down">-0.50%</div><div class="q-sub">9/14收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">道琼斯</span></div><div class="q-val">52421.20</div><div class="q-chg down">-0.30%</div><div class="q-sub">9/14收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">纳斯达克</span></div><div class="q-val">26186.41</div><div class="q-chg down">-0.60%</div><div class="q-sub">9/14收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">日本</span><span class="q-name">日经225</span></div><div class="q-val">63492</div><div class="q-chg down">-0.81%</div><div class="q-sub">9/14收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">韩国</span><span class="q-name">KOSPI</span></div><div class="q-val">6684</div><div class="q-chg down">约-3%</div><div class="q-sub">9/14收盘</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">A股（9/14收盘）</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">培育钻石<b>领涨</b></span><span class="chip up">MLCC<b>走强</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">半导体/算力硬件<b>回调</b></span><span class="chip down">通信设备<b>承压</b></span></div></div><div class="sector-row"><div class="sector-mkt">港股（9/14收盘）</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">医药生物<b>走强</b></span><span class="chip up">汽车<b>走强</b></span><span class="chip up">银行<b>走强</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">半导体<b>走弱</b></span><span class="chip down">煤炭/有色<b>走弱</b></span></div></div><div class="sector-row"><div class="sector-mkt">美股（9/14收盘）</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">能源/防御板块<b>相对抗跌</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">芯片股<b>AI降速担忧</b></span><span class="chip down">AI基础设施<b>普遍回落</b></span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">现货黄金</span></div><div class="q-val">约4298美元/盎司</div><div class="q-chg down">-1.1%</div><div class="q-sub">9/15 早间快照</div></div><div class="tile"><div class="q-head"><span class="q-name">Brent原油</span></div><div class="q-val">约106.21美元/桶</div><div class="q-chg up">+1.5%</div><div class="q-sub">9/15 早间快照</div></div><div class="tile"><div class="q-head"><span class="q-name">WTI原油</span></div><div class="q-val">约102美元/桶</div><div class="q-chg up">高位运行</div><div class="q-sub">9/15早间·约值</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">美国10年期国债</span></div><div class="q-val">约5.00%</div><div class="q-chg up">盘中上探</div><div class="q-sub">9/14美股时段</div></div><div class="tile"><div class="q-head"><span class="q-name">美联储利率决议</span></div><div class="q-val">本周公布</div><div class="q-chg up">加息预期升温</div><div class="q-sub">AP/市场预期</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">比特币</span></div><div class="q-val">约78828美元</div><div class="q-chg down">-0.3%</div><div class="q-sub">9/15 早间快照</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://ae.marketscreener.com/news/china-s-factory-output-growth-quickens-in-august-retail-sales-slow-ce785bddd98bf320" target="_blank" rel="noopener">中国 8 月工业增加值增长 5.2%，零售和房地产仍偏弱</a></h3><p class="ev-sum">国家统计局数据经 Reuters 报道，8 月工业增加值同比增长 5.2%，高于 7 月的 4.5%；但固定资产投资、房地产投资和消费端仍显分化。</p><p class="ev-why"><span class="lbl">影响/解读</span>工业端有韧性但内需和地产修复不足，市场会继续寻找受益于政策托底、制造升级和出口的细分方向。</p><div class="ev-foot"><a class="src" href="https://ae.marketscreener.com/news/china-s-factory-output-growth-quickens-in-august-retail-sales-slow-ce785bddd98bf320" target="_blank" rel="noopener">Reuters / 国家统计局 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://fund.eastmoney.com/a/202609143873614729.html" target="_blank" rel="noopener">东方财富：前 8 个月社融增量 23.91 万亿元，债券股票融资占比升至 50.31%</a></h3><p class="ev-sum">东方财富财经晚报援引央行数据，8 月末 M2 同比增长 7.5%，前 8 个月社融增量为 23.91 万亿元；债券和股票融资在社融增量中的占比超过贷款。</p><p class="ev-why"><span class="lbl">影响/解读</span>直接融资权重上升，利好券商、债券融资和具备资本市场融资能力的企业，但不等于信用需求全面回暖。</p><div class="ev-foot"><a class="src" href="https://fund.eastmoney.com/a/202609143873614729.html" target="_blank" rel="noopener">东方财富Choice数据 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://fund.eastmoney.com/a/202609143873614729.html" target="_blank" rel="noopener">央行今日开展 5000 亿元、6 个月期买断式逆回购</a></h3><p class="ev-sum">东方财富披露，央行 9 月 15 日以固定数量、利率招标方式开展 5000 亿元买断式逆回购，期限 181 天。</p><p class="ev-why"><span class="lbl">影响/解读</span>这是流动性安排，不应写成 MLF；对跨季资金面和债市情绪偏支持，但仍要观察资金价格与后续续作。</p><div class="ev-foot"><a class="src" href="https://fund.eastmoney.com/a/202609143873614729.html" target="_blank" rel="noopener">东方财富Choice数据 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://apnews.com/article/8f72a301be85728018018735163f4dad" target="_blank" rel="noopener">美股三大指数下跌，AI 降速担忧冲击芯片股</a></h3><p class="ev-sum">AP 报道，9 月 14 日标普 500 跌 0.5%、道指跌 0.3%、纳指跌 0.6%；AI 产业领袖呼吁放慢开发节奏，芯片和 AI 相关股票承压。</p><p class="ev-why"><span class="lbl">影响/解读</span>这不是单一公司财报导致的下跌，而是对 AI 资本开支、监管和回报周期的重新定价，算力链波动会继续放大。</p><div class="ev-foot"><a class="src" href="https://apnews.com/article/8f72a301be85728018018735163f4dad" target="_blank" rel="noopener">AP ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://sg.finance.yahoo.com/news/stock-market-today-monday-september-14-dow-sp-500-nasdaq-080559558.html" target="_blank" rel="noopener">Yahoo Finance：芯片股下挫，市场等待美联储决议</a></h3><p class="ev-sum">Yahoo Finance 的 9 月 14 日市场综述把美股下跌归因于芯片股走弱与 AI 预期降温，并指出美债收益率接近多年高位。</p><p class="ev-why"><span class="lbl">影响/解读</span>成长股同时面对盈利预期下修和无风险利率上行，估值压力高于传统能源、防御和现金流板块。</p><div class="ev-foot"><a class="src" href="https://sg.finance.yahoo.com/news/stock-market-today-monday-september-14-dow-sp-500-nasdaq-080559558.html" target="_blank" rel="noopener">Yahoo Finance ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://apnews.com/article/ffd60cca8bb045bb9b1c389f5f1b73af" target="_blank" rel="noopener">美联储本周或加息，政策路径与特朗普要求相冲突</a></h3><p class="ev-sum">AP 报道称，市场普遍预期美联储周三上调政策利率，以应对顽固通胀；这将与特朗普要求降息的立场冲突。</p><p class="ev-why"><span class="lbl">影响/解读</span>若加息落地，美债收益率、美元和高估值科技股将继续承压；黄金也会面对实际利率上行压力。</p><div class="ev-foot"><a class="src" href="https://apnews.com/article/ffd60cca8bb045bb9b1c389f5f1b73af" target="_blank" rel="noopener">AP ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://news.rthk.hk/rthk/en/component/k2/1869963-20260914.htm" target="_blank" rel="noopener">油价升至每桶 100 美元上方，霍尔木兹与供应风险重新定价</a></h3><p class="ev-sum">RTHK 报道，沙特东向输油管道遭袭、霍尔木兹海峡商船遇袭后，原油一度上涨超过 3%；Brent 9 月 15 日早盘约 106.21 美元。</p><p class="ev-why"><span class="lbl">影响/解读</span>油价上行同时推高通胀与运输成本，利好上游能源但压制航空、化工、消费和长久期成长资产。</p><div class="ev-foot"><a class="src" href="https://news.rthk.hk/rthk/en/component/k2/1869963-20260914.htm" target="_blank" rel="noopener">RTHK ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://apnews.com/article/123ddc2d8ba06c324cbbd899f7eeebd2" target="_blank" rel="noopener">亚洲早盘分化：日经反弹，港股和韩股承压</a></h3><p class="ev-sum">AP 早盘数据显示，日经 225 约涨 0.8%至 63993.22，KOSPI 约跌 0.1%至 6681.32，恒指约跌 0.2%至 24879.69；A股上证约涨 0.1%至 3889.95。</p><p class="ev-why"><span class="lbl">影响/解读</span>这是 9 月 15 日早盘快照，不是收盘数据；区域市场仍在同时消化 AI 估值、油价和美联储风险。</p><div class="ev-foot"><a class="src" href="https://apnews.com/article/123ddc2d8ba06c324cbbd899f7eeebd2" target="_blank" rel="noopener">AP ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://fund.eastmoney.com/a/202609143873614729.html" target="_blank" rel="noopener">国家药监局发布脑机接口医疗器械标准，涉及 AI 处理脑电数据</a></h3><p class="ev-sum">东方财富财经晚报称，这是我国第三个脑机接口医疗器械标准，也是首个采用 AI 技术处理脑电数据的相关产品标准，计划明年 9 月实施。</p><p class="ev-why"><span class="lbl">影响/解读</span>医疗 AI 从试验性产品走向标准化和注册体系，利好脑机接口、医疗器械和脑电数据基础设施，但不等于具体产品已经大规模商业化。</p><div class="ev-foot"><a class="src" href="https://fund.eastmoney.com/a/202609143873614729.html" target="_blank" rel="noopener">东方财富Choice数据 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.bloomberg.com/" target="_blank" rel="noopener">Bloomberg【部分付费】继续跟踪芯片繁荣与韩国出口</a></h3><p class="ev-sum">Bloomberg 当前市场页列出的最新标题包括“South Korea’s Exports Gather Pace as Chip Boom Powers Ahead”，同时关注美债、金价和油价对加息预期的影响。</p><p class="ev-why"><span class="lbl">影响/解读</span>付费源正文无法完整打开，本条只保留可核实的标题线索，不把摘要扩写成未经确认的事实；芯片出口是亚洲半导体景气的重要观察指标。</p><div class="ev-foot"><a class="src" href="https://www.bloomberg.com/" target="_blank" rel="noopener">Bloomberg【部分付费】 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.eastmoney.com/a/202609143873271390.html" target="_blank" rel="noopener">东方财富午间线索：港股医药、汽车、银行相对走强，半导体偏弱</a></h3><p class="ev-sum">东方财富前一交易日港股午评显示，医药生物、汽车和银行走强，半导体、煤炭、有色走弱；联想涨超 4%，蔚来、理想、小鹏上涨。</p><p class="ev-why"><span class="lbl">影响/解读</span>港股内部正在从高估值科技向医药、汽车和金融轮动，今天仍需等正式收盘确认。</p><div class="ev-foot"><a class="src" href="https://finance.eastmoney.com/a/202609143873271390.html" target="_blank" rel="noopener">东方财富网 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.wsj.com/markets" target="_blank" rel="noopener">WSJ、FT 今日全文未开放，不将搜索摘要冒充为头条</a></h3><p class="ev-sum">本次检查发现 WSJ 和 FT 的当日正文需要订阅或未提供可验证的 9 月 15 日文章页，因此没有把旧年份或搜索摘要写成今日新闻。</p><p class="ev-why"><span class="lbl">影响/解读</span>这是来源纪律说明：付费源可以保留真实标题，但不能用旧日期内容填充今天；本版已用 AP、Reuters、Yahoo、东方财富、RTHK 和 Bloomberg 交叉覆盖。</p><div class="ev-foot"><a class="src" href="https://www.wsj.com/markets" target="_blank" rel="noopener">WSJ / FT【付费】 ↗</a></div></article></section>
+  <p class="editor-note">多源交叉（国家统计局/Reuters、东方财富、Yahoo、AP、RTHK、Bloomberg、财联社）。9/15 A股低开低走收跌：沪指 -0.54% 报 3864.28、深成 -0.72%、创业板 -1.15%，但科创50 逆势 +1.55%，风电设备爆发、半导体反弹、PCB 活跃，大消费/农业/旅游零售回调；成交 1.63 万亿、持平年内新低。央行操作为 5000 亿元、6 个月期买断式逆回购（非 MLF）。8 月工业增加值 +5.2%，但固投/地产偏弱。昨夜美股续跌、10 年美债触 19 年高位，本周三 FOMC 决议在即。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3864.28</div><div class="q-chg down">-0.54%</div><div class="q-sub">9/15收盘·低开低走</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">深证成指</span></div><div class="q-val">—</div><div class="q-chg down">-0.72%</div><div class="q-sub">9/15收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">创业板指</span></div><div class="q-val">—</div><div class="q-chg down">-1.15%</div><div class="q-sub">9/15收盘·科创50逆势+1.55%</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股</span><span class="q-name">恒生指数</span></div><div class="q-val">24917</div><div class="q-chg up">+0.45%</div><div class="q-sub">9/14收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">标普500</span></div><div class="q-val">7619.98</div><div class="q-chg down">-0.50%</div><div class="q-sub">9/14收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">道琼斯</span></div><div class="q-val">52421.20</div><div class="q-chg down">-0.30%</div><div class="q-sub">9/14收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">纳斯达克</span></div><div class="q-val">26186.41</div><div class="q-chg down">-0.60%</div><div class="q-sub">9/14收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">日本</span><span class="q-name">日经225</span></div><div class="q-val">63492</div><div class="q-chg down">-0.81%</div><div class="q-sub">9/14收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">韩国</span><span class="q-name">KOSPI</span></div><div class="q-val">6684</div><div class="q-chg down">约-3%</div><div class="q-sub">9/14收盘</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">A股（9/14收盘）</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">培育钻石<b>领涨</b></span><span class="chip up">MLCC<b>走强</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">半导体/算力硬件<b>回调</b></span><span class="chip down">通信设备<b>承压</b></span></div></div><div class="sector-row"><div class="sector-mkt">港股（9/14收盘）</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">医药生物<b>走强</b></span><span class="chip up">汽车<b>走强</b></span><span class="chip up">银行<b>走强</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">半导体<b>走弱</b></span><span class="chip down">煤炭/有色<b>走弱</b></span></div></div><div class="sector-row"><div class="sector-mkt">美股（9/14收盘）</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">能源/防御板块<b>相对抗跌</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">芯片股<b>AI降速担忧</b></span><span class="chip down">AI基础设施<b>普遍回落</b></span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">现货黄金</span></div><div class="q-val">约4298美元/盎司</div><div class="q-chg down">-1.1%</div><div class="q-sub">9/15 早间快照</div></div><div class="tile"><div class="q-head"><span class="q-name">Brent原油</span></div><div class="q-val">约106.21美元/桶</div><div class="q-chg up">+1.5%</div><div class="q-sub">9/15 早间快照</div></div><div class="tile"><div class="q-head"><span class="q-name">WTI原油</span></div><div class="q-val">约102美元/桶</div><div class="q-chg up">高位运行</div><div class="q-sub">9/15早间·约值</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">美国10年期国债</span></div><div class="q-val">约5.00%</div><div class="q-chg up">盘中上探</div><div class="q-sub">9/14美股时段</div></div><div class="tile"><div class="q-head"><span class="q-name">美联储利率决议</span></div><div class="q-val">本周公布</div><div class="q-chg up">加息预期升温</div><div class="q-sub">AP/市场预期</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">比特币</span></div><div class="q-val">约78828美元</div><div class="q-chg down">-0.3%</div><div class="q-sub">9/15 早间快照</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://ae.marketscreener.com/news/china-s-factory-output-growth-quickens-in-august-retail-sales-slow-ce785bddd98bf320" target="_blank" rel="noopener">中国 8 月工业增加值增长 5.2%，零售和房地产仍偏弱</a></h3><p class="ev-sum">国家统计局数据经 Reuters 报道，8 月工业增加值同比增长 5.2%，高于 7 月的 4.5%；但固定资产投资、房地产投资和消费端仍显分化。</p><p class="ev-why"><span class="lbl">影响/解读</span>工业端有韧性但内需和地产修复不足，市场会继续寻找受益于政策托底、制造升级和出口的细分方向。</p><div class="ev-foot"><a class="src" href="https://ae.marketscreener.com/news/china-s-factory-output-growth-quickens-in-august-retail-sales-slow-ce785bddd98bf320" target="_blank" rel="noopener">Reuters / 国家统计局 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://fund.eastmoney.com/a/202609143873614729.html" target="_blank" rel="noopener">东方财富：前 8 个月社融增量 23.91 万亿元，债券股票融资占比升至 50.31%</a></h3><p class="ev-sum">东方财富财经晚报援引央行数据，8 月末 M2 同比增长 7.5%，前 8 个月社融增量为 23.91 万亿元；债券和股票融资在社融增量中的占比超过贷款。</p><p class="ev-why"><span class="lbl">影响/解读</span>直接融资权重上升，利好券商、债券融资和具备资本市场融资能力的企业，但不等于信用需求全面回暖。</p><div class="ev-foot"><a class="src" href="https://fund.eastmoney.com/a/202609143873614729.html" target="_blank" rel="noopener">东方财富Choice数据 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://fund.eastmoney.com/a/202609143873614729.html" target="_blank" rel="noopener">央行今日开展 5000 亿元、6 个月期买断式逆回购</a></h3><p class="ev-sum">东方财富披露，央行 9 月 15 日以固定数量、利率招标方式开展 5000 亿元买断式逆回购，期限 181 天。</p><p class="ev-why"><span class="lbl">影响/解读</span>这是流动性安排，不应写成 MLF；对跨季资金面和债市情绪偏支持，但仍要观察资金价格与后续续作。</p><div class="ev-foot"><a class="src" href="https://fund.eastmoney.com/a/202609143873614729.html" target="_blank" rel="noopener">东方财富Choice数据 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://apnews.com/article/8f72a301be85728018018735163f4dad" target="_blank" rel="noopener">美股三大指数下跌，AI 降速担忧冲击芯片股</a></h3><p class="ev-sum">AP 报道，9 月 14 日标普 500 跌 0.5%、道指跌 0.3%、纳指跌 0.6%；AI 产业领袖呼吁放慢开发节奏，芯片和 AI 相关股票承压。</p><p class="ev-why"><span class="lbl">影响/解读</span>这不是单一公司财报导致的下跌，而是对 AI 资本开支、监管和回报周期的重新定价，算力链波动会继续放大。</p><div class="ev-foot"><a class="src" href="https://apnews.com/article/8f72a301be85728018018735163f4dad" target="_blank" rel="noopener">AP ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://sg.finance.yahoo.com/news/stock-market-today-monday-september-14-dow-sp-500-nasdaq-080559558.html" target="_blank" rel="noopener">Yahoo Finance：芯片股下挫，市场等待美联储决议</a></h3><p class="ev-sum">Yahoo Finance 的 9 月 14 日市场综述把美股下跌归因于芯片股走弱与 AI 预期降温，并指出美债收益率接近多年高位。</p><p class="ev-why"><span class="lbl">影响/解读</span>成长股同时面对盈利预期下修和无风险利率上行，估值压力高于传统能源、防御和现金流板块。</p><div class="ev-foot"><a class="src" href="https://sg.finance.yahoo.com/news/stock-market-today-monday-september-14-dow-sp-500-nasdaq-080559558.html" target="_blank" rel="noopener">Yahoo Finance ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://apnews.com/article/ffd60cca8bb045bb9b1c389f5f1b73af" target="_blank" rel="noopener">美联储本周或加息，政策路径与特朗普要求相冲突</a></h3><p class="ev-sum">AP 报道称，市场普遍预期美联储周三上调政策利率，以应对顽固通胀；这将与特朗普要求降息的立场冲突。</p><p class="ev-why"><span class="lbl">影响/解读</span>若加息落地，美债收益率、美元和高估值科技股将继续承压；黄金也会面对实际利率上行压力。</p><div class="ev-foot"><a class="src" href="https://apnews.com/article/ffd60cca8bb045bb9b1c389f5f1b73af" target="_blank" rel="noopener">AP ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://news.rthk.hk/rthk/en/component/k2/1869963-20260914.htm" target="_blank" rel="noopener">油价升至每桶 100 美元上方，霍尔木兹与供应风险重新定价</a></h3><p class="ev-sum">RTHK 报道，沙特东向输油管道遭袭、霍尔木兹海峡商船遇袭后，原油一度上涨超过 3%；Brent 9 月 15 日早盘约 106.21 美元。</p><p class="ev-why"><span class="lbl">影响/解读</span>油价上行同时推高通胀与运输成本，利好上游能源但压制航空、化工、消费和长久期成长资产。</p><div class="ev-foot"><a class="src" href="https://news.rthk.hk/rthk/en/component/k2/1869963-20260914.htm" target="_blank" rel="noopener">RTHK ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://apnews.com/article/123ddc2d8ba06c324cbbd899f7eeebd2" target="_blank" rel="noopener">亚洲早盘分化：日经反弹，港股和韩股承压</a></h3><p class="ev-sum">AP 早盘数据显示，日经 225 约涨 0.8%至 63993.22，KOSPI 约跌 0.1%至 6681.32，恒指约跌 0.2%至 24879.69；A股上证约涨 0.1%至 3889.95。</p><p class="ev-why"><span class="lbl">影响/解读</span>这是 9 月 15 日早盘快照，不是收盘数据；区域市场仍在同时消化 AI 估值、油价和美联储风险。</p><div class="ev-foot"><a class="src" href="https://apnews.com/article/123ddc2d8ba06c324cbbd899f7eeebd2" target="_blank" rel="noopener">AP ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://fund.eastmoney.com/a/202609143873614729.html" target="_blank" rel="noopener">国家药监局发布脑机接口医疗器械标准，涉及 AI 处理脑电数据</a></h3><p class="ev-sum">东方财富财经晚报称，这是我国第三个脑机接口医疗器械标准，也是首个采用 AI 技术处理脑电数据的相关产品标准，计划明年 9 月实施。</p><p class="ev-why"><span class="lbl">影响/解读</span>医疗 AI 从试验性产品走向标准化和注册体系，利好脑机接口、医疗器械和脑电数据基础设施，但不等于具体产品已经大规模商业化。</p><div class="ev-foot"><a class="src" href="https://fund.eastmoney.com/a/202609143873614729.html" target="_blank" rel="noopener">东方财富Choice数据 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.bloomberg.com/" target="_blank" rel="noopener">Bloomberg【部分付费】继续跟踪芯片繁荣与韩国出口</a></h3><p class="ev-sum">Bloomberg 当前市场页列出的最新标题包括“South Korea’s Exports Gather Pace as Chip Boom Powers Ahead”，同时关注美债、金价和油价对加息预期的影响。</p><p class="ev-why"><span class="lbl">影响/解读</span>付费源正文无法完整打开，本条只保留可核实的标题线索，不把摘要扩写成未经确认的事实；芯片出口是亚洲半导体景气的重要观察指标。</p><div class="ev-foot"><a class="src" href="https://www.bloomberg.com/" target="_blank" rel="noopener">Bloomberg【部分付费】 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.eastmoney.com/a/202609143873271390.html" target="_blank" rel="noopener">东方财富午间线索：港股医药、汽车、银行相对走强，半导体偏弱</a></h3><p class="ev-sum">东方财富前一交易日港股午评显示，医药生物、汽车和银行走强，半导体、煤炭、有色走弱；联想涨超 4%，蔚来、理想、小鹏上涨。</p><p class="ev-why"><span class="lbl">影响/解读</span>港股内部正在从高估值科技向医药、汽车和金融轮动，今天仍需等正式收盘确认。</p><div class="ev-foot"><a class="src" href="https://finance.eastmoney.com/a/202609143873271390.html" target="_blank" rel="noopener">东方财富网 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.wsj.com/markets" target="_blank" rel="noopener">WSJ、FT 今日全文未开放，不将搜索摘要冒充为头条</a></h3><p class="ev-sum">本次检查发现 WSJ 和 FT 的当日正文需要订阅或未提供可验证的 9 月 15 日文章页，因此没有把旧年份或搜索摘要写成今日新闻。</p><p class="ev-why"><span class="lbl">影响/解读</span>这是来源纪律说明：付费源可以保留真实标题，但不能用旧日期内容填充今天；本版已用 AP、Reuters、Yahoo、东方财富、RTHK 和 Bloomberg 交叉覆盖。</p><div class="ev-foot"><a class="src" href="https://www.wsj.com/markets" target="_blank" rel="noopener">WSJ / FT【付费】 ↗</a></div></article></section>
   <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
 </div>
 </body>
