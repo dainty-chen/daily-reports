@@ -86,7 +86,7 @@
 <div class="app">
   <header class="top">
     <div class="brand">📊 每日日报<span class="dot">看板</span></div>
-    <div class="tabs" role="tablist"><button class="tab" data-tab="ai" role="tab">AI 日报<span class="cnt">46</span></button><button class="tab" data-tab="fin" role="tab">财经日报<span class="cnt">46</span></button></div>
+    <div class="tabs" role="tablist"><button class="tab" data-tab="ai" role="tab">AI 日报<span class="cnt">51</span></button><button class="tab" data-tab="fin" role="tab">财经日报<span class="cnt">51</span></button></div>
     <div class="meta" id="meta"></div>
   </header>
   <div class="body">
@@ -95,6 +95,481 @@
   </div>
 </div>
 
+<script type="text/html" class="rpt" data-tab="ai" data-date="2026-09-22"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 行业新闻日报 · 2026-09-22</title>
+<style>
+  /* 白背景 + 虎嗅式中文黑体 + 英文衬线(FT感) + 克制点缀 */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C7A4C; --link: #2266B3;
+    /* 标题: 英文优先衬线(Georgia)好看, 中文回退黑体(虎嗅式) */
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #6FC291; --link: #7FB0E6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 690px; margin: 0 auto; padding: 0 24px 72px; }
+
+  /* 报头 */
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 20px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 10px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 580px; margin: 22px auto 4px; line-height: 1.75; }
+
+  /* 栏目 */
+  .domain { margin-top: 44px; }
+  .dom-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 4px; }
+  .dom-head .emoji { font-size: 17px; }
+  .dom-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .dom-head .count { margin-left: auto; font-size: 12px; color: var(--faint);
+    font-variant-numeric: tabular-nums; }
+  .top .dom-head { border-bottom-color: var(--accent); }
+  .top .dom-head h2 { color: var(--accent); }
+
+  /* 单条 */
+  .story { padding: 19px 0; border-bottom: 1px solid var(--hair); }
+  .story:last-child { border-bottom: none; }
+  .story-title { font-family: var(--title); margin: 0 0 8px;
+    font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .story-title a { color: var(--text); text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0 1.5px; background-repeat: no-repeat;
+    background-position: 0 100%; transition: background-size .2s; }
+  .story-title a:hover { background-size: 100% 1.5px; color: var(--accent); }
+  .summary { margin: 0 0 9px; font-size: 15px; color: var(--text); }
+  .why, .inds { margin: 6px 0; font-size: 13.5px; color: var(--muted); }
+  .why { color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; vertical-align: 1px; }
+  .foot { display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-top: 11px; flex-wrap: wrap; }
+  .att { display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; color: var(--muted); }
+  .att .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 16px 0; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日 AI 行业简报</div>
+    <h1>AI 行业新闻日报</h1>
+    <div class="date">2026-09-22</div>
+    <div class="gen">生成于 2026-09-22 12:15</div>
+  </header>
+  <p class="editor-note">Codex 补档草稿：今天的重点不是单一模型刷榜，而是云栖大会推动规模化落地、Agent 与平台冲突升级，以及中美 AI 安全机制进入政策讨论。</p>
+  <section class="domain top"><div class="dom-head"><span class="emoji">🔥</span><h2>今日重大新闻</h2><span class="count">4</span></div><article class="story"><h3 class="story-title"><a href="https://finance.sina.com.cn/tech/shenji/2026-09-22/doc-inissitf7029329.shtml" target="_blank" rel="noopener">云栖大会开幕，阿里把重点转向 AI 规模化应用</a></h3><p class="summary">2026 云栖大会在杭州开幕，议题集中于模型、云基础设施、Agent 与行业落地。</p><p class="why"><span class="lbl">为什么重要</span>产业叙事从模型发布转向实际部署，企业应更关注成本、数据接入、组织改造和可量化回报。</p><p class="inds"><span class="lbl">影响行业</span>云计算 · 企业软件 · 制造 · 零售</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://finance.sina.com.cn/tech/shenji/2026-09-22/doc-inissitf7029329.shtml" target="_blank" rel="noopener">新浪财经 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.geekwire.com/2026/amazon-blocks-metas-muse-ai-assistant-in-new-standoff-over-agentic-shopping/" target="_blank" rel="noopener">Amazon 阻止 Meta Muse 访问其购物网站</a></h3><p class="summary">Amazon 封锁 Meta Muse 的自动购物访问，双方在 Agent 是否可以代表用户浏览和下单的问题上正面冲突。</p><p class="why"><span class="lbl">为什么重要</span>Agent 商业化的核心不只是模型能力，而是平台是否允许机器访问、交易与分享佣金。</p><p class="inds"><span class="lbl">影响行业</span>电商 · Agent · 广告 · 反爬与安全</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.geekwire.com/2026/amazon-blocks-metas-muse-ai-assistant-in-new-standoff-over-agentic-shopping/" target="_blank" rel="noopener">GeekWire ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://apnews.com/article/2c7f54f07e755f506d9db9b91df282bd" target="_blank" rel="noopener">美国提出与中国建立 AI 事故通报机制</a></h3><p class="summary">美方提出围绕重大 AI 事故建立热线与通知机制，议题进入中美高层风险沟通。</p><p class="why"><span class="lbl">为什么重要</span>这类机制若落地，可能成为跨境模型安全、算力与关键基础设施风险管理的最低合作框架。</p><p class="inds"><span class="lbl">影响行业</span>AI 安全 · 云计算 · 关键基础设施 · 政策研究</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://apnews.com/article/2c7f54f07e755f506d9db9b91df282bd" target="_blank" rel="noopener">AP ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://finance.eastmoney.com/" target="_blank" rel="noopener">宇树科技推出新款灵巧手，具身智能继续降本</a></h3><p class="summary">东方财富首页报道宇树新款灵巧手起售价 3.99 万元；官方产品页展示其面向机器人精细操作的多自由度设计。</p><p class="why"><span class="lbl">为什么重要</span>灵巧手成本下探会加快机器人从展示走向装配、分拣和服务，但可靠性与数据采集仍决定商业化速度。</p><p class="inds"><span class="lbl">影响行业</span>机器人 · 制造业 · 物流 · 具身智能</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://finance.eastmoney.com/" target="_blank" rel="noopener">东方财富 ↗</a></div></article></section>
+  <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://qwen.ai/research/qwen3.8-livetranslate" target="_blank" rel="noopener">Qwen3.8-Omni-Flash 发布，统一处理文本、图像与音频</a></h3><p class="summary">阿里通义发布原生全模态 Qwen3.8-Omni-Flash，支持最长 100 万上下文，并面向工具调用与 Agent 任务。</p><p class="why"><span class="lbl">为什么重要</span>多模态能力正在从多个模型拼接转向单模型统一理解，能降低实时客服、内容审核和设备端交互的工程复杂度。</p><p class="inds"><span class="lbl">影响行业</span>云服务 · 智能客服 · 内容平台 · 终端设备</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://qwen.ai/research/qwen3.8-livetranslate" target="_blank" rel="noopener">Qwen 官方 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://m.yicai.com/news/103371038.html" target="_blank" rel="noopener">中国大模型调用量连续 20 周高于美国</a></h3><p class="summary">第一财经援引行业周报称，中国大模型调用量连续 20 周高于美国，并报道第二代豆包手机等端侧产品动向。</p><p class="why"><span class="lbl">为什么重要</span>调用量更能反映真实应用需求；国产模型竞争正在从参数榜单转向高频调用和终端入口。</p><p class="inds"><span class="lbl">影响行业</span>云服务 · 手机 · 基础模型 · 应用开发</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://m.yicai.com/news/103371038.html" target="_blank" rel="noopener">第一财经 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://www.geekwire.com/2026/amazon-blocks-metas-muse-ai-assistant-in-new-standoff-over-agentic-shopping/" target="_blank" rel="noopener">Amazon 阻止 Meta Muse 访问其购物网站</a></h3><p class="summary">Amazon 封锁 Meta Muse 的自动购物访问，双方在 Agent 是否可以代表用户浏览和下单的问题上正面冲突。</p><p class="why"><span class="lbl">为什么重要</span>Agent 商业化的核心不只是模型能力，而是平台是否允许机器访问、交易与分享佣金。</p><p class="inds"><span class="lbl">影响行业</span>电商 · Agent · 广告 · 反爬与安全</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.geekwire.com/2026/amazon-blocks-metas-muse-ai-assistant-in-new-standoff-over-agentic-shopping/" target="_blank" rel="noopener">GeekWire ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.sina.cn/news/detail/5345162877472874.html" target="_blank" rel="noopener">通义 AI 眼镜与耳夹式设备亮相云栖大会</a></h3><p class="summary">阿里在云栖大会展示搭载通义能力的 AI 眼镜和耳夹式设备，探索随身语音与视觉交互。</p><p class="why"><span class="lbl">为什么重要</span>可穿戴设备是 Agent 获取环境信息与即时执行任务的新入口，关键仍是续航、隐私和高频场景。</p><p class="inds"><span class="lbl">影响行业</span>智能硬件 · 可穿戴设备 · 零售 · 旅游</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.sina.cn/news/detail/5345162877472874.html" target="_blank" rel="noopener">新浪新闻 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://www.geekwire.com/2026/amazon-blocks-metas-muse-ai-assistant-in-new-standoff-over-agentic-shopping/" target="_blank" rel="noopener">Amazon 阻止 Meta Muse 访问其购物网站</a></h3><p class="summary">Amazon 封锁 Meta Muse 的自动购物访问，双方在 Agent 是否可以代表用户浏览和下单的问题上正面冲突。</p><p class="why"><span class="lbl">为什么重要</span>Agent 商业化的核心不只是模型能力，而是平台是否允许机器访问、交易与分享佣金。</p><p class="inds"><span class="lbl">影响行业</span>电商 · Agent · 广告 · 反爬与安全</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.geekwire.com/2026/amazon-blocks-metas-muse-ai-assistant-in-new-standoff-over-agentic-shopping/" target="_blank" rel="noopener">GeekWire ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://finance.sina.com.cn/tech/shenji/2026-09-22/doc-inissitf7029329.shtml" target="_blank" rel="noopener">云栖大会开幕，阿里把重点转向 AI 规模化应用</a></h3><p class="summary">2026 云栖大会在杭州开幕，议题集中于模型、云基础设施、Agent 与行业落地。</p><p class="why"><span class="lbl">为什么重要</span>产业叙事从模型发布转向实际部署，企业应更关注成本、数据接入、组织改造和可量化回报。</p><p class="inds"><span class="lbl">影响行业</span>云计算 · 企业软件 · 制造 · 零售</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://finance.sina.com.cn/tech/shenji/2026-09-22/doc-inissitf7029329.shtml" target="_blank" rel="noopener">新浪财经 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://qwen.ai/research/qwen3.8-livetranslate" target="_blank" rel="noopener">Qwen-Image-2.1 开源，国产图像模型继续下探应用层</a></h3><p class="summary">Qwen 官方研究页显示 Qwen-Image-2.1 于 9 月 20 日开源，面向图像生成与编辑。</p><p class="why"><span class="lbl">为什么重要</span>开源图像模型会降低游戏美术、电商素材和营销创意的部署成本，但版权与品牌一致性仍需人工把关。</p><p class="inds"><span class="lbl">影响行业</span>游戏美术 · 电商 · 广告营销 · 设计工具</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://qwen.ai/research/qwen3.8-livetranslate" target="_blank" rel="noopener">Qwen 官方 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://apnews.com/article/aefb021bede3b02c83890f65cd540fd0" target="_blank" rel="noopener">盖茨基金会推动面向全球健康的专用 AI</a></h3><p class="summary">比尔·盖茨讨论以医疗专用 AI 改善资源不足地区的诊疗与公共卫生服务。</p><p class="why"><span class="lbl">为什么重要</span>医疗 AI 的价值不只在高端医院，也在于低成本工具能否弥补基层医护供给缺口。</p><p class="inds"><span class="lbl">影响行业</span>公共卫生 · 基层医疗 · 公益基金 · 医疗 AI</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://apnews.com/article/aefb021bede3b02c83890f65cd540fd0" target="_blank" rel="noopener">AP ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.huawei.com/cn/news/2026/9/hc-intelligent-healthcare" target="_blank" rel="noopener">华为与南方医院落地医疗智能体中心</a></h3><p class="summary">南方医院与华为发布医院 AI 平台和智能体中心，面向诊疗、科研与运营场景推进规模化应用。</p><p class="why"><span class="lbl">为什么重要</span>医疗 AI 的竞争焦点正从单点模型准确率转向院内数据治理、工作流接入和持续运营。</p><p class="inds"><span class="lbl">影响行业</span>医院 · 医疗信息化 · 医学科研</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://www.huawei.com/cn/news/2026/9/hc-intelligent-healthcare" target="_blank" rel="noopener">华为 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://finance.sina.com.cn/tech/shenji/2026-09-22/doc-inissitf7029329.shtml" target="_blank" rel="noopener">云栖大会开幕，阿里把重点转向 AI 规模化应用</a></h3><p class="summary">2026 云栖大会在杭州开幕，议题集中于模型、云基础设施、Agent 与行业落地。</p><p class="why"><span class="lbl">为什么重要</span>产业叙事从模型发布转向实际部署，企业应更关注成本、数据接入、组织改造和可量化回报。</p><p class="inds"><span class="lbl">影响行业</span>云计算 · 企业软件 · 制造 · 零售</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://finance.sina.com.cn/tech/shenji/2026-09-22/doc-inissitf7029329.shtml" target="_blank" rel="noopener">新浪财经 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://m.yicai.com/news/103371038.html" target="_blank" rel="noopener">中国大模型调用量连续 20 周高于美国</a></h3><p class="summary">第一财经援引行业周报称，中国大模型调用量连续 20 周高于美国，并报道第二代豆包手机等端侧产品动向。</p><p class="why"><span class="lbl">为什么重要</span>调用量更能反映真实应用需求；国产模型竞争正在从参数榜单转向高频调用和终端入口。</p><p class="inds"><span class="lbl">影响行业</span>云服务 · 手机 · 基础模型 · 应用开发</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://m.yicai.com/news/103371038.html" target="_blank" rel="noopener">第一财经 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://apnews.com/article/2c7f54f07e755f506d9db9b91df282bd" target="_blank" rel="noopener">美国提出与中国建立 AI 事故通报机制</a></h3><p class="summary">美方提出围绕重大 AI 事故建立热线与通知机制，议题进入中美高层风险沟通。</p><p class="why"><span class="lbl">为什么重要</span>这类机制若落地，可能成为跨境模型安全、算力与关键基础设施风险管理的最低合作框架。</p><p class="inds"><span class="lbl">影响行业</span>AI 安全 · 云计算 · 关键基础设施 · 政策研究</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://apnews.com/article/2c7f54f07e755f506d9db9b91df282bd" target="_blank" rel="noopener">AP ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.axios.com/2026/09/21/openai-ai-safety-standards-us-china" target="_blank" rel="noopener">OpenAI 提议建立国际 AI 安全标准</a></h3><p class="summary">OpenAI 提议围绕前沿模型能力、测试与事件响应形成国际共同标准，背景是中美 AI 风险沟通升温。</p><p class="why"><span class="lbl">为什么重要</span>标准一旦形成，会影响模型上线门槛、审计要求以及企业采购时的合规清单。</p><p class="inds"><span class="lbl">影响行业</span>基础模型 · 企业合规 · 网络安全</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://www.axios.com/2026/09/21/openai-ai-safety-standards-us-china" target="_blank" rel="noopener">Axios ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🔭</span><h2>AI 探索新领域</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://finance.eastmoney.com/" target="_blank" rel="noopener">宇树科技推出新款灵巧手，具身智能继续降本</a></h3><p class="summary">东方财富首页报道宇树新款灵巧手起售价 3.99 万元；官方产品页展示其面向机器人精细操作的多自由度设计。</p><p class="why"><span class="lbl">为什么重要</span>灵巧手成本下探会加快机器人从展示走向装配、分拣和服务，但可靠性与数据采集仍决定商业化速度。</p><p class="inds"><span class="lbl">影响行业</span>机器人 · 制造业 · 物流 · 具身智能</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://finance.eastmoney.com/" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.sina.cn/news/detail/5345162877472874.html" target="_blank" rel="noopener">通义 AI 眼镜与耳夹式设备亮相云栖大会</a></h3><p class="summary">阿里在云栖大会展示搭载通义能力的 AI 眼镜和耳夹式设备，探索随身语音与视觉交互。</p><p class="why"><span class="lbl">为什么重要</span>可穿戴设备是 Agent 获取环境信息与即时执行任务的新入口，关键仍是续航、隐私和高频场景。</p><p class="inds"><span class="lbl">影响行业</span>智能硬件 · 可穿戴设备 · 零售 · 旅游</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.sina.cn/news/detail/5345162877472874.html" target="_blank" rel="noopener">新浪新闻 ↗</a></div></article></section>
+  <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="ai" data-date="2026-09-21"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 行业新闻日报 · 2026-09-21</title>
+<style>
+  /* 白背景 + 虎嗅式中文黑体 + 英文衬线(FT感) + 克制点缀 */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C7A4C; --link: #2266B3;
+    /* 标题: 英文优先衬线(Georgia)好看, 中文回退黑体(虎嗅式) */
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #6FC291; --link: #7FB0E6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 690px; margin: 0 auto; padding: 0 24px 72px; }
+
+  /* 报头 */
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 20px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 10px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 580px; margin: 22px auto 4px; line-height: 1.75; }
+
+  /* 栏目 */
+  .domain { margin-top: 44px; }
+  .dom-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 4px; }
+  .dom-head .emoji { font-size: 17px; }
+  .dom-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .dom-head .count { margin-left: auto; font-size: 12px; color: var(--faint);
+    font-variant-numeric: tabular-nums; }
+  .top .dom-head { border-bottom-color: var(--accent); }
+  .top .dom-head h2 { color: var(--accent); }
+
+  /* 单条 */
+  .story { padding: 19px 0; border-bottom: 1px solid var(--hair); }
+  .story:last-child { border-bottom: none; }
+  .story-title { font-family: var(--title); margin: 0 0 8px;
+    font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .story-title a { color: var(--text); text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0 1.5px; background-repeat: no-repeat;
+    background-position: 0 100%; transition: background-size .2s; }
+  .story-title a:hover { background-size: 100% 1.5px; color: var(--accent); }
+  .summary { margin: 0 0 9px; font-size: 15px; color: var(--text); }
+  .why, .inds { margin: 6px 0; font-size: 13.5px; color: var(--muted); }
+  .why { color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; vertical-align: 1px; }
+  .foot { display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-top: 11px; flex-wrap: wrap; }
+  .att { display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; color: var(--muted); }
+  .att .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 16px 0; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日 AI 行业简报</div>
+    <h1>AI 行业新闻日报</h1>
+    <div class="date">2026-09-21</div>
+    <div class="gen">生成于 2026-09-22 12:15</div>
+  </header>
+  <p class="editor-note">Codex 补档草稿：AI 安全外交、Agent 平台封锁和中国模型真实调用量构成三条主线，医疗与运营商落地也有实质进展。</p>
+  <section class="domain top"><div class="dom-head"><span class="emoji">🔥</span><h2>今日重大新闻</h2><span class="count">4</span></div><article class="story"><h3 class="story-title"><a href="https://apnews.com/article/2c7f54f07e755f506d9db9b91df282bd" target="_blank" rel="noopener">美国提出与中国建立 AI 事故通报机制</a></h3><p class="summary">美方提出围绕重大 AI 事故建立热线与通知机制，议题进入中美高层风险沟通。</p><p class="why"><span class="lbl">为什么重要</span>这类机制若落地，可能成为跨境模型安全、算力与关键基础设施风险管理的最低合作框架。</p><p class="inds"><span class="lbl">影响行业</span>AI 安全 · 云计算 · 关键基础设施 · 政策研究</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://apnews.com/article/2c7f54f07e755f506d9db9b91df282bd" target="_blank" rel="noopener">AP ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.geekwire.com/2026/amazon-blocks-metas-muse-ai-assistant-in-new-standoff-over-agentic-shopping/" target="_blank" rel="noopener">Amazon 阻止 Meta Muse 访问其购物网站</a></h3><p class="summary">Amazon 封锁 Meta Muse 的自动购物访问，双方在 Agent 是否可以代表用户浏览和下单的问题上正面冲突。</p><p class="why"><span class="lbl">为什么重要</span>Agent 商业化的核心不只是模型能力，而是平台是否允许机器访问、交易与分享佣金。</p><p class="inds"><span class="lbl">影响行业</span>电商 · Agent · 广告 · 反爬与安全</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.geekwire.com/2026/amazon-blocks-metas-muse-ai-assistant-in-new-standoff-over-agentic-shopping/" target="_blank" rel="noopener">GeekWire ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://m.yicai.com/news/103371038.html" target="_blank" rel="noopener">中国大模型调用量连续 20 周高于美国</a></h3><p class="summary">第一财经援引行业周报称，中国大模型调用量连续 20 周高于美国，并报道第二代豆包手机等端侧产品动向。</p><p class="why"><span class="lbl">为什么重要</span>调用量更能反映真实应用需求；国产模型竞争正在从参数榜单转向高频调用和终端入口。</p><p class="inds"><span class="lbl">影响行业</span>云服务 · 手机 · 基础模型 · 应用开发</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://m.yicai.com/news/103371038.html" target="_blank" rel="noopener">第一财经 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://apnews.com/article/aefb021bede3b02c83890f65cd540fd0" target="_blank" rel="noopener">盖茨基金会推动面向全球健康的专用 AI</a></h3><p class="summary">比尔·盖茨讨论以医疗专用 AI 改善资源不足地区的诊疗与公共卫生服务。</p><p class="why"><span class="lbl">为什么重要</span>医疗 AI 的价值不只在高端医院，也在于低成本工具能否弥补基层医护供给缺口。</p><p class="inds"><span class="lbl">影响行业</span>公共卫生 · 基层医疗 · 公益基金 · 医疗 AI</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://apnews.com/article/aefb021bede3b02c83890f65cd540fd0" target="_blank" rel="noopener">AP ↗</a></div></article></section>
+  <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://m.yicai.com/news/103371038.html" target="_blank" rel="noopener">中国大模型调用量连续 20 周高于美国</a></h3><p class="summary">第一财经援引行业周报称，中国大模型调用量连续 20 周高于美国，并报道第二代豆包手机等端侧产品动向。</p><p class="why"><span class="lbl">为什么重要</span>调用量更能反映真实应用需求；国产模型竞争正在从参数榜单转向高频调用和终端入口。</p><p class="inds"><span class="lbl">影响行业</span>云服务 · 手机 · 基础模型 · 应用开发</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://m.yicai.com/news/103371038.html" target="_blank" rel="noopener">第一财经 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://www.geekwire.com/2026/amazon-blocks-metas-muse-ai-assistant-in-new-standoff-over-agentic-shopping/" target="_blank" rel="noopener">Amazon 阻止 Meta Muse 访问其购物网站</a></h3><p class="summary">Amazon 封锁 Meta Muse 的自动购物访问，双方在 Agent 是否可以代表用户浏览和下单的问题上正面冲突。</p><p class="why"><span class="lbl">为什么重要</span>Agent 商业化的核心不只是模型能力，而是平台是否允许机器访问、交易与分享佣金。</p><p class="inds"><span class="lbl">影响行业</span>电商 · Agent · 广告 · 反爬与安全</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.geekwire.com/2026/amazon-blocks-metas-muse-ai-assistant-in-new-standoff-over-agentic-shopping/" target="_blank" rel="noopener">GeekWire ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://finance.sina.com.cn/stock/t/2026-09-21/doc-inispueh8978465.shtml" target="_blank" rel="noopener">中国移动启动省级 MoMA 大模型试点</a></h3><p class="summary">中国移动推进省级 MoMA 大模型试点，把模型能力接入运营商内部业务和服务流程。</p><p class="why"><span class="lbl">为什么重要</span>运营商拥有客服、网络运维和政企客户入口，是国产 Agent 规模化落地的重要渠道。</p><p class="inds"><span class="lbl">影响行业</span>运营商 · 智能客服 · 网络运维 · 政企服务</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://finance.sina.com.cn/stock/t/2026-09-21/doc-inispueh8978465.shtml" target="_blank" rel="noopener">新浪财经 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.geekwire.com/2026/amazon-blocks-metas-muse-ai-assistant-in-new-standoff-over-agentic-shopping/" target="_blank" rel="noopener">Amazon 阻止 Meta Muse 访问其购物网站</a></h3><p class="summary">Amazon 封锁 Meta Muse 的自动购物访问，双方在 Agent 是否可以代表用户浏览和下单的问题上正面冲突。</p><p class="why"><span class="lbl">为什么重要</span>Agent 商业化的核心不只是模型能力，而是平台是否允许机器访问、交易与分享佣金。</p><p class="inds"><span class="lbl">影响行业</span>电商 · Agent · 广告 · 反爬与安全</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.geekwire.com/2026/amazon-blocks-metas-muse-ai-assistant-in-new-standoff-over-agentic-shopping/" target="_blank" rel="noopener">GeekWire ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://qwen.ai/research/qwen3.8-livetranslate" target="_blank" rel="noopener">Qwen-Image-2.1 开源，国产图像模型继续下探应用层</a></h3><p class="summary">Qwen 官方研究页显示 Qwen-Image-2.1 于 9 月 20 日开源，面向图像生成与编辑。</p><p class="why"><span class="lbl">为什么重要</span>开源图像模型会降低游戏美术、电商素材和营销创意的部署成本，但版权与品牌一致性仍需人工把关。</p><p class="inds"><span class="lbl">影响行业</span>游戏美术 · 电商 · 广告营销 · 设计工具</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://qwen.ai/research/qwen3.8-livetranslate" target="_blank" rel="noopener">Qwen 官方 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://apnews.com/article/aefb021bede3b02c83890f65cd540fd0" target="_blank" rel="noopener">盖茨基金会推动面向全球健康的专用 AI</a></h3><p class="summary">比尔·盖茨讨论以医疗专用 AI 改善资源不足地区的诊疗与公共卫生服务。</p><p class="why"><span class="lbl">为什么重要</span>医疗 AI 的价值不只在高端医院，也在于低成本工具能否弥补基层医护供给缺口。</p><p class="inds"><span class="lbl">影响行业</span>公共卫生 · 基层医疗 · 公益基金 · 医疗 AI</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://apnews.com/article/aefb021bede3b02c83890f65cd540fd0" target="_blank" rel="noopener">AP ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://m.yicai.com/news/103371038.html" target="_blank" rel="noopener">中国大模型调用量连续 20 周高于美国</a></h3><p class="summary">第一财经援引行业周报称，中国大模型调用量连续 20 周高于美国，并报道第二代豆包手机等端侧产品动向。</p><p class="why"><span class="lbl">为什么重要</span>调用量更能反映真实应用需求；国产模型竞争正在从参数榜单转向高频调用和终端入口。</p><p class="inds"><span class="lbl">影响行业</span>云服务 · 手机 · 基础模型 · 应用开发</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://m.yicai.com/news/103371038.html" target="_blank" rel="noopener">第一财经 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://apnews.com/article/2c7f54f07e755f506d9db9b91df282bd" target="_blank" rel="noopener">美国提出与中国建立 AI 事故通报机制</a></h3><p class="summary">美方提出围绕重大 AI 事故建立热线与通知机制，议题进入中美高层风险沟通。</p><p class="why"><span class="lbl">为什么重要</span>这类机制若落地，可能成为跨境模型安全、算力与关键基础设施风险管理的最低合作框架。</p><p class="inds"><span class="lbl">影响行业</span>AI 安全 · 云计算 · 关键基础设施 · 政策研究</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://apnews.com/article/2c7f54f07e755f506d9db9b91df282bd" target="_blank" rel="noopener">AP ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.axios.com/2026/09/21/openai-ai-safety-standards-us-china" target="_blank" rel="noopener">OpenAI 提议建立国际 AI 安全标准</a></h3><p class="summary">OpenAI 提议围绕前沿模型能力、测试与事件响应形成国际共同标准，背景是中美 AI 风险沟通升温。</p><p class="why"><span class="lbl">为什么重要</span>标准一旦形成，会影响模型上线门槛、审计要求以及企业采购时的合规清单。</p><p class="inds"><span class="lbl">影响行业</span>基础模型 · 企业合规 · 网络安全</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://www.axios.com/2026/09/21/openai-ai-safety-standards-us-china" target="_blank" rel="noopener">Axios ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🔭</span><h2>AI 探索新领域</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://finance.sina.com.cn/stock/t/2026-09-21/doc-inispueh8978465.shtml" target="_blank" rel="noopener">中国移动启动省级 MoMA 大模型试点</a></h3><p class="summary">中国移动推进省级 MoMA 大模型试点，把模型能力接入运营商内部业务和服务流程。</p><p class="why"><span class="lbl">为什么重要</span>运营商拥有客服、网络运维和政企客户入口，是国产 Agent 规模化落地的重要渠道。</p><p class="inds"><span class="lbl">影响行业</span>运营商 · 智能客服 · 网络运维 · 政企服务</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://finance.sina.com.cn/stock/t/2026-09-21/doc-inispueh8978465.shtml" target="_blank" rel="noopener">新浪财经 ↗</a></div></article></section>
+  <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="ai" data-date="2026-09-20"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 行业新闻日报 · 2026-09-20</title>
+<style>
+  /* 白背景 + 虎嗅式中文黑体 + 英文衬线(FT感) + 克制点缀 */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C7A4C; --link: #2266B3;
+    /* 标题: 英文优先衬线(Georgia)好看, 中文回退黑体(虎嗅式) */
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #6FC291; --link: #7FB0E6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 690px; margin: 0 auto; padding: 0 24px 72px; }
+
+  /* 报头 */
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 20px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 10px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 580px; margin: 22px auto 4px; line-height: 1.75; }
+
+  /* 栏目 */
+  .domain { margin-top: 44px; }
+  .dom-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 4px; }
+  .dom-head .emoji { font-size: 17px; }
+  .dom-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .dom-head .count { margin-left: auto; font-size: 12px; color: var(--faint);
+    font-variant-numeric: tabular-nums; }
+  .top .dom-head { border-bottom-color: var(--accent); }
+  .top .dom-head h2 { color: var(--accent); }
+
+  /* 单条 */
+  .story { padding: 19px 0; border-bottom: 1px solid var(--hair); }
+  .story:last-child { border-bottom: none; }
+  .story-title { font-family: var(--title); margin: 0 0 8px;
+    font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .story-title a { color: var(--text); text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0 1.5px; background-repeat: no-repeat;
+    background-position: 0 100%; transition: background-size .2s; }
+  .story-title a:hover { background-size: 100% 1.5px; color: var(--accent); }
+  .summary { margin: 0 0 9px; font-size: 15px; color: var(--text); }
+  .why, .inds { margin: 6px 0; font-size: 13.5px; color: var(--muted); }
+  .why { color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; vertical-align: 1px; }
+  .foot { display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-top: 11px; flex-wrap: wrap; }
+  .att { display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; color: var(--muted); }
+  .att .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 16px 0; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日 AI 行业简报</div>
+    <h1>AI 行业新闻日报</h1>
+    <div class="date">2026-09-20</div>
+    <div class="gen">生成于 2026-09-22 12:15</div>
+  </header>
+  <p class="editor-note">Codex 补档草稿：个人 Agent 的入口争夺与国产开源图像模型是周日主线；没有可靠来源支持的传闻未纳入。</p>
+  <section class="domain top"><div class="dom-head"><span class="emoji">🔥</span><h2>今日重大新闻</h2><span class="count">3</span></div><article class="story"><h3 class="story-title"><a href="https://www.axios.com/2026/09/20/ai-assistant-openai-meta-muse-instinct-grok-apple" target="_blank" rel="noopener">消费级个人 Agent 进入入口争夺战</a></h3><p class="summary">Axios 梳理 OpenAI、Meta Muse、Instinct、Grok 和 Apple 的个人助理布局，竞争重点已从对话扩展到代办与交易。</p><p class="why"><span class="lbl">为什么重要</span>谁控制用户授权和执行链，谁就可能重塑搜索、电商、预订和本地生活的分发格局。</p><p class="inds"><span class="lbl">影响行业</span>消费互联网 · 电商 · 本地生活 · 移动终端</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.axios.com/2026/09/20/ai-assistant-openai-meta-muse-instinct-grok-apple" target="_blank" rel="noopener">Axios ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://qwen.ai/research/qwen3.8-livetranslate" target="_blank" rel="noopener">Qwen-Image-2.1 开源，国产图像模型继续下探应用层</a></h3><p class="summary">Qwen 官方研究页显示 Qwen-Image-2.1 于 9 月 20 日开源，面向图像生成与编辑。</p><p class="why"><span class="lbl">为什么重要</span>开源图像模型会降低游戏美术、电商素材和营销创意的部署成本，但版权与品牌一致性仍需人工把关。</p><p class="inds"><span class="lbl">影响行业</span>游戏美术 · 电商 · 广告营销 · 设计工具</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://qwen.ai/research/qwen3.8-livetranslate" target="_blank" rel="noopener">Qwen 官方 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://apnews.com/article/960af4308161eaf4ed13c383b0ce1c1b" target="_blank" rel="noopener">多家 AI 公司因所谓减速协议遭反垄断诉讼</a></h3><p class="summary">一宗诉讼把 Anthropic、OpenAI、xAI 和 Google 列为被告，指控企业间协调放慢 AI 发展。该主张尚待司法审理。</p><p class="why"><span class="lbl">为什么重要</span>即使诉讼未成立，也显示 AI 安全合作可能与竞争法边界发生冲突，行业联盟需更谨慎设计。</p><p class="inds"><span class="lbl">影响行业</span>AI 公司 · 法律服务 · 监管合规</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://apnews.com/article/960af4308161eaf4ed13c383b0ce1c1b" target="_blank" rel="noopener">AP ↗</a></div></article></section>
+  <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://qwen.ai/research/qwen3.8-livetranslate" target="_blank" rel="noopener">Qwen-Image-2.1 开源，国产图像模型继续下探应用层</a></h3><p class="summary">Qwen 官方研究页显示 Qwen-Image-2.1 于 9 月 20 日开源，面向图像生成与编辑。</p><p class="why"><span class="lbl">为什么重要</span>开源图像模型会降低游戏美术、电商素材和营销创意的部署成本，但版权与品牌一致性仍需人工把关。</p><p class="inds"><span class="lbl">影响行业</span>游戏美术 · 电商 · 广告营销 · 设计工具</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://qwen.ai/research/qwen3.8-livetranslate" target="_blank" rel="noopener">Qwen 官方 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://qwen.ai/research/qwen3.8-livetranslate" target="_blank" rel="noopener">Qwen3.8-Omni-Flash 发布，统一处理文本、图像与音频</a></h3><p class="summary">阿里通义发布原生全模态 Qwen3.8-Omni-Flash，支持最长 100 万上下文，并面向工具调用与 Agent 任务。</p><p class="why"><span class="lbl">为什么重要</span>多模态能力正在从多个模型拼接转向单模型统一理解，能降低实时客服、内容审核和设备端交互的工程复杂度。</p><p class="inds"><span class="lbl">影响行业</span>云服务 · 智能客服 · 内容平台 · 终端设备</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://qwen.ai/research/qwen3.8-livetranslate" target="_blank" rel="noopener">Qwen 官方 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://www.axios.com/2026/09/20/ai-assistant-openai-meta-muse-instinct-grok-apple" target="_blank" rel="noopener">消费级个人 Agent 进入入口争夺战</a></h3><p class="summary">Axios 梳理 OpenAI、Meta Muse、Instinct、Grok 和 Apple 的个人助理布局，竞争重点已从对话扩展到代办与交易。</p><p class="why"><span class="lbl">为什么重要</span>谁控制用户授权和执行链，谁就可能重塑搜索、电商、预订和本地生活的分发格局。</p><p class="inds"><span class="lbl">影响行业</span>消费互联网 · 电商 · 本地生活 · 移动终端</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.axios.com/2026/09/20/ai-assistant-openai-meta-muse-instinct-grok-apple" target="_blank" rel="noopener">Axios ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.axios.com/2026/09/18/meta-muse-personal-agent-make-money" target="_blank" rel="noopener">Meta Muse 冲上美国 iPhone 免费榜首</a></h3><p class="summary">Meta 的个人 Agent Muse 可代购、议价、取消订阅，并测试替用户打电话；发布后迅速获得消费端关注。</p><p class="why"><span class="lbl">为什么重要</span>能直接执行交易的 Agent 会改变电商流量入口，也会把身份、授权和售后责任推到台前。</p><p class="inds"><span class="lbl">影响行业</span>电商 · 广告营销 · 支付 · 个人助理</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.axios.com/2026/09/18/meta-muse-personal-agent-make-money" target="_blank" rel="noopener">Axios ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.axios.com/2026/09/20/ai-assistant-openai-meta-muse-instinct-grok-apple" target="_blank" rel="noopener">消费级个人 Agent 进入入口争夺战</a></h3><p class="summary">Axios 梳理 OpenAI、Meta Muse、Instinct、Grok 和 Apple 的个人助理布局，竞争重点已从对话扩展到代办与交易。</p><p class="why"><span class="lbl">为什么重要</span>谁控制用户授权和执行链，谁就可能重塑搜索、电商、预订和本地生活的分发格局。</p><p class="inds"><span class="lbl">影响行业</span>消费互联网 · 电商 · 本地生活 · 移动终端</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.axios.com/2026/09/20/ai-assistant-openai-meta-muse-instinct-grok-apple" target="_blank" rel="noopener">Axios ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://qwen.ai/research/qwen3.8-livetranslate" target="_blank" rel="noopener">Qwen-Image-2.1 开源，国产图像模型继续下探应用层</a></h3><p class="summary">Qwen 官方研究页显示 Qwen-Image-2.1 于 9 月 20 日开源，面向图像生成与编辑。</p><p class="why"><span class="lbl">为什么重要</span>开源图像模型会降低游戏美术、电商素材和营销创意的部署成本，但版权与品牌一致性仍需人工把关。</p><p class="inds"><span class="lbl">影响行业</span>游戏美术 · 电商 · 广告营销 · 设计工具</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://qwen.ai/research/qwen3.8-livetranslate" target="_blank" rel="noopener">Qwen 官方 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.huawei.com/cn/news/2026/9/hc-intelligent-healthcare" target="_blank" rel="noopener">华为与南方医院落地医疗智能体中心</a></h3><p class="summary">南方医院与华为发布医院 AI 平台和智能体中心，面向诊疗、科研与运营场景推进规模化应用。</p><p class="why"><span class="lbl">为什么重要</span>医疗 AI 的竞争焦点正从单点模型准确率转向院内数据治理、工作流接入和持续运营。</p><p class="inds"><span class="lbl">影响行业</span>医院 · 医疗信息化 · 医学科研</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://www.huawei.com/cn/news/2026/9/hc-intelligent-healthcare" target="_blank" rel="noopener">华为 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.anthropic.com/news/accenture-embedded-evaluation" target="_blank" rel="noopener">Anthropic 与埃森哲建立嵌入式评估合作</a></h3><p class="summary">双方把模型评估嵌入企业项目交付流程，并分别预计合作在未来五年带来至少 10 亿美元业务。</p><p class="why"><span class="lbl">为什么重要</span>模型厂商正在把安全评测商品化并嵌入咨询交付，企业采购会更重视可测量的风险控制。</p><p class="inds"><span class="lbl">影响行业</span>企业服务 · 咨询 · 模型安全</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://www.anthropic.com/news/accenture-embedded-evaluation" target="_blank" rel="noopener">Anthropic ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://apnews.com/article/960af4308161eaf4ed13c383b0ce1c1b" target="_blank" rel="noopener">多家 AI 公司因所谓减速协议遭反垄断诉讼</a></h3><p class="summary">一宗诉讼把 Anthropic、OpenAI、xAI 和 Google 列为被告，指控企业间协调放慢 AI 发展。该主张尚待司法审理。</p><p class="why"><span class="lbl">为什么重要</span>即使诉讼未成立，也显示 AI 安全合作可能与竞争法边界发生冲突，行业联盟需更谨慎设计。</p><p class="inds"><span class="lbl">影响行业</span>AI 公司 · 法律服务 · 监管合规</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://apnews.com/article/960af4308161eaf4ed13c383b0ce1c1b" target="_blank" rel="noopener">AP ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🔭</span><h2>AI 探索新领域</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.chinatelecom.com.cn/ct/news/jtxw/168741.html" target="_blank" rel="noopener">中国电信开源星辰 Xing4.0-29B-A4B</a></h3><p class="summary">中国电信发布并开源 29B 总参数、4B 激活参数的模型，强调国产算力与框架适配，以及 Agent 和代码能力。</p><p class="why"><span class="lbl">为什么重要</span>国产软硬件全栈适配继续推进，为政企客户提供了不依赖海外算力生态的可选方案。</p><p class="inds"><span class="lbl">影响行业</span>运营商 · 政企数字化 · 国产算力 · 软件开发</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://www.chinatelecom.com.cn/ct/news/jtxw/168741.html" target="_blank" rel="noopener">中国电信 ↗</a></div></article></section>
+  <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="ai" data-date="2026-09-19"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 行业新闻日报 · 2026-09-19</title>
+<style>
+  /* 白背景 + 虎嗅式中文黑体 + 英文衬线(FT感) + 克制点缀 */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C7A4C; --link: #2266B3;
+    /* 标题: 英文优先衬线(Georgia)好看, 中文回退黑体(虎嗅式) */
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #6FC291; --link: #7FB0E6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 690px; margin: 0 auto; padding: 0 24px 72px; }
+
+  /* 报头 */
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 20px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 10px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 580px; margin: 22px auto 4px; line-height: 1.75; }
+
+  /* 栏目 */
+  .domain { margin-top: 44px; }
+  .dom-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 4px; }
+  .dom-head .emoji { font-size: 17px; }
+  .dom-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .dom-head .count { margin-left: auto; font-size: 12px; color: var(--faint);
+    font-variant-numeric: tabular-nums; }
+  .top .dom-head { border-bottom-color: var(--accent); }
+  .top .dom-head h2 { color: var(--accent); }
+
+  /* 单条 */
+  .story { padding: 19px 0; border-bottom: 1px solid var(--hair); }
+  .story:last-child { border-bottom: none; }
+  .story-title { font-family: var(--title); margin: 0 0 8px;
+    font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .story-title a { color: var(--text); text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0 1.5px; background-repeat: no-repeat;
+    background-position: 0 100%; transition: background-size .2s; }
+  .story-title a:hover { background-size: 100% 1.5px; color: var(--accent); }
+  .summary { margin: 0 0 9px; font-size: 15px; color: var(--text); }
+  .why, .inds { margin: 6px 0; font-size: 13.5px; color: var(--muted); }
+  .why { color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; vertical-align: 1px; }
+  .foot { display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-top: 11px; flex-wrap: wrap; }
+  .att { display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; color: var(--muted); }
+  .att .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 16px 0; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日 AI 行业简报</div>
+    <h1>AI 行业新闻日报</h1>
+    <div class="date">2026-09-19</div>
+    <div class="gen">生成于 2026-09-22 12:15</div>
+  </header>
+  <p class="editor-note">Codex 补档草稿：周末新增集中在法律与商业层面；模型发布较少，因此只收录已坐实信息，并保留 48 小时内值得跟进的企业动向。</p>
+  <section class="domain top"><div class="dom-head"><span class="emoji">🔥</span><h2>今日重大新闻</h2><span class="count">3</span></div><article class="story"><h3 class="story-title"><a href="https://apnews.com/article/960af4308161eaf4ed13c383b0ce1c1b" target="_blank" rel="noopener">多家 AI 公司因所谓减速协议遭反垄断诉讼</a></h3><p class="summary">一宗诉讼把 Anthropic、OpenAI、xAI 和 Google 列为被告，指控企业间协调放慢 AI 发展。该主张尚待司法审理。</p><p class="why"><span class="lbl">为什么重要</span>即使诉讼未成立，也显示 AI 安全合作可能与竞争法边界发生冲突，行业联盟需更谨慎设计。</p><p class="inds"><span class="lbl">影响行业</span>AI 公司 · 法律服务 · 监管合规</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://apnews.com/article/960af4308161eaf4ed13c383b0ce1c1b" target="_blank" rel="noopener">AP ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.axios.com/2026/09/18/meta-muse-personal-agent-make-money" target="_blank" rel="noopener">Meta Muse 冲上美国 iPhone 免费榜首</a></h3><p class="summary">Meta 的个人 Agent Muse 可代购、议价、取消订阅，并测试替用户打电话；发布后迅速获得消费端关注。</p><p class="why"><span class="lbl">为什么重要</span>能直接执行交易的 Agent 会改变电商流量入口，也会把身份、授权和售后责任推到台前。</p><p class="inds"><span class="lbl">影响行业</span>电商 · 广告营销 · 支付 · 个人助理</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.axios.com/2026/09/18/meta-muse-personal-agent-make-money" target="_blank" rel="noopener">Axios ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.anthropic.com/news/accenture-embedded-evaluation" target="_blank" rel="noopener">Anthropic 与埃森哲建立嵌入式评估合作</a></h3><p class="summary">双方把模型评估嵌入企业项目交付流程，并分别预计合作在未来五年带来至少 10 亿美元业务。</p><p class="why"><span class="lbl">为什么重要</span>模型厂商正在把安全评测商品化并嵌入咨询交付，企业采购会更重视可测量的风险控制。</p><p class="inds"><span class="lbl">影响行业</span>企业服务 · 咨询 · 模型安全</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://www.anthropic.com/news/accenture-embedded-evaluation" target="_blank" rel="noopener">Anthropic ↗</a></div></article></section>
+  <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://qwen.ai/research/qwen3.8-livetranslate" target="_blank" rel="noopener">Qwen3.8-Omni-Flash 发布，统一处理文本、图像与音频</a></h3><p class="summary">阿里通义发布原生全模态 Qwen3.8-Omni-Flash，支持最长 100 万上下文，并面向工具调用与 Agent 任务。</p><p class="why"><span class="lbl">为什么重要</span>多模态能力正在从多个模型拼接转向单模型统一理解，能降低实时客服、内容审核和设备端交互的工程复杂度。</p><p class="inds"><span class="lbl">影响行业</span>云服务 · 智能客服 · 内容平台 · 终端设备</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://qwen.ai/research/qwen3.8-livetranslate" target="_blank" rel="noopener">Qwen 官方 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.axios.com/2026/09/18/meta-muse-personal-agent-make-money" target="_blank" rel="noopener">Meta Muse 冲上美国 iPhone 免费榜首</a></h3><p class="summary">Meta 的个人 Agent Muse 可代购、议价、取消订阅，并测试替用户打电话；发布后迅速获得消费端关注。</p><p class="why"><span class="lbl">为什么重要</span>能直接执行交易的 Agent 会改变电商流量入口，也会把身份、授权和售后责任推到台前。</p><p class="inds"><span class="lbl">影响行业</span>电商 · 广告营销 · 支付 · 个人助理</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.axios.com/2026/09/18/meta-muse-personal-agent-make-money" target="_blank" rel="noopener">Axios ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.axios.com/2026/09/18/meta-muse-personal-agent-make-money" target="_blank" rel="noopener">Meta Muse 冲上美国 iPhone 免费榜首</a></h3><p class="summary">Meta 的个人 Agent Muse 可代购、议价、取消订阅，并测试替用户打电话；发布后迅速获得消费端关注。</p><p class="why"><span class="lbl">为什么重要</span>能直接执行交易的 Agent 会改变电商流量入口，也会把身份、授权和售后责任推到台前。</p><p class="inds"><span class="lbl">影响行业</span>电商 · 广告营销 · 支付 · 个人助理</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.axios.com/2026/09/18/meta-muse-personal-agent-make-money" target="_blank" rel="noopener">Axios ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.huawei.com/cn/news/2026/9/hc-intelligent-healthcare" target="_blank" rel="noopener">华为与南方医院落地医疗智能体中心</a></h3><p class="summary">南方医院与华为发布医院 AI 平台和智能体中心，面向诊疗、科研与运营场景推进规模化应用。</p><p class="why"><span class="lbl">为什么重要</span>医疗 AI 的竞争焦点正从单点模型准确率转向院内数据治理、工作流接入和持续运营。</p><p class="inds"><span class="lbl">影响行业</span>医院 · 医疗信息化 · 医学科研</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://www.huawei.com/cn/news/2026/9/hc-intelligent-healthcare" target="_blank" rel="noopener">华为 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://www.anthropic.com/news/accenture-embedded-evaluation" target="_blank" rel="noopener">Anthropic 与埃森哲建立嵌入式评估合作</a></h3><p class="summary">双方把模型评估嵌入企业项目交付流程，并分别预计合作在未来五年带来至少 10 亿美元业务。</p><p class="why"><span class="lbl">为什么重要</span>模型厂商正在把安全评测商品化并嵌入咨询交付，企业采购会更重视可测量的风险控制。</p><p class="inds"><span class="lbl">影响行业</span>企业服务 · 咨询 · 模型安全</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://www.anthropic.com/news/accenture-embedded-evaluation" target="_blank" rel="noopener">Anthropic ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://apnews.com/article/4d3a7430f57cbc7c39e1c5f2b7d7e132" target="_blank" rel="noopener">Anthropic：Claude 已承担约 26% 的端到端模型研发任务</a></h3><p class="summary">Anthropic 向 AP 表示，在工程师监督下，Claude 已端到端完成约 26% 的模型研发工作，约九成工作属于人机协作。</p><p class="why"><span class="lbl">为什么重要</span>这提供了少见的企业内部量化样本，说明 AI 编程正在从辅助写代码走向参与研发闭环，但仍离不开审查。</p><p class="inds"><span class="lbl">影响行业</span>软件研发 · AI 基础设施 · 企业管理</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://apnews.com/article/4d3a7430f57cbc7c39e1c5f2b7d7e132" target="_blank" rel="noopener">AP ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://apnews.com/article/960af4308161eaf4ed13c383b0ce1c1b" target="_blank" rel="noopener">多家 AI 公司因所谓减速协议遭反垄断诉讼</a></h3><p class="summary">一宗诉讼把 Anthropic、OpenAI、xAI 和 Google 列为被告，指控企业间协调放慢 AI 发展。该主张尚待司法审理。</p><p class="why"><span class="lbl">为什么重要</span>即使诉讼未成立，也显示 AI 安全合作可能与竞争法边界发生冲突，行业联盟需更谨慎设计。</p><p class="inds"><span class="lbl">影响行业</span>AI 公司 · 法律服务 · 监管合规</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://apnews.com/article/960af4308161eaf4ed13c383b0ce1c1b" target="_blank" rel="noopener">AP ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🔭</span><h2>AI 探索新领域</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.chinatelecom.com.cn/ct/news/jtxw/168741.html" target="_blank" rel="noopener">中国电信开源星辰 Xing4.0-29B-A4B</a></h3><p class="summary">中国电信发布并开源 29B 总参数、4B 激活参数的模型，强调国产算力与框架适配，以及 Agent 和代码能力。</p><p class="why"><span class="lbl">为什么重要</span>国产软硬件全栈适配继续推进，为政企客户提供了不依赖海外算力生态的可选方案。</p><p class="inds"><span class="lbl">影响行业</span>运营商 · 政企数字化 · 国产算力 · 软件开发</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://www.chinatelecom.com.cn/ct/news/jtxw/168741.html" target="_blank" rel="noopener">中国电信 ↗</a></div></article></section>
+  <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="ai" data-date="2026-09-18"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 行业新闻日报 · 2026-09-18</title>
+<style>
+  /* 白背景 + 虎嗅式中文黑体 + 英文衬线(FT感) + 克制点缀 */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C7A4C; --link: #2266B3;
+    /* 标题: 英文优先衬线(Georgia)好看, 中文回退黑体(虎嗅式) */
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #6FC291; --link: #7FB0E6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 690px; margin: 0 auto; padding: 0 24px 72px; }
+
+  /* 报头 */
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 20px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 10px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 580px; margin: 22px auto 4px; line-height: 1.75; }
+
+  /* 栏目 */
+  .domain { margin-top: 44px; }
+  .dom-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 4px; }
+  .dom-head .emoji { font-size: 17px; }
+  .dom-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .dom-head .count { margin-left: auto; font-size: 12px; color: var(--faint);
+    font-variant-numeric: tabular-nums; }
+  .top .dom-head { border-bottom-color: var(--accent); }
+  .top .dom-head h2 { color: var(--accent); }
+
+  /* 单条 */
+  .story { padding: 19px 0; border-bottom: 1px solid var(--hair); }
+  .story:last-child { border-bottom: none; }
+  .story-title { font-family: var(--title); margin: 0 0 8px;
+    font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .story-title a { color: var(--text); text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0 1.5px; background-repeat: no-repeat;
+    background-position: 0 100%; transition: background-size .2s; }
+  .story-title a:hover { background-size: 100% 1.5px; color: var(--accent); }
+  .summary { margin: 0 0 9px; font-size: 15px; color: var(--text); }
+  .why, .inds { margin: 6px 0; font-size: 13.5px; color: var(--muted); }
+  .why { color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; vertical-align: 1px; }
+  .foot { display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-top: 11px; flex-wrap: wrap; }
+  .att { display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; color: var(--muted); }
+  .att .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 16px 0; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日 AI 行业简报</div>
+    <h1>AI 行业新闻日报</h1>
+    <div class="date">2026-09-18</div>
+    <div class="gen">生成于 2026-09-22 12:15</div>
+  </header>
+  <p class="editor-note">Codex 补档草稿：多模态模型、个人 Agent 与医疗智能体同步推进；当天重点来自 Qwen、Anthropic、Meta、华为和中国电信的一手或权威报道。</p>
+  <section class="domain top"><div class="dom-head"><span class="emoji">🔥</span><h2>今日重大新闻</h2><span class="count">4</span></div><article class="story"><h3 class="story-title"><a href="https://qwen.ai/research/qwen3.8-livetranslate" target="_blank" rel="noopener">Qwen3.8-Omni-Flash 发布，统一处理文本、图像与音频</a></h3><p class="summary">阿里通义发布原生全模态 Qwen3.8-Omni-Flash，支持最长 100 万上下文，并面向工具调用与 Agent 任务。</p><p class="why"><span class="lbl">为什么重要</span>多模态能力正在从多个模型拼接转向单模型统一理解，能降低实时客服、内容审核和设备端交互的工程复杂度。</p><p class="inds"><span class="lbl">影响行业</span>云服务 · 智能客服 · 内容平台 · 终端设备</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://qwen.ai/research/qwen3.8-livetranslate" target="_blank" rel="noopener">Qwen 官方 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://apnews.com/article/4d3a7430f57cbc7c39e1c5f2b7d7e132" target="_blank" rel="noopener">Anthropic：Claude 已承担约 26% 的端到端模型研发任务</a></h3><p class="summary">Anthropic 向 AP 表示，在工程师监督下，Claude 已端到端完成约 26% 的模型研发工作，约九成工作属于人机协作。</p><p class="why"><span class="lbl">为什么重要</span>这提供了少见的企业内部量化样本，说明 AI 编程正在从辅助写代码走向参与研发闭环，但仍离不开审查。</p><p class="inds"><span class="lbl">影响行业</span>软件研发 · AI 基础设施 · 企业管理</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://apnews.com/article/4d3a7430f57cbc7c39e1c5f2b7d7e132" target="_blank" rel="noopener">AP ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.axios.com/2026/09/18/meta-muse-personal-agent-make-money" target="_blank" rel="noopener">Meta Muse 冲上美国 iPhone 免费榜首</a></h3><p class="summary">Meta 的个人 Agent Muse 可代购、议价、取消订阅，并测试替用户打电话；发布后迅速获得消费端关注。</p><p class="why"><span class="lbl">为什么重要</span>能直接执行交易的 Agent 会改变电商流量入口，也会把身份、授权和售后责任推到台前。</p><p class="inds"><span class="lbl">影响行业</span>电商 · 广告营销 · 支付 · 个人助理</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.axios.com/2026/09/18/meta-muse-personal-agent-make-money" target="_blank" rel="noopener">Axios ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.huawei.com/cn/news/2026/9/hc-intelligent-healthcare" target="_blank" rel="noopener">华为与南方医院落地医疗智能体中心</a></h3><p class="summary">南方医院与华为发布医院 AI 平台和智能体中心，面向诊疗、科研与运营场景推进规模化应用。</p><p class="why"><span class="lbl">为什么重要</span>医疗 AI 的竞争焦点正从单点模型准确率转向院内数据治理、工作流接入和持续运营。</p><p class="inds"><span class="lbl">影响行业</span>医院 · 医疗信息化 · 医学科研</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://www.huawei.com/cn/news/2026/9/hc-intelligent-healthcare" target="_blank" rel="noopener">华为 ↗</a></div></article></section>
+  <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://qwen.ai/research/qwen3.8-livetranslate" target="_blank" rel="noopener">Qwen3.8-Omni-Flash 发布，统一处理文本、图像与音频</a></h3><p class="summary">阿里通义发布原生全模态 Qwen3.8-Omni-Flash，支持最长 100 万上下文，并面向工具调用与 Agent 任务。</p><p class="why"><span class="lbl">为什么重要</span>多模态能力正在从多个模型拼接转向单模型统一理解，能降低实时客服、内容审核和设备端交互的工程复杂度。</p><p class="inds"><span class="lbl">影响行业</span>云服务 · 智能客服 · 内容平台 · 终端设备</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://qwen.ai/research/qwen3.8-livetranslate" target="_blank" rel="noopener">Qwen 官方 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://www.chinatelecom.com.cn/ct/news/jtxw/168741.html" target="_blank" rel="noopener">中国电信开源星辰 Xing4.0-29B-A4B</a></h3><p class="summary">中国电信发布并开源 29B 总参数、4B 激活参数的模型，强调国产算力与框架适配，以及 Agent 和代码能力。</p><p class="why"><span class="lbl">为什么重要</span>国产软硬件全栈适配继续推进，为政企客户提供了不依赖海外算力生态的可选方案。</p><p class="inds"><span class="lbl">影响行业</span>运营商 · 政企数字化 · 国产算力 · 软件开发</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://www.chinatelecom.com.cn/ct/news/jtxw/168741.html" target="_blank" rel="noopener">中国电信 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.axios.com/2026/09/18/meta-muse-personal-agent-make-money" target="_blank" rel="noopener">Meta Muse 冲上美国 iPhone 免费榜首</a></h3><p class="summary">Meta 的个人 Agent Muse 可代购、议价、取消订阅，并测试替用户打电话；发布后迅速获得消费端关注。</p><p class="why"><span class="lbl">为什么重要</span>能直接执行交易的 Agent 会改变电商流量入口，也会把身份、授权和售后责任推到台前。</p><p class="inds"><span class="lbl">影响行业</span>电商 · 广告营销 · 支付 · 个人助理</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.axios.com/2026/09/18/meta-muse-personal-agent-make-money" target="_blank" rel="noopener">Axios ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.axios.com/2026/09/18/meta-muse-personal-agent-make-money" target="_blank" rel="noopener">Meta Muse 冲上美国 iPhone 免费榜首</a></h3><p class="summary">Meta 的个人 Agent Muse 可代购、议价、取消订阅，并测试替用户打电话；发布后迅速获得消费端关注。</p><p class="why"><span class="lbl">为什么重要</span>能直接执行交易的 Agent 会改变电商流量入口，也会把身份、授权和售后责任推到台前。</p><p class="inds"><span class="lbl">影响行业</span>电商 · 广告营销 · 支付 · 个人助理</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://www.axios.com/2026/09/18/meta-muse-personal-agent-make-money" target="_blank" rel="noopener">Axios ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.huawei.com/cn/news/2026/9/hc-intelligent-healthcare" target="_blank" rel="noopener">华为与南方医院落地医疗智能体中心</a></h3><p class="summary">南方医院与华为发布医院 AI 平台和智能体中心，面向诊疗、科研与运营场景推进规模化应用。</p><p class="why"><span class="lbl">为什么重要</span>医疗 AI 的竞争焦点正从单点模型准确率转向院内数据治理、工作流接入和持续运营。</p><p class="inds"><span class="lbl">影响行业</span>医院 · 医疗信息化 · 医学科研</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://www.huawei.com/cn/news/2026/9/hc-intelligent-healthcare" target="_blank" rel="noopener">华为 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://www.anthropic.com/news/accenture-embedded-evaluation" target="_blank" rel="noopener">Anthropic 与埃森哲建立嵌入式评估合作</a></h3><p class="summary">双方把模型评估嵌入企业项目交付流程，并分别预计合作在未来五年带来至少 10 亿美元业务。</p><p class="why"><span class="lbl">为什么重要</span>模型厂商正在把安全评测商品化并嵌入咨询交付，企业采购会更重视可测量的风险控制。</p><p class="inds"><span class="lbl">影响行业</span>企业服务 · 咨询 · 模型安全</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://www.anthropic.com/news/accenture-embedded-evaluation" target="_blank" rel="noopener">Anthropic ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://apnews.com/article/4d3a7430f57cbc7c39e1c5f2b7d7e132" target="_blank" rel="noopener">Anthropic：Claude 已承担约 26% 的端到端模型研发任务</a></h3><p class="summary">Anthropic 向 AP 表示，在工程师监督下，Claude 已端到端完成约 26% 的模型研发工作，约九成工作属于人机协作。</p><p class="why"><span class="lbl">为什么重要</span>这提供了少见的企业内部量化样本，说明 AI 编程正在从辅助写代码走向参与研发闭环，但仍离不开审查。</p><p class="inds"><span class="lbl">影响行业</span>软件研发 · AI 基础设施 · 企业管理</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://apnews.com/article/4d3a7430f57cbc7c39e1c5f2b7d7e132" target="_blank" rel="noopener">AP ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🔭</span><h2>AI 探索新领域</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.chinatelecom.com.cn/ct/news/jtxw/168741.html" target="_blank" rel="noopener">中国电信开源星辰 Xing4.0-29B-A4B</a></h3><p class="summary">中国电信发布并开源 29B 总参数、4B 激活参数的模型，强调国产算力与框架适配，以及 Agent 和代码能力。</p><p class="why"><span class="lbl">为什么重要</span>国产软硬件全栈适配继续推进，为政企客户提供了不依赖海外算力生态的可选方案。</p><p class="inds"><span class="lbl">影响行业</span>运营商 · 政企数字化 · 国产算力 · 软件开发</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://www.chinatelecom.com.cn/ct/news/jtxw/168741.html" target="_blank" rel="noopener">中国电信 ↗</a></div></article></section>
+  <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
 <script type="text/html" class="rpt" data-tab="ai" data-date="2026-09-17"><!doctype html>
 <html lang="zh-CN">
 <head>
@@ -4462,6 +4937,591 @@
   <section class="domain top"><div class="dom-head"><span class="emoji">🔥</span><h2>今日重大新闻</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.buildfastwithai.com/blogs/ai-news-today-august-2-2026" target="_blank" rel="noopener">OpenAI Astra 解出十个数学公开难题，公布形式化证明</a></h3><p class="summary">OpenAI 称其未发布的 Astra 内部版解决了十个数学与理论计算机领域的公开难题，并在 GitHub 发布 Lean 形式化证明，成本约 2000 美元；成果含非 sofic 群存在性构造、新的球堆积界等。菲尔兹奖得主 Timothy Gowers 表示愿毫不犹豫推荐其中一份证明投顶级期刊。Astra 本身尚未发布。</p><p class="why"><span class="lbl">为什么重要</span>AI 在困扰人类专家数十年的前沿数学上做出可被形式化验证的真结果，是「AI 做科研」从辅助走向原创的重要一步；但也需注意这挑的是 AI 天然擅长的领域。</p><p class="inds"><span class="lbl">影响行业</span>AI 研究 · 学术/科研 · 理论计算机</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://www.buildfastwithai.com/blogs/ai-news-today-august-2-2026" target="_blank" rel="noopener">Build Fast with AI ↗</a></div></article></section>
   <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.buildfastwithai.com/blogs/ai-news-today-august-2-2026" target="_blank" rel="noopener">Astra 的数学突破：AI 原创科研的一步（详见今日重大新闻）</a></h3><p class="summary">Astra 内部版解出十个公开难题并公布 Lean 证明，正被独立核验；分析指出这些题目多处于 AI 天然占优的形式化领域。</p><p class="why"><span class="lbl">为什么重要</span>它把「模型能不能做真科研」的讨论往前推了一大截，也提示前沿模型的价值正从对话转向可验证的知识生产。</p><p class="inds"><span class="lbl">影响行业</span>AI 研究 · 科研</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://www.buildfastwithai.com/blogs/ai-news-today-august-2-2026" target="_blank" rel="noopener">Build Fast with AI ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">💻</span><h2>AI 软件开发</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section>
   <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="fin" data-date="2026-09-22"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>财经日报 · 2026-09-22</title>
+<style>
+  /* 白底 + 虎嗅式中文黑体 + 英文衬线 + 红涨绿跌（中国习惯） */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C4E7A; --link: #2266B3;
+    --up: #C0392B; --down: #1A7A4D;
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #7FB0E6; --link: #7FB0E6;
+      --up: #F0685A; --down: #4FBF86;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 18px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 8px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 620px; margin: 20px auto 4px; line-height: 1.75; }
+
+  .sec { margin-top: 40px; }
+  .sec-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 14px; }
+  .sec-head .emoji { font-size: 17px; }
+  .sec-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 6px 0 2px; }
+
+  /* 行情磁贴 */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; }
+  .tile { border: 1px solid var(--hair); border-radius: 10px; padding: 11px 13px; }
+  .q-head { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+  .q-tag { font-size: 10.5px; color: var(--muted); border: 1px solid var(--hair);
+    border-radius: 5px; padding: 0 5px; }
+  .q-name { font-size: 13px; color: var(--muted); }
+  .q-val { font-family: var(--title); font-size: 20px; font-weight: 700;
+    font-variant-numeric: tabular-nums; }
+  .q-chg { font-size: 13.5px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .q-sub { font-size: 11.5px; color: var(--faint); margin-top: 2px; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .flat { color: var(--muted); }
+
+  /* 板块 */
+  .sector-row { padding: 12px 0; border-bottom: 1px solid var(--hair); }
+  .sector-row:last-child { border-bottom: none; }
+  .sector-mkt { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .sector-side { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0; }
+  .side-label { font-size: 11.5px; font-weight: 700; margin-right: 2px; }
+  .chip { font-size: 12.5px; border: 1px solid var(--hair); border-radius: 999px;
+    padding: 2px 10px; font-variant-numeric: tabular-nums; }
+  .chip b { margin-left: 6px; font-weight: 700; }
+  .chip.up { color: var(--up); }
+  .chip.down { color: var(--down); }
+
+  /* 新股表格 */
+  .table-wrap { overflow-x: auto; }
+  table.ipo { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.ipo th, table.ipo td { text-align: left; padding: 8px 10px;
+    border-bottom: 1px solid var(--hair); vertical-align: top; }
+  table.ipo th { font-size: 12px; color: var(--muted); font-weight: 700;
+    border-bottom: 1.5px solid var(--rule); white-space: nowrap; }
+  .ipo-name { font-weight: 650; }
+  .ipo-note { color: var(--muted); }
+
+  /* 事件卡 */
+  .event { padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .event:last-child { border-bottom: none; }
+  .ev-title { font-family: var(--title); margin: 0 0 7px; font-size: 17px;
+    font-weight: 700; line-height: 1.4; }
+  .ev-title a { color: var(--text); text-decoration: none; }
+  .ev-title a:hover { color: var(--link); text-decoration: underline; }
+  .ev-sum { margin: 0 0 8px; font-size: 14.5px; }
+  .ev-why { margin: 6px 0; font-size: 13.5px; color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; }
+  .ev-foot { margin-top: 9px; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日财经简报</div>
+    <h1>财经日报</h1>
+    <div class="date">2026-09-22</div>
+    <div class="gen">生成于 2026-09-22 12:15</div>
+  </header>
+  <p class="editor-note">Codex 补档草稿：截至 12:15：昨夜美股科技股大涨；今天 A/H/韩股盘中走高、日本休市。完整收盘采用 9 月 21 日数据，盘中快照单列，避免把实时行情误写成收盘。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3949.91</div><div class="q-chg up">+0.97%</div><div class="q-sub">9/21 收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">深证成指</span></div><div class="q-val">13730.02</div><div class="q-chg up">+0.65%</div><div class="q-sub">9/21 收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">创业板指</span></div><div class="q-val">3399.59</div><div class="q-chg up">+0.80%</div><div class="q-sub">9/21 收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股</span><span class="q-name">恒生指数</span></div><div class="q-val">25042.71</div><div class="q-chg up">+1.18%</div><div class="q-sub">9/21 收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">道琼斯</span></div><div class="q-val">52048.83</div><div class="q-chg up">+0.70%</div><div class="q-sub">9/21 收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">纳斯达克</span></div><div class="q-val">27122.09</div><div class="q-chg up">+2.30%</div><div class="q-sub">9/21 收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">标普500</span></div><div class="q-val">未在来源中给出精确点位</div><div class="q-chg up">+1.50%</div><div class="q-sub">9/21 收盘，仅录来源可核实涨幅</div></div><div class="tile"><div class="q-head"><span class="q-tag">日股</span><span class="q-name">日经225</span></div><div class="q-val">休市</div><div class="q-chg flat">日本假日</div><div class="q-sub">9/21</div></div><div class="tile"><div class="q-head"><span class="q-tag">韩股</span><span class="q-name">KOSPI</span></div><div class="q-val">7007.72</div><div class="q-chg up">+1.65%</div><div class="q-sub">9/21 收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股盘中</span><span class="q-name">上证指数</span></div><div class="q-val">3964.45</div><div class="q-chg up">+0.4%</div><div class="q-sub">9/22 上午 AP 快照，非收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股盘中</span><span class="q-name">恒生指数</span></div><div class="q-val">25185.26</div><div class="q-chg up">+0.6%</div><div class="q-sub">9/22 上午 AP 快照，非收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">韩股盘中</span><span class="q-name">KOSPI</span></div><div class="q-val">7120.25</div><div class="q-chg up">+1.6%</div><div class="q-sub">9/22 上午 AP 快照，非收盘</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">美股 9/21</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">Arm<b>+17%</b></span><span class="chip up">Intel<b>+12%</b></span><span class="chip up">Meta<b>+11%</b></span><span class="chip up">AMD<b>+10%</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">能源<b>油价拖累</b></span></div></div><div class="sector-row"><div class="sector-mkt">A股 9/22 上午</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">科技成长<b>偏强</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">贵金属<b>延续回调</b></span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">WTI 原油</span></div><div class="q-val">$96.19</div><div class="q-chg up">+0.43%</div><div class="q-sub">9/22 上午 AP 快照</div></div><div class="tile"><div class="q-head"><span class="q-name">黄金期货</span></div><div class="q-val">$4,385</div><div class="q-chg down">前一日-1.0%</div><div class="q-sub">9/21 完整交易日</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">美元指数 DXY</span></div><div class="q-val">100.41</div><div class="q-chg flat">近持平</div><div class="q-sub">9/21</div></div><div class="tile"><div class="q-head"><span class="q-name">美债10年</span></div><div class="q-val">约4.96%</div><div class="q-chg flat">高位</div><div class="q-sub">9/21</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">BTC</span></div><div class="q-val">约$86,500</div><div class="q-chg up">前一日报道时点</div><div class="q-sub">非实时，参考9/21</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://apnews.com/article/de8c5f9659e44556e40e661f794b48ad" target="_blank" rel="noopener">亚洲股市周二多数上涨，日本休市</a></h3><p class="ev-sum">AP 上午快照显示 A股、港股和韩股走高，日股因假日休市。</p><p class="ev-why"><span class="lbl">影响/解读</span>这是盘中数据，不应与完整收盘混用。</p><div class="ev-foot"><a class="src" href="https://apnews.com/article/de8c5f9659e44556e40e661f794b48ad" target="_blank" rel="noopener">AP ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.yahoo.com/markets/live/stock-market-today-monday-september-21-dow-sp-500-nasdaq-080214605.html" target="_blank" rel="noopener">美股由芯片与 AI 交易带动大涨</a></h3><p class="ev-sum">纳指涨 2.3%，Arm、Intel、Meta 和 AMD 涨幅居前。</p><p class="ev-why"><span class="lbl">影响/解读</span>资金重新集中于高弹性科技股，但估值与拥挤度风险同步上升。</p><div class="ev-foot"><a class="src" href="https://finance.yahoo.com/markets/live/stock-market-today-monday-september-21-dow-sp-500-nasdaq-080214605.html" target="_blank" rel="noopener">Yahoo Finance ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://bloomberg.com/news/articles/2026-09-20/us-stock-futures-up-ahead-of-talks-dollar-steady-markets-wrap" target="_blank" rel="noopener">Bloomberg：科技股上涨、油价回落成为隔夜主线</a></h3><p class="ev-sum">付费源公开标题显示，Meta 的个人 Agent 进展与油价下跌共同提振市场。</p><p class="ev-why"><span class="lbl">影响/解读</span>今天亚洲市场承接的是隔夜科技风险偏好与通胀压力缓和两条逻辑。</p><div class="ev-foot"><a class="src" href="https://bloomberg.com/news/articles/2026-09-20/us-stock-futures-up-ahead-of-talks-dollar-steady-markets-wrap" target="_blank" rel="noopener">Bloomberg ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.eastmoney.com/a/202609213880362928.html" target="_blank" rel="noopener">中国领导人开启美国访问行程</a></h3><p class="ev-sum">市场关注中美会晤对贸易、科技和关税议题的信号。</p><p class="ev-why"><span class="lbl">影响/解读</span>出口链、港股互联网和人民币汇率最敏感。</p><div class="ev-foot"><a class="src" href="https://finance.eastmoney.com/a/202609213880362928.html" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.eastmoney.com/a/202609213880362928.html" target="_blank" rel="noopener">央行与外资金融机构举行座谈</a></h3><p class="ev-sum">央行重申适度宽松取向并讨论金融开放。</p><p class="ev-why"><span class="lbl">影响/解读</span>有助于稳定外资对人民币资产和金融开放节奏的预期。</p><div class="ev-foot"><a class="src" href="https://finance.eastmoney.com/a/202609213880362928.html" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.sohu.com/a/1079275560_130887" target="_blank" rel="noopener">华尔街见闻早餐聚焦中美会晤、油价与科技股</a></h3><p class="ev-sum">今日早餐覆盖外交、货币政策、能源和 AI 平台竞争。</p><p class="ev-why"><span class="lbl">影响/解读</span>跨市场主线仍是政策预期、能源价格与科技风险偏好。</p><div class="ev-foot"><a class="src" href="https://www.sohu.com/a/1079275560_130887" target="_blank" rel="noopener">华尔街见闻 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.eastmoney.com/a/202609213880362928.html" target="_blank" rel="noopener">宁德时代、江波龙披露回购动向</a></h3><p class="ev-sum">公司回购成为今天早间公司层面焦点。</p><p class="ev-why"><span class="lbl">影响/解读</span>回购可改善短期情绪，但仍需结合现金流、估值和行业周期。</p><div class="ev-foot"><a class="src" href="https://finance.eastmoney.com/a/202609213880362928.html" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://hk.marketscreener.com/news/oil-hits-over-1-week-low-on-hopes-of-boost-to-diplomacy-in-iran-war-ce785adad08df727" target="_blank" rel="noopener">油价在大跌后小幅反弹</a></h3><p class="ev-sum">前一日因外交缓和预期大跌，今天上午 WTI 小幅回升。</p><p class="ev-why"><span class="lbl">影响/解读</span>能源市场仍由地缘消息驱动，波动风险高。</p><div class="ev-foot"><a class="src" href="https://hk.marketscreener.com/news/oil-hits-over-1-week-low-on-hopes-of-boost-to-diplomacy-in-iran-war-ce785adad08df727" target="_blank" rel="noopener">Reuters ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://apnews.com/article/8488ef4c2944d348193f441199179ae6" target="_blank" rel="noopener">中美贸易与技术议题进入关键观察窗口</a></h3><p class="ev-sum">双方会晤预期升温，市场等待可执行成果。</p><p class="ev-why"><span class="lbl">影响/解读</span>若只停留在表态，市场反应可能短暂；关税和技术限制变化才是核心。</p><div class="ev-foot"><a class="src" href="https://apnews.com/article/8488ef4c2944d348193f441199179ae6" target="_blank" rel="noopener">AP ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.sina.com.cn/tech/shenji/2026-09-22/doc-inissitf7029329.shtml" target="_blank" rel="noopener">云栖大会开幕，云与 AI 产业链受关注</a></h3><p class="ev-sum">阿里强调 AI 从模型竞赛走向规模化应用。</p><p class="ev-why"><span class="lbl">影响/解读</span>云服务、算力、企业软件和应用开发商可能获得订单预期，但需区分展示与实际收入。</p><div class="ev-foot"><a class="src" href="https://finance.sina.com.cn/tech/shenji/2026-09-22/doc-inissitf7029329.shtml" target="_blank" rel="noopener">新浪财经 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.eastmoney.com/" target="_blank" rel="noopener">宇树科技新款灵巧手进入价格下探阶段</a></h3><p class="ev-sum">东方财富报道新品起售价 3.99 万元。</p><p class="ev-why"><span class="lbl">影响/解读</span>机器人零部件降价有助于扩展试用场景，关注量产可靠性与真实订单。</p><div class="ev-foot"><a class="src" href="https://finance.eastmoney.com/" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.geekwire.com/2026/amazon-blocks-metas-muse-ai-assistant-in-new-standoff-over-agentic-shopping/" target="_blank" rel="noopener">Amazon 封锁 Meta Muse 的自动购物访问</a></h3><p class="ev-sum">平台与 Agent 围绕流量、交易权限和数据归属发生冲突。</p><p class="ev-why"><span class="lbl">影响/解读</span>电商平台可能增加反自动化措施，并重新谈判 Agent 导流和佣金规则。</p><div class="ev-foot"><a class="src" href="https://www.geekwire.com/2026/amazon-blocks-metas-muse-ai-assistant-in-new-standoff-over-agentic-shopping/" target="_blank" rel="noopener">GeekWire ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://m.yicai.com/news/103371038.html" target="_blank" rel="noopener">中国大模型调用量连续 20 周高于美国</a></h3><p class="ev-sum">行业周报显示国内调用量保持高位，并出现新一代端侧产品。</p><p class="ev-why"><span class="lbl">影响/解读</span>云厂商和国产模型的收入机会取决于调用量能否转化为付费和企业部署。</p><div class="ev-foot"><a class="src" href="https://m.yicai.com/news/103371038.html" target="_blank" rel="noopener">第一财经 ↗</a></div></article></section>
+  <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="fin" data-date="2026-09-21"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>财经日报 · 2026-09-21</title>
+<style>
+  /* 白底 + 虎嗅式中文黑体 + 英文衬线 + 红涨绿跌（中国习惯） */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C4E7A; --link: #2266B3;
+    --up: #C0392B; --down: #1A7A4D;
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #7FB0E6; --link: #7FB0E6;
+      --up: #F0685A; --down: #4FBF86;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 18px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 8px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 620px; margin: 20px auto 4px; line-height: 1.75; }
+
+  .sec { margin-top: 40px; }
+  .sec-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 14px; }
+  .sec-head .emoji { font-size: 17px; }
+  .sec-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 6px 0 2px; }
+
+  /* 行情磁贴 */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; }
+  .tile { border: 1px solid var(--hair); border-radius: 10px; padding: 11px 13px; }
+  .q-head { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+  .q-tag { font-size: 10.5px; color: var(--muted); border: 1px solid var(--hair);
+    border-radius: 5px; padding: 0 5px; }
+  .q-name { font-size: 13px; color: var(--muted); }
+  .q-val { font-family: var(--title); font-size: 20px; font-weight: 700;
+    font-variant-numeric: tabular-nums; }
+  .q-chg { font-size: 13.5px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .q-sub { font-size: 11.5px; color: var(--faint); margin-top: 2px; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .flat { color: var(--muted); }
+
+  /* 板块 */
+  .sector-row { padding: 12px 0; border-bottom: 1px solid var(--hair); }
+  .sector-row:last-child { border-bottom: none; }
+  .sector-mkt { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .sector-side { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0; }
+  .side-label { font-size: 11.5px; font-weight: 700; margin-right: 2px; }
+  .chip { font-size: 12.5px; border: 1px solid var(--hair); border-radius: 999px;
+    padding: 2px 10px; font-variant-numeric: tabular-nums; }
+  .chip b { margin-left: 6px; font-weight: 700; }
+  .chip.up { color: var(--up); }
+  .chip.down { color: var(--down); }
+
+  /* 新股表格 */
+  .table-wrap { overflow-x: auto; }
+  table.ipo { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.ipo th, table.ipo td { text-align: left; padding: 8px 10px;
+    border-bottom: 1px solid var(--hair); vertical-align: top; }
+  table.ipo th { font-size: 12px; color: var(--muted); font-weight: 700;
+    border-bottom: 1.5px solid var(--rule); white-space: nowrap; }
+  .ipo-name { font-weight: 650; }
+  .ipo-note { color: var(--muted); }
+
+  /* 事件卡 */
+  .event { padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .event:last-child { border-bottom: none; }
+  .ev-title { font-family: var(--title); margin: 0 0 7px; font-size: 17px;
+    font-weight: 700; line-height: 1.4; }
+  .ev-title a { color: var(--text); text-decoration: none; }
+  .ev-title a:hover { color: var(--link); text-decoration: underline; }
+  .ev-sum { margin: 0 0 8px; font-size: 14.5px; }
+  .ev-why { margin: 6px 0; font-size: 13.5px; color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; }
+  .ev-foot { margin-top: 9px; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日财经简报</div>
+    <h1>财经日报</h1>
+    <div class="date">2026-09-21</div>
+    <div class="gen">生成于 2026-09-22 12:15</div>
+  </header>
+  <p class="editor-note">Codex 补档草稿：A股、港股和美股普涨，AI 芯片与科技股是美股主线；油价大跌、黄金回落，市场交易中美沟通和地缘缓和。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3949.91</div><div class="q-chg up">+0.97%</div><div class="q-sub">9/21 收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">深证成指</span></div><div class="q-val">13730.02</div><div class="q-chg up">+0.65%</div><div class="q-sub">9/21 收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">创业板指</span></div><div class="q-val">3399.59</div><div class="q-chg up">+0.80%</div><div class="q-sub">9/21 收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股</span><span class="q-name">恒生指数</span></div><div class="q-val">25042.71</div><div class="q-chg up">+1.18%</div><div class="q-sub">9/21 收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">道琼斯</span></div><div class="q-val">52048.83</div><div class="q-chg up">+0.70%</div><div class="q-sub">9/21 收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">纳斯达克</span></div><div class="q-val">27122.09</div><div class="q-chg up">+2.30%</div><div class="q-sub">9/21 收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">标普500</span></div><div class="q-val">未在来源中给出精确点位</div><div class="q-chg up">+1.50%</div><div class="q-sub">9/21 收盘，仅录来源可核实涨幅</div></div><div class="tile"><div class="q-head"><span class="q-tag">日股</span><span class="q-name">日经225</span></div><div class="q-val">休市</div><div class="q-chg flat">日本假日</div><div class="q-sub">9/21</div></div><div class="tile"><div class="q-head"><span class="q-tag">韩股</span><span class="q-name">KOSPI</span></div><div class="q-val">7007.72</div><div class="q-chg up">+1.65%</div><div class="q-sub">9/21 收盘</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">A股</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">医疗服务<b>领涨</b></span><span class="chip up">医药生物<b>领涨</b></span><span class="chip up">房地产<b>领涨</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">贵金属<b>领跌</b></span></div></div><div class="sector-row"><div class="sector-mkt">美股</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">Arm<b>+17%</b></span><span class="chip up">Intel<b>+12%</b></span><span class="chip up">Meta<b>+11%</b></span><span class="chip up">AMD<b>+10%</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">能源<b>油价拖累</b></span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">WTI 原油</span></div><div class="q-val">$95.50</div><div class="q-chg down">-4.8%</div><div class="q-sub">9/21</div></div><div class="tile"><div class="q-head"><span class="q-name">布伦特原油</span></div><div class="q-val">$100.34</div><div class="q-chg down">-3.4%</div><div class="q-sub">9/21</div></div><div class="tile"><div class="q-head"><span class="q-name">黄金期货</span></div><div class="q-val">$4,385</div><div class="q-chg down">-1.0%</div><div class="q-sub">9/21</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">美元指数 DXY</span></div><div class="q-val">100.41</div><div class="q-chg flat">近持平</div><div class="q-sub">9/21</div></div><div class="tile"><div class="q-head"><span class="q-name">美债10年</span></div><div class="q-val">约4.96%</div><div class="q-chg flat">高位</div><div class="q-sub">9/21</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">BTC</span></div><div class="q-val">约$86,500</div><div class="q-chg up">盘中水平</div><div class="q-sub">9/21 报道时点</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://www.cnfin.com/yw-lb/detail/20260921/4472865_1.html" target="_blank" rel="noopener">A股三大指数连续走强</a></h3><p class="ev-sum">上证涨 0.97%，医疗、医药与房地产领涨。</p><p class="ev-why"><span class="lbl">影响/解读</span>低位顺周期与防御成长同时上行，贵金属出现获利回吐。</p><div class="ev-foot"><a class="src" href="https://www.cnfin.com/yw-lb/detail/20260921/4472865_1.html" target="_blank" rel="noopener">新华财经 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://apnews.com/article/1f1a267bf4556c01513f506914eb6359" target="_blank" rel="noopener">美股科技股带动三大指数上涨</a></h3><p class="ev-sum">纳指涨 2.3%，Meta、AMD、Intel 与 Arm 大涨。</p><p class="ev-why"><span class="lbl">影响/解读</span>催化来自 AI 与芯片交易，但单日大涨后波动也会放大。</p><div class="ev-foot"><a class="src" href="https://apnews.com/article/1f1a267bf4556c01513f506914eb6359" target="_blank" rel="noopener">AP ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://bloomberg.com/news/articles/2026-09-20/us-stock-futures-up-ahead-of-talks-dollar-steady-markets-wrap" target="_blank" rel="noopener">Bloomberg：科技股上涨、油价下跌推动风险资产</a></h3><p class="ev-sum">付费源市场综述称，美股录得 8 月初以来较强单日表现，布油回落缓解通胀担忧。</p><p class="ev-why"><span class="lbl">影响/解读</span>科技与能源价格共同决定当天风险偏好，而非单一 AI 题材。</p><div class="ev-foot"><a class="src" href="https://bloomberg.com/news/articles/2026-09-20/us-stock-futures-up-ahead-of-talks-dollar-steady-markets-wrap" target="_blank" rel="noopener">Bloomberg ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wap.eastmoney.com/a/202609213879532683.html" target="_blank" rel="noopener">长鑫存储第五代 LPDDR5X 平台量产</a></h3><p class="ev-sum">国产移动内存平台进入量产阶段。</p><p class="ev-why"><span class="lbl">影响/解读</span>利好国产存储、封测与设备材料链，仍需观察良率和客户导入。</p><div class="ev-foot"><a class="src" href="https://wap.eastmoney.com/a/202609213879532683.html" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wap.eastmoney.com/a/202609213879532683.html" target="_blank" rel="noopener">全社会用电量同比增长 1.7%</a></h3><p class="ev-sum">当月用电量达到 10332 亿千瓦时。</p><p class="ev-why"><span class="lbl">影响/解读</span>可作为制造与服务活动的高频观察指标。</p><div class="ev-foot"><a class="src" href="https://wap.eastmoney.com/a/202609213879532683.html" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://wap.eastmoney.com/a/202609213879532683.html" target="_blank" rel="noopener">北京提出代币经济相关行动计划</a></h3><p class="ev-sum">地方政策开始探索数字身份、资产与应用场景。</p><p class="ev-why"><span class="lbl">影响/解读</span>区块链、数据要素和合规金融科技可能受关注，但政策边界仍需跟踪。</p><div class="ev-foot"><a class="src" href="https://wap.eastmoney.com/a/202609213879532683.html" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.eastmoney.com/a/202609213879855644.html" target="_blank" rel="noopener">成熟制程晶圆代工厂酝酿涨价</a></h3><p class="ev-sum">午间资讯称部分成熟制程厂商考虑调价。</p><p class="ev-why"><span class="lbl">影响/解读</span>功率半导体、MCU 与消费电子成本可能被重新定价。</p><div class="ev-foot"><a class="src" href="https://finance.eastmoney.com/a/202609213879855644.html" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.eastmoney.com/a/202609213879855644.html" target="_blank" rel="noopener">Tesla 审核机器人供应链</a></h3><p class="ev-sum">市场关注人形机器人团队对供应商进行审核。</p><p class="ev-why"><span class="lbl">影响/解读</span>机器人零部件需要从概念订单走向可验证认证和量产。</p><div class="ev-foot"><a class="src" href="https://finance.eastmoney.com/a/202609213879855644.html" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://hk.marketscreener.com/news/oil-hits-over-1-week-low-on-hopes-of-boost-to-diplomacy-in-iran-war-ce785adad08df727" target="_blank" rel="noopener">油价跌至一周低位</a></h3><p class="ev-sum">市场交易地缘外交缓和预期。</p><p class="ev-why"><span class="lbl">影响/解读</span>航空、化工下游受益，油气上游盈利预期承压。</p><div class="ev-foot"><a class="src" href="https://hk.marketscreener.com/news/oil-hits-over-1-week-low-on-hopes-of-boost-to-diplomacy-in-iran-war-ce785adad08df727" target="_blank" rel="noopener">Reuters ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/subject/1151" target="_blank" rel="noopener">互联网平台调查与交易监管继续推进</a></h3><p class="ev-sum">财联社汇总多项平台和证券交易监管信息。</p><p class="ev-why"><span class="lbl">影响/解读</span>平台公司和高频交易相关主体的合规成本上升。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/subject/1151" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://apnews.com/article/8488ef4c2944d348193f441199179ae6" target="_blank" rel="noopener">中美会晤预期提振风险偏好</a></h3><p class="ev-sum">市场关注贸易和技术议题能否获得阶段性缓和。</p><p class="ev-why"><span class="lbl">影响/解读</span>出口链、科技硬件和人民币资产对结果最敏感。</p><div class="ev-foot"><a class="src" href="https://apnews.com/article/8488ef4c2944d348193f441199179ae6" target="_blank" rel="noopener">AP ↗</a></div></article></section>
+  <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="fin" data-date="2026-09-20"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>财经日报 · 2026-09-20</title>
+<style>
+  /* 白底 + 虎嗅式中文黑体 + 英文衬线 + 红涨绿跌（中国习惯） */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C4E7A; --link: #2266B3;
+    --up: #C0392B; --down: #1A7A4D;
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #7FB0E6; --link: #7FB0E6;
+      --up: #F0685A; --down: #4FBF86;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 18px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 8px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 620px; margin: 20px auto 4px; line-height: 1.75; }
+
+  .sec { margin-top: 40px; }
+  .sec-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 14px; }
+  .sec-head .emoji { font-size: 17px; }
+  .sec-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 6px 0 2px; }
+
+  /* 行情磁贴 */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; }
+  .tile { border: 1px solid var(--hair); border-radius: 10px; padding: 11px 13px; }
+  .q-head { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+  .q-tag { font-size: 10.5px; color: var(--muted); border: 1px solid var(--hair);
+    border-radius: 5px; padding: 0 5px; }
+  .q-name { font-size: 13px; color: var(--muted); }
+  .q-val { font-family: var(--title); font-size: 20px; font-weight: 700;
+    font-variant-numeric: tabular-nums; }
+  .q-chg { font-size: 13.5px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .q-sub { font-size: 11.5px; color: var(--faint); margin-top: 2px; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .flat { color: var(--muted); }
+
+  /* 板块 */
+  .sector-row { padding: 12px 0; border-bottom: 1px solid var(--hair); }
+  .sector-row:last-child { border-bottom: none; }
+  .sector-mkt { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .sector-side { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0; }
+  .side-label { font-size: 11.5px; font-weight: 700; margin-right: 2px; }
+  .chip { font-size: 12.5px; border: 1px solid var(--hair); border-radius: 999px;
+    padding: 2px 10px; font-variant-numeric: tabular-nums; }
+  .chip b { margin-left: 6px; font-weight: 700; }
+  .chip.up { color: var(--up); }
+  .chip.down { color: var(--down); }
+
+  /* 新股表格 */
+  .table-wrap { overflow-x: auto; }
+  table.ipo { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.ipo th, table.ipo td { text-align: left; padding: 8px 10px;
+    border-bottom: 1px solid var(--hair); vertical-align: top; }
+  table.ipo th { font-size: 12px; color: var(--muted); font-weight: 700;
+    border-bottom: 1.5px solid var(--rule); white-space: nowrap; }
+  .ipo-name { font-weight: 650; }
+  .ipo-note { color: var(--muted); }
+
+  /* 事件卡 */
+  .event { padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .event:last-child { border-bottom: none; }
+  .ev-title { font-family: var(--title); margin: 0 0 7px; font-size: 17px;
+    font-weight: 700; line-height: 1.4; }
+  .ev-title a { color: var(--text); text-decoration: none; }
+  .ev-title a:hover { color: var(--link); text-decoration: underline; }
+  .ev-sum { margin: 0 0 8px; font-size: 14.5px; }
+  .ev-why { margin: 6px 0; font-size: 13.5px; color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; }
+  .ev-foot { margin-top: 9px; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日财经简报</div>
+    <h1>财经日报</h1>
+    <div class="date">2026-09-20</div>
+    <div class="gen">生成于 2026-09-22 12:15</div>
+  </header>
+  <p class="editor-note">Codex 补档草稿：周日主要市场继续休市，行情沿用 9 月 18 日收盘；重点是中美经贸沟通、住房政策与制造业科技供给。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3911.87</div><div class="q-chg up">+0.94%</div><div class="q-sub">9/18 最近收盘；9/20 周日休市</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">深证成指</span></div><div class="q-val">13640.87</div><div class="q-chg up">+1.72%</div><div class="q-sub">9/18 最近收盘；9/20 周日休市</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">创业板指</span></div><div class="q-val">3372.68</div><div class="q-chg up">+2.25%</div><div class="q-sub">9/18 最近收盘；9/20 周日休市</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股</span><span class="q-name">恒生指数</span></div><div class="q-val">24750.78</div><div class="q-chg up">+0.60%</div><div class="q-sub">9/18 最近收盘；9/20 周日休市</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股</span><span class="q-name">恒生科技</span></div><div class="q-val">4405.50</div><div class="q-chg up">+2.20%</div><div class="q-sub">9/18 最近收盘；9/20 周日休市</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">道琼斯</span></div><div class="q-val">51682.64</div><div class="q-chg down">-0.18%</div><div class="q-sub">9/18 最近收盘；9/20 周日休市</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">标普500</span></div><div class="q-val">7650.50</div><div class="q-chg up">+0.17%</div><div class="q-sub">9/18 最近收盘；9/20 周日休市</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">纳斯达克</span></div><div class="q-val">26522.54</div><div class="q-chg up">+0.39%</div><div class="q-sub">9/18 最近收盘；9/20 周日休市</div></div><div class="tile"><div class="q-head"><span class="q-tag">日股</span><span class="q-name">日经225</span></div><div class="q-val">65018.95</div><div class="q-chg up">+1.38%</div><div class="q-sub">9/18 最近收盘；9/20 周日休市</div></div><div class="tile"><div class="q-head"><span class="q-tag">韩股</span><span class="q-name">KOSPI</span></div><div class="q-val">6894.23</div><div class="q-chg up">+2.66%</div><div class="q-sub">9/18 最近收盘；9/20 周日休市</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/subject/1151" target="_blank" rel="noopener">中美继续开展经贸沟通</a></h3><p class="ev-sum">周末信息显示双方围绕经贸安排保持接触。</p><p class="ev-why"><span class="lbl">影响/解读</span>外贸、港口、跨境电商与人民币资产风险偏好将随谈判信号波动。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/subject/1151" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/subject/1151" target="_blank" rel="noopener">住房公积金相关规则继续优化</a></h3><p class="ev-sum">财联社周末信息收录多地住房公积金政策调整。</p><p class="ev-why"><span class="lbl">影响/解读</span>有助于边际改善刚需和改善型住房支付能力。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/subject/1151" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/subject/1151" target="_blank" rel="noopener">英伟达高管减持动态受到市场关注</a></h3><p class="ev-sum">周末市场关注公司管理层持股变动。</p><p class="ev-why"><span class="lbl">影响/解读</span>对基本面影响有限，但高估值科技股对减持信息更敏感。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/subject/1151" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://caifuhao.eastmoney.com/news/20260919061839405937460" target="_blank" rel="noopener">公募与险资规模扩张成为资金主线</a></h3><p class="ev-sum">公募规模和险资港股持仓数据同时上升。</p><p class="ev-why"><span class="lbl">影响/解读</span>长期资金对高股息、龙头和宽基指数的配置影响值得跟踪。</p><div class="ev-foot"><a class="src" href="https://caifuhao.eastmoney.com/news/20260919061839405937460" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://caifuhao.eastmoney.com/news/20260919061839405937460" target="_blank" rel="noopener">二手房交易占比继续上升</a></h3><p class="ev-sum">存量房成为住房交易的重要组成。</p><p class="ev-why"><span class="lbl">影响/解读</span>房地产链的机会更可能向中介、装修、物业与城市更新迁移。</p><div class="ev-foot"><a class="src" href="https://caifuhao.eastmoney.com/news/20260919061839405937460" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/subject/1151" target="_blank" rel="noopener">制造业 AI 与存储产业消息升温</a></h3><p class="ev-sum">周末要闻开始集中讨论制造业 AI 应用和国产存储技术进展。</p><p class="ev-why"><span class="lbl">影响/解读</span>半导体设备、存储和工业软件可能成为下一交易日的映射方向。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/subject/1151" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.marketscreener.com/news/gold-scales-one-week-high-as-crude-prices-ease-ce785adada8bf223" target="_blank" rel="noopener">黄金维持高位</a></h3><p class="ev-sum">周末无连续交易，参考 9 月 18 日一周高位收盘。</p><p class="ev-why"><span class="lbl">影响/解读</span>等待美元、利率和地缘风险的新信号，不宜把休市报价当成完整收盘。</p><div class="ev-foot"><a class="src" href="https://www.marketscreener.com/news/gold-scales-one-week-high-as-crude-prices-ease-ce785adada8bf223" target="_blank" rel="noopener">Reuters ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://apnews.com/article/8488ef4c2944d348193f441199179ae6" target="_blank" rel="noopener">中美高层互动预期上升</a></h3><p class="ev-sum">围绕后续会晤和经贸议题的预期继续发酵。</p><p class="ev-why"><span class="lbl">影响/解读</span>短期利好风险偏好，实际影响取决于关税和技术限制是否出现可执行变化。</p><div class="ev-foot"><a class="src" href="https://apnews.com/article/8488ef4c2944d348193f441199179ae6" target="_blank" rel="noopener">AP ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://bloomberg.com/news/articles/2026-09-19/us-china-trade-teams-set-to-huddle-in-new-york-on-ai-iran" target="_blank" rel="noopener">Bloomberg：中美经贸团队将在纽约会谈</a></h3><p class="ev-sum">付费源公开标题确认，议题包括贸易、AI 与伊朗局势。</p><p class="ev-why"><span class="lbl">影响/解读</span>会谈结果将影响出口链、芯片限制和全球风险偏好。</p><div class="ev-foot"><a class="src" href="https://bloomberg.com/news/articles/2026-09-19/us-china-trade-teams-set-to-huddle-in-new-york-on-ai-iran" target="_blank" rel="noopener">Bloomberg ↗</a></div></article></section>
+  <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="fin" data-date="2026-09-19"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>财经日报 · 2026-09-19</title>
+<style>
+  /* 白底 + 虎嗅式中文黑体 + 英文衬线 + 红涨绿跌（中国习惯） */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C4E7A; --link: #2266B3;
+    --up: #C0392B; --down: #1A7A4D;
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #7FB0E6; --link: #7FB0E6;
+      --up: #F0685A; --down: #4FBF86;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 18px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 8px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 620px; margin: 20px auto 4px; line-height: 1.75; }
+
+  .sec { margin-top: 40px; }
+  .sec-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 14px; }
+  .sec-head .emoji { font-size: 17px; }
+  .sec-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 6px 0 2px; }
+
+  /* 行情磁贴 */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; }
+  .tile { border: 1px solid var(--hair); border-radius: 10px; padding: 11px 13px; }
+  .q-head { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+  .q-tag { font-size: 10.5px; color: var(--muted); border: 1px solid var(--hair);
+    border-radius: 5px; padding: 0 5px; }
+  .q-name { font-size: 13px; color: var(--muted); }
+  .q-val { font-family: var(--title); font-size: 20px; font-weight: 700;
+    font-variant-numeric: tabular-nums; }
+  .q-chg { font-size: 13.5px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .q-sub { font-size: 11.5px; color: var(--faint); margin-top: 2px; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .flat { color: var(--muted); }
+
+  /* 板块 */
+  .sector-row { padding: 12px 0; border-bottom: 1px solid var(--hair); }
+  .sector-row:last-child { border-bottom: none; }
+  .sector-mkt { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .sector-side { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0; }
+  .side-label { font-size: 11.5px; font-weight: 700; margin-right: 2px; }
+  .chip { font-size: 12.5px; border: 1px solid var(--hair); border-radius: 999px;
+    padding: 2px 10px; font-variant-numeric: tabular-nums; }
+  .chip b { margin-left: 6px; font-weight: 700; }
+  .chip.up { color: var(--up); }
+  .chip.down { color: var(--down); }
+
+  /* 新股表格 */
+  .table-wrap { overflow-x: auto; }
+  table.ipo { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.ipo th, table.ipo td { text-align: left; padding: 8px 10px;
+    border-bottom: 1px solid var(--hair); vertical-align: top; }
+  table.ipo th { font-size: 12px; color: var(--muted); font-weight: 700;
+    border-bottom: 1.5px solid var(--rule); white-space: nowrap; }
+  .ipo-name { font-weight: 650; }
+  .ipo-note { color: var(--muted); }
+
+  /* 事件卡 */
+  .event { padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .event:last-child { border-bottom: none; }
+  .ev-title { font-family: var(--title); margin: 0 0 7px; font-size: 17px;
+    font-weight: 700; line-height: 1.4; }
+  .ev-title a { color: var(--text); text-decoration: none; }
+  .ev-title a:hover { color: var(--link); text-decoration: underline; }
+  .ev-sum { margin: 0 0 8px; font-size: 14.5px; }
+  .ev-why { margin: 6px 0; font-size: 13.5px; color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; }
+  .ev-foot { margin-top: 9px; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日财经简报</div>
+    <h1>财经日报</h1>
+    <div class="date">2026-09-19</div>
+    <div class="gen">生成于 2026-09-22 12:15</div>
+  </header>
+  <p class="editor-note">Codex 补档草稿：周六主要市场休市，行情沿用 9 月 18 日完整收盘；当天新增信息集中于监管、资金规模、房地产和产业消息。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3911.87</div><div class="q-chg up">+0.94%</div><div class="q-sub">9/18 最近收盘；9/19 周六休市</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">深证成指</span></div><div class="q-val">13640.87</div><div class="q-chg up">+1.72%</div><div class="q-sub">9/18 最近收盘；9/19 周六休市</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">创业板指</span></div><div class="q-val">3372.68</div><div class="q-chg up">+2.25%</div><div class="q-sub">9/18 最近收盘；9/19 周六休市</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股</span><span class="q-name">恒生指数</span></div><div class="q-val">24750.78</div><div class="q-chg up">+0.60%</div><div class="q-sub">9/18 最近收盘；9/19 周六休市</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股</span><span class="q-name">恒生科技</span></div><div class="q-val">4405.50</div><div class="q-chg up">+2.20%</div><div class="q-sub">9/18 最近收盘；9/19 周六休市</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">道琼斯</span></div><div class="q-val">51682.64</div><div class="q-chg down">-0.18%</div><div class="q-sub">9/18 最近收盘；9/19 周六休市</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">标普500</span></div><div class="q-val">7650.50</div><div class="q-chg up">+0.17%</div><div class="q-sub">9/18 最近收盘；9/19 周六休市</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">纳斯达克</span></div><div class="q-val">26522.54</div><div class="q-chg up">+0.39%</div><div class="q-sub">9/18 最近收盘；9/19 周六休市</div></div><div class="tile"><div class="q-head"><span class="q-tag">日股</span><span class="q-name">日经225</span></div><div class="q-val">65018.95</div><div class="q-chg up">+1.38%</div><div class="q-sub">9/18 最近收盘；9/19 周六休市</div></div><div class="tile"><div class="q-head"><span class="q-tag">韩股</span><span class="q-name">KOSPI</span></div><div class="q-val">6894.23</div><div class="q-chg up">+2.66%</div><div class="q-sub">9/18 最近收盘；9/19 周六休市</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://caifuhao.eastmoney.com/news/20260919061839405937460" target="_blank" rel="noopener">A股上一交易日近 80 股涨停</a></h3><p class="ev-sum">东方财富早餐称，剔除 ST 后市场无跌停、近 80 股涨停。</p><p class="ev-why"><span class="lbl">影响/解读</span>情绪端偏强，但周末信息应等待下一交易日验证。</p><div class="ev-foot"><a class="src" href="https://caifuhao.eastmoney.com/news/20260919061839405937460" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://caifuhao.eastmoney.com/news/20260919061839405937460" target="_blank" rel="noopener">中国住房市场进入存量房主导阶段</a></h3><p class="ev-sum">报道引用数据称二手房交易占比已超过 52%。</p><p class="ev-why"><span class="lbl">影响/解读</span>经纪平台、家装、物业和城市更新的关注度可能高于单纯新房开发。</p><div class="ev-foot"><a class="src" href="https://caifuhao.eastmoney.com/news/20260919061839405937460" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://caifuhao.eastmoney.com/news/20260919061839405937460" target="_blank" rel="noopener">公募基金规模达 39.63 万亿元</a></h3><p class="ev-sum">最新行业统计显示公募管理规模继续扩大。</p><p class="ev-why"><span class="lbl">影响/解读</span>指数化和机构化资金对市场定价的影响进一步增强。</p><div class="ev-foot"><a class="src" href="https://caifuhao.eastmoney.com/news/20260919061839405937460" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://caifuhao.eastmoney.com/news/20260919061839405937460" target="_blank" rel="noopener">保险资金港股持仓同比大增</a></h3><p class="ev-sum">报道显示险资港股持仓约 1.61 万亿元，同比增长 112%。</p><p class="ev-why"><span class="lbl">影响/解读</span>高股息与优质平台公司可能继续受长期资金关注。</p><div class="ev-foot"><a class="src" href="https://caifuhao.eastmoney.com/news/20260919061839405937460" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://caifuhao.eastmoney.com/news/20260919061839405937460" target="_blank" rel="noopener">国内原油与焦煤期货大跌，白银上涨</a></h3><p class="ev-sum">周五夜盘相关品种出现明显分化。</p><p class="ev-why"><span class="lbl">影响/解读</span>能源和黑色链承压，贵金属延续独立行情。</p><div class="ev-foot"><a class="src" href="https://caifuhao.eastmoney.com/news/20260919061839405937460" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/subject/1151" target="_blank" rel="noopener">国务院部署老龄事业和养老服务</a></h3><p class="ev-sum">财联社周末要闻聚焦老龄化政策安排。</p><p class="ev-why"><span class="lbl">影响/解读</span>养老服务、医疗护理、适老化改造与保险产品存在中长期需求。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/subject/1151" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.cls.cn/subject/1151" target="_blank" rel="noopener">上市公司信披违法线索举报奖励推进</a></h3><p class="ev-sum">监管部门公布多起举报奖励与执法信息。</p><p class="ev-why"><span class="lbl">影响/解读</span>壳价值和财务造假风险溢价将继续上升。</p><div class="ev-foot"><a class="src" href="https://www.cls.cn/subject/1151" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://caifuhao.eastmoney.com/news/20260919061839405937460" target="_blank" rel="noopener">iPhone 18 Pro 部分渠道售罄</a></h3><p class="ev-sum">东方财富早餐记录新机销售端出现缺货。</p><p class="ev-why"><span class="lbl">影响/解读</span>苹果产业链短期情绪受提振，但需继续验证补库持续性。</p><div class="ev-foot"><a class="src" href="https://caifuhao.eastmoney.com/news/20260919061839405937460" target="_blank" rel="noopener">东方财富 ↗</a></div></article></section>
+  <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="fin" data-date="2026-09-18"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>财经日报 · 2026-09-18</title>
+<style>
+  /* 白底 + 虎嗅式中文黑体 + 英文衬线 + 红涨绿跌（中国习惯） */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C4E7A; --link: #2266B3;
+    --up: #C0392B; --down: #1A7A4D;
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #7FB0E6; --link: #7FB0E6;
+      --up: #F0685A; --down: #4FBF86;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 18px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 8px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 620px; margin: 20px auto 4px; line-height: 1.75; }
+
+  .sec { margin-top: 40px; }
+  .sec-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 14px; }
+  .sec-head .emoji { font-size: 17px; }
+  .sec-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 6px 0 2px; }
+
+  /* 行情磁贴 */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; }
+  .tile { border: 1px solid var(--hair); border-radius: 10px; padding: 11px 13px; }
+  .q-head { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+  .q-tag { font-size: 10.5px; color: var(--muted); border: 1px solid var(--hair);
+    border-radius: 5px; padding: 0 5px; }
+  .q-name { font-size: 13px; color: var(--muted); }
+  .q-val { font-family: var(--title); font-size: 20px; font-weight: 700;
+    font-variant-numeric: tabular-nums; }
+  .q-chg { font-size: 13.5px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .q-sub { font-size: 11.5px; color: var(--faint); margin-top: 2px; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .flat { color: var(--muted); }
+
+  /* 板块 */
+  .sector-row { padding: 12px 0; border-bottom: 1px solid var(--hair); }
+  .sector-row:last-child { border-bottom: none; }
+  .sector-mkt { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .sector-side { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0; }
+  .side-label { font-size: 11.5px; font-weight: 700; margin-right: 2px; }
+  .chip { font-size: 12.5px; border: 1px solid var(--hair); border-radius: 999px;
+    padding: 2px 10px; font-variant-numeric: tabular-nums; }
+  .chip b { margin-left: 6px; font-weight: 700; }
+  .chip.up { color: var(--up); }
+  .chip.down { color: var(--down); }
+
+  /* 新股表格 */
+  .table-wrap { overflow-x: auto; }
+  table.ipo { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.ipo th, table.ipo td { text-align: left; padding: 8px 10px;
+    border-bottom: 1px solid var(--hair); vertical-align: top; }
+  table.ipo th { font-size: 12px; color: var(--muted); font-weight: 700;
+    border-bottom: 1.5px solid var(--rule); white-space: nowrap; }
+  .ipo-name { font-weight: 650; }
+  .ipo-note { color: var(--muted); }
+
+  /* 事件卡 */
+  .event { padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .event:last-child { border-bottom: none; }
+  .ev-title { font-family: var(--title); margin: 0 0 7px; font-size: 17px;
+    font-weight: 700; line-height: 1.4; }
+  .ev-title a { color: var(--text); text-decoration: none; }
+  .ev-title a:hover { color: var(--link); text-decoration: underline; }
+  .ev-sum { margin: 0 0 8px; font-size: 14.5px; }
+  .ev-why { margin: 6px 0; font-size: 13.5px; color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; }
+  .ev-foot { margin-top: 9px; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日财经简报</div>
+    <h1>财经日报</h1>
+    <div class="date">2026-09-18</div>
+    <div class="gen">生成于 2026-09-22 12:15</div>
+  </header>
+  <p class="editor-note">Codex 补档草稿：全球风险资产分化：A/H/日/韩股走强，美股小幅震荡；美联储与日本央行同周加息，黄金和加密资产上行。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">上证指数</span></div><div class="q-val">3911.87</div><div class="q-chg up">+0.94%</div><div class="q-sub">9/18 收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">深证成指</span></div><div class="q-val">13640.87</div><div class="q-chg up">+1.72%</div><div class="q-sub">9/18 收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">A股</span><span class="q-name">创业板指</span></div><div class="q-val">3372.68</div><div class="q-chg up">+2.25%</div><div class="q-sub">9/18 收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股</span><span class="q-name">恒生指数</span></div><div class="q-val">24750.78</div><div class="q-chg up">+0.60%</div><div class="q-sub">9/18 收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股</span><span class="q-name">恒生科技</span></div><div class="q-val">4405.50</div><div class="q-chg up">+2.20%</div><div class="q-sub">9/18 收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">道琼斯</span></div><div class="q-val">51682.64</div><div class="q-chg down">-0.18%</div><div class="q-sub">9/18 收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">标普500</span></div><div class="q-val">7650.50</div><div class="q-chg up">+0.17%</div><div class="q-sub">9/18 收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股</span><span class="q-name">纳斯达克</span></div><div class="q-val">26522.54</div><div class="q-chg up">+0.39%</div><div class="q-sub">9/18 收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">日股</span><span class="q-name">日经225</span></div><div class="q-val">65018.95</div><div class="q-chg up">+1.38%</div><div class="q-sub">9/18 收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">韩股</span><span class="q-name">KOSPI</span></div><div class="q-val">6894.23</div><div class="q-chg up">+2.66%</div><div class="q-sub">9/18 收盘</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">A股</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">医疗服务<b>领涨</b></span><span class="chip up">半导体设备<b>领涨</b></span><span class="chip up">工程机械<b>领涨</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">种业<b>回调</b></span><span class="chip down">化肥<b>回调</b></span></div></div><div class="sector-row"><div class="sector-mkt">美股</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">Coinbase<b>+11.7%</b></span><span class="chip up">Robinhood<b>+9.1%</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">道指<b>-0.18%</b></span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><p class="empty">今日暂无数据 / 休市</p></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">黄金</span></div><div class="q-val">$4,420.40</div><div class="q-chg up">+0.47%</div><div class="q-sub">9/18 市场收盘数据</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">美元指数 DXY</span></div><div class="q-val">100.201</div><div class="q-chg flat">近持平</div><div class="q-sub">9/18</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-name">BTC</span></div><div class="q-val">$81,145</div><div class="q-chg up">+6.21%</div><div class="q-sub">9/18</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://yuanchuang.10jqka.com.cn/20260918/c680055347.shtml" target="_blank" rel="noopener">A股三大指数集体上涨</a></h3><p class="ev-sum">创业板指涨 2.25%，医疗服务、半导体设备和工程机械表现较强。</p><p class="ev-why"><span class="lbl">影响/解读</span>风险偏好回升，但种业、化肥等农业链条承压。</p><div class="ev-foot"><a class="src" href="https://yuanchuang.10jqka.com.cn/20260918/c680055347.shtml" target="_blank" rel="noopener">同花顺 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www3.xinhuanet.com/20260918/9bc6c493885345239a8bc5910fa7de1a/c.html" target="_blank" rel="noopener">港股恒生科技指数涨 2.20%</a></h3><p class="ev-sum">恒指和国企指数同步收涨。</p><p class="ev-why"><span class="lbl">影响/解读</span>科技股弹性明显高于大盘，资金偏好成长板块。</p><div class="ev-foot"><a class="src" href="https://www3.xinhuanet.com/20260918/9bc6c493885345239a8bc5910fa7de1a/c.html" target="_blank" rel="noopener">新华社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.theclosereport.com/archive/2026-09-18" target="_blank" rel="noopener">美股收盘分化，加密交易平台大涨</a></h3><p class="ev-sum">道指小跌，标普和纳指小涨；Coinbase、Robinhood 大幅上涨。</p><p class="ev-why"><span class="lbl">影响/解读</span>风险偏好并非全面扩张，资金更集中于高弹性主题。</p><div class="ev-foot"><a class="src" href="https://www.theclosereport.com/archive/2026-09-18" target="_blank" rel="noopener">The Close Report ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://apnews.com/article/bab1bcb07e973bfb2dd0c3e5fbbb73b1" target="_blank" rel="noopener">美联储加息 25 个基点</a></h3><p class="ev-sum">联邦基金目标区间升至 3.75%至4.00%，并保留继续调整的可能。</p><p class="ev-why"><span class="lbl">影响/解读</span>高利率环境继续压制长久期资产估值，并支撑美元与金融股。</p><div class="ev-foot"><a class="src" href="https://apnews.com/article/bab1bcb07e973bfb2dd0c3e5fbbb73b1" target="_blank" rel="noopener">AP ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://malaysia.news.yahoo.com/investors-react-boj-raising-interest-032308463.html" target="_blank" rel="noopener">日本央行加息至 1.25%</a></h3><p class="ev-sum">日本央行以 7 比 2 决定加息 25 个基点，政策利率升至约 31 年高位。</p><p class="ev-why"><span class="lbl">影响/解读</span>日元、日债和银行股对后续加息路径高度敏感。</p><div class="ev-foot"><a class="src" href="https://malaysia.news.yahoo.com/investors-react-boj-raising-interest-032308463.html" target="_blank" rel="noopener">Yahoo Finance ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://cj.sina.com.cn/articles/view/2868676035/aafc85c302001xk8u" target="_blank" rel="noopener">中美贸易与中欧经贸沟通升温</a></h3><p class="ev-sum">财联社早间信息涉及中美关税安排讨论及中欧经贸通话。</p><p class="ev-why"><span class="lbl">影响/解读</span>外贸、航运、出口制造和人民币汇率可能受政策预期影响。</p><div class="ev-foot"><a class="src" href="https://cj.sina.com.cn/articles/view/2868676035/aafc85c302001xk8u" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://cj.sina.com.cn/articles/view/2868676035/aafc85c302001xk8u" target="_blank" rel="noopener">金融产品网络营销规则收紧</a></h3><p class="ev-sum">监管信息强调金融机构不得与不具备资质的网络红人合作营销金融产品。</p><p class="ev-why"><span class="lbl">影响/解读</span>券商、基金、保险和财富管理平台需要重新审查获客链路。</p><div class="ev-foot"><a class="src" href="https://cj.sina.com.cn/articles/view/2868676035/aafc85c302001xk8u" target="_blank" rel="noopener">财联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://www.marketscreener.com/news/gold-scales-one-week-high-as-crude-prices-ease-ce785adada8bf223" target="_blank" rel="noopener">黄金升至一周高位</a></h3><p class="ev-sum">油价回落与宏观不确定性推动避险需求。</p><p class="ev-why"><span class="lbl">影响/解读</span>贵金属仍受利率路径、美元和地缘风险共同驱动。</p><div class="ev-foot"><a class="src" href="https://www.marketscreener.com/news/gold-scales-one-week-high-as-crude-prices-ease-ce785adada8bf223" target="_blank" rel="noopener">Reuters ↗</a></div></article></section>
+  <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
 </div>
 </body>
 </html></script>
