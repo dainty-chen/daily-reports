@@ -86,7 +86,7 @@
 <div class="app">
   <header class="top">
     <div class="brand">📊 每日日报<span class="dot">看板</span></div>
-    <div class="tabs" role="tablist"><button class="tab" data-tab="ai" role="tab">AI 日报<span class="cnt">89</span></button><button class="tab" data-tab="fin" role="tab">财经日报<span class="cnt">89</span></button></div>
+    <div class="tabs" role="tablist"><button class="tab" data-tab="ai" role="tab">AI 日报<span class="cnt">90</span></button><button class="tab" data-tab="fin" role="tab">财经日报<span class="cnt">90</span></button></div>
     <div class="meta" id="meta"></div>
   </header>
   <div class="body">
@@ -95,6 +95,101 @@
   </div>
 </div>
 
+<script type="text/html" class="rpt" data-tab="ai" data-date="2026-11-24"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 行业新闻日报 · 2026-11-24</title>
+<style>
+  /* 白背景 + 虎嗅式中文黑体 + 英文衬线(FT感) + 克制点缀 */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C7A4C; --link: #2266B3;
+    /* 标题: 英文优先衬线(Georgia)好看, 中文回退黑体(虎嗅式) */
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #6FC291; --link: #7FB0E6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 690px; margin: 0 auto; padding: 0 24px 72px; }
+
+  /* 报头 */
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 20px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 10px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 580px; margin: 22px auto 4px; line-height: 1.75; }
+
+  /* 栏目 */
+  .domain { margin-top: 44px; }
+  .dom-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 4px; }
+  .dom-head .emoji { font-size: 17px; }
+  .dom-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .dom-head .count { margin-left: auto; font-size: 12px; color: var(--faint);
+    font-variant-numeric: tabular-nums; }
+  .top .dom-head { border-bottom-color: var(--accent); }
+  .top .dom-head h2 { color: var(--accent); }
+
+  /* 单条 */
+  .story { padding: 19px 0; border-bottom: 1px solid var(--hair); }
+  .story:last-child { border-bottom: none; }
+  .story-title { font-family: var(--title); margin: 0 0 8px;
+    font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .story-title a { color: var(--text); text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0 1.5px; background-repeat: no-repeat;
+    background-position: 0 100%; transition: background-size .2s; }
+  .story-title a:hover { background-size: 100% 1.5px; color: var(--accent); }
+  .summary { margin: 0 0 9px; font-size: 15px; color: var(--text); }
+  .why, .inds { margin: 6px 0; font-size: 13.5px; color: var(--muted); }
+  .why { color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; vertical-align: 1px; }
+  .foot { display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-top: 11px; flex-wrap: wrap; }
+  .att { display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; color: var(--muted); }
+  .att .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 16px 0; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日 AI 行业简报</div>
+    <h1>AI 行业新闻日报</h1>
+    <div class="date">2026-11-24</div>
+    <div class="gen">生成于 2026-11-24 13:35（周二盘中版；A股/港股 11/24 尚未收盘，用 11/23 收盘为基线 + 11/24 晨间消息面；美股/商品/汇率为美东 11/23 收盘 = 北京时间 11/24 凌晨；中英文双路）</div>
+  </header>
+  <p class="editor-note">本期为 **11/24 盘中版**（定时任务触发时 A 股/港股尚未收盘，按约定用上一完整收盘基线 + 当日消息面生成，待 16:30 收盘后再覆盖为收盘定稿）。核心主线：① 英伟达董事会 11/23 一致投票恢复黄仁勋 CEO 职务，NVDA 单日暴涨 31.48% 至 165.05 美元、市值单日增 9,520 亿美元创全球纪录，带动纳指 +6.51%（创 2025 年 4 月以来最大单日涨幅）、费半 +14.03%；② Anthropic 发布 Claude Ship，AI 编程从代码生成扩展至审查/修复/审批全流程；③ 亚马逊 75 亿美元收购 Decart 优化技术，强化 Trainium 自研芯片生态；④ OpenAI 首席科学家发文提议以困惑度为行业共享指标并设安全门槛；⑤ A 股 11/23 深 V 反转：创业板指 +3.08%、人形机器人掀涨停潮（145 只涨停中 64 只属机器人板块）；⑥ 两融保证金 11/30 降至 80% 制度性利多。口径：A 股/港股用 11/23 收盘（11/24 盘中未定），美股/商品/汇率用美东 11/23 收盘标注「隔夜基准」，BTC 为 11/23 时点快照。红涨绿跌。</p>
+  <section class="domain top"><div class="dom-head"><span class="emoji">🔥</span><h2>今日重大新闻</h2><span class="count">4</span></div><article class="story"><h3 class="story-title"><a href="https://techcrunch.com/2026/11/23/nvidia-reverses-course-and-brings-jensen-huang-back-as-ceo/" target="_blank" rel="noopener">黄仁勋闪电复任英伟达 CEO，NVDA 单日暴涨 31%、市值增 9,520 亿美元创纪录</a></h3><p class="summary">11/23 英伟达董事会一致投票，即日起恢复黄仁勋总裁、CEO 及董事职务（其 11/12 因婚外情报道辞职，历时 11 天风波落幕）。特朗普称&quot;正确且恰当、我一手促成&quot;。NVDA 收报 165.05 美元（+31.48%），创 2003 年 5 月以来最大单日涨幅，单日市值增加约 9,520 亿美元（约 6.39 万亿元人民币）创全球纪录。此前一周累计下跌约 23%，11/20 收报 125.53 美元（-14.01%）。</p><p class="why"><span class="lbl">为什么重要</span>复任结束了短暂领导层变动，但出口合规与治理调查仍在推进——黄仁勋 12/3 将出席美参议院银行委员会出口管制听证会，下周还需接受众议院三委员会闭门质询。公司另设立首席合规官职位。市场用真金白银投票，投的其实不是一家公司，是一个人。</p><p class="inds"><span class="lbl">影响行业</span>半导体 · AI 算力 · 公司治理</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://techcrunch.com/2026/11/23/nvidia-reverses-course-and-brings-jensen-huang-back-as-ceo/" target="_blank" rel="noopener">TechCrunch / NVIDIA 公告 / 东方财富 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/" target="_blank" rel="noopener">Anthropic 发布 Claude Ship：AI 编程从代码生成走向审查、修复与审批全流程</a></h3><p class="summary">11/23 Anthropic 推出 Claude Ship（Beta），由 Code Review、PR Steward 和 Claude Approvals 组成。Code Review 已开放使用，可检查 GitHub 代码变更；PR Steward 处理 CI 失败、合并冲突及评审反馈；Claude Approvals 依据自然语言编写的审批策略自动批准常规改动。</p><p class="why"><span class="lbl">为什么重要</span>产品从生成代码进一步走向参与代码合并流程——AI 不再只写代码，而是参与代码审查与发布决策。企业落地价值与权限控制、审计责任将同步成为竞争要点。官方说明其仍处于测试阶段，生成式 AI 仍可能漏掉缺陷或安全问题。</p><p class="inds"><span class="lbl">影响行业</span>AI Agent · 软件开发 · DevOps</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/" target="_blank" rel="noopener">TechCrunch / Anthropic ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://techcrunch.com/2026/11/23/amazon-snaps-up-decarts-ai-optimization-tech-for-7-5b-as-it-prepares-to-sell-trainium-chips/" target="_blank" rel="noopener">亚马逊 75 亿美元收购 Decart 优化技术，强化 Trainium 自研芯片生态</a></h3><p class="summary">11/23 亚马逊宣布签约收购 Decart Optimization Stack 技术并吸纳创始团队。Decart 成立于 2023 年，拥有可在英伟达 GPU、亚马逊 Trainium 和谷歌 TPU 之间优化与迁移 AI 工作负载的软件。媒体报道约 75 亿美元，亚马逊公告未确认具体金额。</p><p class="why"><span class="lbl">为什么重要</span>此举强化自研芯片的软件栈和推理效率，潜在作用是降低客户训练与推理成本，直接挑战英伟达在 AI 算力市场的主导地位。交易完成仍受惯常条件及监管审批约束。</p><p class="inds"><span class="lbl">影响行业</span>AI 芯片 · 云计算 · 并购</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://techcrunch.com/2026/11/23/amazon-snaps-up-decarts-ai-optimization-tech-for-7-5b-as-it-prepares-to-sell-trainium-chips/" target="_blank" rel="noopener">TechCrunch / Reuters / 东方财富 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://caifuhao.eastmoney.com/news/20261123153120875023160" target="_blank" rel="noopener">A 股 11/23 深V反转：创业板指 +3.08%，人形机器人掀涨停潮（145 只涨停）</a></h3><p class="summary">11/23 A 股早盘低开后午后放量反攻，上证指数 +0.15% 收 3,538.95、深证成指 +1.93% 收 10,454.37、创业板指 +3.08% 收 2,280.20。全市场成交 1.55 万亿元，超 4,600 只个股上涨，151 只涨停。人形机器人概念爆发，占涨停 64 家，肇民科技、安培龙等 20cm 涨停，宇树科技涨超 10% 跻身 A 股第三高价股。</p><p class="why"><span class="lbl">为什么重要</span>周末政策组合拳（两融保证金降至 80%）+ 隔夜英伟达复任催化算力链情绪修复。人形机器人成为最大主线，但题材催化型涨停需次日量能与连板高度验证，谨防一日游。</p><p class="inds"><span class="lbl">影响行业</span>人形机器人 · A股 · 半导体</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://caifuhao.eastmoney.com/news/20261123153120875023160" target="_blank" rel="noopener">东方财富 / 证券时报 ↗</a></div></article></section>
+  <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://techcrunch.com/2026/11/22/openais-chief-scientist-has-thoughts-on-how-to-limit-ai-development/" target="_blank" rel="noopener">OpenAI 首席科学家发文：以困惑度为行业共享指标，提议设安全门槛</a></h3><p class="summary">11/22 OpenAI 首席科学家 Jakub Pachocki 在官方博客发表《Perplexity and Intelligence》长文，首次公开一组内部预训练指标，提议将困惑度（perplexity）作为跨公司比较模型进展的行业共享指标，并呼吁开发者在安全监控能力达到特定里程碑前不跨越部分能力门槛。</p><p class="why"><span class="lbl">为什么重要</span>以可测量指标讨论能力阈值有助于形成共同语言，但指标选取、阈值设定和执行承诺仍需行业协商。文章是个人建议而非行业协议。Yann LeCun 在 X 平台批评称&quot;Dario（Amodei）在炒作危险以使开源模型非法化并维持控制&quot;。</p><p class="inds"><span class="lbl">影响行业</span>AI 安全 · 模型评估 · 开源</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://techcrunch.com/2026/11/22/openais-chief-scientist-has-thoughts-on-how-to-limit-ai-development/" target="_blank" rel="noopener">TechCrunch / OpenAI ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://huggingface.co/nari-labs/Qwen3.8-27B-NariQ-GGUF" target="_blank" rel="noopener">NariQ：BF16 级 Qwen3.8-27B 压入 10GB 文件，Hugging Face 热议</a></h3><p class="summary">Nari Labs 在 Hugging Face 发布 NariQ-GGUF 量化版 Qwen3.8-27B，将模型压至 10GB 文件大小，在 Hacker News 获得 133 分、29 评论。该方案声称在消费级硬件上实现大模型推理。</p><p class="why"><span class="lbl">为什么重要</span>量化压缩持续降低本地部署门槛，但 BF16 级精度声称与实际推理质量差距需独立验证。开源社区对轻量部署的兴趣持续高涨。</p><p class="inds"><span class="lbl">影响行业</span>开源模型 · 推理优化</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://huggingface.co/nari-labs/Qwen3.8-27B-NariQ-GGUF" target="_blank" rel="noopener">Hacker News / Hugging Face ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">3</span></div><article class="story"><h3 class="story-title"><a href="https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/" target="_blank" rel="noopener">Anthropic Claude Ship：AI Agent 参与代码审查与合并审批</a></h3><p class="summary">Claude Ship 由三个组件组成：Code Review（已开放，检查 GitHub PR）、PR Steward（Beta，处理 CI 失败和合并冲突）、Claude Approvals（Beta，按自然语言审批策略自动批准常规改动）。Anthropic 代码库中超过 90% 的贡献内容由 Claude 编写。</p><p class="why"><span class="lbl">为什么重要</span>AI Agent 从&quot;辅助生成&quot;进化到&quot;参与发布决策&quot;，企业级权限控制与审计责任成为新的竞争维度。这是 AI 编程工具商业化的下一站。</p><p class="inds"><span class="lbl">影响行业</span>AI Agent · DevOps · 企业软件</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/" target="_blank" rel="noopener">TechCrunch / Anthropic ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://techcrunch.com/2026/11/23/google-searchs-ai-mode-can-now-tap-into-drive-and-wallet-for-more-personalized-responses/" target="_blank" rel="noopener">Google Search AI Mode 接入 Drive 与 Wallet，个性化搜索再进一步</a></h3><p class="summary">11/23 Google Search 的 AI Mode 新增接入 Google Drive 和 Wallet 数据，可基于用户个人文件与支付记录提供更个性化的搜索回复。</p><p class="why"><span class="lbl">为什么重要</span>搜索引擎从&quot;全网检索&quot;走向&quot;个人上下文 + 全网&quot;的融合，隐私边界与数据使用授权将成为用户关注焦点。</p><p class="inds"><span class="lbl">影响行业</span>搜索 · 个性化 AI · 隐私</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://techcrunch.com/2026/11/23/google-searchs-ai-mode-can-now-tap-into-drive-and-wallet-for-more-personalized-responses/" target="_blank" rel="noopener">TechCrunch ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://techcrunch.com/2026/11/23/supertake-raises-20m-to-let-ai-agents-turn-your-market-predictions-into-stock-portfolios/" target="_blank" rel="noopener">Supertake 融资 2000 万美元：AI Agent 管理股票投资组合</a></h3><p class="summary">Supertake 获得 2000 万美元融资，产品让 AI Agent 根据用户的市场预测自动构建和管理股票投资组合。</p><p class="why"><span class="lbl">为什么重要</span>AI Agent 在金融投资领域的应用从&quot;辅助分析&quot;走向&quot;自动执行&quot;，但合规与风险控制框架尚未跟上产品迭代速度。</p><p class="inds"><span class="lbl">影响行业</span>AI Agent · 金融科技 · 投资</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://techcrunch.com/2026/11/23/supertake-raises-20m-to-let-ai-agents-turn-your-market-predictions-into-stock-portfolios/" target="_blank" rel="noopener">TechCrunch ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://techcrunch.com/2026/11/23/sierra-doubles-valuation-to-30b-within-six-months-as-demand-for-ai-in-cx-takes-off/" target="_blank" rel="noopener">Sierra 估值半年翻倍至 300 亿美元，AI 客户体验需求爆发</a></h3><p class="summary">11/23 TechCrunch 报道，由 Salesforce 前联席 CEO Bret Taylor 创立的 AI 客户服务公司 Sierra 完成 17.5 亿美元 F 轮融资，估值达 300 亿美元，较 2026 年 5 月 150 亿美元估值翻倍。公司称已服务近半数《财富》50 强企业，按结果定价的年化收入约 4 亿美元。</p><p class="why"><span class="lbl">为什么重要</span>Sierra 采用&quot;按结果付费&quot;商业模式，年化收入突破数亿美元。AI 在客户体验（CX）领域的商业化速度远超其他 AI 应用赛道，但多数厂商尚未实现传统软件行业的盈利标准。</p><p class="inds"><span class="lbl">影响行业</span>AI 客服 · SaaS · 融资</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://techcrunch.com/2026/11/23/sierra-doubles-valuation-to-30b-within-six-months-as-demand-for-ai-in-cx-takes-off/" target="_blank" rel="noopener">TechCrunch ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://k.sina.com.cn/article_7879995964_1d5af323c068019zeu.html" target="_blank" rel="noopener">马斯克确认 AI4.5 芯片内存从 32GB 降至 24GB，AI5 专属 Optimus 机器人</a></h3><p class="summary">11/22 马斯克在 X 平台回复博主时确认（11/23 国内媒体报道），特斯拉 AI4.5 芯片因内存价格高企将容量从 32GB 降至 24GB（仍比现款 AI4 的 16GB 高 50%），主要变化是升级到 LPDDR5X。他同时明确 AI5 将专属于 Optimus 人形机器人，汽车产品线继续停留在 AI4 世代。</p><p class="why"><span class="lbl">为什么重要</span>汽车与机器人从共享芯片走向分叉——AI4.5 是&quot;够用&quot;策略的妥协，真正的代际跃升留给 AI5。内存降级不影响现车，但暗示特斯拉在成本与性能之间选择了前者。A 股人形机器人板块 11/23 因此催化涨停潮。</p><p class="inds"><span class="lbl">影响行业</span>自动驾驶 · 人形机器人 · AI 芯片</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://k.sina.com.cn/article_7879995964_1d5af323c068019zeu.html" target="_blank" rel="noopener">新浪科技 / 百家号 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://techcrunch.com/2026/11/21/signal-restricts-mobile-screenshots-as-it-confronts-existential-threat-of-ai-surveillance/" target="_blank" rel="noopener">Signal 限制截图功能，对抗&quot;AI 监控的生存威胁&quot;</a></h3><p class="summary">11/21 Signal 宣布限制移动端截图功能，称 AI 监控构成&quot;生存威胁&quot;。该措施旨在防止 AI 工具通过截图提取用户私密通讯内容。</p><p class="why"><span class="lbl">为什么重要</span>隐私保护工具与 AI 监控能力之间的军备竞赛正在升级。Signal 的做法可能成为其他通讯平台的参考，但也可能影响用户体验。</p><p class="inds"><span class="lbl">影响行业</span>隐私安全 · 通讯 · AI 监控</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://techcrunch.com/2026/11/21/signal-restricts-mobile-screenshots-as-it-confronts-existential-threat-of-ai-surveillance/" target="_blank" rel="noopener">TechCrunch ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://techcrunch.com/2026/11/23/amazon-snaps-up-decarts-ai-optimization-tech-for-7-5b-as-it-prepares-to-sell-trainium-chips/" target="_blank" rel="noopener">亚马逊 75 亿美元收购 Decart，AI 算力软件栈竞争白热化</a></h3><p class="summary">亚马逊签约收购 Decart Optimization Stack 技术及创始团队（以色列工程师创立，2023 年成立）。Decart 的软件可在英伟达 GPU、亚马逊 Trainium 和谷歌 TPU 间优化与迁移 AI 工作负载，已开发 Lucy、Oasis 等生成式模型。</p><p class="why"><span class="lbl">为什么重要</span>科技巨头自研芯片的竞争从硬件延伸到软件栈。亚马逊通过收购补齐 Trainium 的软件优化层，直接挑战英伟达 CUDA 生态的护城河。CrowdStrike 同日拟 439 亿美元收购 Zscaler、ABB 26.5 亿美元收购施乐百（数据中心冷却），并购活跃度显示科技巨头正加速整合。</p><p class="inds"><span class="lbl">影响行业</span>AI 芯片 · 云计算 · 并购</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://techcrunch.com/2026/11/23/amazon-snaps-up-decarts-ai-optimization-tech-for-7-5b-as-it-prepares-to-sell-trainium-chips/" target="_blank" rel="noopener">TechCrunch / Reuters ↗</a></div></article><article class="story"><h3 class="story-title"><a href="http://news.10jqka.com.cn/20261120/c682059515.shtml" target="_blank" rel="noopener">语用科技（Pragmatik Labs）估值升至 50 亿美元，前阿里 AI 负责人创业半年估值翻倍</a></h3><p class="summary">11/20 据彭博社报道，阿里前 AI 负责人林俊旸创办的语用科技完成新一轮融资，估值达 50 亿美元（约 334.6 亿元人民币），较 8 月首轮融资的 20 亿美元翻倍有余。本轮募资数千万美元，公司成立仅半年，官网无产品上线。</p><p class="why"><span class="lbl">为什么重要</span>创始人溢价与 Agent 赛道热度叠加推高估值，但无产品、无模型参数公布的状态下估值翻倍，显示 AI 一级市场估值仍在高位运行。</p><p class="inds"><span class="lbl">影响行业</span>AI 融资 · Agent · 创业</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="http://news.10jqka.com.cn/20261120/c682059515.shtml" target="_blank" rel="noopener">IT之家 / 彭博社 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">3</span></div><article class="story"><h3 class="story-title"><a href="https://baijiahao.baidu.com/s?id=1882649909421927673&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">两州检察长起诉 SpaceX/Grok：AI 生成儿童剥削与非自愿影像内容治理</a></h3><p class="summary">11/23 俄勒冈州与弗吉尼亚州检察长分别提起诉讼，指控 SpaceX 及关联平台在 Grok 生成非自愿性影像和儿童性剥削材料方面未设置充分防护，并涉嫌误导消费者。诉讼中的事实陈述属于原告指控，案件尚未裁决。</p><p class="why"><span class="lbl">为什么重要</span>案件将检验生成式影像产品的安全承诺、内容治理与消费者保护责任。这是 AI 内容安全从&quot;行业自律&quot;走向&quot;法律强制&quot;的标志性案件之一。</p><p class="inds"><span class="lbl">影响行业</span>AI 监管 · 内容安全 · 法律</p><div class="foot"><span class="att"><span class="dot" style="background:#990F3D"></span>个人 &amp; 企业都值得关注</span><a class="src" href="https://baijiahao.baidu.com/s?id=1882649909421927673&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">TechCrunch / 东方财富 ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://techcrunch.com/2026/11/23/megaspeed-the-company-at-the-center-of-the-jensen-huang-scandal-appears-headed-for-a-u-s-blacklist/" target="_blank" rel="noopener">Megaspeed（黄仁勋事件涉事公司）或被列入美国黑名单</a></h3><p class="summary">TechCrunch 11/23 报道，黄仁勋事件中涉及的 Megaspeed 公司似乎正走向美国出口管制黑名单。英伟达董事会相关独立调查仍将继续，公司新设首席合规官职位。</p><p class="why"><span class="lbl">为什么重要</span>复任不等于合规风险归零。黄仁勋 12/3 将出席参议院银行委员会出口管制听证会，众议院三委员会闭门质询也在日程上。AI 芯片出口管制仍是悬在英伟达头上的最大监管风险。</p><p class="inds"><span class="lbl">影响行业</span>出口管制 · 半导体 · 合规</p><div class="foot"><span class="att"><span class="dot" style="background:#0F5499"></span>值得企业关注</span><a class="src" href="https://techcrunch.com/2026/11/23/megaspeed-the-company-at-the-center-of-the-jensen-huang-scandal-appears-headed-for-a-u-s-blacklist/" target="_blank" rel="noopener">TechCrunch ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://caifuhao.eastmoney.com/news/20261124084559959681360" target="_blank" rel="noopener">监管下发两融逆周期调节通知：保证金 11/30 降至 80%</a></h3><p class="summary">监管向券商下发两融逆周期调节通知，要求 11/30 保证金比例降至 80% 落地（存量合约适用）。融资余额上限抬升属制度性利多。</p><p class="why"><span class="lbl">为什么重要</span>降低融资保证金比例直接释放市场流动性，是监管层在市场调整后的明确托底信号。对 A 股短期情绪构成支撑。</p><p class="inds"><span class="lbl">影响行业</span>A股 · 监管 · 两融</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://caifuhao.eastmoney.com/news/20261124084559959681360" target="_blank" rel="noopener">东方财富 ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🔭</span><h2>AI 探索新领域</h2><span class="count">2</span></div><article class="story"><h3 class="story-title"><a href="https://techcrunch.com/2026/11/20/ai-claimed-a-solution-to-the-167-year-old-riemann-hypothesis-and-a-human-did-too/" target="_blank" rel="noopener">AI 声称解决 167 年未解的黎曼假设，人类也宣布了同样的解</a></h3><p class="summary">11/20 TechCrunch 报道，Anthropic 数学家 Levent Alpöge 借助 Claude 给出可经 Lean 编译验证的黎曼假设证明；同日斯坦福博士后 Alessandro Masullo 公布一份纯人工完成的广义黎曼假设证明。两项成果尚待数学界充分验证。</p><p class="why"><span class="lbl">为什么重要</span>如果 AI 能在顶级数学猜想上与人类匹敌，意味着 AI 推理能力正触及基础科学研究的前沿。但&quot;声称解决&quot;与&quot;同行验证通过&quot;之间的距离可能长达数年。</p><p class="inds"><span class="lbl">影响行业</span>AI 研究 · 数学 · 科学发现</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://techcrunch.com/2026/11/20/ai-claimed-a-solution-to-the-167-year-old-riemann-hypothesis-and-a-human-did-too/" target="_blank" rel="noopener">TechCrunch ↗</a></div></article><article class="story"><h3 class="story-title"><a href="https://ladybird.org/posts/alpha/" target="_blank" rel="noopener">Ladybird 浏览器进入 Alpha：独立开源浏览器迈出第一步</a></h3><p class="summary">11/23 Ladybird 浏览器项目宣布进入 Alpha 阶段，在 Hacker News 获得 1,515 分、355 评论。该项目从零开始构建独立浏览器引擎，不依赖 Chromium 或 Firefox 代码库。</p><p class="why"><span class="lbl">为什么重要</span>浏览器引擎市场的独立替代品对打破 Chromium 垄断具有长期意义，但 Alpha 阶段距离日常可用仍有距离。开源社区对&quot;从零造轮子&quot;的热情值得关注。</p><p class="inds"><span class="lbl">影响行业</span>开源 · 浏览器 · 软件</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://ladybird.org/posts/alpha/" target="_blank" rel="noopener">Hacker News / Ladybird ↗</a></div></article></section>
+  <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
 <script type="text/html" class="rpt" data-tab="ai" data-date="2026-11-20"><!doctype html>
 <html lang="zh-CN">
 <head>
@@ -8201,6 +8296,123 @@
   <section class="domain top"><div class="dom-head"><span class="emoji">🔥</span><h2>今日重大新闻</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.buildfastwithai.com/blogs/ai-news-today-august-2-2026" target="_blank" rel="noopener">OpenAI Astra 解出十个数学公开难题，公布形式化证明</a></h3><p class="summary">OpenAI 称其未发布的 Astra 内部版解决了十个数学与理论计算机领域的公开难题，并在 GitHub 发布 Lean 形式化证明，成本约 2000 美元；成果含非 sofic 群存在性构造、新的球堆积界等。菲尔兹奖得主 Timothy Gowers 表示愿毫不犹豫推荐其中一份证明投顶级期刊。Astra 本身尚未发布。</p><p class="why"><span class="lbl">为什么重要</span>AI 在困扰人类专家数十年的前沿数学上做出可被形式化验证的真结果，是「AI 做科研」从辅助走向原创的重要一步；但也需注意这挑的是 AI 天然擅长的领域。</p><p class="inds"><span class="lbl">影响行业</span>AI 研究 · 学术/科研 · 理论计算机</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://www.buildfastwithai.com/blogs/ai-news-today-august-2-2026" target="_blank" rel="noopener">Build Fast with AI ↗</a></div></article></section>
   <section class="domain"><div class="dom-head"><span class="emoji">🧠</span><h2>AI 基础模型</h2><span class="count">1</span></div><article class="story"><h3 class="story-title"><a href="https://www.buildfastwithai.com/blogs/ai-news-today-august-2-2026" target="_blank" rel="noopener">Astra 的数学突破：AI 原创科研的一步（详见今日重大新闻）</a></h3><p class="summary">Astra 内部版解出十个公开难题并公布 Lean 证明，正被独立核验；分析指出这些题目多处于 AI 天然占优的形式化领域。</p><p class="why"><span class="lbl">为什么重要</span>它把「模型能不能做真科研」的讨论往前推了一大截，也提示前沿模型的价值正从对话转向可验证的知识生产。</p><p class="inds"><span class="lbl">影响行业</span>AI 研究 · 科研</p><div class="foot"><span class="att"><span class="dot" style="background:#938a83"></span>了解即可</span><a class="src" href="https://www.buildfastwithai.com/blogs/ai-news-today-august-2-2026" target="_blank" rel="noopener">Build Fast with AI ↗</a></div></article></section><section class="domain"><div class="dom-head"><span class="emoji">🤖</span><h2>AI Agent</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">💻</span><h2>AI 软件开发</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">📣</span><h2>AI 营销 / 运营</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🎮</span><h2>AI 游戏</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">🏥</span><h2>AI 医疗</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">💰</span><h2>AI 商业投资</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section><section class="domain"><div class="dom-head"><span class="emoji">⚖️</span><h2>AI 政策监管</h2><span class="count">0</span></div><p class="empty">今日暂无重大更新</p></section>
   <footer>由 Claude 汇总 · 每条均附原始来源，请以来源为准</footer>
+</div>
+</body>
+</html></script>
+<script type="text/html" class="rpt" data-tab="fin" data-date="2026-11-24"><!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>财经日报 · 2026-11-24</title>
+<style>
+  /* 白底 + 虎嗅式中文黑体 + 英文衬线 + 红涨绿跌（中国习惯） */
+  :root {
+    --bg: #FFFFFF; --text: #232320; --muted: #6A6E68; --faint: #9AA09A;
+    --hair: #E7E6E2; --rule: #232320; --accent: #1C4E7A; --link: #2266B3;
+    --up: #C0392B; --down: #1A7A4D;
+    --title: Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei",
+             "Hiragino Sans GB", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A18; --text: #ECEBE6; --muted: #A5A29B; --faint: #7C7A73;
+      --hair: #2E2D29; --rule: #C8C6BF; --accent: #7FB0E6; --link: #7FB0E6;
+      --up: #F0685A; --down: #4FBF86;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+
+  .masthead { text-align: center; border-top: 2px solid var(--rule);
+    padding: 26px 0 18px; margin-bottom: 4px; border-bottom: 1px solid var(--hair); }
+  .kicker { font-size: 11.5px; letter-spacing: .32em; color: var(--accent); font-weight: 700; }
+  .masthead h1 { font-family: var(--title); margin: 12px 0 8px;
+    font-size: 34px; font-weight: 700; letter-spacing: .01em; }
+  .masthead .date { font-size: 13.5px; color: var(--muted); letter-spacing: .04em; }
+  .gen { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .editor-note { font-size: 15.5px; color: var(--muted); text-align: center;
+    max-width: 620px; margin: 20px auto 4px; line-height: 1.75; }
+
+  .sec { margin-top: 40px; }
+  .sec-head { display: flex; align-items: baseline; gap: 9px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--rule); margin-bottom: 14px; }
+  .sec-head .emoji { font-size: 17px; }
+  .sec-head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .empty { color: var(--faint); font-size: 13.5px; padding: 6px 0 2px; }
+
+  /* 行情磁贴 */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; }
+  .tile { border: 1px solid var(--hair); border-radius: 10px; padding: 11px 13px; }
+  .q-head { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+  .q-tag { font-size: 10.5px; color: var(--muted); border: 1px solid var(--hair);
+    border-radius: 5px; padding: 0 5px; }
+  .q-name { font-size: 13px; color: var(--muted); }
+  .q-val { font-family: var(--title); font-size: 20px; font-weight: 700;
+    font-variant-numeric: tabular-nums; }
+  .q-chg { font-size: 13.5px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .q-sub { font-size: 11.5px; color: var(--faint); margin-top: 2px; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .flat { color: var(--muted); }
+
+  /* 板块 */
+  .sector-row { padding: 12px 0; border-bottom: 1px solid var(--hair); }
+  .sector-row:last-child { border-bottom: none; }
+  .sector-mkt { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .sector-side { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0; }
+  .side-label { font-size: 11.5px; font-weight: 700; margin-right: 2px; }
+  .chip { font-size: 12.5px; border: 1px solid var(--hair); border-radius: 999px;
+    padding: 2px 10px; font-variant-numeric: tabular-nums; }
+  .chip b { margin-left: 6px; font-weight: 700; }
+  .chip.up { color: var(--up); }
+  .chip.down { color: var(--down); }
+
+  /* 新股表格 */
+  .table-wrap { overflow-x: auto; }
+  table.ipo { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.ipo th, table.ipo td { text-align: left; padding: 8px 10px;
+    border-bottom: 1px solid var(--hair); vertical-align: top; }
+  table.ipo th { font-size: 12px; color: var(--muted); font-weight: 700;
+    border-bottom: 1.5px solid var(--rule); white-space: nowrap; }
+  .ipo-name { font-weight: 650; }
+  .ipo-note { color: var(--muted); }
+
+  /* 事件卡 */
+  .event { padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .event:last-child { border-bottom: none; }
+  .ev-title { font-family: var(--title); margin: 0 0 7px; font-size: 17px;
+    font-weight: 700; line-height: 1.4; }
+  .ev-title a { color: var(--text); text-decoration: none; }
+  .ev-title a:hover { color: var(--link); text-decoration: underline; }
+  .ev-sum { margin: 0 0 8px; font-size: 14.5px; }
+  .ev-why { margin: 6px 0; font-size: 13.5px; color: var(--text); }
+  .lbl { display: inline-block; font-size: 11px; letter-spacing: .06em;
+    color: var(--accent); font-weight: 700; margin-right: 9px; }
+  .ev-foot { margin-top: 9px; }
+  .src { font-size: 12.5px; color: var(--link); text-decoration: none; }
+  .src:hover { text-decoration: underline; }
+
+  footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--hair);
+    text-align: center; color: var(--faint); font-size: 12px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">每日财经简报</div>
+    <h1>财经日报</h1>
+    <div class="date">2026-11-24</div>
+    <div class="gen">生成于 2026-11-24 13:35（周二盘中版；A股/港股 11/24 尚未收盘，A 股/港股数据用 11/23 收盘为基线 + 11/24 晨间消息面；美股/商品/汇率/债券为美东 11/23 收盘 = 北京时间 11/24 凌晨；BTC 为 11/23 时点快照；中英文双路）</div>
+  </header>
+  <p class="editor-note">**11/24 盘中版**（定时任务触发时 A 股/港股尚未收盘）。口径：① A 股/港股用 **11/23 收盘**（11/24 盘中未定）；② 美股/商品/汇率/债券用 **美东 11/23 收盘**（北京时间 11/24 凌晨 05:00），标注&quot;隔夜基准&quot;；③ BTC 为 **11/23 时点快照**，非收盘价；④ 日韩为 **11/24 开盘** 盘中数据。核心事件：英伟达复任 + NVDA 暴涨 31.48% → 全球风险资产大反攻（纳指 +6.51% 创 2025/4 以来最大单日涨幅），A 股人形机器人涨停潮、两融保证金降至 80%。红涨绿跌。</p>
+  <section class="sec"><div class="sec-head"><span class="emoji">📊</span><h2>大盘概览</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">A 股（11/23 收盘）</span><span class="q-name">上证指数</span></div><div class="q-val">3,538.95</div><div class="q-chg up">+0.15%</div><div class="q-sub">11/23 收盘，早盘探底午后放量反攻深V反转；两市成交 1.55 万亿，超 4,600 只个股上涨</div></div><div class="tile"><div class="q-head"><span class="q-tag">A 股（11/23 收盘）</span><span class="q-name">深证成指</span></div><div class="q-val">10,454.37</div><div class="q-chg up">+1.93%</div><div class="q-sub">11/23 收盘；创业板指表现最强</div></div><div class="tile"><div class="q-head"><span class="q-tag">A 股（11/23 收盘）</span><span class="q-name">创业板指</span></div><div class="q-val">2,280.20</div><div class="q-chg up">+3.08%</div><div class="q-sub">11/23 收盘；人形机器人涨停潮带动，151 只涨停</div></div><div class="tile"><div class="q-head"><span class="q-tag">A 股（11/23 收盘）</span><span class="q-name">北证50</span></div><div class="q-val">795.38</div><div class="q-chg up">+4.67%</div><div class="q-sub">11/23 收盘；主要宽基中涨幅最大，成交 112.99 亿元</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股（11/23 收盘）</span><span class="q-name">恒生指数</span></div><div class="q-val">22,383.74</div><div class="q-chg down">-0.12%</div><div class="q-sub">11/23 收盘，跌 27.12 点；南向资金净卖出 96.27 亿港元</div></div><div class="tile"><div class="q-head"><span class="q-tag">港股（11/23 收盘）</span><span class="q-name">恒生科技指数</span></div><div class="q-val">3,506.48</div><div class="q-chg down">-0.13%</div><div class="q-sub">11/23 收盘；早盘一度跌超 3%，午后深V修复尾盘小幅回落</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股（隔夜基准 11/23）</span><span class="q-name">纳斯达克综合</span></div><div class="q-val">24,089.56</div><div class="q-chg up">+6.51%</div><div class="q-sub">美东 11/23 收盘 = 北京 11/24 05:00；涨 1,471.83 点，创 2025 年 4 月以来最大单日涨幅</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股（隔夜基准 11/23）</span><span class="q-name">标普500</span></div><div class="q-val">7,237.17</div><div class="q-chg up">+4.73%</div><div class="q-sub">美东 11/23 收盘；涨 326.78 点，同样创 2025/4 以来最大单日涨幅</div></div><div class="tile"><div class="q-head"><span class="q-tag">美股（隔夜基准 11/23）</span><span class="q-name">道琼斯工业</span></div><div class="q-val">49,595.31</div><div class="q-chg up">+3.01%</div><div class="q-sub">美东 11/23 收盘；涨 1,447.98 点</div></div><div class="tile"><div class="q-head"><span class="q-tag">亚太（11/24 开盘）</span><span class="q-name">日经225</span></div><div class="q-val">57,009.99</div><div class="q-chg up">+1.02%开盘</div><div class="q-sub">11/24 高开 1.02%，盘中扩大至约 +3.85%（上海证券报）；不是收盘价</div></div><div class="tile"><div class="q-head"><span class="q-tag">亚太（11/24 开盘）</span><span class="q-name">韩国KOSPI</span></div><div class="q-val">4,880.16</div><div class="q-chg up">+3.64%开盘</div><div class="q-sub">11/24 高开 3.64%，盘中涨超 6% 触发 SIDECAR 买盘侧车机制；不是收盘价</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🔥</span><h2>热门板块涨跌</h2></div><div class="sector-row"><div class="sector-mkt">A 股（11/23）</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">人形机器人<b>涨停潮</b></span><span class="chip up">创业板指<b>+3.08%</b></span><span class="chip up">北证50<b>+4.67%</b></span><span class="chip up">PCB/CPO<b>批量涨</b></span><span class="chip up">半导体<b>回暖</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">权重蓝筹<b>弱于中小盘</b></span><span class="chip down">AI 漫剧/短剧<b>分歧</b></span></div></div><div class="sector-row"><div class="sector-mkt">美股（11/23）</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">英伟达 NVDA<b>+31.48%</b></span><span class="chip up">费城半导体<b>+14.03%</b></span><span class="chip up">特斯拉<b>+11.46%</b></span><span class="chip up">美光<b>+19%</b></span><span class="chip up">英特尔<b>+16.34%</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">Anthropic（ANT）<b>-1.43%（与大盘普涨分化，东方财富）</b></span></div></div><div class="sector-row"><div class="sector-mkt">港股（11/23）</div><div class="sector-side"><span class="side-label up">领涨</span><span class="chip up">光通信股<b>上涨</b></span><span class="chip up">半导体<b>回暖</b></span><span class="chip up">PCB股<b>上涨</b></span></div><div class="sector-side"><span class="side-label down">领跌</span><span class="chip down">银行股<b>小幅下跌</b></span><span class="chip down">能源<b>下跌</b></span><span class="chip down">新能源车<b>下挫</b></span></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">🆕</span><h2>新股日历（IPO）</h2></div><div class="table-wrap"><table class="ipo"><thead><tr><th>名称</th><th>市场</th><th>关键日期</th><th>发行价</th><th>备注</th></tr></thead><tbody><tr><td class="ipo-name">本周新股申购</td><td>A 股</td><td>11/24-11/28</td><td>—</td><td class="ipo-note">未取到可核验的本周新股发行排期，按红线不编造；11/23 无新股上市数据写入本期</td></tr></tbody></table></div></section><section class="sec"><div class="sec-head"><span class="emoji">🥇</span><h2>黄金 &amp; 大宗商品</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">隔夜基准</span><span class="q-name">COMEX 黄金</span></div><div class="q-val">3,635.2</div><div class="q-chg up">+3.41%</div><div class="q-sub">东方财富 11/24 06:15 美东 11/23 收盘；早简报另一口径 3,634.4（+3.39%）并列不合并</div></div><div class="tile"><div class="q-head"><span class="q-tag">隔夜基准</span><span class="q-name">WTI 原油</span></div><div class="q-val">80.23</div><div class="q-chg down">-3.81%</div><div class="q-sub">东方财富 11/24 06:15 美东 11/23 收盘；早简报另一口径 80.17（-3.88%），利比亚管道恢复 + 美元走强</div></div><div class="tile"><div class="q-head"><span class="q-tag">隔夜基准</span><span class="q-name">布伦特原油</span></div><div class="q-val">89.37</div><div class="q-chg down">-3.46%</div><div class="q-sub">东方财富 11/24 早简报；美东 11/23 收盘</div></div><div class="tile"><div class="q-head"><span class="q-tag">隔夜基准</span><span class="q-name">现货白银</span></div><div class="q-val">43.12</div><div class="q-chg up">+4.10%</div><div class="q-sub">东方财富 11/24 06:15 美东 11/23 收盘；COMEX 白银期货 42.93（+4.53%）口径并列</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">💱</span><h2>汇率 &amp; 债券</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">11/24 盘中</span><span class="q-name">美元指数</span></div><div class="q-val">104.2874</div><div class="q-chg flat">—</div><div class="q-sub">金投网 11/24 盘中；东方财富早简报称 11/23 收 104.318（+0.49%）</div></div><div class="tile"><div class="q-head"><span class="q-tag">隔夜基准</span><span class="q-name">10年期美债收益率</span></div><div class="q-val">4.95%</div><div class="q-chg up">+0.01 个百分点</div><div class="q-sub">Trading Economics 美东 11/23；纽约联储威廉姆斯称必要时可连续加息</div></div><div class="tile"><div class="q-head"><span class="q-tag">中国</span><span class="q-name">人民币（中间价）</span></div><div class="q-val">6.7111</div><div class="q-chg up">上调 9 个基点</div><div class="q-sub">11/24 中国外汇交易中心中间价，1 美元兑 6.7111 元人民币；来源：中新网/中国货币网</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">₿</span><h2>加密货币</h2></div><div class="tiles"><div class="tile"><div class="q-head"><span class="q-tag">时点快照</span><span class="q-name">BTC 比特币</span></div><div class="q-val">61,536</div><div class="q-chg flat">—</div><div class="q-sub">Morningstar 11/23 报道的时点价（非收盘）；周末一度跌至 55,122–55,833 区间后回到 6 万美元上方</div></div><div class="tile"><div class="q-head"><span class="q-tag">时点快照</span><span class="q-name">ETH 以太坊</span></div><div class="q-val">—</div><div class="q-chg flat">—</div><div class="q-sub">11/23 未取到可核验的独立报价，按红线不编造</div></div></div></section><section class="sec"><div class="sec-head"><span class="emoji">📰</span><h2>今日重大财经事件</h2></div><article class="event"><h3 class="ev-title"><a href="https://techcrunch.com/2026/11/23/nvidia-reverses-course-and-brings-jensen-huang-back-as-ceo/" target="_blank" rel="noopener">英伟达董事会恢复黄仁勋 CEO 职务，NVDA 单日暴涨 31.48%</a></h3><p class="ev-sum">11/23 英伟达董事会一致投票恢复黄仁勋总裁、CEO 及董事职务。NVDA 收报 165.05 美元（+31.48%），创 2003 年 5 月以来最大单日涨幅，单日市值增加约 9,520 亿美元创全球纪录。此前 11/12 辞任至 11/23 复职仅 11 天，此前一周累计下跌约 23%。</p><p class="ev-why"><span class="lbl">影响/解读</span>复任结束领导层不确定性，全球风险资产大反攻（纳指 +6.51%、费半 +14.03%、日韩 11/24 开盘飙涨）。但出口合规调查仍在推进：黄仁勋 12/3 出席参议院银行委员会听证会，Megaspeed 或被列入黑名单，公司新设首席合规官。</p><div class="ev-foot"><a class="src" href="https://techcrunch.com/2026/11/23/nvidia-reverses-course-and-brings-jensen-huang-back-as-ceo/" target="_blank" rel="noopener">NVIDIA 公告 / CNBC / 东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://finance.eastmoney.com/a/202611243937757635.html" target="_blank" rel="noopener">美股三大指数暴力反弹：纳指 +6.51% 创 2025/4 以来最大单日涨幅</a></h3><p class="ev-sum">美东 11/23 收盘：纳指 24,089.56（+6.51%，涨 1,471.83 点）、标普 7,237.17（+4.73%，涨 326.78 点）、道指 49,595.31（+3.01%，涨 1,447.98 点）。标普及纳指均创 2025 年 4 月 8 日以来最大单日涨幅。费城半导体指数 +14.03%。</p><p class="ev-why"><span class="lbl">影响/解读</span>反弹修复了上周大跌约一半跌幅，但单日上涨不等于趋势反转。感恩节前较短交易周的流动性、AI 资本开支回报与利率预期仍是中期变量。</p><div class="ev-foot"><a class="src" href="https://finance.eastmoney.com/a/202611243937757635.html" target="_blank" rel="noopener">东方财富 Choice / CNBC / 美联社 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://caifuhao.eastmoney.com/news/20261123153120875023160" target="_blank" rel="noopener">A 股 11/23 深V反转：创业板指 +3.08%，人形机器人涨停潮 145 只封板</a></h3><p class="ev-sum">11/23 A 股早盘低开后午后放量反攻。上证 +0.15% 收 3,538.95、深证 +1.93% 收 10,454.37、创业板 +3.08% 收 2,280.20、北证50 +4.67% 收 795.38。成交约 1.55 万亿，151 只涨停（其中人形机器人相关约 64 只）。宇树科技涨超 10% 跻身 A 股第三高价股。</p><p class="ev-why"><span class="lbl">影响/解读</span>周末两融保证金降至 80% + 隔夜英伟达复任催化算力链情绪修复。11/24 日韩开盘飙涨（日经 +4%+、韩国触发熔断）提供亚太风偏修复背景。</p><div class="ev-foot"><a class="src" href="https://caifuhao.eastmoney.com/news/20261123153120875023160" target="_blank" rel="noopener">东方财富 / 证券时报 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://caifuhao.eastmoney.com/news/20261124084559959681360" target="_blank" rel="noopener">两融逆周期调节：保证金比例 11/30 降至 80%</a></h3><p class="ev-sum">监管向券商下发两融逆周期调节通知，要求 11/30 保证金比例降至 80% 落地，存量合约适用。融资余额上限抬升属制度性利多。</p><p class="ev-why"><span class="lbl">影响/解读</span>降低融资保证金比例直接释放市场流动性，是监管层在市场调整后的明确托底信号。</p><div class="ev-foot"><a class="src" href="https://caifuhao.eastmoney.com/news/20261124084559959681360" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://caifuhao.eastmoney.com/news/20261124084559959681360" target="_blank" rel="noopener">CrowdStrike 拟 439 亿美元收购 Zscaler，科技并购活跃</a></h3><p class="ev-sum">11/23 CrowdStrike 拟以 439 亿美元收购 Zscaler。同日亚马逊 75 亿美元收购 Decart、ABB 26.5 亿美元收购施乐百（数据中心冷却）。</p><p class="ev-why"><span class="lbl">影响/解读</span>网络安全、AI 芯片优化与数据中心基础设施三个赛道的巨型并购同日落地，显示科技巨头正加速整合。利多相关板块情绪。</p><div class="ev-foot"><a class="src" href="https://caifuhao.eastmoney.com/news/20261124084559959681360" target="_blank" rel="noopener">东方财富 ↗</a></div></article><article class="event"><h3 class="ev-title"><a href="https://caifuhao.eastmoney.com/news/20261124084559959681360" target="_blank" rel="noopener">纽约联储威廉姆斯鹰派表态：必要时可连续加息</a></h3><p class="ev-sum">纽约联储主席威廉姆斯称必要时可连续加息。英国央行皮尔亦鹰派表态，市场对英央行 12 月加息押注升至 80%。美国 11 月标普全球 PMI 初值走弱（综合 54.6，四个月低位）。</p><p class="ev-why"><span class="lbl">影响/解读</span>海外流动性收紧预期仍是压制高估值成长的中期变量。经济动能边际放缓与鹰派表态形成拉扯。</p><div class="ev-foot"><a class="src" href="https://caifuhao.eastmoney.com/news/20261124084559959681360" target="_blank" rel="noopener">东方财富 ↗</a></div></article></section>
+  <footer>红涨绿跌 · 数据以各来源披露为准，仅供参考，不构成投资建议<br>由 Claude 汇总 · 每条均附原始来源</footer>
 </div>
 </body>
 </html></script>
